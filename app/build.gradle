@@ -9,7 +9,7 @@ android {
         myconfig {
             keyAlias 'basket'
             keyPassword 'basket1'
-            storeFile file('/Users/hanshaobo/AndroidStudioProjects/Basket/app/src/main/java/basket.keystore')
+            storeFile file('/Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/basket.keystore')
             storePassword 'basket1'
         }
     }

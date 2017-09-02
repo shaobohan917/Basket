@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -7,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
+import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.adapter.ContentRecyclerViewAdapter
 import com.first.basket.adapter.ShopAdapter
 import com.first.basket.bean.CategoryContentBean
 import com.first.basket.bean.ShopBean
+import com.first.basket.view.GoodsView
 import com.first.basket.view.TitleView
 
 /**
@@ -24,7 +27,7 @@ class ShopFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater?.inflate(R.layout.fragment_shop, container, false)!!
+        val view = inflater?.inflate(R.layout.fragment_shop, container, false)!!
         initView(view)
         return view
     }
@@ -42,5 +45,8 @@ class ShopFragment : BaseFragment() {
             mDatas.add(bean)
         }
         recyclerView.adapter = ShopAdapter(mDatas)
+
+        var gvGoods = view.findViewById<GoodsView>(R.id.gvGoods)
+        gvGoods.setOnClickListener { startActivity(Intent(activity, GoodsDetailActivity::class.java)) }
     }
 }

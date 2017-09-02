@@ -22,6 +22,7 @@
         android:orientation="horizontal">
 
         <com.first.basket.view.GoodsView
+            android:id="@+id/gvGoods"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
