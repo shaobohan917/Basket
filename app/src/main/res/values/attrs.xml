@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏-->
+    <declare-styleable name="TitleView">
+        <attr name="titleText" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="showBack" format="boolean" />
+        <attr name="titleBackground" format="color" />
+    </declare-styleable>
+
+    <!--商品信息-->
+    <declare-styleable name="GoodsView">
+        <attr name="goodsPic" format="string" />
+        <attr name="goodsName" format="string" />
+        <attr name="goodsNum" format="string" />
+        <attr name="goodsPrice" format="string" />
+    </declare-styleable>
+
+
+    <!--账户管理Item-->
+    <declare-styleable name="accountItemManagerView">
+        <attr name="accountManagerImg" format="reference" />
+        <attr name="accountManagerTitle" format="string" />
+    </declare-styleable>
+</resources>

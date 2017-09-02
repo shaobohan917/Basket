@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/tab_icon_home"
+        id="@+id/tab_home"
+        title="首页" />
+    <tab
+        icon="@drawable/tab_icon_classify"
+        id="@+id/tab_classify"
+        title="分类" />
+    <tab
+        icon="@drawable/tab_icon_active"
+        id="@+id/tab_active"
+        title="活动" />
+    <tab
+        icon="@drawable/tab_icon_shop"
+        id="@+id/tab_shop"
+        title="购物车" />
+    <tab
+        icon="@drawable/tab_icon_mine"
+        id="@+id/tab_mine"
+        title="我的" />
+</tabs>
