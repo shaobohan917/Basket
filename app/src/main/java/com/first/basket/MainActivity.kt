@@ -17,6 +17,7 @@ class MainActivity : BaseActivity() {
 
     var homeFragment = HomeFragment()
     var classifyFragment = ClassifyFragment()
+
     var activeFragment = ActiveFragment()
     var shopFragment = ShopFragment()
     var mineFragment = MineFragment()

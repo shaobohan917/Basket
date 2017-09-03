@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="80dp"
     android:layout_height="60dp"
-    xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <TextView
-        android:drawableLeft="@drawable/category_line"
         android:id="@+id/tvCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        tool:text = "热门推荐"
-        android:textColor="@color/text"
         android:background="@color/text_bg"
-        android:textSize="14sp" />
+        android:gravity="center"
+        android:textColor="@color/text"
+        android:textSize="14sp"
+        tool:text="热门推荐" />
 
 </LinearLayout>

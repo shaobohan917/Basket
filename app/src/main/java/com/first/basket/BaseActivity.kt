@@ -1,5 +1,6 @@
 package com.first.basket
 
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
@@ -28,8 +29,8 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-//    fun myStartActivity(className : class){
-//        var intent = Intent(this,)
+//    fun myStartActivity(className: Class) {
+//        var intent = Intent(this, className)
 //        startActivity(intent)
 //    }
 }

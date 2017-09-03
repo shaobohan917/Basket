@@ -9,7 +9,6 @@ import com.first.basket.listener.OnItemClicklistener
  * Created by hanshaobo on 02/09/2017.
  */
 open class CategoryRecyclerViewAdapter(mDatas: List<BaseBean>, private val listener: OnItemClicklistener) : QuickAdapter<BaseBean>(mDatas) {
-
     override fun getLayoutId(viewType: Int): Int {
 
         return R.layout.item_recycler_category
@@ -25,7 +24,7 @@ open class CategoryRecyclerViewAdapter(mDatas: List<BaseBean>, private val liste
 
         holder.itemView.setOnClickListener {
             listener.onItemClick(holder.itemView, position)
+
         }
     }
-
 }
