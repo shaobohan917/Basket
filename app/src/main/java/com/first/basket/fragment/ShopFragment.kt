@@ -1,17 +1,23 @@
 package com.first.basket.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
+import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.adapter.ShopAdapter
+import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.ShopBean
-import com.first.basket.utils.LogUtils
-import com.first.basket.view.GoodsView
-import com.first.basket.view.TitleView
+import com.first.basket.constants.Constants
+import com.first.basket.utils.ImageUtils
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
+import kotlinx.android.synthetic.main.fragment_shop.*
+import kotlinx.android.synthetic.main.item_recycler_shop.view.*
+
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -22,17 +28,18 @@ class ShopFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.fragment_shop, container, false)!!
-        initView(view)
         return view
     }
 
-    private fun initView(view: View) {
-        var gvGoods = view.findViewById<GoodsView>(R.id.gvGoods)
-        LogUtils.d("gv:" + gvGoods)
-//        gvGoods.setOnClickListener { startActivity(Intent(activity, GoodsDetailActivity::class.java)) }
-        view.findViewById<TitleView>(R.id.titleView)
-        var recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+    }
+
+    private fun initView() {
+        gvGoods.setOnClickListener { startActivity(Intent(activity, GoodsDetailActivity::class.java)) }
         recyclerView.layoutManager = LinearLayoutManager(activity)
+        ImageUtils.loadUrl(activity, Constants.PIC_URL, ivBanner)
 
         for (j in contents) {
             var bean = ShopBean()
@@ -43,6 +50,33 @@ class ShopFragment : BaseFragment() {
         }
         recyclerView.adapter = ShopAdapter(mDatas)
 
+        smRecyclerView.layoutManager = LinearLayoutManager(activity)
+        smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
 
+        val adapter = BaseRecyclerAdapter(R.layout.item_recycler_shop, mDatas) { view: View, shopBean: ShopBean ->
+            view.tvName.text = shopBean.name
+            view.tvNum.text = shopBean.num.toString()
+            view.tvPrice.text = shopBean.price.toString()
+        }
+
+        smRecyclerView.adapter = adapter
+    }
+
+    /**
+     * 菜单创建器。在Item要创建菜单的时候调用。
+     */
+    private val swipeMenuCreator = SwipeMenuCreator { swipeLeftMenu, swipeRightMenu, viewType ->
+        val width = resources.getDimensionPixelSize(R.dimen.item_height)
+        // MATCH_PARENT 自适应高度，保持和内容一样高；也可以指定菜单具体高度，也可以用WRAP_CONTENT。
+        val height = ViewGroup.LayoutParams.MATCH_PARENT
+
+        val deleteItem = SwipeMenuItem(activity)
+                .setBackgroundDrawable(R.color.black)
+                .setText("删除") // 文字。
+                .setTextColor(R.color.white) // 文字颜色。
+                .setTextSize(16) // 文字大小。
+                .setWidth(width)
+                .setHeight(height)
+        swipeRightMenu.addMenuItem(deleteItem)// 添加一个按钮到右侧侧菜单。
     }
 }

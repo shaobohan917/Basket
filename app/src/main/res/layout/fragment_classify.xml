@@ -8,11 +8,11 @@
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="28dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:background="@mipmap/ic_category_search_bg"
         android:drawableLeft="@mipmap/ic_category_search"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_margin="10dp"
         android:hint="搜索" />
 
     <include layout="@layout/layout_line" />
@@ -30,8 +30,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/contentRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

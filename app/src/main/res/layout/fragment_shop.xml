@@ -5,38 +5,75 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.first.basket.view.TitleView
-        android:id="@+id/titleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleText="购物车" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
-        <com.first.basket.view.GoodsView
-            android:id="@+id/gvGoods"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:goodsName="黄玉米"
-            app:goodsNum="3只"
-            app:goodsPrice="3.90" />
+            android:orientation="vertical">
 
-        <com.first.basket.view.GoodsView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:goodsName="黄玉米"
-            app:goodsNum="3只"
-            app:goodsPrice="3.90" />
-    </LinearLayout>
 
+            <com.first.basket.view.TitleView
+                android:id="@+id/titleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="购物车" />
+
+            <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+                android:id="@+id/smRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivBanner"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.first.basket.view.GoodsView
+                    android:id="@+id/gvGoods"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    app:goodsName="黄玉米"
+                    app:goodsNum="3只"
+                    app:goodsPic="@mipmap/ic_home_test_corn"
+                    app:goodsPicHeight="172dp"
+                    app:goodsPrice="3.90" />
+
+                <com.first.basket.view.GoodsView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    app:goodsName="黄玉米"
+                    app:goodsNum="3只"
+                    app:goodsPic="@mipmap/ic_home_test_tomato"
+                    app:goodsPicHeight="172dp"
+                    app:goodsPrice="3.90" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
