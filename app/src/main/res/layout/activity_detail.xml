@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,13 +7,12 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="375dp">
-
-    </com.youth.banner.Banner>
+        android:layout_height="375dp"></com.youth.banner.Banner>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/banner"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical">
@@ -25,7 +24,8 @@
             android:layout_marginTop="20dp"
             android:text="有机空心菜"
             android:textColor="@color/gray33"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -57,4 +57,24 @@
             android:textSize="24sp" />
 
     </LinearLayout>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_shop" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bt_bg"
+            android:text="加入购物车"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+</RelativeLayout>

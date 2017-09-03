@@ -10,8 +10,9 @@
 
     <!--商品信息-->
     <declare-styleable name="GoodsView">
-        <attr name="goodsPic" format="string" />
         <attr name="goodsName" format="string" />
+        <attr name="goodsPic" format="reference" />
+        <attr name="goodsPicHeight" format="dimension" />
         <attr name="goodsNum" format="string" />
         <attr name="goodsPrice" format="string" />
     </declare-styleable>

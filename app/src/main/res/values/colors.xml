@@ -20,4 +20,5 @@
     <color name="colorLump">#eaeaea</color>
     <color name="titleViewText">#2d2d2d</color>
     <color name="pic_bg">#F7F7F9</color>
+    <color name="bt_bg">#4167AE</color>
 </resources>
