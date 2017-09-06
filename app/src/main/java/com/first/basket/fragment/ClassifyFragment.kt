@@ -10,6 +10,7 @@ import com.first.basket.R
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.BaseBean
 import com.first.basket.bean.CategoryContentBean
+import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
 import kotlinx.android.synthetic.main.item_recycler_category.view.*
 import kotlinx.android.synthetic.main.item_recycler_content.view.*
@@ -45,6 +46,7 @@ class ClassifyFragment : BaseFragment() {
     }
 
     private fun initData() {
+
         for (i in mCategorys) {
             var bean = BaseBean()
             bean.category = i
@@ -53,8 +55,9 @@ class ClassifyFragment : BaseFragment() {
         val categoryAdapter = BaseRecyclerAdapter(R.layout.item_recycler_category, mCategoryDatas) { view: View, item: BaseBean ->
             view.tvCategory.text = item.category
             view.onClick {
-//                for (i in 0..categoryRecyclerView.childCount) {
-                for (i in 0..5) {
+                var count = categoryRecyclerView.childCount
+                LogUtils.d("count:" + count)
+                for (i in 0..count - 1) {
                     val view = categoryRecyclerView.getChildAt(i)
                     val tvCategory = view.findViewById<TextView>(R.id.tvCategory)
                     tvCategory.setBackgroundColor(activity.resources.getColor(R.color.text_bg))
@@ -91,7 +94,5 @@ class ClassifyFragment : BaseFragment() {
             view.tvPrice.text = categoryContentBean.price.toString()
         }
         contentRecyclerView.adapter = contentAdapter
-
-
     }
 }

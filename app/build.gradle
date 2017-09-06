@@ -68,6 +68,29 @@ dependencies {
     compile "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
     compile "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
     compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+
+    /* net start */
+
+    //RxJava
+    compile 'io.reactivex:rxjava:1.3.0'
+//    compile "io.reactivex.rxjava2:rxjava:2.x.y"
+
+    //RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //Retrofit适配RxJava的库
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    //Retrofit库
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    //Retrofi适配Gson的库
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    //log
+    compile 'com.github.grapesnberries:curlloggerinterceptor:0.1'
+
+    /* net end */
 }
 
 repositories {

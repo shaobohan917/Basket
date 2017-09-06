@@ -10,13 +10,20 @@ import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.adapter.ShopAdapter
 import com.first.basket.base.BaseRecyclerAdapter
+import com.first.basket.bean.BaseBean
 import com.first.basket.bean.ShopBean
 import com.first.basket.constants.Constants
+import com.first.basket.http.HttpMethods
+import com.first.basket.http.HttpResult
+import com.first.basket.http.HttpResultSubscriber
+import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
+import rx.Observable
 
 
 /**
@@ -34,6 +41,28 @@ class ShopFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
+
+//        var map: HashMap<String, String> = HashMap()
+//        HttpMethods.createService()
+//                .getDistrict(map)
+//                .compose(TransformUtils.defaultSchedulers())
+//                .subscribe(object : HttpResultSubscriber<BaseBean>() {
+//                    override fun onSuccess(result: BaseBean?, reason: String?) {
+//                        LogUtils.d("result:" + result)
+//
+//                    }
+//
+//                    override fun _onError(code: Int, throwable: Throwable, result: BaseBean?) {
+//                        LogUtils.d("_onError:" + throwable.message)
+//                    }
+//
+//                    override fun onCompleted() {
+//                        super.onCompleted()
+//                        LogUtils.d("onCompleted")
+//                    }
+//                })
+
     }
 
     private fun initView() {
