@@ -6,23 +6,23 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import com.first.basket.R
+import com.first.basket.constants.Constants
+import com.first.basket.utils.ImageUtils
 
 /**
- * Created by hanshaobo on 02/09/2017.
- */
-//class GoodsView(context: Context, attrs: AttributeSet?, defStyleAttr: Int)  : FrameLayout(context,attrs,defStyleAttr) {
+* Created by hanshaobo on 02/09/2017.
+*/
 class GoodsView : FrameLayout {
     private var mGoodsPic: Int = 0
     private lateinit var mGoodsName: String
-    private lateinit var mGoodsNum: String
+    private lateinit var mGoodUnit: String
     private lateinit var mGoodsPrice: String
     private var mGoodsPicHeight: Float = 100f
 
     private lateinit var ivGoods: ImageView
     private lateinit var tvName: TextView
-    private lateinit var tvNum: TextView
+    private lateinit var tvUnit: TextView
     private lateinit var tvPrice: TextView
 
     constructor(context: Context) : this(context, attrs = null)
@@ -38,8 +38,8 @@ class GoodsView : FrameLayout {
                             mGoodsPic = typedArray.getResourceId(it, 0)
                         R.styleable.GoodsView_goodsName ->
                             mGoodsName = typedArray.getString(it)
-                        R.styleable.GoodsView_goodsNum ->
-                            mGoodsNum = typedArray.getString(it)
+                        R.styleable.GoodsView_goodsUnit ->
+                            mGoodUnit = typedArray.getString(it)
                         R.styleable.GoodsView_goodsPrice ->
                             mGoodsPrice = typedArray.getString(it)
                         R.styleable.GoodsView_goodsPicHeight ->
@@ -56,21 +56,22 @@ class GoodsView : FrameLayout {
     private fun initView() {
         ivGoods = findViewById(R.id.ivGoods)
         tvName = findViewById(R.id.tvName)
-        tvNum = findViewById(R.id.tvNum)
+        tvUnit = findViewById(R.id.tvUnit)
         tvPrice = findViewById(R.id.tvPrice)
 
-        tvName.text = mGoodsName
-        tvNum.text = mGoodsNum
-        tvPrice.text = mGoodsPrice
-        val params = ivGoods.layoutParams
-        params.height = mGoodsPicHeight.toInt()
-        ivGoods.layoutParams = params
-        Glide.with(context).load(mGoodsPic).into(ivGoods)
+//        setGoods(mGoodsName, mGoodUnit,mGoodsPrice)
     }
 
-    private fun setGoods(name: String, num: String, price: String) {
+    fun setGoods(name: String, num: String, price: String, picUrl: String, picHeight: Int) {
         tvName.text = name
-        tvNum.text = num
+        tvUnit.text = num
         tvPrice.text = price
+
+        val params = ivGoods.layoutParams
+//        params.height = mGoodsPicHeight.toInt()
+        params.height = picHeight
+        ivGoods.layoutParams = params
+
+        ImageUtils.showImg(context, Constants.IMG_URL_TEST, ivGoods)
     }
 }

@@ -58,7 +58,7 @@
                     android:src="@mipmap/ic_classify_add" />
 
                 <TextView
-                    android:id="@+id/tvNum"
+                    android:id="@+id/tvUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"

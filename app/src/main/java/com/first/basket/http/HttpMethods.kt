@@ -1,13 +1,12 @@
 package com.first.basket.http
 
+import com.first.basket.constants.Constants
 import com.grapesnberries.curllogger.CurlLoggerInterceptor
-
-import java.util.concurrent.TimeUnit
-
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by Administrator on 2016/9/7.
@@ -45,7 +44,7 @@ private constructor() {
 
     companion object {
         //    public static final String BASE_URL = Constant.BASE_URL_ONLINE;
-        val BASE_URL = "https://oapi.dingtalk.com/"
+        val BASE_URL = Constants.BASE_API
 
         private val DEFAULT_TIMEOUT = 10
 

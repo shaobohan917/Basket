@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,56 +8,62 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="375dp"></com.youth.banner.Banner>
+        android:layout_height="375dp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/banner"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
+        android:layout_below="@id/banner">
 
-        <TextView
-            android:id="@+id/tvName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="有机空心菜"
-            android:textColor="@color/gray33"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gray33"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="有机空心菜" />
 
 
-        <TextView
-            android:id="@+id/tvDes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="【今日下单，明日采摘，后天到家】"
-            android:textColor="@color/gray66"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvDes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gray66"
+                android:textSize="16sp"
+                tools:text="【今日下单，明日采摘，后天到家】" />
 
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="12.00"
-            android:textColor="@color/gray33"
-            android:textSize="22sp" />
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gray33"
+                android:textSize="22sp"
+                tools:text="12.00" />
 
-        <TextView
-            android:id="@+id/tvDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="商品详情"
-            android:textColor="@color/gray33"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/tvDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gray66"
+                android:textSize="16sp"
+                tools:text="商品详情" />
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,17 +71,15 @@
         android:layout_alignParentBottom="true">
 
         <ImageView
+            android:id="@+id/ivShop"
             android:layout_width="52dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@mipmap/ic_shop" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/bt_bg"
-            android:text="加入购物车"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+            android:id="@+id/btAdd"
+            style="@style/ButtonStyle"
+            android:text="加入购物车" />
     </LinearLayout>
 </RelativeLayout>

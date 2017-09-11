@@ -9,6 +9,7 @@
         android:id="@+id/ivGoods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_home_test5" />
 
     <LinearLayout
@@ -26,7 +27,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tvNum"
+            android:id="@+id/tvUnit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

@@ -25,7 +25,7 @@ class ActiveFragment : BaseFragment() {
         settings.javaScriptEnabled = true
         settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         webview.webViewClient = MyWebViewClient()
-        webview.loadUrl("http://www.moumoon.com")
+        webview.loadUrl("http://m.jiangsutoutiao.com/activity/luckys/page/luckys/luckys.html?version=2.1.2")
         initView()
         return view
     }
