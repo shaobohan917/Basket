@@ -16,4 +16,6 @@ class Constants {
 
         val BASE_IMG_URL: String = "http://hyu2435570001.my3w.com/yhclz/img/"
     }
+
+
 }

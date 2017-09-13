@@ -10,9 +10,8 @@ import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps2d.*
 import com.amap.api.maps2d.model.LatLng
-import com.first.basket.BaseActivity
+import com.first.basket.base.BaseActivity
 import com.first.basket.R
-import kotlinx.android.synthetic.main.activity_address.*
 
 
 /**

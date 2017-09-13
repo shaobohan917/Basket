@@ -5,6 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.first.basket.view.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="购物车" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:background="#BAC9D0"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="地址"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,27 +29,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <com.first.basket.view.TitleView
-                android:id="@+id/titleView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleText="购物车" />
 
             <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
                 android:id="@+id/smRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivBanner"
@@ -90,6 +94,7 @@
             android:layout_alignParentTop="true" />
 
         <CheckBox
+            android:id="@+id/cbSelectAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -102,6 +107,34 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="去结算" />
+
+        <LinearLayout
+            android:id="@+id/llTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/ivBuy"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_price"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTotalPrice"
+                android:text="免邮费"
+                android:textColor="@color/orange"
+                android:textSize="12sp" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 </LinearLayout>

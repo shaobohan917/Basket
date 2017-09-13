@@ -11,6 +11,8 @@
     <color name="gray33">#333333</color>
     <color name="gray66">#666666</color>
     <color name="gray99">#999999</color>
+    <color name="grayF4">#F4F4F4</color>
+    <color name="grayF8">#F8F8F8</color>
     <color name="white">#ffffff</color>
     <color name="background">#F3F4F6</color>
     <color name="line">#D5D4D9</color>
@@ -21,4 +23,5 @@
     <color name="titleViewText">#2d2d2d</color>
     <color name="pic_bg">#F7F7F9</color>
     <color name="bt_bg">#4167AE</color>
+    <color name="orange">#FD9663</color>
 </resources>

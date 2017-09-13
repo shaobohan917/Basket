@@ -3,14 +3,14 @@ package com.first.basket.bean;
 import java.util.List;
 
 /**
- * Created by hanshaobo on 11/09/2017.
+ * Created by hanshaobo on 12/09/2017.
  */
 
 public class HomeBean {
     /**
      * status : 0
      * info : 成功
-     * result : {"data":{"Carouselfigure":[{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_1.png","url":""},{"image":"/AppImage/SQCS_1.png","url":""}],"Vegetables":"/AppImage/TJvegetables.png","Meat":"/AppImage/TJmeat.png"},"YHCS":{"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"id":"10000049","genda":"100267917","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"10000001.png"},{"id":"10000033","genda":"100267905","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"10000001.png"},{"id":"10000029","genda":"63","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"75","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"310","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"100267932","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"10000001.png"}]},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"【今日下单，明日采摘，后天到家】","URL":""},"QYFL":{"Image":"/AppImage/QYFL.png","Title":"【今日下单，明日采摘，后天到家】","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"【今日下单，明日采摘，后天到家】","URL":""}}}
+     * result : {"data":{"Carouselfigure":[{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_1.png","url":""},{"image":"/AppImage/SQCS_1.png","url":""}],"Vegetables":"/AppImage/TJvegetables.png","Meat":"/AppImage/TJmeat.png"},"YHCS":{"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"productid":"10000049","genda":"100267917","calssificationid":"61","level2id":"101002","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000033","genda":"100267905","calssificationid":"61","level2id":"101003","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000029","genda":"63","calssificationid":"61","level2id":"101003","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000040","genda":"75","calssificationid":"61","level2id":"101003","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000101","genda":"310","calssificationid":"62","level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000007","genda":"100267932","calssificationid":"61","level2id":"101001","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"/AppImage/10000135_20170908.png"}]},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QYFL":{"Image":"/AppImage/QYFL.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}}
      */
 
     private int status;
@@ -43,7 +43,7 @@ public class HomeBean {
 
     public static class ResultBean {
         /**
-         * data : {"Carouselfigure":[{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_1.png","url":""},{"image":"/AppImage/SQCS_1.png","url":""}],"Vegetables":"/AppImage/TJvegetables.png","Meat":"/AppImage/TJmeat.png"},"YHCS":{"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"id":"10000049","genda":"100267917","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"10000001.png"},{"id":"10000033","genda":"100267905","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"10000001.png"},{"id":"10000029","genda":"63","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"75","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"310","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"100267932","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"10000001.png"}]},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"【今日下单，明日采摘，后天到家】","URL":""},"QYFL":{"Image":"/AppImage/QYFL.png","Title":"【今日下单，明日采摘，后天到家】","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"【今日下单，明日采摘，后天到家】","URL":""}}
+         * data : {"Carouselfigure":[{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_1.png","url":""},{"image":"/AppImage/SQCS_1.png","url":""}],"Vegetables":"/AppImage/TJvegetables.png","Meat":"/AppImage/TJmeat.png"},"YHCS":{"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"productid":"10000049","genda":"100267917","calssificationid":"61","level2id":"101002","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000033","genda":"100267905","calssificationid":"61","level2id":"101003","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000029","genda":"63","calssificationid":"61","level2id":"101003","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000040","genda":"75","calssificationid":"61","level2id":"101003","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000101","genda":"310","calssificationid":"62","level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000007","genda":"100267932","calssificationid":"61","level2id":"101001","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"/AppImage/10000135_20170908.png"}]},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QYFL":{"Image":"/AppImage/QYFL.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}
          */
 
         private DataBean data;
@@ -60,10 +60,10 @@ public class HomeBean {
             /**
              * Carouselfigure : [{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""},{"image":"/AppImage/TopImage.png","url":""}]
              * SQCS : {"Carouselfigure":[{"image":"/AppImage/SQCS_1.png","url":""},{"image":"/AppImage/SQCS_1.png","url":""}],"Vegetables":"/AppImage/TJvegetables.png","Meat":"/AppImage/TJmeat.png"}
-             * YHCS : {"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"id":"10000049","genda":"100267917","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"10000001.png"},{"id":"10000033","genda":"100267905","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"10000001.png"},{"id":"10000029","genda":"63","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"75","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"310","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"100267932","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"10000001.png"}]}
-             * HLTG : {"Image":"/AppImage/HLTG.png","Title":"【今日下单，明日采摘，后天到家】","URL":""}
-             * QYFL : {"Image":"/AppImage/QYFL.png","Title":"【今日下单，明日采摘，后天到家】","URL":""}
-             * JKSS : {"Image":"/AppImage/JKSS.png","Title":"【今日下单，明日采摘，后天到家】","URL":""}
+             * YHCS : {"Image":"/AppImage/YHCS.png","Title":"【今日下单，明日采摘，后天到家】","Recommend":[{"productid":"10000049","genda":"100267917","calssificationid":"61","level2id":"101002","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000033","genda":"100267905","calssificationid":"61","level2id":"101003","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000029","genda":"63","calssificationid":"61","level2id":"101003","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000040","genda":"75","calssificationid":"61","level2id":"101003","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000101","genda":"310","calssificationid":"62","level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000007","genda":"100267932","calssificationid":"61","level2id":"101001","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"/AppImage/10000135_20170908.png"}]}
+             * HLTG : {"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+             * QYFL : {"Image":"/AppImage/QYFL.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+             * JKSS : {"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
              */
 
             private SQCSBean SQCS;
@@ -187,7 +187,7 @@ public class HomeBean {
                 /**
                  * Image : /AppImage/YHCS.png
                  * Title : 【今日下单，明日采摘，后天到家】
-                 * Recommend : [{"id":"10000049","genda":"100267917","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"10000001.png"},{"id":"10000033","genda":"100267905","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"10000001.png"},{"id":"10000029","genda":"63","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"75","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"310","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"100267932","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"10000001.png"}]
+                 * Recommend : [{"productid":"10000049","genda":"100267917","calssificationid":"61","level2id":"101002","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000033","genda":"100267905","calssificationid":"61","level2id":"101003","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"off","img":"/AppImage/10000135_20170908.png"},{"productid":"10000029","genda":"63","calssificationid":"61","level2id":"101003","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000040","genda":"75","calssificationid":"61","level2id":"101003","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000101","genda":"310","calssificationid":"62","level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"/AppImage/10000135_20170908.png"},{"productid":"10000007","genda":"100267932","calssificationid":"61","level2id":"101001","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"off","img":"/AppImage/10000135_20170908.png"}]
                  */
 
                 private String Image;
@@ -220,9 +220,10 @@ public class HomeBean {
 
                 public static class RecommendBean {
                     /**
-                     * id : 10000049
+                     * productid : 10000049
                      * genda : 100267917
                      * calssificationid : 61
+                     * level2id : 101002
                      * productname : 土豆
                      * packaging : 托盘
                      * weight : 300g
@@ -230,12 +231,13 @@ public class HomeBean {
                      * cost : 1.49
                      * price : 1.8
                      * Status : off
-                     * img : 10000001.png
+                     * img : /AppImage/10000135_20170908.png
                      */
 
-                    private String id;
+                    private String productid;
                     private String genda;
                     private String calssificationid;
+                    private String level2id;
                     private String productname;
                     private String packaging;
                     private String weight;
@@ -245,12 +247,12 @@ public class HomeBean {
                     private String Status;
                     private String img;
 
-                    public String getId() {
-                        return id;
+                    public String getProductid() {
+                        return productid;
                     }
 
-                    public void setId(String id) {
-                        this.id = id;
+                    public void setProductid(String productid) {
+                        this.productid = productid;
                     }
 
                     public String getGenda() {
@@ -267,6 +269,14 @@ public class HomeBean {
 
                     public void setCalssificationid(String calssificationid) {
                         this.calssificationid = calssificationid;
+                    }
+
+                    public String getLevel2id() {
+                        return level2id;
+                    }
+
+                    public void setLevel2id(String level2id) {
+                        this.level2id = level2id;
                     }
 
                     public String getProductname() {
@@ -338,7 +348,7 @@ public class HomeBean {
             public static class HLTGBean {
                 /**
                  * Image : /AppImage/HLTG.png
-                 * Title : 【今日下单，明日采摘，后天到家】
+                 * Title : 迎中秋，庆国庆，口福享不停
                  * URL :
                  */
 
@@ -374,7 +384,7 @@ public class HomeBean {
             public static class QYFLBean {
                 /**
                  * Image : /AppImage/QYFL.png
-                 * Title : 【今日下单，明日采摘，后天到家】
+                 * Title : 迎中秋，庆国庆，口福享不停
                  * URL :
                  */
 
@@ -410,7 +420,7 @@ public class HomeBean {
             public static class JKSSBean {
                 /**
                  * Image : /AppImage/JKSS.png
-                 * Title : 【今日下单，明日采摘，后天到家】
+                 * Title : 迎中秋，庆国庆，口福享不停
                  * URL :
                  */
 

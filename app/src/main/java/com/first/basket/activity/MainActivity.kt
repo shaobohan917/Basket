@@ -1,9 +1,11 @@
 @file:Suppress("SENSELESS_COMPARISON")
 
-package com.first.basket
+package com.first.basket.activity
 
 import android.os.Bundle
 import android.widget.FrameLayout
+import com.first.basket.base.BaseActivity
+import com.first.basket.R
 import com.first.basket.fragment.*
 import com.roughike.bottombar.BottomBar
 import java.util.*

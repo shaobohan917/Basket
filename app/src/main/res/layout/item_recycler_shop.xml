@@ -10,6 +10,7 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/cbSelect"
             android:layout_width="38dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -28,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tvName1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -37,18 +38,32 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvUnit"
+                android:id="@+id/tvUnit1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="3只" />
 
-            <TextView
-                android:id="@+id/tvPrice"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="29.90" />
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="18dp">
+
+                <TextView
+                    android:id="@+id/tvPrice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="29.90" />
+
+                <com.first.basket.view.AmountView
+                    android:id="@+id/amoutView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
         </LinearLayout>
 
 

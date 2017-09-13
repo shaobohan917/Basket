@@ -5,11 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <RelativeLayout
         android:id="@+id/rlTop"
         android:layout_width="match_parent"
@@ -219,11 +214,24 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <ImageView
+                <!--<com.first.basket.view.VerticalViewPager-->
+                <!--android:id="@+id/vViewPager"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="match_parent" />-->
+
+                <cn.ymex.banner.Banner
+                    android:id="@+id/vBanner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@mipmap/ic_home_test6" />
+                    android:layout_weight="1" />
+
+                <!--<ImageView-->
+                <!--android:id="@+id/sqcs"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:src="@mipmap/ic_home_test6" />-->
 
                 <View
                     android:layout_width="1sp"
@@ -242,6 +250,7 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/vegetables"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@mipmap/ic_home_test1" />
@@ -258,6 +267,7 @@
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/meat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@mipmap/ic_home_test2" />
@@ -285,77 +295,10 @@
 
                 <LinearLayout
                     android:id="@+id/llGoods"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:id="@+id/gvGoods"-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="黄玉米"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_corn"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="西红柿"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_tomato"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="香菜"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_coriander"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="猕猴桃"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_kiwifruit"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="黄玉米"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_corn"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-
-                    <!--<com.first.basket.view.GoodsView-->
-                        <!--android:layout_width="90dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--app:goodsName="西红柿"-->
-                        <!--app:goodsNum="650g"-->
-                        <!--app:goodsPic="@mipmap/ic_home_test_tomato"-->
-                        <!--app:goodsPicHeight="90dp"-->
-                        <!--app:goodsPrice="3.60" />-->
-                </LinearLayout>
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal" />
 
             </HorizontalScrollView>
 

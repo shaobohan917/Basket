@@ -1,9 +1,7 @@
 package com.first.basket.http
 
-import com.first.basket.bean.ClassifyBean
-import com.first.basket.bean.ClassifyContentBean
-import com.first.basket.bean.GoodsDetailBean
-import com.first.basket.bean.HomeBean
+import com.first.basket.base.HttpResult
+import com.first.basket.bean.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FieldMap
@@ -36,7 +34,27 @@ interface ApiService {
     @POST("ClintAPI.php")
     fun getDetail(@Field("action") action: String, @Field("productid") id: String): Observable<GoodsDetailBean>
 
+    //猜你想要
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getRecommend(@Field("action") action: String): Observable<RecommendBean>
+
+    //获取订单列表
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getOrderList(@Field("action") action: String, @Field("userid") userid: String): Observable<OrderListBean>
+
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun getHome(@Field("action") action: String): Observable<HomeBean>
+
+    //计算商品价格
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getPrice(@Field("action") action: String, @Field("productids") productids: String, @Field("productnum") productnum: String): Observable<HttpResult<PriceBean>>
+
+    //热门推荐
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getHotRecommend(@Field("action") action: String): Observable<HttpResult<HotRecommendBean>>
 }

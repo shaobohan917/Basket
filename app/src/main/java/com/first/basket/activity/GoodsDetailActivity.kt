@@ -3,18 +3,18 @@ package com.first.basket.activity
 import android.app.Activity
 import android.os.Bundle
 import butterknife.ButterKnife
-import com.first.basket.BaseActivity
+import com.first.basket.base.BaseActivity
 import com.first.basket.R
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.constants.Constants
 import com.first.basket.fragment.HomeFragment
 import com.first.basket.http.HttpMethods
+import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.ToastUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
-import kotlinx.android.synthetic.main.activity_address_info.*
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import rx.Subscriber
@@ -61,24 +61,18 @@ class GoodsDetailActivity : BaseActivity() {
     }
 
     private fun getData(id: String) {
-        class Sub : Subscriber<GoodsDetailBean>() {
-            override fun onNext(t: GoodsDetailBean) {
-                val data = t.result!!.data
-                setData(data!!)
-            }
-
-            override fun onError(e: Throwable) {
-                LogUtils.d("onError:" + e.message)
-            }
-
-            override fun onCompleted() {
-
-            }
-
-        }
         HttpMethods.createService().getDetail("get_productdetailpage", id)
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(Sub())
+                .subscribe(object : HttpResultSubscriber<GoodsDetailBean>() {
+                    override fun onNext(t: GoodsDetailBean) {
+                        val data = t.result!!.data
+                        setData(data!!)
+                    }
+
+                    override fun onError(e: Throwable) {
+                    }
+
+                })
     }
 
 
@@ -86,7 +80,6 @@ class GoodsDetailActivity : BaseActivity() {
         this.data = data
         tvName.text = data.title as CharSequence?
         tvDes.text = data.subtitle.toString()
-        LogUtils.d("des:" + data.subtitle)
         tvPrice.text = getString(R.string.price, data.price)
         tvDetail.text = data.productdetail ?: ""
     }

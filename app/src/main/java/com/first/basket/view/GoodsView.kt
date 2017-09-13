@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.constants.Constants
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.ScreenUtils
 
 /**
 * Created by hanshaobo on 02/09/2017.
@@ -68,10 +69,9 @@ class GoodsView : FrameLayout {
         tvPrice.text = price
 
         val params = ivGoods.layoutParams
-//        params.height = mGoodsPicHeight.toInt()
-        params.height = picHeight
+        params.height = ScreenUtils.dip2px(context, picHeight.toFloat())
         ivGoods.layoutParams = params
 
-        ImageUtils.showImg(context, Constants.IMG_URL_TEST, ivGoods)
+        ImageUtils.showImg(context, picUrl, ivGoods)
     }
 }

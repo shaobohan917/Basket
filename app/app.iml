@@ -167,6 +167,7 @@
     <orderEntry type="library" scope="TEST" name="espresso-core-3.0.0" level="project" />
     <orderEntry type="library" name="anko-appcompat-v7-0.10.1" level="project" />
     <orderEntry type="library" name="recyclerview-swipe-1.0.2" level="project" />
+    <orderEntry type="library" name="banner-1.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="runner-1.0.0" level="project" />
     <orderEntry type="library" name="kotlinx-coroutines-android-0.15" level="project" />

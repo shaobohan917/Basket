@@ -1,24 +1,24 @@
 package com.first.basket.http
 
+import com.first.basket.utils.LogUtils
 import rx.Subscriber
 
 /**
  * Created by hanshaobo on 2016/12/22.
  */
 
-open class HttpResultSubscriber<T> : Subscriber<T>() {
+open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
 //    private var t: T? = null
-
 
 
     override fun onCompleted() {
     }
 
     override fun onError(e: Throwable) {
+        LogUtils.d("onError:" + e.message)
     }
 
     override fun onNext(t: T) {
-
     }
 
 //    override fun onNext(tHttpResult: HttpResult<T>) {

@@ -31,7 +31,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,13 +42,15 @@
         <activity android:name=".a.AddressActivity" />
         <activity android:name=".activity.AddressInfoActivity" />
         <activity android:name=".activity.GoodsDetailActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.OrderListActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="5de06419de06f462c3c42284809aea44" />
 
-        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.OrderDetailActivity" />
     </application>
 
 </manifest>

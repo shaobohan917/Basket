@@ -33,6 +33,7 @@
     <include layout="@layout/layout_gap" />
 
     <RelativeLayout
+        android:id="@+id/rlOrder"
         android:layout_width="match_parent"
         android:layout_height="48dp">
 
