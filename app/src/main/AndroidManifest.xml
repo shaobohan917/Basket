@@ -31,7 +31,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,6 +52,8 @@
             android:value="5de06419de06f462c3c42284809aea44" />
 
         <activity android:name=".activity.OrderDetailActivity" />
+
+        <activity android:name=".adapter.MainActivity" />
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="60dp"
 	    android:padding="12dp"
+		android:background="@color/gray66"
 		android:gravity="center_vertical"
 		android:textColor="@color/black"/>
     

@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:src="@mipmap/ic_amount_del" />
+        android:src="@mipmap/ic_amount_del"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/etAmount"
@@ -27,7 +28,10 @@
         android:minWidth="40dp"
         android:text="1"
         android:clickable="false"
-        android:textSize="16sp" />
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textSize="16sp"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/btnIncrease"

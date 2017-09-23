@@ -66,18 +66,28 @@ public class GoodsDetailBean implements Serializable {
              * productdetail : 空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有“绿色精灵”之称，可洁齿防龋除口臭，健美皮肤。
              */
 
-            private Object title;
+            private String title;
             private String Subtitle;
-            private Object price;
+            private float price;
             private String productdetail;
             private List<ImagesBean> Images;
 
-            public Object getTitle() {
+            private String productsid;
+
+            public String getTitle() {
                 return title;
             }
 
-            public void setTitle(Object title) {
+            public void setTitle(String title) {
                 this.title = title;
+            }
+
+            public String getProductsid() {
+                return productsid;
+            }
+
+            public void setProductsid(String productsid) {
+                this.productsid = productsid;
             }
 
             public String getSubtitle() {
@@ -88,11 +98,11 @@ public class GoodsDetailBean implements Serializable {
                 this.Subtitle = Subtitle;
             }
 
-            public Object getPrice() {
+            public float getPrice() {
                 return price;
             }
 
-            public void setPrice(Object price) {
+            public void setPrice(float price) {
                 this.price = price;
             }
 

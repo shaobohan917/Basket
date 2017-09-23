@@ -26,8 +26,8 @@ import com.first.basket.R;
 public class AmountView extends LinearLayout implements View.OnClickListener, TextWatcher {
 
     private static final String TAG = "AmountView";
-    private int amount = 1; //购买数量
-    private int goods_storage = 1; //商品库存
+    private int amount = 0; //购买数量
+    private int goods_storage = 10; //商品库存
 
     private OnAmountChangeListener mListener;
 
@@ -87,11 +87,19 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
             if (amount > 1) {
                 amount--;
                 etAmount.setText(amount + "");
+            } else {
+                amount--;
+                btnDecrease.setVisibility(GONE);
+                etAmount.setVisibility(GONE);
             }
         } else if (i == R.id.btnIncrease) {
             if (amount < goods_storage) {
                 amount++;
                 etAmount.setText(amount + "");
+            }
+            if (amount >= 1) {
+                btnDecrease.setVisibility(VISIBLE);
+                etAmount.setVisibility(VISIBLE);
             }
         }
 
@@ -122,14 +130,18 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
             return;
         }
 
-        if (mListener != null) {
-            mListener.onAmountChange(this, amount);
-        }
+//        if (mListener != null) {
+//            mListener.onAmountChange(this, amount);
+//        }
     }
 
 
     public interface OnAmountChangeListener {
         void onAmountChange(View view, int amount);
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
 }

@@ -3,7 +3,6 @@ package com.first.basket.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.PagerAdapter
 import android.support.v7.widget.AppCompatImageView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,26 +14,22 @@ import com.first.basket.R
 import com.first.basket.activity.AddressInfoActivity
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.SearchActivity
+import com.first.basket.adapter.MainActivity
 import com.first.basket.bean.HomeBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.ScreenUtils
 import com.first.basket.view.GoodsView
-import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.wrapContent
 import java.util.*
-import android.R.attr.data
-import cn.ymex.banner.Banner.BindViewCallBack
 
 
 /**
@@ -85,6 +80,7 @@ class HomeFragment : BaseFragment() {
 //            startActivity(Intent(activity, GoodsDetailActivity::class.java))
 //        }
 
+        ivScan.onClick { startActivity(Intent(activity, MainActivity::class.java)) }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

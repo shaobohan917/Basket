@@ -109,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:padding="10dp"
                 android:src="@mipmap/ic_mine_arrow" />
 
             <include layout="@layout/layout_line" />

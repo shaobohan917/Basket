@@ -15,12 +15,8 @@ import rx.Observable
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("get_district")
-    fun getDistrict(@FieldMap map: Map<String, String>): Observable<ClassifyBean>
-
-    @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getProducts(@Field("action") action: String, @Field("classificationid") classificationid: String): Observable<ClassifyContentBean>
+    fun getProducts(@Field("action") action: String, @Field("classificationsid") classificationid: String): Observable<ClassifyContentBean>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
@@ -28,7 +24,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getClassify(@Field("action") action: String): Observable<ClassifyBean>
+    fun getClassify(@Field("action") action: String): Observable<HttpResult<ClassifyBean>>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")

@@ -19,6 +19,7 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
     }
 
     override fun onNext(t: T) {
+        LogUtils.d(t.toString())
     }
 
 //    override fun onNext(tHttpResult: HttpResult<T>) {

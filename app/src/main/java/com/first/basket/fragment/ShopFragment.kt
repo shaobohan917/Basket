@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.OrderDetailActivity
-import com.first.basket.base.BaseRecyclerAdapter
+import com.first.basket.adapter.MenuAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.bean.HotRecommendBean
@@ -24,6 +24,7 @@ import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -37,15 +38,15 @@ class ShopFragment : BaseFragment() {
     private var mDatas = ArrayList<GoodsDetailBean.ResultBean.DataBean>()
     private var contents = arrayOf("奇异果", "香蕉", "苹果")
 
-    private var mAdapter = BaseRecyclerAdapter(R.layout.item_recycler_shop, mDatas) { view: View, bean: GoodsDetailBean.ResultBean.DataBean ->
-        view.tvName1.text = bean.title.toString()
-        view.tvUnit1.text = bean.subtitle.toString()
-        view.tvPrice1.text = bean.price.toString()
+    private var entity = GoodsDetailBean.ResultBean.DataBean()
 
-        view.amoutView.setGoods_storage(10)
-        view.amoutView.setOnAmountChangeListener { view, amount ->
+    private var mAdapter = MenuAdapter(mDatas, object : MenuAdapter.OnItemClickListener {
+        override fun onItemClick(view: View) {
+
+            LogUtils.d("onClick:" + smRecyclerView.getChildAdapterPosition(view))
         }
-    }
+
+    })
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -69,7 +70,6 @@ class ShopFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<HotRecommendBean>>() {
                     override fun onNext(t: HttpResult<HotRecommendBean>) {
                         super.onNext(t)
-                        LogUtils.d("热门推荐长度:" + t.result.data.products.size)
                         setRecommendData(t.result.data)
                     }
                 })
@@ -85,7 +85,7 @@ class ShopFragment : BaseFragment() {
         for (j in contents) {
             var bean = GoodsDetailBean.ResultBean.DataBean()
             bean.title = j
-            bean.subtitle = "" + 1
+            bean.productsid = "10000001"
             bean.price = 1f
             mDatas.add(bean)
         }
@@ -94,7 +94,17 @@ class ShopFragment : BaseFragment() {
         smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
 
         smRecyclerView.adapter = mAdapter
-3
+
+        smRecyclerView.setSwipeMenuItemClickListener { closeable, adapterPosition, menuPosition, direction ->
+            LogUtils.d("onItemClick:" + adapterPosition)
+            closeable.smoothCloseMenu()
+
+            if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
+                mDatas.removeAt(adapterPosition)
+                mAdapter.notifyItemRemoved(adapterPosition)
+                mAdapter.notifyDataSetChanged()
+            }
+        }
     }
 
     /**
@@ -106,10 +116,10 @@ class ShopFragment : BaseFragment() {
         val height = ViewGroup.LayoutParams.MATCH_PARENT
 
         val deleteItem = SwipeMenuItem(activity)
-                .setBackgroundDrawable(R.color.black)
+                .setBackgroundColor(activity.resources.getColor(R.color.red56))
                 .setText("删除") // 文字。
                 .setTextColor(R.color.white) // 文字颜色。
-                .setTextSize(16) // 文字大小。
+                .setTextSize(17) // 文字大小。
                 .setWidth(width)
                 .setHeight(height)
         swipeRightMenu.addMenuItem(deleteItem)// 添加一个按钮到右侧侧菜单。
@@ -151,10 +161,9 @@ class ShopFragment : BaseFragment() {
     private fun getPrice(mDatas: ArrayList<GoodsDetailBean.ResultBean.DataBean>) {
         var productidString = StringBuilder()
         var numString = StringBuilder()
-        for (i in 0 until mDatas.size) {
-//            priceString.append(mDatas[i].price)
-            productidString.append("10000007").append("|")
-            numString.append("1").append("|")
+        for (i in 0 until smRecyclerView.childCount){
+            productidString.append(mDatas[i].productsid).append("|")
+            numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
         }
         HttpMethods.createService().getPrice("get_price", productidString.toString().substring(0, productidString.length - 1), numString.toString().substring(0, numString.length - 1))
                 .compose(TransformUtils.defaultSchedulers())
