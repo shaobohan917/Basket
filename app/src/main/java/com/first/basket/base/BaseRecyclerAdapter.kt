@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.first.basket.utils.LogUtils
 
 
 /**
@@ -20,6 +21,12 @@ class BaseRecyclerAdapter<T, K : BaseRecyclerAdapter.ViewHolder<T>>(val layoutRe
     override fun onBindViewHolder(holder: K, position: Int) {
         holder.bindForecast(items[position])
         holder.itemView.tag = position
+
+        holder.itemView.setOnClickListener {
+            if (holder.layoutPosition == position) {
+                LogUtils.d("选中：" + position)
+            }
+        }
     }
 
     override fun getItemCount() = items.size

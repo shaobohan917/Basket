@@ -1,9 +1,6 @@
-@file:Suppress("SENSELESS_COMPARISON")
-
 package com.first.basket.activity
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import com.first.basket.base.BaseActivity
 import com.first.basket.R
 import com.first.basket.fragment.*
@@ -11,39 +8,33 @@ import com.roughike.bottombar.BottomBar
 import java.util.*
 
 class MainActivity : BaseActivity() {
-    lateinit var bottomBar: BottomBar
-    lateinit var fragmentContainer: FrameLayout
+    private lateinit var bottomBar: BottomBar
+    private var baseFragment = BaseFragment()
+    private var fragmentList = ArrayList<BaseFragment>()
 
-    var baseFragment = BaseFragment()
-    var fragmentList = ArrayList<BaseFragment>()
-
-    var homeFragment = HomeFragment()
-    var classifyFragment = ClassifyFragment()
-
-    var activeFragment = ActiveFragment()
-    var shopFragment = ShopFragment()
-    var mineFragment = MineFragment()
-
-    //    val url  = "http://172.18.4.10:8080/page/"
-    val url = "http://www.baidu.com"
+    private var homeFragment = HomeFragment()
+    private var classifyFragment = ClassifyFragment()
+    private var activeFragment = ActiveFragment()
+    private var shopFragment = ShopFragment()
+    private var mineFragment = MineFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bottomBar = findViewById<BottomBar>(R.id.bottombar)
-        fragmentContainer = findViewById<FrameLayout>(R.id.fragmentContainer)
 
 //        var nearby = bottomBar.getTabWithId(R.id.tab_shop)
 //        nearby.setBadgeCount(5)
 
         initView()
-
         initData()
 
     }
 
     private fun initView() {
-        fragmentList = ArrayList<BaseFragment>()
+        bottomBar = findViewById(R.id.bottombar)
+        bottomBar.setTabTitleTextAppearance(10)
+
+        fragmentList = ArrayList()
         homeFragment = HomeFragment()
         fragmentList.add(homeFragment)
         fragmentList.add(classifyFragment)
