@@ -1,16 +1,16 @@
 package com.first.basket.fragment
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import android.os.Handler
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.view.animation.ScaleAnimation
 import com.first.basket.R
+import com.first.basket.adapter.ContentAdapter
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
@@ -18,24 +18,19 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
-import com.first.basket.utils.ScreenUtils
-import kotlinx.android.synthetic.main.item_recycler_content.view.*
 import kotlinx.android.synthetic.main.item_recycler_second.view.*
-import org.jetbrains.anko.padding
-import org.jetbrains.anko.wrapContent
 import java.util.*
 
 /**
  * Created by hanshaobo on 17/09/2017.
  */
 class ContentFragment : BaseFragment() {
-
-    private lateinit var mContentAdapter: BaseRecyclerAdapter<ClassifyContentBean.ResultBean.DataBean, BaseRecyclerAdapter.ViewHolder<ClassifyContentBean.ResultBean.DataBean>>
+    private lateinit var mContentAdapter: ContentAdapter
     private lateinit var mSecondAdapter: BaseRecyclerAdapter<ClassifyBean.DataBean.LeveltwoBean, BaseRecyclerAdapter.ViewHolder<ClassifyBean.DataBean.LeveltwoBean>>
     private var mContentDatas = ArrayList<ClassifyContentBean.ResultBean.DataBean>()
     private var mSecondDatas = ArrayList<ClassifyBean.DataBean.LeveltwoBean>()
 
-    private lateinit var contentRecyclerView1: RecyclerView
+    private lateinit var contentRecyclerView: RecyclerView
     private lateinit var secondRecyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,28 +39,41 @@ class ContentFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contentRecyclerView1 = view.findViewById(R.id.contentRecyclerView1)
+        contentRecyclerView = view.findViewById(R.id.contentRecyclerView)
         secondRecyclerView = view.findViewById(R.id.secondRecyclerView)
 
         initView()
         initData()
+        initListener()
+    }
+
+    private fun initListener() {
+        contentRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+            }
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                    LogUtils.d("收起二级分类:" + dy)
+                } else if (dy < 0) {
+                    LogUtils.d("展示二级分类:" + dy)
+                }
+            }
+        })
+
     }
 
     private fun initView() {
-        contentRecyclerView1.layoutManager = LinearLayoutManager(activity)
+        contentRecyclerView.layoutManager = LinearLayoutManager(activity)
         secondRecyclerView.layoutManager = GridLayoutManager(activity, 3)
     }
 
     private fun initData() {
         //初始化商品列表adapter
-        mContentAdapter = BaseRecyclerAdapter(R.layout.item_recycler_content, mContentDatas) { view: View, bean: ClassifyContentBean.ResultBean.DataBean ->
-            view.tvName.text = bean.productname
-            view.tvUnit.text = bean.unit
-            view.tvPrice.text = bean.price
-
-            view.amoutView.setGoods_storage(10)
-        }
-        contentRecyclerView1.adapter = mContentAdapter
+        mContentAdapter = ContentAdapter(activity, mContentDatas)
+        contentRecyclerView.adapter = mContentAdapter
 
         mSecondAdapter = BaseRecyclerAdapter(R.layout.item_recycler_second, mSecondDatas) { view, leveltwoBean ->
             view.tvSecondLevel.text = leveltwoBean.leveltwodesc
@@ -90,8 +98,7 @@ class ContentFragment : BaseFragment() {
                     override fun onNext(t: ClassifyContentBean) {
                         val dataBean = t.result.data
 
-                        for (i in 0 until 10) {
-//                        for (i in 0 until dataBean.size) {
+                        for (i in 0 until dataBean.size) {
                             mContentDatas.add(dataBean[i])
                         }
                         mContentAdapter.notifyDataSetChanged()
@@ -105,5 +112,18 @@ class ContentFragment : BaseFragment() {
         mSecondDatas.addAll(dataBean.leveltwo)
         mSecondAdapter.notifyDataSetChanged()
 
+        getSecondHeight()
+
+    }
+
+    private fun getSecondHeight() {
+
+        var anim = ScaleAnimation(0f,0f,500f,500f)
+        secondRecyclerView.animation = anim
+        anim.start()
+
+
+//        LogUtils.d("height:"+height)
+//        LogUtils.d("h:"+h)
     }
 }
