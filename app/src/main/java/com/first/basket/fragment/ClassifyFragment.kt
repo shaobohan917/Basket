@@ -1,6 +1,5 @@
 package com.first.basket.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
@@ -11,9 +10,12 @@ import com.first.basket.R
 import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
+import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_classify.*
 
 /**
@@ -31,12 +33,7 @@ class ClassifyFragment : BaseFragment() {
     private lateinit var mCategoryAdapter: ClassifyAdapter
 
     //1：社区菜市；2：上海菜市 ；3：全国菜市
-    private var channel: String = "1"
-
-    override fun setArguments(args: Bundle) {
-        super.setArguments(args)
-        channel = args.get("channel") as String
-    }
+    private var preType: Int = 1
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_classify, container, false)!!
@@ -66,16 +63,18 @@ class ClassifyFragment : BaseFragment() {
         }
 
         //获取分类列表
-        getClassify()
+        getClassify(preType)
     }
 
-    private fun getClassify() {
+    private fun getClassify(channel: Int) {
         //获取商品分类
-        HttpMethods.createService().getClassify("get_productclassification", channel)
+        HttpMethods.createService().getClassify("get_productclassification", channel.toString())
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyBean>>() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {
                         super.onNext(t)
+                        mCategoryDatas.clear()
+
                         for (i in 0 until t.result.data.size) {
                             mCategoryDatas.add(t.result.data[i])
                             mIds.add(t.result.data[i].leveloneid)
@@ -104,4 +103,18 @@ class ClassifyFragment : BaseFragment() {
             indexList.add(l)
         }
     }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            val type = SPUtil.getData(activity, Constants.HOME_CLASSIFY, 1) as Int
+            if (preType != type) {
+                //切换菜市，重新加载
+                getClassify(type)
+                preType = type
+                LogUtils.d("onHiddenChanged:" + type)
+            }
+        }
+    }
+
 }

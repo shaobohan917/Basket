@@ -1,7 +1,6 @@
 package com.first.basket.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.first.basket.R;
-import com.first.basket.bean.ClassifyBean;
 import com.first.basket.bean.ClassifyContentBean;
 import com.first.basket.utils.ImageUtils;
-import com.first.basket.utils.LogUtils;
 import com.first.basket.view.AmountView;
 
 import java.util.List;
@@ -29,7 +26,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private int layoutPosition;
 
     public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, ClassifyBean.DataBean data, int position);
+        void onItemClick(View view, ClassifyContentBean.ResultBean.DataBean data, int position);
     }
 
     public ContentAdapter(Context context, List<ClassifyContentBean.ResultBean.DataBean> data) {
@@ -64,7 +61,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
                 //获取当前点击的位置
                 layoutPosition = holder.getLayoutPosition();
                 notifyDataSetChanged();
-                mOnItemClickListener.onItemClick(holder.itemView, (ClassifyBean.DataBean) holder.itemView.getTag(), layoutPosition);
+                mOnItemClickListener.onItemClick(holder.itemView, (ClassifyContentBean.ResultBean.DataBean) holder.itemView.getTag(), layoutPosition);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -9,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.ScaleAnimation
 import com.first.basket.R
+import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
+import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
@@ -52,12 +55,11 @@ class ContentFragment : BaseFragment() {
                 super.onScrollStateChanged(recyclerView, newState)
 
             }
+
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
-                    LogUtils.d("收起二级分类:" + dy)
                 } else if (dy < 0) {
-                    LogUtils.d("展示二级分类:" + dy)
                 }
             }
         })
@@ -78,6 +80,13 @@ class ContentFragment : BaseFragment() {
             view.tvSecondLevel.text = leveltwoBean.leveltwodesc
         }
         secondRecyclerView.adapter = mSecondAdapter
+
+        mContentAdapter.setOnItemClickListener { view, data, position ->
+            LogUtils.d("点击：" + position)
+            var intent = Intent(activity, GoodsDetailActivity::class.java)
+            intent.putExtra("id", data.productid)
+            startActivity(intent)
+        }
     }
 
 
@@ -117,7 +126,7 @@ class ContentFragment : BaseFragment() {
 
     private fun getSecondHeight() {
 
-        var anim = ScaleAnimation(0f,0f,500f,500f)
+        var anim = ScaleAnimation(0f, 0f, 500f, 500f)
         secondRecyclerView.animation = anim
         anim.start()
 

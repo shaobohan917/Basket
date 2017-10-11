@@ -19,7 +19,7 @@ public class ImageUtils {
         if (!url.startsWith(Constants.Companion.getBASE_IMG_URL())) {
             url = Constants.Companion.getBASE_IMG_URL() + url;
         }
-        LogUtils.Companion.d("url:" + url);
+//        LogUtils.Companion.d("url:" + url);
         GlideApp.with(context)
                 .load(url)
                 .placeholder(R.mipmap.ic_placeholder)

@@ -19,6 +19,9 @@ class Constants {
 
         //wechat
         val WECHAT_APP_ID = ""
+
+        //
+        val HOME_CLASSIFY = "home_classify"
     }
 
 

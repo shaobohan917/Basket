@@ -77,7 +77,6 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
 
     @Override
     public int getItemCount() {
-        LogUtils.Companion.d("size:"+data.size());
         return data.size();
     }
     class MyViewHolder extends RecyclerView.ViewHolder {

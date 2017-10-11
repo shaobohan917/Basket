@@ -22,9 +22,11 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
@@ -83,18 +85,20 @@ class HomeFragment : BaseFragment() {
 
     inner class MyClickListener : View.OnClickListener {
         override fun onClick(view: View) {
-            LogUtils.d(view.id.toString())
             when (view.id) {
-                R.id.sqcs -> goClassify("1")
-                R.id.shcs -> goClassify("2")
-                R.id.qgcs -> goClassify("3")
+                R.id.sqcs -> goClassify(1)
+                R.id.shcs -> goClassify(2)
+                R.id.qgcs -> goClassify(3)
             }
         }
 
-        private fun goClassify(channel: String) {
-            var intent = Intent(activity, ClassifyActivity::class.java)
-            intent.putExtra("channel", channel)
-            startActivity(intent)
+        private fun goClassify(channel: Int) {
+//            var intent = Intent(activity, ClassifyActivity::class.java)
+//            intent.putExtra("channel", channel)
+//            startActivity(intent)
+
+            SPUtil.setData(activity,Constants.HOME_CLASSIFY,channel)
+            activity.bottombar.selectTabAtPosition(1)
         }
     }
 

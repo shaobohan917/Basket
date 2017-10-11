@@ -30,7 +30,7 @@ class GoodsDetailActivity : BaseActivity() {
         ButterKnife.bind(this)
         setContentView(R.layout.activity_detail)
         initView()
-        getData(intent.extras.getString("id"))
+        getData(intent.extras.getString("id", ""))
         initListener()
     }
 
@@ -74,8 +74,8 @@ class GoodsDetailActivity : BaseActivity() {
         //设置banner
         images.addAll(data.images)
         var imgs = ArrayList<String>()
-        for (i in 0 until images.size){
-            imgs.add(Constants.BASE_IMG_URL+images[i].image)
+        for (i in 0 until images.size) {
+            imgs.add(Constants.BASE_IMG_URL + images[i].image)
         }
         banner.setImages(imgs)
                 .setImageLoader(HomeFragment.GlideImageLoader())
