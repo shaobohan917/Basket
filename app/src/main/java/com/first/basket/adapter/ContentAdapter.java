@@ -5,11 +5,13 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.first.basket.R;
 import com.first.basket.bean.ClassifyBean;
 import com.first.basket.bean.ClassifyContentBean;
+import com.first.basket.utils.ImageUtils;
 import com.first.basket.utils.LogUtils;
 import com.first.basket.view.AmountView;
 
@@ -53,6 +55,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         holder.tvUnit.setText(data.get(position).getUnit());
         holder.tvPrice.setText(data.get(position).getPrice());
         holder.amoutView.setGoods_storage(10);
+        ImageUtils.showImg(context,data.get(position).getImg(),holder.ivGoods);
 
         holder.itemView.setTag(data.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +93,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView ivGoods;
         private final TextView tvName;
         private final TextView tvUnit;
         private final TextView tvPrice;
@@ -101,6 +105,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             tvUnit = itemView.findViewById(R.id.tvUnit);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             amoutView = itemView.findViewById(R.id.amoutView);
+            ivGoods = itemView.findViewById(R.id.ivGoods);
         }
     }
 }

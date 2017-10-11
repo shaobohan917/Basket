@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.first.basket.R;
+import com.first.basket.common.GlideApp;
 import com.first.basket.constants.Constants;
 
 /**
@@ -18,8 +19,12 @@ public class ImageUtils {
         if (!url.startsWith(Constants.Companion.getBASE_IMG_URL())) {
             url = Constants.Companion.getBASE_IMG_URL() + url;
         }
-        Glide.with(context).load(url).into(ivImg);
         LogUtils.Companion.d("url:" + url);
+        GlideApp.with(context)
+                .load(url)
+                .placeholder(R.mipmap.ic_placeholder)
+                .error(R.mipmap.ic_placeholder)
+                .into(ivImg);
 
     }
 

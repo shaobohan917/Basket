@@ -9,8 +9,7 @@
         android:id="@+id/imageItem"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_home_test0"/>
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/textItem"

@@ -106,6 +106,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes-jar" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-runtime-classes" />
@@ -154,7 +155,6 @@
     <orderEntry type="library" name="1_common-1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="javawriter-2.1.1" level="project" />
     <orderEntry type="library" name="AMap2DMap_5.2.0_AMapLocation_3.5.0_20170731" level="project" />
-    <orderEntry type="library" name="wechat-sdk-android-with-mta-1.4.0" level="project" />
     <orderEntry type="library" name="butterknife-8.8.1" level="project" />
     <orderEntry type="library" name="support-core-ui-26.1.0" level="project" />
     <orderEntry type="library" name="support-media-compat-26.1.0" level="project" />
