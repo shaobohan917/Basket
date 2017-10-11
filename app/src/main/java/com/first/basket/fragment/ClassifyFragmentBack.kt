@@ -217,7 +217,7 @@ class ClassifyFragmentBack : BaseFragment() {
 
     private fun getClassify() {
         //获取商品分类
-        HttpMethods.createService().getClassify("get_productclassification")
+        HttpMethods.createService().getClassify("get_productclassification","")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyBean>>() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {

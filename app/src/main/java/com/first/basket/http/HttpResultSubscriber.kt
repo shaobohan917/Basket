@@ -15,11 +15,9 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
     }
 
     override fun onError(e: Throwable) {
-        LogUtils.d("onError:" + e.message)
     }
 
     override fun onNext(t: T) {
-        LogUtils.d(t.toString())
     }
 
 //    override fun onNext(tHttpResult: HttpResult<T>) {

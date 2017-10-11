@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.AddressInfoActivity
-import com.first.basket.activity.GoodsDetailActivity
+import com.first.basket.activity.ClassifyActivity
 import com.first.basket.activity.SearchActivity
+import com.first.basket.activity.WebViewActivity
 import com.first.basket.adapter.MainActivity
 import com.first.basket.bean.HomeBean
 import com.first.basket.constants.Constants
@@ -21,13 +21,11 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.ScreenUtils
-import com.first.basket.view.GoodsView
+import com.first.basket.utils.LogUtils
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 
@@ -56,11 +54,6 @@ class HomeFragment : BaseFragment() {
                 super.onNext(t)
                 setData(t.result!!.data!!)
             }
-
-            override fun onError(e: Throwable) {
-                super.onError(e)
-            }
-
         }
 
         HttpMethods.createService().getHome("get_mainpage")
@@ -69,6 +62,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initListener() {
+        var myClickListener = MyClickListener()
 
         llPosition.setOnClickListener {
             val intent = Intent(activity, AddressInfoActivity::class.java)
@@ -81,6 +75,27 @@ class HomeFragment : BaseFragment() {
 //        }
 
         ivScan.onClick { startActivity(Intent(activity, MainActivity::class.java)) }
+
+        sqcs.setOnClickListener(myClickListener)
+        qgcs.setOnClickListener(myClickListener)
+        shcs.setOnClickListener(myClickListener)
+    }
+
+    inner class MyClickListener : View.OnClickListener {
+        override fun onClick(view: View) {
+            LogUtils.d(view.id.toString())
+            when (view.id) {
+                R.id.sqcs -> goClassify("1")
+                R.id.shcs -> goClassify("2")
+                R.id.qgcs -> goClassify("3")
+            }
+        }
+
+        private fun goClassify(channel: String) {
+            var intent = Intent(activity, ClassifyActivity::class.java)
+            intent.putExtra("channel", channel)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -105,7 +120,7 @@ class HomeFragment : BaseFragment() {
                 .forEach { images.add(it) }
         banner.setImages(images)
                 .setImageLoader(GlideImageLoader())
-                .setBannerAnimation(Transformer.Accordion)
+                .setBannerAnimation(Transformer.Default)
                 .setDelayTime(5000)
                 .setIndicatorGravity(BannerConfig.RIGHT)
                 .start()
@@ -132,21 +147,31 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setRecommendData(data: HomeBean.ResultBean.DataBean) {
-        val recommendList = data.yhcs!!.recommend as List<HomeBean.ResultBean.DataBean.YHCSBean.RecommendBean>
-        for (i in 0 until recommendList.size) {
-            val yhcs = recommendList[i]
-            val goodsView = GoodsView(activity)
-            val params = LinearLayout.LayoutParams(ScreenUtils.dip2px(activity, 90f), matchParent)
-//            val params = LinearLayout.LayoutParams(wrapContent, wrapContent)
-            params.setMargins(0, 0, 20, 0)
-            goodsView.layoutParams = params
-            goodsView.setGoods(yhcs.productname!!, yhcs.unit!!, yhcs.price!!, yhcs.img, 90)
-            llGoods.addView(goodsView)
-            goodsView.onClick {
-                var intent = Intent(activity, GoodsDetailActivity::class.java)
-                intent.putExtra("id", yhcs.productid)
+        ImageUtils.showImg(activity, data.shcs.image, ivSHCS)
+        ImageUtils.showImg(activity, data.hltg.image, ivHLTG)
+        ImageUtils.showImg(activity, data.qgcs.image, ivQGCS)
+        ImageUtils.showImg(activity, data.jkss.image, ivJKSS)
+
+        class OnIvClickListener : View.OnClickListener {
+            var url = ""
+            override fun onClick(view: View) {
+                when (view.id) {
+                    R.id.ivSHCS -> url = data.shcs.url
+                    R.id.ivHLTG -> url = data.hltg.url
+                    R.id.ivQGCS -> url = data.qgcs.url
+                    R.id.ivJKSS -> url = data.jkss.url
+                }
+                var intent = Intent(activity, WebViewActivity::class.java)
+                intent.putExtra("url", url)
                 startActivity(intent)
             }
         }
+
+        var onIvClickListener = OnIvClickListener()
+        ivSHCS.setOnClickListener(onIvClickListener)
+        ivHLTG.setOnClickListener(onIvClickListener)
+        ivQGCS.setOnClickListener(onIvClickListener)
+        ivJKSS.setOnClickListener(onIvClickListener)
+
     }
 }

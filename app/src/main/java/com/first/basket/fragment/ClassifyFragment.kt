@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
@@ -15,7 +16,6 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
 
-
 /**
  * Created by hanshaobo on 30/08/2017.
  */
@@ -24,11 +24,19 @@ class ClassifyFragment : BaseFragment() {
     //存储商品分类id
     private var mIds = ArrayList<String>()
 
-    var fragmentList = ArrayList<ContentFragment>()
+    private var fragmentList = ArrayList<ContentFragment>()
 
     private var indexList = ArrayList<Int>()
 
     private lateinit var mCategoryAdapter: ClassifyAdapter
+
+    //1：社区菜市；2：上海菜市 ；3：全国菜市
+    private var channel: String = "1"
+
+    override fun setArguments(args: Bundle) {
+        super.setArguments(args)
+        channel = args.get("channel") as String
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_classify, container, false)!!
@@ -63,7 +71,7 @@ class ClassifyFragment : BaseFragment() {
 
     private fun getClassify() {
         //获取商品分类
-        HttpMethods.createService().getClassify("get_productclassification")
+        HttpMethods.createService().getClassify("get_productclassification", channel)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyBean>>() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {

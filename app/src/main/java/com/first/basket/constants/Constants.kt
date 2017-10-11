@@ -15,6 +15,10 @@ class Constants {
         val IMG_URL_TEST: String = "https://06.imgmini.eastday.com/mobile/20170713/20170713115231_7a8a0b324b1f184dd819ebd5b8211417_1.jpeg"
 
         val BASE_IMG_URL: String = "http://hyu2435570001.my3w.com/yhclz/img"
+
+
+        //wechat
+        val WECHAT_APP_ID = ""
     }
 
 

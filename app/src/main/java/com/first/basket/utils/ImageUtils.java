@@ -19,8 +19,8 @@ public class ImageUtils {
             url = Constants.Companion.getBASE_IMG_URL() + url;
         }
         Glide.with(context).load(url).into(ivImg);
-//        LogUtils.Companion.d("url:" + url
-//        );
+        LogUtils.Companion.d("url:" + url);
+
     }
 
     public static void showImg(Context context, int resourceId, ImageView ivImg) {

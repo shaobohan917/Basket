@@ -24,7 +24,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getClassify(@Field("action") action: String): Observable<HttpResult<ClassifyBean>>
+    fun getClassify(@Field("action") action: String, @Field("channel") channel: String): Observable<HttpResult<ClassifyBean>>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")

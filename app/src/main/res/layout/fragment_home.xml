@@ -85,13 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
 
-            <ImageView
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_home_test4"
-                android:visibility="gone" />
+            <include layout="@layout/layout_gap" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,6 +95,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/sqcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -111,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_nav_community" />
+                        android:src="@mipmap/ic_sqcs" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -122,6 +117,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/shcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -132,17 +128,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_nav_first" />
+                        android:src="@mipmap/ic_home_shcs" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
-                        android:text="1号菜市" />
+                        android:text="上海菜市" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/qgcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -153,7 +150,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_nav_group" />
+                        android:src="@mipmap/ic_home_qgcs" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="全国菜市" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hltg"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_home_hltg" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,6 +183,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/jkss"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -174,28 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_nav_enterpirse" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="企业福利" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_nav_health" />
+                        android:src="@mipmap/ic_home_jkss" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -214,24 +213,11 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <!--<com.first.basket.view.VerticalViewPager-->
-                <!--android:id="@+id/vViewPager"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_height="match_parent" />-->
-
                 <cn.ymex.banner.Banner
                     android:id="@+id/vBanner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
-
-                <!--<ImageView-->
-                <!--android:id="@+id/sqcs"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="1"-->
-                <!--android:src="@mipmap/ic_home_test6" />-->
 
                 <View
                     android:layout_width="1sp"
@@ -252,8 +238,7 @@
                         <ImageView
                             android:id="@+id/vegetables"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_home_test1" />
+                            android:layout_height="match_parent" />
                     </RelativeLayout>
 
                     <View
@@ -269,8 +254,7 @@
                         <ImageView
                             android:id="@+id/meat"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@mipmap/ic_home_test2" />
+                            android:layout_height="match_parent" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -278,39 +262,44 @@
             <include layout="@layout/layout_gap" />
 
             <ImageView
+                android:id="@+id/ivSHCS"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
                 android:layout_marginTop="26dp"
                 android:background="@color/white"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_home_test3" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="152dp"
-                android:layout_marginTop="27dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/llGoods"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="horizontal" />
-
-            </HorizontalScrollView>
+                android:scaleType="fitXY" />
 
             <ImageView
+                android:id="@+id/ivHLTG"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
                 android:layout_marginTop="26dp"
                 android:background="@color/white"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_home_test3" />
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/ivQGCS"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="26dp"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/ivJKSS"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="26dp"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:scaleType="fitXY" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

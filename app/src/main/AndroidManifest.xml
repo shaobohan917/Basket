@@ -54,6 +54,8 @@
         <activity android:name=".activity.OrderDetailActivity" />
 
         <activity android:name=".adapter.MainActivity" />
+        <activity android:name=".activity.ClassifyActivity" android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.WebViewActivity" />
     </application>
 
 </manifest>
