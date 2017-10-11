@@ -22,11 +22,16 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private Context context;
     private List<ClassifyContentBean.ResultBean.DataBean> data;
     private OnRecyclerViewItemClickListener mOnItemClickListener;
+    private OnAmountChangeListener mOnAmountChangeListener;
     private MyViewHolder holder;
     private int layoutPosition;
 
     public interface OnRecyclerViewItemClickListener {
         void onItemClick(View view, ClassifyContentBean.ResultBean.DataBean data, int position);
+    }
+
+    public interface OnAmountChangeListener {
+        void onAmountChange(ImageView imageView, int position);
     }
 
     public ContentAdapter(Context context, List<ClassifyContentBean.ResultBean.DataBean> data) {
@@ -36,6 +41,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
+    }
+
+    public void setOnAmountChangeListener(OnAmountChangeListener listener) {
+        this.mOnAmountChangeListener = listener;
     }
 
     @Override
@@ -51,8 +60,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         holder.tvName.setText(data.get(position).getProductname());
         holder.tvUnit.setText(data.get(position).getUnit());
         holder.tvPrice.setText(data.get(position).getPrice());
-        holder.amoutView.setGoods_storage(10);
-        ImageUtils.showImg(context,data.get(position).getImg(),holder.ivGoods);
+        holder.amountView.setGoods_storage(10);
+        ImageUtils.showImg(context, data.get(position).getImg(), holder.ivGoods);
 
         holder.itemView.setTag(data.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +73,14 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
                 mOnItemClickListener.onItemClick(holder.itemView, (ClassifyContentBean.ResultBean.DataBean) holder.itemView.getTag(), layoutPosition);
             }
         });
+
+//        holder.amountView.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
+//            @Override
+//            public void onAmountChange(View view, int amount) {
+//
+//                mOnAmountChangeListener.onAmountChange(view, amount);
+//            }
+//        });
 
         //更改状态
 //        if (position == layoutPosition) {
@@ -77,6 +94,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 //            holder.tvCategory.setCompoundDrawables(null, null, null, null);
 //            holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.white));
 //        }
+
     }
 
     @Override
@@ -94,14 +112,14 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         private final TextView tvName;
         private final TextView tvUnit;
         private final TextView tvPrice;
-        private final AmountView amoutView;
+        private final AmountView amountView;
 
         MyViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvUnit = itemView.findViewById(R.id.tvUnit);
             tvPrice = itemView.findViewById(R.id.tvPrice);
-            amoutView = itemView.findViewById(R.id.amoutView);
+            amountView = itemView.findViewById(R.id.amoutView);
             ivGoods = itemView.findViewById(R.id.ivGoods);
         }
     }
