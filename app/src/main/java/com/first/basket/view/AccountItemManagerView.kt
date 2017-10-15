@@ -16,6 +16,7 @@ class AccountItemManagerView @JvmOverloads constructor(context: Context, attrs: 
 
     private var mImgId: Int = 0
     private var mTitle: String? = null
+    private var mRight: String = ""
 
     init {
 
@@ -27,6 +28,7 @@ class AccountItemManagerView @JvmOverloads constructor(context: Context, attrs: 
             when (attr) {
                 R.styleable.accountItemManagerView_accountManagerImg -> mImgId = typedArray.getResourceId(attr, defStyleAttr)
                 R.styleable.accountItemManagerView_accountManagerTitle -> mTitle = typedArray.getString(attr)
+                R.styleable.accountItemManagerView_accountManagerRight -> mRight = typedArray.getString(attr)
             }
         }
         typedArray.recycle()
@@ -38,8 +40,11 @@ class AccountItemManagerView @JvmOverloads constructor(context: Context, attrs: 
     private fun initView() {
         val ivImg = findViewById<ImageView>(R.id.ivImg) as ImageView
         val tvTitle = findViewById<TextView>(R.id.tvTitle) as TextView
+        val tvRight = findViewById<TextView>(R.id.tvRight) as TextView
 
         tvTitle.text = mTitle
         ivImg.setImageResource(mImgId)
+        tvRight.text = mRight
+
     }
 }

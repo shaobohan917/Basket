@@ -11,7 +11,7 @@ public class GoodsDetailBean implements Serializable {
     /**
      * status : 0
      * info : 成功
-     * result : {"data":{"Images":[{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""}],"title":null,"Subtitle":"【今天下单，明日采摘，后天到家】","price":null,"productdetail":"空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有\u201c绿色精灵\u201d之称，可洁齿防龋除口臭，健美皮肤。"}}
+     * result : {"data":{"Images":[{"image":"/prod_pic/101/10000489.png","url":""}],"title":"土豆","Subtitle":"【安全食品、吃的放心】","price":"5.5","product":{"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"},"productdetail":"空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有\u201c绿色精灵\u201d之称，可洁齿防龋除口臭，健美皮肤。"}}
      */
 
     private int status;
@@ -42,9 +42,9 @@ public class GoodsDetailBean implements Serializable {
         this.result = result;
     }
 
-    public static class ResultBean implements Serializable {
+    public static class ResultBean implements Serializable{
         /**
-         * data : {"Images":[{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""}],"title":null,"Subtitle":"【今天下单，明日采摘，后天到家】","price":null,"productdetail":"空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有\u201c绿色精灵\u201d之称，可洁齿防龋除口臭，健美皮肤。"}
+         * data : {"Images":[{"image":"/prod_pic/101/10000489.png","url":""}],"title":"土豆","Subtitle":"【安全食品、吃的放心】","price":"5.5","product":{"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"},"productdetail":"空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有\u201c绿色精灵\u201d之称，可洁齿防龋除口臭，健美皮肤。"}
          */
 
         private DataBean data;
@@ -57,22 +57,22 @@ public class GoodsDetailBean implements Serializable {
             this.data = data;
         }
 
-        public static class DataBean implements Serializable {
+        public static class DataBean implements Serializable{
             /**
-             * Images : [{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""},{"image":"10000001.png","url":""}]
-             * title : null
-             * Subtitle : 【今天下单，明日采摘，后天到家】
-             * price : null
+             * Images : [{"image":"/prod_pic/101/10000489.png","url":""}]
+             * title : 土豆
+             * Subtitle : 【安全食品、吃的放心】
+             * price : 5.5
+             * product : {"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"}
              * productdetail : 空心菜是碱性食物，并含有钾、氯等调节水液平衡的元素，食后可降低肠道的酸度，预防肠道内的菌群失调，对防癌有益。所含的烟酸、维生素C等能降低胆固醇、甘油三酯，具有降脂减肥的功效。空心菜中的叶绿素有“绿色精灵”之称，可洁齿防龋除口臭，健美皮肤。
              */
 
             private String title;
             private String Subtitle;
-            private float price;
+            private String price;
+            private ProductsBean product;
             private String productdetail;
             private List<ImagesBean> Images;
-
-            private String productsid;
 
             public String getTitle() {
                 return title;
@@ -80,14 +80,6 @@ public class GoodsDetailBean implements Serializable {
 
             public void setTitle(String title) {
                 this.title = title;
-            }
-
-            public String getProductsid() {
-                return productsid;
-            }
-
-            public void setProductsid(String productsid) {
-                this.productsid = productsid;
             }
 
             public String getSubtitle() {
@@ -98,12 +90,20 @@ public class GoodsDetailBean implements Serializable {
                 this.Subtitle = Subtitle;
             }
 
-            public float getPrice() {
+            public String getPrice() {
                 return price;
             }
 
-            public void setPrice(float price) {
+            public void setPrice(String price) {
                 this.price = price;
+            }
+
+            public ProductsBean getProduct() {
+                return product;
+            }
+
+            public void setProduct(ProductsBean product) {
+                this.product = product;
             }
 
             public String getProductdetail() {
@@ -122,9 +122,11 @@ public class GoodsDetailBean implements Serializable {
                 this.Images = Images;
             }
 
-            public static class ImagesBean {
+
+
+            public static class ImagesBean implements Serializable{
                 /**
-                 * image : 10000001.png
+                 * image : /prod_pic/101/10000489.png
                  * url :
                  */
 
@@ -150,4 +152,3 @@ public class GoodsDetailBean implements Serializable {
         }
     }
 }
-

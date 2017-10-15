@@ -13,7 +13,9 @@ import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.MainActivity
 import com.first.basket.activity.OrderDetailActivity
+import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.adapter.MenuAdapter
+import com.first.basket.app.BaseApplication
 import com.first.basket.app.NotifyManager
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
@@ -34,6 +36,8 @@ import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 import com.first.basket.bean.NotifyMsgEntity
+import com.first.basket.common.StaticValue
+import com.first.basket.utils.SPUtil
 import kotlin.collections.HashMap
 
 
@@ -69,6 +73,7 @@ class ShopFragment : BaseFragment(), Observer {
         initView()
         initData()
         initListener()
+        onHiddenChanged(false)
     }
 
     private fun initData() {
@@ -92,6 +97,7 @@ class ShopFragment : BaseFragment(), Observer {
     }
 
     private fun initView() {
+        tvAddress.text = SPUtil.getString(StaticValue.SP_ADDRESS, "")
         ImageUtils.showImg(activity, Constants.PIC_URL, ivBanner)
 
         smRecyclerView.layoutManager = LinearLayoutManager(activity)
@@ -146,7 +152,7 @@ class ShopFragment : BaseFragment(), Observer {
             startActivityForResult(intent, 0)
         }
         ivBuy.onClick {
-            startActivity(Intent(activity, OrderDetailActivity::class.java))
+            startActivity(Intent(activity, PlaceOrderActivity::class.java))
         }
         cbSelectAll.onClick {
             isAllChecked = !isAllChecked
@@ -186,7 +192,8 @@ class ShopFragment : BaseFragment(), Observer {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             mGoodsList.clear()
-            mGoodsMap = (activity as MainActivity).mGoodsMap
+//            mGoodsMap = (activity as MainActivity).mGoodsMap
+            mGoodsMap = BaseApplication.getInstance().mGoodsMap
 
             var iterator = mGoodsMap.entries.iterator()
             while (iterator.hasNext()) {

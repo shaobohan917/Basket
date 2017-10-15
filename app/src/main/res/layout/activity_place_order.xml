@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.first.basket.view.TitleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="确认订单" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/grayF8"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp" />
+        </RelativeLayout>
+
+        <com.first.basket.view.AccountItemManagerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:accountManagerRight="尽快送达"
+            app:accountManagerTitle="送达时间" />
+
+        <com.first.basket.view.AccountItemManagerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:accountManagerRight="货到付款"
+            app:accountManagerTitle="支付方式" />
+
+        <com.first.basket.view.AccountItemManagerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:accountManagerRight="免运费"
+            app:accountManagerTitle="运费" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品金额" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红包优惠" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运费" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/ivBuy"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="立即下单" />
+</RelativeLayout>

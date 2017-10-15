@@ -7,7 +7,6 @@ import android.content.Intent
 import android.graphics.Path
 import android.graphics.PathMeasure
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -21,7 +20,6 @@ import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ContentAdapter
-import com.first.basket.adapter.SecondAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
@@ -32,28 +30,21 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_content.*
-import kotlinx.android.synthetic.main.fragment_shop.*
-import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import java.util.*
 
 @SuppressLint("ValidFragment")
 /**
  * Created by hanshaobo on 17/09/2017.
  */
-class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
-    private var mDatas = data
+class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
     private lateinit var mContentAdapter: ContentAdapter
-    private lateinit var mSecondAdapter: SecondAdapter
 
     private var mContentDatas = ArrayList<ProductsBean>()
-    private var mSecondDatas = ArrayList<ClassifyBean.DataBean.LeveltwoBean>()
 
     private lateinit var contentRecyclerView: RecyclerView
-    private lateinit var secondRecyclerView: RecyclerView
 
     //购物车
     private lateinit var mPathMeasure: PathMeasure
@@ -61,13 +52,12 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
     private var mCount = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_content, container, false)
+        return inflater?.inflate(R.layout.fragment_recommend, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentRecyclerView = view.findViewById(R.id.contentRecyclerView)
-        secondRecyclerView = view.findViewById(R.id.secondRecyclerView)
 
         initView()
         initData()
@@ -93,31 +83,12 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
     private fun initView() {
         contentRecyclerView.layoutManager = LinearLayoutManager(activity)
-        secondRecyclerView.layoutManager = GridLayoutManager(activity, 3)
     }
 
     private fun initData() {
         //初始化商品列表adapter
         mContentAdapter = ContentAdapter(activity, mContentDatas)
         contentRecyclerView.adapter = mContentAdapter
-
-        mSecondAdapter = SecondAdapter(activity, mSecondDatas)
-        mSecondAdapter.setOnItemClickListener { view, data, position ->
-            var id = data.leveltwoid
-            var twoidSb = StringBuilder()
-            if ("000".equals(id)) {
-                for (i in 0 until mDatas.leveltwo.size) {
-                    twoidSb.append(mDatas.leveltwo[i].leveltwoid).append(",")
-                }
-                var str = twoidSb.toString()
-                str = str.substring(0, twoidSb.length - 1)
-                getProduct(str)
-            } else {
-                getProduct(id)
-            }
-
-        }
-        secondRecyclerView.adapter = mSecondAdapter
 
         mContentAdapter.setOnItemClickListener { view, data, position ->
             var intent = Intent(activity, GoodsDetailActivity::class.java)
@@ -129,13 +100,13 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
             addGoodToCar(view.findViewById(R.id.ivGoods))
             data.isCheck = true
             data.amount++
-//            var goodsMap = (activity as MainActivity).mGoodsMap
             var goodsMap = BaseApplication.getInstance().mGoodsMap
             if (goodsMap.containsKey(data)) {
                 goodsMap.put(data, goodsMap.getValue(data) + 1)
             } else {
                 goodsMap.put(data, 1)
             }
+//            (activity as MainActivity).mGoodsMap = goodsMap
             BaseApplication.getInstance().mGoodsMap = goodsMap
             (activity as MainActivity).setCountAdd()
         }
@@ -247,24 +218,12 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
     fun setContentData(position: Int, dataBean: ClassifyBean.DataBean) {
         if (position != 0) {
-
-            var twoidSb = StringBuilder()
-            for (i in 0 until mDatas.leveltwo.size) {
-                twoidSb.append(mDatas.leveltwo[i].leveltwoid).append(",")
-            }
-            var str = twoidSb.toString()
-            str = str.substring(0, twoidSb.length - 1)
-            getProduct(str)
+//            getProduct(dataBean.leveltwo[0].leveltwoid)
 
             var leveltwobean = ClassifyBean.DataBean.LeveltwoBean()
             leveltwobean.leveltwodesc = "全部"
             leveltwobean.leveltwoid = "000"
-            mSecondDatas.add(leveltwobean)
-            mSecondDatas.addAll(dataBean.leveltwo)
-            mSecondAdapter.notifyDataSetChanged()
 
-            //默认选中第一个
-//            secondRecyclerView.getLayoutManager().smoothScrollToPosition(secondRecyclerView, null, mSecondAdapter.getItemCount() - 1)
         }else{
 
         }
@@ -284,7 +243,6 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
 
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
-        secondRecyclerView.visibility = View.GONE
         ivHot.visibility = View.VISIBLE
         ImageUtils.showImg(activity, data.hotimage, ivHot)
         mContentDatas.addAll(data.products)

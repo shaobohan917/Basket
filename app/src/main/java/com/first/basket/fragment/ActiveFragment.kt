@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_active.*
  * Created by hanshaobo on 30/08/2017.
  */
 class ActiveFragment : BaseFragment() {
-    private var mDatas =  ArrayList<Boolean>()
+    private var mDatas = ArrayList<Boolean>()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_active, container, false)!!
@@ -33,7 +33,7 @@ class ActiveFragment : BaseFragment() {
 
 
     private fun initView() {
-
+        ivDoding.visibility = View.VISIBLE
     }
 
     class MyWebViewClient : WebViewClient() {

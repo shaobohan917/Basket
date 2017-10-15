@@ -94,8 +94,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                         LogUtils.d(t.result.data.phone)
                         ToastUtil.showToast(this@LoginActivity, "登陆成功")
                         SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
-                        LogUtils.d("状态 ：" + SPUtil.getBoolean(StaticValue.SP_LOGIN_STATUS, false))
+
                         SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
+                        SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
                         setResult(Activity.RESULT_OK)
                         Handler().postDelayed({ finish() }, 1000)
 

@@ -1,10 +1,12 @@
 package com.first.basket.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by hanshaobo on 11/10/2017.
  */
 
-public class ProductsBean {
+public class ProductsBean implements Serializable {
     /**
      * productid : 10000489
      * genda : 50

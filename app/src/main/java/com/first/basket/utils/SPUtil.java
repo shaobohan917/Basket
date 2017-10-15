@@ -3,8 +3,13 @@ package com.first.basket.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 
 import com.first.basket.common.StaticValue;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * Created by Luka on 2016/3/29.
@@ -141,5 +146,53 @@ public class SPUtil {
         SPUtil.setString(StaticValue.ACCESS_TOKEN_WECHAT, "");
         SPUtil.setString(StaticValue.REFRESH_TOKEN_WECHAT, "");
         SPUtil.setString(StaticValue.OPEN_ID_WECHAT, "");
+    }
+
+
+    /**
+     * 储存复杂的数据字段对象
+     *
+     * @param context
+     * @param key
+     * @param t
+     * @return
+     */
+    public static <T> boolean saveObjectToShare(Context context, String key, T t) {
+        return saveObjectToShare(context, "eastnews", key, t);
+    }
+
+    /**
+     * @param context
+     * @param name
+     * @param key
+     * @param t
+     * @return
+     */
+
+    public static <T> boolean saveObjectToShare(Context context, String name, String key, T t) {
+        try {
+            SharedPreferences sp = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+            // 存储
+            SharedPreferences.Editor editor = sp.edit();
+            if (t == null) {
+                editor.putString(key, "");
+                editor.commit();
+                return true;
+            }
+            ByteArrayOutputStream toByte = new ByteArrayOutputStream();
+            ObjectOutputStream oos;
+
+            oos = new ObjectOutputStream(toByte);
+            oos.writeObject(t);
+            // 对byte[]进行Base64编码
+            String payCityMapBase64 = new String(Base64.encode(toByte.toByteArray(), Base64.DEFAULT));
+
+            editor.putString(key, payCityMapBase64);
+            editor.commit();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

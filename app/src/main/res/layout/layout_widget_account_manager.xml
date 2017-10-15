@@ -12,7 +12,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:paddingLeft="15dp"
-        android:text="账户管理"
         android:textColor="@color/gray33"
         android:textSize="16sp" />
 
@@ -23,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="17dp"
-        android:src="@drawable/tab_icon_active" />
+        android:layout_marginRight="17dp" />
 
     <ImageView
         android:id="@+id/ivRight"
@@ -32,9 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/tab_icon_active"
-        android:visibility="gone" />
+        android:layout_marginRight="30dp"/>
+
+    <TextView
+        android:id="@+id/tvRight"
+        android:textColor="@color/gray33"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp" />
 
     <include
         layout="@layout/layout_line"

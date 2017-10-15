@@ -22,6 +22,7 @@
     <declare-styleable name="accountItemManagerView">
         <attr name="accountManagerImg" format="reference" />
         <attr name="accountManagerTitle" format="string" />
+        <attr name="accountManagerRight" format="string" />
     </declare-styleable>
 
     <declare-styleable name="AmountView">

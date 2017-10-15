@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,7 +9,12 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:background="@color/pic_bg"
+        android:layout_height="375dp"
+        android:background="@color/pic_bg" />
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="match_parent"
         android:layout_height="375dp" />
 
     <ScrollView
@@ -72,12 +78,29 @@
         android:layout_height="52dp"
         android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/ivShop"
+        <RelativeLayout
             android:layout_width="52dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_shop" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/ic_shop" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingRight="10dp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
 
         <Button
             android:id="@+id/btAdd"

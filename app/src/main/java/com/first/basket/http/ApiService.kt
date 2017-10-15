@@ -13,7 +13,6 @@ import rx.Observable
  * Created by hanshaobo on 05/09/2017.
  */
 interface ApiService {
-
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveltwoid") leveltwoid: String): Observable<ClassifyContentBean>
@@ -31,6 +30,12 @@ interface ApiService {
     @POST("ClintAPI.php")
     fun getRecommend(@Field("action") action: String): Observable<RecommendBean>
 
+
+    //热门推荐
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getHotRecommend(@Field("action") action: String): Observable<HotRecommendBean>
+
     //获取订单列表
     @FormUrlEncoded
     @POST("ClintAPI.php")
@@ -45,15 +50,18 @@ interface ApiService {
     @POST("ClintAPI.php")
     fun getPrice(@Field("action") action: String, @Field("productids") productids: String, @Field("productnum") productnum: String): Observable<HttpResult<PriceBean>>
 
-    //热门推荐
+
+    //立即下单
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getHotRecommend(@Field("action") action: String): Observable<HotRecommendBean>
+    fun doPlaceOrder(@Field("action") action: String,@Field("productsid") productsid: String,@Field("productsNumber") productsNumber: String,@Field("userid") userid: String,@Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
+
 
     //发送验证码
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun getCode(@Field("action") action: String,@Field("phonenumber") phonenumber: String): Observable<HttpResult<CodeBean>>
+
 
 
     //注册

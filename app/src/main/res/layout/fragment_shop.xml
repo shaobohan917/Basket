@@ -12,12 +12,12 @@
         app:titleText="购物车" />
 
     <TextView
+        android:id="@+id/tvAddress"
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:background="#BAC9D0"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="地址"
         android:textColor="@color/white"
         android:textSize="12sp" />
 

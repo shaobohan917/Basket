@@ -4,8 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
+import com.first.basket.bean.ProductsBean;
 import com.first.basket.utils.SPUtil;
 import com.tencent.bugly.crashreport.CrashReport;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by hanshaobo on 15/10/2017.
@@ -17,16 +24,26 @@ public class BaseApplication extends Application {
 
     private static Context context;
 
+    private static BaseApplication instance;
+
+    public ArrayList<ProductsBean> mProductBean = new ArrayList<>();
+    public LinkedHashMap<ProductsBean, Integer> mGoodsMap = new LinkedHashMap();   //添加到购物车的集合
+
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        this.instance = this;
         BaseApplication.setMainThreadId(android.os.Process.myTid());
         BaseApplication.setHandler(new Handler());
 
         //初始化sp
         SPUtil.init(this);
         CrashReport.initCrashReport(getApplicationContext(), "8fab8931-4dd4-4578-9e36-91e55992e34d", true);
+    }
+
+    public static BaseApplication getInstance() {
+        return instance;
     }
 
     public static Context getContext() {

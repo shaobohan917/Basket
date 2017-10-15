@@ -25,7 +25,7 @@ class ClassifyFragment : BaseFragment() {
     //存储商品分类id
     private var mIds = ArrayList<String>()
 
-    private var fragmentList = ArrayList<ContentFragment>()
+    private var fragmentList = ArrayList<BaseFragment>()
 
     private var indexList = ArrayList<Int>()
 
@@ -83,8 +83,13 @@ class ClassifyFragment : BaseFragment() {
                         mCategoryAdapter.notifyDataSetChanged()
 
                         //有多少分类，创建多少fragment
+                        var fragment: BaseFragment
                         for (i in 0 until list.size) {
-                            var fragment = ContentFragment(list[i])
+                            if (i == 0) {
+                                fragment = RecommendFragment(list[i])
+                            } else {
+                                fragment = ContentFragment(list[i])
+                            }
                             fragmentList.add(fragment)
                         }
 
@@ -99,16 +104,18 @@ class ClassifyFragment : BaseFragment() {
         val fragment = fragmentList[l]
 
         if (l == 0 && !isGetHot) {
-            fragment.getHotRecommend()
+            (fragment as RecommendFragment).getHotRecommend()
             isGetHot = true
         }
         replaceContent(fragment, R.id.fragmentContainer1)
         //设置数据
-        if (!indexList.contains(l)) {
-            Handler().postDelayed({
-                fragmentList[l].setContentData(l, mCategoryDatas[l])
-            }, 500)
-            indexList.add(l)
+        if(l!=0){
+            if (!indexList.contains(l)) {
+                Handler().postDelayed({
+                    (fragmentList[l] as ContentFragment).setContentData(l, mCategoryDatas[l])
+                }, 500)
+                indexList.add(l)
+            }
         }
     }
 

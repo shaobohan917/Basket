@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="106dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:orientation="horizontal">
-
-        <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/cbSelect"
-            android:layout_width="38dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="10dp" />
 
         <ImageView
             android:id="@+id/ivGoods"
@@ -30,39 +26,31 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvName1"
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="佳沛新西兰阳光金奇异果"
                 android:textColor="@color/gray33"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:text="佳沛新西兰阳光金奇异果" />
 
             <TextView
-                android:id="@+id/tvUnit1"
+                android:id="@+id/tvUnit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="3只" />
+                tools:text="3只" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="18dp">
 
                 <TextView
-                    android:id="@+id/tvPrice1"
+                    android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="29.90" />
-
-                <com.first.basket.view.AmountView
-                    android:id="@+id/amoutView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true" />
-
+                    tools:text="29.90" />
             </RelativeLayout>
 
         </LinearLayout>
