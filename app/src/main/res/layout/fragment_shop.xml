@@ -46,12 +46,14 @@
                 android:layout_margin="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <com.first.basket.view.GoodsView
                     android:id="@+id/gvGoods"

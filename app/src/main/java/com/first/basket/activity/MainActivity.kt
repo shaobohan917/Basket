@@ -1,11 +1,16 @@
 package com.first.basket.activity
 
 import android.os.Bundle
+import android.os.Handler
 import com.first.basket.base.BaseActivity
 import com.first.basket.R
+import com.first.basket.bean.ProductsBean
 import com.first.basket.fragment.*
 import com.roughike.bottombar.BottomBar
+import com.roughike.bottombar.BottomBarTab
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class MainActivity : BaseActivity() {
     private lateinit var bottomBar: BottomBar
@@ -18,21 +23,30 @@ class MainActivity : BaseActivity() {
     private var shopFragment = ShopFragment()
     private var mineFragment = MineFragment()
 
+    lateinit var nearby: BottomBarTab
+
+    var mCount = 0
+    var goodsMap = LinkedHashMap<ProductsBean, Int>()   //添加到购物车的集合
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        var nearby = bottomBar.getTabWithId(R.id.tab_shop)
-//        nearby.setBadgeCount(5)
-
         initView()
         initData()
+    }
 
+    fun setCountAdd() {
+        Handler().postDelayed({
+            mCount++
+            nearby.setBadgeCount(mCount)
+        }, 500)
     }
 
     private fun initView() {
         bottomBar = findViewById(R.id.bottombar)
         bottomBar.setTabTitleTextAppearance(10)
+        nearby = bottomBar.getTabWithId(R.id.tab_shop)
 
         fragmentList = ArrayList()
         homeFragment = HomeFragment()

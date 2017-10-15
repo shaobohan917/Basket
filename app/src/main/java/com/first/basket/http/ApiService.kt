@@ -16,7 +16,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getProducts(@Field("action") action: String, @Field("classificationsid") classificationid: String): Observable<ClassifyContentBean>
+    fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveloneid") leveloneid: String, @Field("leveltwoid") leveltwoid: String): Observable<ClassifyContentBean>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
@@ -52,5 +52,11 @@ interface ApiService {
     //热门推荐
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getHotRecommend(@Field("action") action: String): Observable<HttpResult<HotRecommendBean>>
+    fun getHotRecommend(@Field("action") action: String): Observable<HotRecommendBean>
+
+
+    //注册
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun doRegister(@Field("action") action: String,@Field("phonenumber") phonenumber: String,@Field("code") code: String,@Field("password") password: String): Observable<HttpResult<HotRecommendBean>>
 }

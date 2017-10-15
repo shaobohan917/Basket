@@ -19,15 +19,19 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
+import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
+import com.first.basket.bean.HotRecommendBean
+import com.first.basket.bean.ProductsBean
+import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
-import kotlinx.android.synthetic.main.activity_main.*
+import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_content.*
 import kotlinx.android.synthetic.main.item_recycler_second.view.*
 import java.util.*
@@ -38,7 +42,7 @@ import java.util.*
 class ContentFragment : BaseFragment() {
     private lateinit var mContentAdapter: ContentAdapter
     private lateinit var mSecondAdapter: BaseRecyclerAdapter<ClassifyBean.DataBean.LeveltwoBean, BaseRecyclerAdapter.ViewHolder<ClassifyBean.DataBean.LeveltwoBean>>
-    private var mContentDatas = ArrayList<ClassifyContentBean.ResultBean.DataBean>()
+    private var mContentDatas = ArrayList<ProductsBean>()
     private var mSecondDatas = ArrayList<ClassifyBean.DataBean.LeveltwoBean>()
 
     private lateinit var contentRecyclerView: RecyclerView
@@ -97,11 +101,22 @@ class ContentFragment : BaseFragment() {
         secondRecyclerView.adapter = mSecondAdapter
 
         mContentAdapter.setOnItemClickListener { view, data, position ->
-            //            var intent = Intent(activity, GoodsDetailActivity::class.java)
-//            intent.putExtra("id", data.productid)
-//            startActivity(intent)
+            var intent = Intent(activity, GoodsDetailActivity::class.java)
+            intent.putExtra("id", data.productid)
+            startActivity(intent)
+        }
 
+        mContentAdapter.setOnAddItemClickListener { view, data, position ->
             addGoodToCar(view.findViewById(R.id.ivGoods))
+            data.amount++
+            var map = (activity as MainActivity).goodsMap
+            if (map.containsKey(data)) {
+                map.set(data, map.getValue(data) + 1)
+            } else {
+                map.set(data, 1)
+            }
+            (activity as MainActivity).goodsMap = map
+            (activity as MainActivity).setCountAdd()
         }
     }
 
@@ -187,8 +202,9 @@ class ContentFragment : BaseFragment() {
     /**
      * 获取商品列表
      */
-    private fun getProduct(id: String) {
-        HttpMethods.createService().getProducts("get_products", id)
+    private fun getProduct(leveloneId: String, leveltwoId: String) {
+        val type = SPUtil.getData(activity, Constants.HOME_CLASSIFY, 1) as Int
+        HttpMethods.createService().getProducts("get_products", type.toString(), leveloneId, leveltwoId)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<ClassifyContentBean>() {
                     override fun onCompleted() {
@@ -209,8 +225,14 @@ class ContentFragment : BaseFragment() {
     }
 
     fun setContentData(dataBean: ClassifyBean.DataBean) {
-        getProduct(dataBean.leveloneid)
+        getProduct(dataBean.leveloneid, dataBean.leveltwo[0].leveltwoid)
+        for (i in 0 until dataBean.leveltwo.size) {
 
+        }
+
+        var leveltwobean = ClassifyBean.DataBean.LeveltwoBean()
+        leveltwobean.leveltwodesc = "全部"
+        mSecondDatas.add(leveltwobean)
         mSecondDatas.addAll(dataBean.leveltwo)
         mSecondAdapter.notifyDataSetChanged()
 
@@ -227,5 +249,22 @@ class ContentFragment : BaseFragment() {
 
 //        LogUtils.d("height:"+height)
 //        LogUtils.d("h:"+h)
+    }
+
+    fun getHotRecommend() {
+        HttpMethods.createService()
+                .getHotRecommend("get_hotrecommend")
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
+                    override fun onNext(t: HotRecommendBean) {
+                        super.onNext(t)
+                        setRecommendData(t.result.data)
+                    }
+                })
+    }
+
+    private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
+        mContentDatas.addAll(data.products)
+        mContentAdapter.notifyDataSetChanged()
     }
 }

@@ -8,14 +8,18 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
+import com.first.basket.activity.MainActivity
 import com.first.basket.activity.OrderDetailActivity
 import com.first.basket.adapter.MenuAdapter
+import com.first.basket.app.NotifyManager
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.PriceBean
+import com.first.basket.bean.ProductsBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -28,17 +32,20 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.util.*
+import com.first.basket.bean.NotifyMsgEntity
+import kotlin.collections.HashMap
 
 
 /**
  * Created by hanshaobo on 30/08/2017.
  */
-class ShopFragment : BaseFragment() {
-    private var isAllChecked: Boolean = false
-    private var mDatas = ArrayList<GoodsDetailBean.ResultBean.DataBean>()
-    private var contents = arrayOf("奇异果", "香蕉", "苹果")
+class ShopFragment : BaseFragment(), Observer {
 
-    private var entity = GoodsDetailBean.ResultBean.DataBean()
+    private var isAllChecked: Boolean = false
+    private var mDatas = ArrayList<ProductsBean>()
+    private var mDatasMap = HashMap<ProductsBean, Int>()
+    private var mGoodsList = ArrayList<ProductsBean>()
 
     private var mAdapter = MenuAdapter(mDatas, object : MenuAdapter.OnItemClickListener {
         override fun onItemClick(view: View) {
@@ -46,6 +53,11 @@ class ShopFragment : BaseFragment() {
             LogUtils.d("onClick:" + smRecyclerView.getChildAdapterPosition(view))
         }
 
+    }, CompoundButton.OnCheckedChangeListener { p0, p1 ->
+        if (p1) {
+//            getPrice(mDatas)
+            notifySubscribeStateChanged("123", 123)
+        }
     })
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,6 +66,7 @@ class ShopFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        NotifyManager.getNotifyManager().addObserver(this)
         initView()
         initData()
         initListener()
@@ -67,28 +80,20 @@ class ShopFragment : BaseFragment() {
         HttpMethods.createService()
                 .getHotRecommend("get_hotrecommend")
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<HttpResult<HotRecommendBean>>() {
-                    override fun onNext(t: HttpResult<HotRecommendBean>) {
+                .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
+                    override fun onNext(t: HotRecommendBean) {
                         super.onNext(t)
                         setRecommendData(t.result.data)
                     }
                 })
     }
 
-    private fun setRecommendData(data: HotRecommendBean.DataBean) {
+    private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
         val recommendList = data.products
     }
 
     private fun initView() {
         ImageUtils.showImg(activity, Constants.PIC_URL, ivBanner)
-
-        for (j in contents) {
-            var bean = GoodsDetailBean.ResultBean.DataBean()
-            bean.title = j
-            bean.productsid = "10000001"
-            bean.price = 1f
-            mDatas.add(bean)
-        }
 
         smRecyclerView.layoutManager = LinearLayoutManager(activity)
         smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
@@ -130,7 +135,7 @@ class ShopFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             val goods = data!!.extras.getSerializable("goods") as GoodsDetailBean.ResultBean.DataBean
-            mDatas.add(goods)
+//            mDatas.add(goods)
             mAdapter.notifyDataSetChanged()
         }
     }
@@ -158,11 +163,11 @@ class ShopFragment : BaseFragment() {
         }
     }
 
-    private fun getPrice(mDatas: ArrayList<GoodsDetailBean.ResultBean.DataBean>) {
+    private fun getPrice(mDatas: ArrayList<ProductsBean>) {
         var productidString = StringBuilder()
         var numString = StringBuilder()
-        for (i in 0 until smRecyclerView.childCount){
-            productidString.append(mDatas[i].productsid).append("|")
+        for (i in 0 until smRecyclerView.childCount) {
+            productidString.append(mDatas[i].productid).append("|")
             numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
         }
         HttpMethods.createService().getPrice("get_price", productidString.toString().substring(0, productidString.length - 1), numString.toString().substring(0, numString.length - 1))
@@ -172,11 +177,50 @@ class ShopFragment : BaseFragment() {
                         super.onNext(t)
                         tvTotalPrice.text = t.result.data.totalprice.toString()
                     }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                    }
                 })
 
+    }
+
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+//            mGoodsList = (activity as MainActivity).goodsList
+
+            mDatas.clear()
+            mDatasMap = (activity as MainActivity).goodsMap
+
+            var iterator = mDatasMap.entries.iterator()
+            while (iterator.hasNext()){
+            var entry = iterator.next() as Map.Entry<ProductsBean, Int>
+                var key = entry.key
+                var value = entry.value
+
+                mDatas.add(key)
+
+            }
+
+//            for (i in 0 until mDatasMap.size){
+//                mDatas.add(mDatasMap.(i))
+//                mDatas.get(i).amount = 1
+//            }
+//            mDatas.clear()
+//            mDatas.addAll(mGoodsList)
+            mAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun update(observable: Observable?, data: Any?) {
+        var notifyMsgEntity = data as NotifyMsgEntity
+        var type = notifyMsgEntity.code
+        if (type == NotifyManager.TYPE_DFH_SUB_STATE_CHANGED) {
+            LogUtils.d("update:" + notifyMsgEntity.data.toString())
+        }
+
+    }
+
+    private fun notifySubscribeStateChanged(dfhid: String, isdy: Int) {
+        val entity = NotifyMsgEntity(NotifyManager.TYPE_DFH_SUB_STATE_CHANGED, dfhid, isdy)
+        NotifyManager.getNotifyManager().notifyChange(entity)
     }
 }

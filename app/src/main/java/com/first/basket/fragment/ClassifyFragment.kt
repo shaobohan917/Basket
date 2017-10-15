@@ -10,6 +10,7 @@ import com.first.basket.R
 import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
+import com.first.basket.bean.HotRecommendBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -86,14 +87,19 @@ class ClassifyFragment : BaseFragment() {
                             var fragment = ContentFragment()
                             fragmentList.add(fragment)
                         }
+
+                        //获取推荐列表
+                        refreshContent(0)
                     }
                 })
     }
 
-
     private fun refreshContent(l: Int) {
         val fragment = fragmentList[l]
 
+        if(l==0){
+            fragment.getHotRecommend()
+        }
         replaceContent(fragment, R.id.fragmentContainer1)
         //设置数据
         if (!indexList.contains(l)) {

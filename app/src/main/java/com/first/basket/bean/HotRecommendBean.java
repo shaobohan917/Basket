@@ -7,160 +7,80 @@ import java.util.List;
  */
 
 public class HotRecommendBean {
-
     /**
-     * data : {"hotimage":"10000001.png","products":[{"id":"10000049","genda":"49","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"on","img":"10000001.png"},{"id":"10000033","genda":"33","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"on","img":"10000001.png"},{"id":"10000029","genda":"29","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"40","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"101","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"7","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"on","img":"10000001.png"},{"id":"10000014","genda":"14","calssificationid":"61","productname":"杭白菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"2.21","price":"2.6","Status":"on","img":"10000001.png"},{"id":"10000023","genda":"23","calssificationid":"61","productname":"西兰花","packaging":"保鲜膜","weight":"400g","unit":"棵","cost":"3.37","price":"4","Status":"on","img":"10000001.png"}]}
+     * status : 0
+     * info : 成功
+     * result : {"data":{"hotimage":"/AppImage/TopImage.png","products":[{"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"},{"productid":"10000483","genda":"30","calssificationid":null,"level2id":"101003","productname":"西红柿","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"5.3","price":"5.3","Status":"on","channelid":"1","img":"/prod_pic/101/10000483.png"},{"productid":"10000537","genda":"32","calssificationid":null,"level2id":"101003","productname":"黄瓜","packaging":"马夹袋","weight":"1斤1两左右","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000537.png"},{"productid":"10000040","genda":"38","calssificationid":null,"level2id":"101003","productname":"荷兰豆","packaging":"马夹袋","weight":"6两","unit":"份","cost":"10.4","price":"10.4","Status":"on","channelid":"1","img":"/prod_pic/101/10000040.png"},{"productid":"10000101","genda":"82","calssificationid":null,"level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"35.8","price":"35.8","Status":"on","channelid":"1","img":"/prod_pic/103/10000101.png"},{"productid":"10000466","genda":"6","calssificationid":null,"level2id":"101001","productname":"空心菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"3.8","price":"3.8","Status":"on","channelid":"1","img":"/prod_pic/101/10000466.png"},{"productid":"10000472","genda":"13","calssificationid":null,"level2id":"101001","productname":"杭白菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000472.png"},{"productid":"10000023","genda":"21","calssificationid":null,"level2id":"101001","productname":"西兰花","packaging":"马夹袋","weight":"约8两","unit":"棵","cost":"4.7","price":"4.7","Status":"on","channelid":"1","img":"/prod_pic/101/10000023.png"}]}}
      */
 
-    private DataBean data;
+    private int status;
+    private String info;
+    private ResultBean result;
 
-    public DataBean getData() {
-        return data;
+    public int getStatus() {
+        return status;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public static class DataBean {
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public ResultBean getResult() {
+        return result;
+    }
+
+    public void setResult(ResultBean result) {
+        this.result = result;
+    }
+
+    public static class ResultBean {
         /**
-         * hotimage : 10000001.png
-         * products : [{"id":"10000049","genda":"49","calssificationid":"61","productname":"土豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"1.49","price":"1.8","Status":"on","img":"10000001.png"},{"id":"10000033","genda":"33","calssificationid":"61","productname":"西红柿","packaging":"托盘","weight":"400g","unit":"盒","cost":"3.37","price":"4","Status":"on","img":"10000001.png"},{"id":"10000029","genda":"29","calssificationid":"61","productname":"黄瓜","packaging":"保鲜膜","weight":"400g","unit":"两根","cost":"2.69","price":"3.2","Status":"on","img":"10000001.png"},{"id":"10000040","genda":"40","calssificationid":"61","productname":"荷兰豆","packaging":"托盘","weight":"300g","unit":"盒","cost":"5.54","price":"6.8","Status":"on","img":"10000001.png"},{"id":"10000101","genda":"101","calssificationid":"62","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"25.35","price":"28.9","Status":"on","img":"10000001.png"},{"id":"10000007","genda":"7","calssificationid":"61","productname":"空心菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"1.92","price":"2.3","Status":"on","img":"10000001.png"},{"id":"10000014","genda":"14","calssificationid":"61","productname":"杭白菜","packaging":"包装袋","weight":"300g","unit":"袋","cost":"2.21","price":"2.6","Status":"on","img":"10000001.png"},{"id":"10000023","genda":"23","calssificationid":"61","productname":"西兰花","packaging":"保鲜膜","weight":"400g","unit":"棵","cost":"3.37","price":"4","Status":"on","img":"10000001.png"}]
+         * data : {"hotimage":"/AppImage/TopImage.png","products":[{"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"},{"productid":"10000483","genda":"30","calssificationid":null,"level2id":"101003","productname":"西红柿","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"5.3","price":"5.3","Status":"on","channelid":"1","img":"/prod_pic/101/10000483.png"},{"productid":"10000537","genda":"32","calssificationid":null,"level2id":"101003","productname":"黄瓜","packaging":"马夹袋","weight":"1斤1两左右","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000537.png"},{"productid":"10000040","genda":"38","calssificationid":null,"level2id":"101003","productname":"荷兰豆","packaging":"马夹袋","weight":"6两","unit":"份","cost":"10.4","price":"10.4","Status":"on","channelid":"1","img":"/prod_pic/101/10000040.png"},{"productid":"10000101","genda":"82","calssificationid":null,"level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"35.8","price":"35.8","Status":"on","channelid":"1","img":"/prod_pic/103/10000101.png"},{"productid":"10000466","genda":"6","calssificationid":null,"level2id":"101001","productname":"空心菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"3.8","price":"3.8","Status":"on","channelid":"1","img":"/prod_pic/101/10000466.png"},{"productid":"10000472","genda":"13","calssificationid":null,"level2id":"101001","productname":"杭白菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000472.png"},{"productid":"10000023","genda":"21","calssificationid":null,"level2id":"101001","productname":"西兰花","packaging":"马夹袋","weight":"约8两","unit":"棵","cost":"4.7","price":"4.7","Status":"on","channelid":"1","img":"/prod_pic/101/10000023.png"}]}
          */
 
-        private String hotimage;
-        private List<ProductsBean> products;
+        private DataBean data;
 
-        public String getHotimage() {
-            return hotimage;
+        public DataBean getData() {
+            return data;
         }
 
-        public void setHotimage(String hotimage) {
-            this.hotimage = hotimage;
+        public void setData(DataBean data) {
+            this.data = data;
         }
 
-        public List<ProductsBean> getProducts() {
-            return products;
-        }
-
-        public void setProducts(List<ProductsBean> products) {
-            this.products = products;
-        }
-
-        public static class ProductsBean {
+        public static class DataBean {
             /**
-             * id : 10000049
-             * genda : 49
-             * calssificationid : 61
-             * productname : 土豆
-             * packaging : 托盘
-             * weight : 300g
-             * unit : 盒
-             * cost : 1.49
-             * price : 1.8
-             * Status : on
-             * img : 10000001.png
+             * hotimage : /AppImage/TopImage.png
+             * products : [{"productid":"10000489","genda":"50","calssificationid":null,"level2id":"101002","productname":"土豆","packaging":"马夹袋","weight":"2斤","unit":"份","cost":"5.5","price":"5.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000489.png"},{"productid":"10000483","genda":"30","calssificationid":null,"level2id":"101003","productname":"西红柿","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"5.3","price":"5.3","Status":"on","channelid":"1","img":"/prod_pic/101/10000483.png"},{"productid":"10000537","genda":"32","calssificationid":null,"level2id":"101003","productname":"黄瓜","packaging":"马夹袋","weight":"1斤1两左右","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000537.png"},{"productid":"10000040","genda":"38","calssificationid":null,"level2id":"101003","productname":"荷兰豆","packaging":"马夹袋","weight":"6两","unit":"份","cost":"10.4","price":"10.4","Status":"on","channelid":"1","img":"/prod_pic/101/10000040.png"},{"productid":"10000101","genda":"82","calssificationid":null,"level2id":"103002","productname":"牛腩","packaging":"","weight":"500g","unit":"盒","cost":"35.8","price":"35.8","Status":"on","channelid":"1","img":"/prod_pic/103/10000101.png"},{"productid":"10000466","genda":"6","calssificationid":null,"level2id":"101001","productname":"空心菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"3.8","price":"3.8","Status":"on","channelid":"1","img":"/prod_pic/101/10000466.png"},{"productid":"10000472","genda":"13","calssificationid":null,"level2id":"101001","productname":"杭白菜","packaging":"马夹袋","weight":"1斤","unit":"份","cost":"2.5","price":"2.5","Status":"on","channelid":"1","img":"/prod_pic/101/10000472.png"},{"productid":"10000023","genda":"21","calssificationid":null,"level2id":"101001","productname":"西兰花","packaging":"马夹袋","weight":"约8两","unit":"棵","cost":"4.7","price":"4.7","Status":"on","channelid":"1","img":"/prod_pic/101/10000023.png"}]
              */
 
-            private String id;
-            private String genda;
-            private String calssificationid;
-            private String productname;
-            private String packaging;
-            private String weight;
-            private String unit;
-            private String cost;
-            private String price;
-            private String Status;
-            private String img;
+            private String hotimage;
+            private List<ProductsBean> products;
 
-            public String getId() {
-                return id;
+            public String getHotimage() {
+                return hotimage;
             }
 
-            public void setId(String id) {
-                this.id = id;
+            public void setHotimage(String hotimage) {
+                this.hotimage = hotimage;
             }
 
-            public String getGenda() {
-                return genda;
+            public List<ProductsBean> getProducts() {
+                return products;
             }
 
-            public void setGenda(String genda) {
-                this.genda = genda;
+            public void setProducts(List<ProductsBean> products) {
+                this.products = products;
             }
 
-            public String getCalssificationid() {
-                return calssificationid;
-            }
-
-            public void setCalssificationid(String calssificationid) {
-                this.calssificationid = calssificationid;
-            }
-
-            public String getProductname() {
-                return productname;
-            }
-
-            public void setProductname(String productname) {
-                this.productname = productname;
-            }
-
-            public String getPackaging() {
-                return packaging;
-            }
-
-            public void setPackaging(String packaging) {
-                this.packaging = packaging;
-            }
-
-            public String getWeight() {
-                return weight;
-            }
-
-            public void setWeight(String weight) {
-                this.weight = weight;
-            }
-
-            public String getUnit() {
-                return unit;
-            }
-
-            public void setUnit(String unit) {
-                this.unit = unit;
-            }
-
-            public String getCost() {
-                return cost;
-            }
-
-            public void setCost(String cost) {
-                this.cost = cost;
-            }
-
-            public String getPrice() {
-                return price;
-            }
-
-            public void setPrice(String price) {
-                this.price = price;
-            }
-
-            public String getStatus() {
-                return Status;
-            }
-
-            public void setStatus(String Status) {
-                this.Status = Status;
-            }
-
-            public String getImg() {
-                return img;
-            }
-
-            public void setImg(String img) {
-                this.img = img;
-            }
         }
     }
 }
