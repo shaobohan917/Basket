@@ -31,7 +31,7 @@
                 android:layout_marginLeft="8dp"
                 android:ellipsize="end"
                 android:maxLength="6"
-                android:text="中海万锦城"
+                android:text="   "
                 android:textColor="@color/gray33"
                 android:textSize="12sp" />
 

@@ -11,23 +11,40 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="CURL" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4aead0c-132b-4489-ba39-75de042c7f06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/libs/bugly_crash_release.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/LoginActivity.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/CodeBean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/LoginBean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CommonMethod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/CountDownUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstBasket.iml" afterPath="$PROJECT_DIR$/FirstBasket.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductsBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductsBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_widget_account_manager.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_widget_account_manager.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,58 +82,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ContentFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt">
+      <file leaf-file-name="LoginActivity.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/LoginActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="253" column="0" lean-forward="true" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="36">
+              <caret line="90" column="83" lean-forward="false" selection-start-line="90" selection-start-column="83" selection-end-line="90" selection-end-column="83" />
+              <folding>
+                <element signature="e#35#850#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassifyFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt">
+      <file leaf-file-name="SettingActivity.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-              <folding />
+            <state relative-caret-position="375">
+              <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+              <folding>
+                <element signature="e#35#409#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassifyAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java">
+      <file leaf-file-name="activity_setting.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="56" column="11" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ic_active.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_active.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContentAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="60" column="64" lean-forward="false" selection-start-line="60" selection-start-column="64" selection-end-line="60" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_recycler_content.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="195">
+              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -125,44 +119,76 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <file leaf-file-name="StaticValue.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+            <state relative-caret-position="225">
+              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoodsDetailActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt">
+      <file leaf-file-name="SPUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SPUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+            <state relative-caret-position="63">
+              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_detail.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
+      <file leaf-file-name="BaseApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MineFragment.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="57" column="47" lean-forward="false" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+              <folding>
+                <element signature="e#35#604#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_mine.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="158" column="30" lean-forward="false" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountItemManagerView.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/AccountItemManagerView.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="33" column="63" lean-forward="false" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout_widget_account_manager.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_widget_account_manager.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_classify.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -176,48 +202,48 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
-        <option value="Kotlin Class" />
         <option value="valueResourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin File" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setus</find>
-      <find>onHiddenChanged</find>
-      <find>iv</find>
-      <find>/iv</find>
-      <find>application</find>
-      <find>tab_shop</find>
-      <find>de</find>
-      <find>del</find>
-      <find>delay</find>
-      <find>get_price</find>
-      <find>getpri</find>
-      <find>cbSelect</find>
-      <find>setam</find>
-      <find>onam</find>
-      <find>c</find>
-      <find>act</find>
-      <find>k</find>
-      <find>amountvi</find>
-      <find>amountView</find>
-      <find>amount</find>
-      <find>amoutView</find>
-      <find>合计</find>
-      <find>total_price</find>
-      <find>tvTotalPrice</find>
-      <find>goodsList</find>
-      <find>adapter</find>
       <find>tent</find>
       <find>mcontentdatas</find>
+      <find>total_price</find>
       <find>categoryRecyclerView</find>
       <find>R.layout</find>
+      <find>titleView</find>
+      <find>httpresu</find>
+      <find>get_productclassification</find>
+      <find>setl</find>
+      <find>btsend</find>
+      <find>ivAva</find>
+      <find>182219</find>
+      <find>1822197</find>
+      <find>182219719</find>
+      <find>login</find>
+      <find>tvlogin</find>
+      <find>Handler().postD</find>
+      <find>z</find>
+      <find>zh</find>
+      <find>zhong'hai</find>
+      <find>中海</find>
+      <find>onActivityResult</find>
+      <find>resultCode</find>
+      <find>tvadd</find>
+      <find>S</find>
+      <find>setlogi</find>
+      <find>setlogin</find>
+      <find>setlogins</find>
+      <find>setting</find>
+      <find>2000</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1768,12 +1794,12 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/3.0.0-beta7/gradle-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/3.0.0-rc1/gradle-3.0.0-rc1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.1.4-2/276721474997de9ebe246308fee73b80f73fad95/kotlin-gradle-plugin-1.1.4-2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.1.4-2/8bcef36bffea820cf17a4457539079cbc58beb86/kotlin-gradle-plugin-1.1.4-2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-gradle-plugin/8.8.1/fa33b9d9737674f323eea7a13b05b0ea0365cf75/butterknife-gradle-plugin-8.8.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-gradle-plugin/8.8.1/5f4d8b1d20d2ffc2147c771d30c902e5f2b2d328/butterknife-gradle-plugin-8.8.1.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/3.0.0-beta7/gradle-core-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/3.0.0-rc1/gradle-core-3.0.0-rc1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.1.4-2/2cc19b5db7907fa22271e981b0eb2f0f905ded27/kotlin-gradle-plugin-api-1.1.4-2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.1.4-2/ef24361488a8a28517206315d1203db18673e647/kotlin-gradle-plugin-api-1.1.4-2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.1.4-2/c8acfe120e74e9c18d30449042679a56fe98d371/kotlin-stdlib-1.1.4-2-sources.jar" />
@@ -1792,11 +1818,11 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.9.0/ecc5cf9c221d55481163e773b24336db149e51/javapoet-1.9.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre8/1.1.2-4/71127511e269174a6c6fca9d0a29819906f04f3a/kotlin-stdlib-jre8-1.1.2-4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre8/1.1.2-4/40378584918fd0a7f58f423ac9b8cb0ee5ad6ddd/kotlin-stdlib-jre8-1.1.2-4.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/3.0.0-beta7/builder-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/26.0.0-beta7/lint-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/org-jetbrains/uast/26.0.0-beta7/uast-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/3.0.0-beta7/gradle-api-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/3.0.0-beta7/compilerCommon-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/3.0.0-rc1/builder-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/26.0.0-rc1/lint-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/org-jetbrains/uast/26.0.0-rc1/uast-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/3.0.0-rc1/gradle-api-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/3.0.0-rc1/compilerCommon-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.1/asm-5.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.1/asm-analysis-5.1.jar" />
@@ -1809,50 +1835,50 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/protobuf/protobuf-java/3.0.0/protobuf-java-3.0.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.2-4/35f465798084c8235a310b835949b93b380a5b67/kotlin-stdlib-jre7-1.1.2-4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.2-4/e6a7403299b8f3126e3a1576c02e3f07ae5af6fa/kotlin-stdlib-jre7-1.1.2-4.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/3.0.0-beta7/builder-model-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/3.0.0-beta7/builder-test-api-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/26.0.0-beta7/sdklib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/26.0.0-beta7/sdk-common-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/26.0.0-beta7/common-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/26.0.0-beta7/manifest-merger-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/26.0.0-beta7/ddmlib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/protos/26.0.0-beta7/protos-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/shared/26.0.0-beta7/shared-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/tracker/26.0.0-beta7/tracker-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/apksig/3.0.0-beta7/apksig-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/3.0.0-rc1/builder-model-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/3.0.0-rc1/builder-test-api-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/26.0.0-rc1/sdklib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/26.0.0-rc1/sdk-common-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/26.0.0-rc1/common-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/26.0.0-rc1/manifest-merger-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/26.0.0-rc1/ddmlib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/protos/26.0.0-rc1/protos-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/shared/26.0.0-rc1/shared-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/tracker/26.0.0-rc1/tracker-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/apksig/3.0.0-rc1/apksig-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.56/bcpkix-jdk15on-1.56.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.56/bcprov-jdk15on-1.56.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.1/asm-tree-5.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/it/unimi/dsi/fastutil/7.2.0/fastutil-7.2.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/26.0.0-beta7/lint-checks-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/26.0.0-rc1/lint-checks-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/22.0/guava-22.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/3.0.0-beta7/baseLibrary-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/3.0.0-rc1/baseLibrary-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/antlr4/4.5.3/antlr4-4.5.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/26.0.0-beta7/annotations-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/26.0.0-rc1/annotations-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.3.3/proguard-base-5.3.3.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/26.0.0-beta7/layoutlib-api-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/26.0.0-beta7/dvlib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/26.0.0-beta7/repository-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/26.0.0-rc1/layoutlib-api-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/26.0.0-rc1/dvlib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/26.0.0-rc1/repository-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.3/gson-2.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.12/commons-compress-1.12.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/26.0.0-beta7/lint-api-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/26.0.0-rc1/lint-api-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/annotations/13.0/annotations-13.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/com-intellij/intellij-core/26.0.0-beta7/intellij-core-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/com-intellij/intellij-core/26.0.0-rc1/intellij-core-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/kotlin/kotlin-reflect/1.1.3-2/kotlin-reflect-1.1.3-2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/annotations/13.0/annotations-13.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/trove4j/trove4j/20160824/trove4j-20160824.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar" />
@@ -1869,12 +1895,12 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/3.0.0-beta7/gradle-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/3.0.0-rc1/gradle-3.0.0-rc1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.1.4-2/276721474997de9ebe246308fee73b80f73fad95/kotlin-gradle-plugin-1.1.4-2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin/1.1.4-2/8bcef36bffea820cf17a4457539079cbc58beb86/kotlin-gradle-plugin-1.1.4-2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-gradle-plugin/8.8.1/fa33b9d9737674f323eea7a13b05b0ea0365cf75/butterknife-gradle-plugin-8.8.1-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-gradle-plugin/8.8.1/5f4d8b1d20d2ffc2147c771d30c902e5f2b2d328/butterknife-gradle-plugin-8.8.1.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/3.0.0-beta7/gradle-core-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/3.0.0-rc1/gradle-core-3.0.0-rc1.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.1.4-2/2cc19b5db7907fa22271e981b0eb2f0f905ded27/kotlin-gradle-plugin-api-1.1.4-2-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-gradle-plugin-api/1.1.4-2/ef24361488a8a28517206315d1203db18673e647/kotlin-gradle-plugin-api-1.1.4-2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.1.4-2/c8acfe120e74e9c18d30449042679a56fe98d371/kotlin-stdlib-1.1.4-2-sources.jar" />
@@ -1893,11 +1919,11 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.9.0/ecc5cf9c221d55481163e773b24336db149e51/javapoet-1.9.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre8/1.1.2-4/71127511e269174a6c6fca9d0a29819906f04f3a/kotlin-stdlib-jre8-1.1.2-4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre8/1.1.2-4/40378584918fd0a7f58f423ac9b8cb0ee5ad6ddd/kotlin-stdlib-jre8-1.1.2-4.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/3.0.0-beta7/builder-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/26.0.0-beta7/lint-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/org-jetbrains/uast/26.0.0-beta7/uast-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/3.0.0-beta7/gradle-api-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/3.0.0-beta7/compilerCommon-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/3.0.0-rc1/builder-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/26.0.0-rc1/lint-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/org-jetbrains/uast/26.0.0-rc1/uast-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/3.0.0-rc1/gradle-api-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/3.0.0-rc1/compilerCommon-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.1/asm-5.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.1/asm-analysis-5.1.jar" />
@@ -1910,50 +1936,50 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/protobuf/protobuf-java/3.0.0/protobuf-java-3.0.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.2-4/35f465798084c8235a310b835949b93b380a5b67/kotlin-stdlib-jre7-1.1.2-4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.2-4/e6a7403299b8f3126e3a1576c02e3f07ae5af6fa/kotlin-stdlib-jre7-1.1.2-4.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/3.0.0-beta7/builder-model-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/3.0.0-beta7/builder-test-api-3.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/26.0.0-beta7/sdklib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/26.0.0-beta7/sdk-common-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/26.0.0-beta7/common-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/26.0.0-beta7/manifest-merger-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/26.0.0-beta7/ddmlib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/protos/26.0.0-beta7/protos-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/shared/26.0.0-beta7/shared-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/tracker/26.0.0-beta7/tracker-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/apksig/3.0.0-beta7/apksig-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/3.0.0-rc1/builder-model-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/3.0.0-rc1/builder-test-api-3.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/26.0.0-rc1/sdklib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/26.0.0-rc1/sdk-common-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/26.0.0-rc1/common-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/26.0.0-rc1/manifest-merger-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/26.0.0-rc1/ddmlib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/protos/26.0.0-rc1/protos-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/shared/26.0.0-rc1/shared-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/analytics-library/tracker/26.0.0-rc1/tracker-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/apksig/3.0.0-rc1/apksig-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.56/bcpkix-jdk15on-1.56.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.56/bcprov-jdk15on-1.56.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.1/asm-tree-5.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/it/unimi/dsi/fastutil/7.2.0/fastutil-7.2.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/26.0.0-beta7/lint-checks-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/26.0.0-rc1/lint-checks-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/22.0/guava-22.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/3.0.0-beta7/baseLibrary-3.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/3.0.0-rc1/baseLibrary-3.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/antlr4/4.5.3/antlr4-4.5.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/26.0.0-beta7/annotations-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/26.0.0-rc1/annotations-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.3.3/proguard-base-5.3.3.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/26.0.0-beta7/layoutlib-api-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/26.0.0-beta7/dvlib-26.0.0-beta7.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/26.0.0-beta7/repository-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/26.0.0-rc1/layoutlib-api-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/26.0.0-rc1/dvlib-26.0.0-rc1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/26.0.0-rc1/repository-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.3/gson-2.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.12/commons-compress-1.12.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/26.0.0-beta7/lint-api-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/26.0.0-rc1/lint-api-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/annotations/13.0/annotations-13.0.jar" />
-                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/com-intellij/intellij-core/26.0.0-beta7/intellij-core-26.0.0-beta7.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/com-intellij/intellij-core/26.0.0-rc1/intellij-core-26.0.0-rc1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/kotlin/kotlin-reflect/1.1.3-2/kotlin-reflect-1.1.3-2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/annotations/13.0/annotations-13.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jetbrains/trove4j/trove4j/20160824/trove4j-20160824.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar" />
@@ -2118,57 +2144,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_classify.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragmentBack.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/ClassifyActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/HttpResultSubscriber.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/HomeBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_webview.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/WebViewActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_gap.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/base/BaseRecyclerAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/wxapi/WXEntryActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SPUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/wxapi/WXPayEntryActivity.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CustomAppGlideModule.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_view_goods.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/right_list_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/ImageUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/Test.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim/shop_car_scale.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/GoodDetailBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ClassifyContentBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/HotRecommendBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/NotifyMsgEntity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/UIUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/NotifyManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/view/AmountView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductsBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CommonMethod.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/CountDownUtil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/CodeBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/LoginBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SPUtil.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_widget_account_manager.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/LoginActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt" />
       </list>
     </option>
   </component>
@@ -2219,7 +2245,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2260,183 +2289,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap-xhdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2445,7 +2303,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="60800f72" />
-    <property name="SearchEverywhereHistoryKey" value="goode&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;conada&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/ContentAdapter.java&#10;ic&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_active.png&#10;classfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;con&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;pro&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/ProductsBean.java&#10;shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;contentfr&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;conte&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;amount&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/view/AmountView.java&#10;produ&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/ProductsBean.java&#10;contentfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;consta&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;conten&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;conf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;baseapp&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/app/BaseApplication.java&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;androidmanifes&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;class&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;content&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;shop&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;hot&#9;PSI&#9;JAVA://com.first.basket.bean.HotRecommendBean&#10;apiser&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/http/ApiService.kt&#10;activefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt&#10;fragmentcontent&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_content.xml&#10;build.gra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;iclaun&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_launcher.png&#10;GOODSDE&#9;null&#9;null&#10;ClassifyBean&#9;PSI&#9;JAVA://com.first.basket.bean.ClassifyBean&#10;imageu&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/utils/ImageUtils.java&#10;logu&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/utils/LogUtils.kt&#10;confra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;classifyfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;Contentfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;imageutil&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/utils/ImageUtils.java&#10;constan&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;wechat&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/.idea/libraries/wechat_sdk_android_with_mta_1_4_0.xml&#10;buil&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;androidma&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;httpre&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/http/HttpResultSubscriber.kt&#10;main&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;httpresusu&#9;null&#9;null&#10;httpresu&#9;PSI&#9;JAVA://com.first.basket.base.HttpResult&#10;constant&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;clas&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;androidmanfie&#9;null&#9;null&#10;goodsde&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;CONSTA&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="setting&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/SettingActivity.kt&#10;settin&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_setting.xml&#10;loginac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/LoginActivity.kt&#10;MINE&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_mine.xml&#10;basea&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/app/BaseApplication.java&#10;minefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;androidma&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;spu&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/utils/SPUtil.java&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;addre&#9;null&#9;null&#10;android&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;shop&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;min&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;login&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/LoginActivity.kt&#10;build.&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;activitylogin&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_login.xml&#10;imageu&#9;PSI&#9;JAVA://com.first.basket.utils.ImageUtils&#10;mine&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;baseapp&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/app/BaseApplication.java&#10;build.gra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;log&#9;null&#9;null&#10;apiser&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/http/ApiService.kt&#10;httpresu&#9;PSI&#9;JAVA://com.first.basket.base.HttpResult&#10;const&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;sho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;SPUtil&#9;PSI&#9;JAVA://com.first.basket.utils.SPUtil&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;color&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/values/colors.xml&#10;activi&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_detail.xml&#10;styles&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/values/styles.xml&#10;ac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;con&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;consta&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;goode&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;conada&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/ContentAdapter.java&#10;ic&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_active.png&#10;classfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;pro&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/ProductsBean.java&#10;shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;contentfr&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;conte&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;amount&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/view/AmountView.java&#10;produ&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/ProductsBean.java&#10;contentfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;conten&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;conf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;androidmanifes&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;class&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;content&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
     <property name="android.profiler.active" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="smartisan-sm919-60800f72" />
     <property name="DEBUGGABLE_PROCESS" value="com.first.basket" />
@@ -2455,15 +2313,12 @@
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
-    <property name="ExportApk.SignV2" value="true" />
+    <property name="ExportApk.SignV1" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/common" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils" />
-      <recent name="$PROJECT_DIR$/app/libs" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.first.basket.fragment" />
@@ -2480,9 +2335,12 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.first.basket.adapter" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/libs" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/common" />
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2498,6 +2356,32 @@
     </option>
   </component>
   <component name="RunManager" selected="Android App.app">
+    <configuration default="false" name="com.first.basket.bean in app" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.first.basket.bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="app" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.first.basket.bean" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -2567,7 +2451,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508046069354" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508058171294" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2614,7 +2498,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508046069354" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508058171295" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2795,13 +2679,17 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508046069361" />
-      </method>
+      <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
+      <item index="1" class="java.lang.String" itemvalue="Android JUnit.com.first.basket.bean in app" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Android JUnit.com.first.basket.bean in app" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="HTML_FILE_NAME" />
@@ -2837,6 +2725,38 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 17m 47s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 18m 23s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 18m 43s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 19m 02s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 20m 34s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 20m 49s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 21m 08s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 22m 04s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 22m 16s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="com_first_basket_bean_in_app - 2017.10.15 at 15h 28m 35s.xml">
+      <configuration name="com.first.basket.bean in app" configurationId="AndroidJUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="725" extended-state="0" />
     <editor active="true" />
@@ -2844,58 +2764,35 @@
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32678387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20372285" sideWeight="0.5516507" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5511811" sideWeight="0.42326334" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.72913384" sideWeight="0.4483493" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Anko Layout Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31811023" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33700788" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46929133" sideWeight="0.41320553" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.41320553" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2714055" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46929133" sideWeight="0.48935038" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31811023" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2786753" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27244094" sideWeight="0.48935038" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10393701" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10866142" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31811023" sideWeight="0.5767367" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25928918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21613237" sideWeight="0.6048988" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16478191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25354332" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32678387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20372285" sideWeight="0.5516507" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31811023" sideWeight="0.4483493" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40434334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46929133" sideWeight="0.41320553" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27244094" sideWeight="0.48935038" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10866142" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21613237" sideWeight="0.6048988" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17609046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2918,13 +2815,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt</url>
-          <line>87</line>
+          <line>94</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt</url>
-          <line>90</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
@@ -2958,342 +2855,31 @@
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/LoginActivity.kt</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="38" />
+      <option name="time" value="57" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="9" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/shop_car_scale.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="67" lean-forward="false" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/Test.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="44" column="1" lean-forward="false" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/BaseFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ClassifyContentBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/HotRecommendBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="79" column="48" lean-forward="false" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/http/HttpMethods.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/wxapi/WXPayEntryActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ClassifyBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="73" column="39" lean-forward="false" selection-start-line="73" selection-start-column="39" selection-end-line="73" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/25.3.0/recyclerview-v7-25.3.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="10311" column="15" lean-forward="false" selection-start-line="10311" selection-start-column="15" selection-end-line="10311" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="697" column="34" lean-forward="false" selection-start-line="697" selection-start-column="34" selection-end-line="697" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-          <folding>
-            <marker date="1507999570585" expanded="true" signature="1641:1929" ph="..." />
-            <marker date="1507999570585" expanded="true" signature="1733:1909" ph="..." />
-            <marker date="1507999570585" expanded="true" signature="2331:2444" ph="..." />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/bottombar_tabs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/first/basket/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="4064" column="28" lean-forward="false" selection-start-line="4064" selection-start-column="28" selection-end-line="4064" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.roughike/bottom-bar/2.3.1/a24a34cb8478811e08615ea06a5c27d636bc7e43/bottom-bar-2.3.1-sources.jar!/com/roughike/bottombar/BottomBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4128#4129#0" expanded="false" />
-            <element signature="e#4163#4164#0" expanded="false" />
-            <element signature="e#4224#4225#0" expanded="false" />
-            <element signature="e#4263#4264#0" expanded="false" />
-            <element signature="e#8916#8917#0" expanded="false" />
-            <element signature="e#8986#8987#0" expanded="false" />
-            <element signature="e#9207#9208#0" expanded="false" />
-            <element signature="e#9272#9273#0" expanded="false" />
-            <element signature="e#9318#9319#0" expanded="false" />
-            <element signature="e#9367#9368#0" expanded="false" />
-            <element signature="e#9408#9409#0" expanded="false" />
-            <element signature="e#9480#9481#0" expanded="false" />
-            <element signature="e#9529#9530#0" expanded="false" />
-            <element signature="e#9587#9588#0" expanded="false" />
-            <element signature="e#11436#11437#0" expanded="false" />
-            <element signature="e#11474#11475#0" expanded="false" />
-            <element signature="e#16629#16630#0" expanded="false" />
-            <element signature="e#16675#16676#0" expanded="false" />
-            <element signature="e#17991#17992#0" expanded="false" />
-            <element signature="e#18033#18034#0" expanded="false" />
-            <element signature="e#18482#18483#0" expanded="false" />
-            <element signature="e#18526#18527#0" expanded="false" />
-            <element signature="e#19634#19635#0" expanded="false" />
-            <element signature="e#19686#19687#0" expanded="false" />
-            <element signature="e#20524#20525#0" expanded="false" />
-            <element signature="e#20575#20576#0" expanded="false" />
-            <element signature="e#20673#20674#0" expanded="false" />
-            <element signature="e#20737#20738#0" expanded="false" />
-            <element signature="e#21197#21198#0" expanded="false" />
-            <element signature="e#21243#21244#0" expanded="false" />
-            <element signature="e#21349#21350#0" expanded="false" />
-            <element signature="e#21390#21391#0" expanded="false" />
-            <element signature="e#22144#22145#0" expanded="false" />
-            <element signature="e#22191#22192#0" expanded="false" />
-            <element signature="e#22518#22519#0" expanded="false" />
-            <element signature="e#22588#22589#0" expanded="false" />
-            <element signature="e#22927#22928#0" expanded="false" />
-            <element signature="e#22993#22994#0" expanded="false" />
-            <element signature="e#23274#23275#0" expanded="false" />
-            <element signature="e#23344#23345#0" expanded="false" />
-            <element signature="e#23694#23695#0" expanded="false" />
-            <element signature="e#23760#23761#0" expanded="false" />
-            <element signature="e#24605#24606#0" expanded="false" />
-            <element signature="e#24682#24683#0" expanded="false" />
-            <element signature="e#26078#26079#0" expanded="false" />
-            <element signature="e#26145#26146#0" expanded="false" />
-            <element signature="e#35081#35082#0" expanded="false" />
-            <element signature="e#35120#35121#0" expanded="false" />
-            <element signature="e#35207#35208#0" expanded="false" />
-            <element signature="e#35246#35247#0" expanded="false" />
-            <element signature="e#35889#35890#0" expanded="false" />
-            <element signature="e#35948#35949#0" expanded="false" />
-            <element signature="e#36046#36047#0" expanded="false" />
-            <element signature="e#36105#36106#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.roughike/bottom-bar/2.3.1/a24a34cb8478811e08615ea06a5c27d636bc7e43/bottom-bar-2.3.1-sources.jar!/com/roughike/bottombar/BottomBarTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="320" column="16" lean-forward="false" selection-start-line="320" selection-start-column="16" selection-end-line="320" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding>
-            <element signature="e#707#708#0" expanded="false" />
-            <element signature="e#743#744#0" expanded="false" />
-            <element signature="e#907#908#0" expanded="false" />
-            <element signature="e#938#939#0" expanded="false" />
-            <element signature="e#993#994#0" expanded="false" />
-            <element signature="e#1044#1045#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/UIUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="e#769#770#0" expanded="false" />
-            <element signature="e#825#826#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-            <element signature="e#919#920#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/app/NotifyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1047#1215#0" expanded="false" />
-            <element signature="e#1214#1215#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/NotifyMsgEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-26/android.jar!/java/util/HashMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-          <folding>
-            <element signature="e#972#973#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_amount_add.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_amount.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_classify_add.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_classify_add.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -3307,21 +2893,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding>
-            <element signature="e#35#402#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/AmountView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
           <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3329,10 +2904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="32" column="23" lean-forward="false" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding>
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#1010#1011#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3340,14 +2911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="138" column="0" lean-forward="false" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding>
-            <element signature="e#2893#2894#0" expanded="true" />
-            <element signature="e#2929#2930#0" expanded="true" />
-            <element signature="e#2964#2965#0" expanded="true" />
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3041#3042#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3355,24 +2918,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="212" column="52" lean-forward="false" selection-start-line="212" selection-start-column="52" selection-end-line="212" selection-end-column="52" />
-          <folding>
-            <element signature="e#35#1526#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="253" column="0" lean-forward="true" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+          <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3380,7 +2932,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+          <caret line="22" column="41" lean-forward="false" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -3388,19 +2940,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="56" column="11" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-          <folding />
+          <caret line="56" column="11" lean-forward="false" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -3413,22 +2956,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="60" column="64" lean-forward="false" selection-start-line="60" selection-start-column="64" selection-end-line="60" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="173">
+          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -3436,10 +2970,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="278">
+          <caret line="81" column="7" lean-forward="false" selection-start-line="81" selection-start-column="7" selection-end-line="84" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -3449,9 +2983,334 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="346">
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="94" column="56" lean-forward="false" selection-start-line="94" selection-start-column="56" selection-end-line="94" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CommonMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/CountDownUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SnackBarUtils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="57" column="24" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+          <folding>
+            <element signature="e#35#676#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/base/HttpResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/http/HttpMethods.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ClassifyBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/CodeBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/ImageUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="71" column="13" lean-forward="false" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="89" column="12" lean-forward="false" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="996" column="16" lean-forward="false" selection-start-line="996" selection-start-column="16" selection-end-line="996" selection-end-column="16" />
+          <folding>
+            <element signature="e#36358#36359#0" expanded="false" />
+            <element signature="e#36401#36402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="181" column="5" lean-forward="false" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
+          <folding>
+            <element signature="e#35#1526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/LoginBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143">
+          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="30" column="77" lean-forward="false" selection-start-line="30" selection-start-column="77" selection-end-line="30" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="55" column="61" lean-forward="false" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/banner-1.2.0.aar/5e38dcbee0ad5060e523e0f3a19ca67c/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/bottom-bar-2.3.1.aar/194ed4bb3fac40a0d44bea9e41e28421/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="18" column="18" lean-forward="false" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/curlloggerinterceptor-0.1.aar/6b9e6e079fce8144e2323c73dd26e952/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="30" column="35" lean-forward="false" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="35" lean-forward="false" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="73" column="29" lean-forward="false" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/common/StaticValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SPUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/AccountItemManagerView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="33" column="63" lean-forward="false" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_widget_account_manager.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mine.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="158" column="30" lean-forward="false" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="57" column="47" lean-forward="false" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+          <folding>
+            <element signature="e#35#604#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/LoginActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="90" column="83" lean-forward="false" selection-start-line="90" selection-start-column="83" selection-end-line="90" selection-end-column="83" />
+          <folding>
+            <element signature="e#35#850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <element signature="e#35#409#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

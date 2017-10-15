@@ -83,8 +83,5 @@ class GoodsDetailActivity : BaseActivity() {
                 .setDelayTime(3000)
                 .setIndicatorGravity(BannerConfig.RIGHT)
                 .start()
-
     }
-
-
 }

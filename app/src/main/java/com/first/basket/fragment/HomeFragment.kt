@@ -16,6 +16,7 @@ import com.first.basket.activity.SearchActivity
 import com.first.basket.activity.WebViewActivity
 import com.first.basket.adapter.MainActivity
 import com.first.basket.bean.HomeBean
+import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -46,11 +47,17 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         initData()
         initListener()
     }
 
+    private fun initView() {
+        tvAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, "  "))
+    }
+
     private fun initData() {
+
         class Sub : HttpResultSubscriber<HomeBean>() {
             override fun onNext(t: HomeBean) {
                 super.onNext(t)
@@ -97,7 +104,7 @@ class HomeFragment : BaseFragment() {
 //            intent.putExtra("channel", channel)
 //            startActivity(intent)
 
-            SPUtil.setData(activity,Constants.HOME_CLASSIFY,channel)
+            SPUtil.setData(activity, Constants.HOME_CLASSIFY, channel)
             activity.bottombar.selectTabAtPosition(1)
         }
     }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlCodeView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.first.basket.view.TitleView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="登录" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="密码登录"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etPhone"
+                style="@style/LoginInputStyle"
+                android:background="@null"
+                android:inputType="numberDecimal"
+                android:maxLength="11" />
+
+            <Button
+                android:id="@+id/btSendCode"
+                style="@style/SendCodeButtonStyle"
+                android:gravity="center" />
+        </RelativeLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="验证码" />
+
+        <EditText
+            android:id="@+id/etCode"
+            style="@style/LoginInputStyle"
+            android:background="@null"
+            android:inputType="numberDecimal"
+            android:maxLength="11" />
+
+        <include layout="@layout/layout_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="30dp"
+            android:text="注册"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/btLogin"
+            style="@style/ButtonStyle"
+            android:layout_marginBottom="60dp"
+            android:background="@color/colorLogin"
+            android:text="登录" />
+    </LinearLayout>
+
+</LinearLayout>

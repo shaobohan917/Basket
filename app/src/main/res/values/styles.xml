@@ -64,4 +64,38 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
+
+    <style name="LoginTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray66</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+
+    <style name="LoginInputStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@color/text_bg</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+
+    <style name="SendCodeButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorLogin</item>
+        <!--<item name="android:paddingLeft">10dp</item>-->
+        <!--<item name="android:paddingRight">@dimen/activity_normal</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:text">获取验证码</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

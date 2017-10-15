@@ -45,5 +45,9 @@ public class StaticValue {
 
     //报告列表是否加载数据
     public static final String REPORT_ISLOAD = "report_isload";
+
+
+    //basket
+    public static final String SP_ADDRESS = "sp_address";
 }
 

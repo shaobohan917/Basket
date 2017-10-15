@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">上海菜市</string>
+    <string name="app_name">1号菜篮子工程</string>
     <string name="price">¥ %s</string>
     <string name="order_price">共%1s件商品 合计：¥ %2s</string>
     <string name="order_limit_time">请在 %s 内完成交易</string>

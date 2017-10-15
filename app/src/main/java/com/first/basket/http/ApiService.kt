@@ -54,9 +54,20 @@ interface ApiService {
     @POST("ClintAPI.php")
     fun getHotRecommend(@Field("action") action: String): Observable<HotRecommendBean>
 
+    //发送验证码
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getCode(@Field("action") action: String,@Field("phonenumber") phonenumber: String): Observable<HttpResult<CodeBean>>
+
 
     //注册
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun doRegister(@Field("action") action: String,@Field("phonenumber") phonenumber: String,@Field("code") code: String,@Field("password") password: String): Observable<HttpResult<HotRecommendBean>>
+
+
+    //登录，发送验证码
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun doLogin(@Field("action") action: String, @Field("phonenumber") phonenumber: String, @Field("code") code: String, @Field("password") password: String): Observable<HttpResult<LoginBean>>
 }

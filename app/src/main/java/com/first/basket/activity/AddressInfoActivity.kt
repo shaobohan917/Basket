@@ -6,6 +6,8 @@ import android.os.Bundle
 import com.first.basket.R
 import com.first.basket.a.AddressActivity
 import com.first.basket.base.BaseActivity
+import com.first.basket.common.StaticValue
+import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.activity_address_info.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -26,6 +28,7 @@ class AddressInfoActivity : BaseActivity() {
         }
         btSave.onClick {
             intent.putExtra("aoiName", etAddress.text)
+            SPUtil.setString(StaticValue.SP_ADDRESS,etAddress.text.toString())
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
