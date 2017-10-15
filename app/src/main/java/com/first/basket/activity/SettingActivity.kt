@@ -32,7 +32,7 @@ class SettingActivity : BaseActivity() {
                 Handler().postDelayed({ finish() }, 1000)
             }
         } else {
-            loginOut.setBackgroundColor(resources.getColor(R.color.text_bg))
+            loginOut.setBackgroundColor(resources.getColor(R.color.white))
             loginOut.onClick {   }
         }
     }

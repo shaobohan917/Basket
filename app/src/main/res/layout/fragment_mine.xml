@@ -146,6 +146,7 @@
         app:accountManagerTitle="收货地址" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:id="@+id/aimvRange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:accountManagerImg="@mipmap/ic_mine_range"
@@ -167,6 +168,7 @@
         app:accountManagerTitle="联系客服" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:id="@+id/aimvAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:accountManagerImg="@mipmap/ic_mine_about"

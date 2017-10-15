@@ -11,23 +11,20 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
-import com.first.basket.activity.MainActivity
-import com.first.basket.activity.OrderDetailActivity
 import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.app.NotifyManager
 import com.first.basket.base.HttpResult
-import com.first.basket.bean.GoodsDetailBean
-import com.first.basket.bean.HotRecommendBean
-import com.first.basket.bean.PriceBean
-import com.first.basket.bean.ProductsBean
+import com.first.basket.bean.*
+import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
@@ -35,9 +32,6 @@ import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
-import com.first.basket.bean.NotifyMsgEntity
-import com.first.basket.common.StaticValue
-import com.first.basket.utils.SPUtil
 import kotlin.collections.HashMap
 
 

@@ -15,8 +15,8 @@
             android:id="@+id/titleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleColor="@color/white"
             app:titleBackground="@color/colorLogin"
+            app:titleColor="@color/white"
             app:titleText="登录" />
 
         <TextView
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
             android:layout_marginTop="30dp"
-            android:text="注册"/>
+            android:text="注册" />
 
 
         <Button

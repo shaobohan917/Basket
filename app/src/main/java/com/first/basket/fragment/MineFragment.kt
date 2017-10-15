@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
-import com.first.basket.activity.LoginActivity
-import com.first.basket.activity.OrderListActivity
-import com.first.basket.activity.SettingActivity
+import com.first.basket.activity.*
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
@@ -53,9 +51,17 @@ class MineFragment : BaseFragment() {
             }
         }
 
-        aimvSetting.setOnClickListener {
+        aimvSetting.onClick {
             var intent = Intent(activity, SettingActivity::class.java)
             startActivityForResult(intent, 103)
+        }
+
+        aimvRange.onClick {
+            startActivity(Intent(activity, RangeActivity::class.java))
+        }
+
+        aimvAbout.onClick {
+            startActivity(Intent(activity, AboutActivity::class.java))
         }
     }
 
