@@ -16,8 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:titleColor="@color/white"
-            app:titleBackground="@color/colorLogin"
-            app:titleText="登录" />
+            app:titleText="密码登录" />
 
         <TextView
             android:id="@+id/tvLoginPwd"
@@ -69,25 +68,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="验证码" />
+            android:text="密码" />
 
         <EditText
-            android:id="@+id/etCode"
+            android:id="@+id/etPassword"
             style="@style/LoginInputStyle"
             android:background="@null"
             android:inputType="numberDecimal"
             android:maxLength="11" />
 
         <include layout="@layout/layout_line" />
-
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            android:layout_marginTop="30dp"
-            android:text="注册"/>
-
 
         <Button
             android:id="@+id/btLogin"

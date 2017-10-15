@@ -32,7 +32,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,11 +56,16 @@
         <activity android:name=".activity.OrderDetailActivity" />
 
         <activity android:name=".adapter.MainActivity" />
-        <activity android:name=".activity.ClassifyActivity" android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.ClassifyActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginPwdActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.PlaceOrderActivity" />
+
     </application>
 
 </manifest>

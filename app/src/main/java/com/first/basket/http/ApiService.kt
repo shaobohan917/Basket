@@ -67,7 +67,7 @@ interface ApiService {
     //注册
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun doRegister(@Field("action") action: String,@Field("phonenumber") phonenumber: String,@Field("code") code: String,@Field("password") password: String): Observable<HttpResult<HotRecommendBean>>
+    fun doRegister(@Field("action") action: String,@Field("phonenumber") phonenumber: String,@Field("code") code: String,@Field("password") password: String): Observable<HttpResult<LoginBean>>
 
 
     //登录，发送验证码

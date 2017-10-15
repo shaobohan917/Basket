@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.first.basket.R
 
@@ -14,8 +15,11 @@ import com.first.basket.R
 class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener {
 
     private lateinit var mTitleText: String
-//    private lateinit var mTitleColor: Int
+    private var mTitleColor: Int = 0
+    private var mTitleBackgroundColor = 0
+
     private lateinit var tvTitle: TextView
+    private lateinit var rlRoot: RelativeLayout
 
     constructor(context: Context?, attrs: AttributeSet) : this(context) {
         var typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.TitleView)
@@ -24,6 +28,8 @@ class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener 
             when (attr) {
                 R.styleable.TitleView_titleText ->
                     mTitleText = typedArray.getString(attr)
+                R.styleable.TitleView_titleBackground ->
+                    mTitleBackgroundColor = typedArray.getColor(attr, 0)
 //                R.styleable.TitleView_titleColor ->
 //                    mTitleColor = typedArray.getColor(attr, defStyleAttr)
             }
@@ -36,7 +42,9 @@ class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener 
 
     private fun initView() {
         tvTitle = findViewById(R.id.tvTitle)
+        rlRoot = findViewById(R.id.rlRoot)
         tvTitle.text = mTitleText
+        rlRoot.setBackgroundColor(mTitleBackgroundColor)
 
     }
 

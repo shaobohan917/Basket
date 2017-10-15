@@ -1,7 +1,6 @@
 package com.first.basket.activity
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -19,22 +18,24 @@ import com.first.basket.utils.CountDownUtil
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
-import kotlinx.android.synthetic.main.activity_login.*
+import com.first.basket.view.TitleView
+import kotlinx.android.synthetic.main.activity_login_pwd.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-
 
 /**
  * Created by hanshaobo on 15/10/2017.
  */
-class LoginActivity : BaseActivity(), View.OnClickListener {
+class LoginPwdActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
 
     }
 
+    private lateinit var titleView: TitleView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_login_pwd)
         initView()
         initData()
         initListener()
@@ -44,22 +45,14 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     private fun initListener() {
         btSendCode.onClick {
             if (!CommonMethod.isMobileNO(etPhone.getText().toString())) {
-                ToastUtil.showToast(this@LoginActivity, "请输入正确的手机号")
+                ToastUtil.showToast(this@LoginPwdActivity, "请输入正确的手机号")
                 return@onClick
             }
             getLoginVerifyCode(etPhone.getText().toString())
         }
 
         btLogin.onClick {
-            doLogin(etPhone.text.toString(), etCode.text.toString(), "")
-        }
-
-        tvRegister.onClick {
-            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-        }
-
-        tvLoginPwd.onClick {
-            startActivity(Intent(this@LoginActivity, LoginPwdActivity::class.java))
+            doLogin(etPhone.text.toString(), etPassword.text.toString(), "")
         }
     }
 
@@ -98,7 +91,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
                         LogUtils.d(t.result.data.phone)
-                        ToastUtil.showToast(this@LoginActivity, "登陆成功")
+                        ToastUtil.showToast(this@LoginPwdActivity, "登陆成功")
                         SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
 
                         SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
@@ -110,7 +103,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                     override fun onError(e: Throwable) {
                         super.onError(e)
-                        ToastUtil.showToast(this@LoginActivity, e.message.toString())
+                        ToastUtil.showToast(this@LoginPwdActivity, e.message.toString())
                     }
                 })
     }
