@@ -10,12 +10,10 @@ import com.first.basket.R
 import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
-import com.first.basket.bean.HotRecommendBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_classify.*
 
@@ -32,6 +30,8 @@ class ClassifyFragment : BaseFragment() {
     private var indexList = ArrayList<Int>()
 
     private lateinit var mCategoryAdapter: ClassifyAdapter
+
+    private var isGetHot: Boolean = false
 
     //1：社区菜市；2：上海菜市 ；3：全国菜市
     private var preType: Int = 1
@@ -75,16 +75,16 @@ class ClassifyFragment : BaseFragment() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {
                         super.onNext(t)
                         mCategoryDatas.clear()
-
-                        for (i in 0 until t.result.data.size) {
-                            mCategoryDatas.add(t.result.data[i])
-                            mIds.add(t.result.data[i].leveloneid)
+                        var list = t.result.data
+                        for (i in 0 until list.size) {
+                            mCategoryDatas.add(list[i])
+                            mIds.add(list[i].leveloneid)
                         }
                         mCategoryAdapter.notifyDataSetChanged()
 
                         //有多少分类，创建多少fragment
-                        for (i in 0 until t.result.data.size) {
-                            var fragment = ContentFragment()
+                        for (i in 0 until list.size) {
+                            var fragment = ContentFragment(list[i])
                             fragmentList.add(fragment)
                         }
 
@@ -94,17 +94,19 @@ class ClassifyFragment : BaseFragment() {
                 })
     }
 
+
     private fun refreshContent(l: Int) {
         val fragment = fragmentList[l]
 
-        if(l==0){
+        if (l == 0 && !isGetHot) {
             fragment.getHotRecommend()
+            isGetHot = true
         }
         replaceContent(fragment, R.id.fragmentContainer1)
         //设置数据
         if (!indexList.contains(l)) {
             Handler().postDelayed({
-                fragmentList[l].setContentData(mCategoryDatas[l])
+                fragmentList[l].setContentData(l, mCategoryDatas[l])
             }, 500)
             indexList.add(l)
         }

@@ -7,11 +7,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:gravity="center"
         android:id="@+id/tvSecondLevel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="6dp"
         android:background="@color/grayF8"
+        android:gravity="center"
+        android:padding="6dp"
         android:textColor="@color/gray66"
         android:textSize="12sp"
         tool:text="二级分类" />

@@ -16,11 +16,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveloneid") leveloneid: String, @Field("leveltwoid") leveltwoid: String): Observable<ClassifyContentBean>
-
-    @FormUrlEncoded
-    @POST("ClintAPI.php")
-    fun getAction(@Field("action") action: String): Call<Any>
+    fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveltwoid") leveltwoid: String): Observable<ClassifyContentBean>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
