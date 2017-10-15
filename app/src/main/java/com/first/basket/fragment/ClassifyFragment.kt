@@ -118,9 +118,7 @@ class ClassifyFragment : BaseFragment() {
                 //切换菜市，重新加载
                 getClassify(type)
                 preType = type
-                LogUtils.d("onHiddenChanged:" + type)
             }
         }
     }
-
 }

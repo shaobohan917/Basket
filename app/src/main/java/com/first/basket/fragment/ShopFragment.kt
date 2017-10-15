@@ -43,11 +43,10 @@ import kotlin.collections.HashMap
 class ShopFragment : BaseFragment(), Observer {
 
     private var isAllChecked: Boolean = false
-    private var mDatas = ArrayList<ProductsBean>()
-    private var mDatasMap = HashMap<ProductsBean, Int>()
     private var mGoodsList = ArrayList<ProductsBean>()
+    private var mGoodsMap = HashMap<ProductsBean, Int>()
 
-    private var mAdapter = MenuAdapter(mDatas, object : MenuAdapter.OnItemClickListener {
+    private var mAdapter = MenuAdapter(mGoodsList, object : MenuAdapter.OnItemClickListener {
         override fun onItemClick(view: View) {
 
             LogUtils.d("onClick:" + smRecyclerView.getChildAdapterPosition(view))
@@ -55,7 +54,7 @@ class ShopFragment : BaseFragment(), Observer {
 
     }, CompoundButton.OnCheckedChangeListener { p0, p1 ->
         if (p1) {
-//            getPrice(mDatas)
+//            getPrice(mGoodsList)
             notifySubscribeStateChanged("123", 123)
         }
     })
@@ -105,7 +104,7 @@ class ShopFragment : BaseFragment(), Observer {
             closeable.smoothCloseMenu()
 
             if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-                mDatas.removeAt(adapterPosition)
+                mGoodsList.removeAt(adapterPosition)
                 mAdapter.notifyItemRemoved(adapterPosition)
                 mAdapter.notifyDataSetChanged()
             }
@@ -135,7 +134,7 @@ class ShopFragment : BaseFragment(), Observer {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             val goods = data!!.extras.getSerializable("goods") as GoodsDetailBean.ResultBean.DataBean
-//            mDatas.add(goods)
+//            mGoodsList.add(goods)
             mAdapter.notifyDataSetChanged()
         }
     }
@@ -155,7 +154,7 @@ class ShopFragment : BaseFragment(), Observer {
                 smRecyclerView.getChildAt(i).findViewById<AppCompatCheckBox>(R.id.cbSelect).isChecked = isAllChecked
             }
             if (isAllChecked) {
-                getPrice(mDatas)
+                getPrice(mGoodsList)
                 llTotalPrice.visibility = View.VISIBLE
             } else {
                 llTotalPrice.visibility = View.GONE
@@ -175,6 +174,7 @@ class ShopFragment : BaseFragment(), Observer {
                 .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                     override fun onNext(t: HttpResult<PriceBean>) {
                         super.onNext(t)
+                        tvTotalPrice.visibility = View.VISIBLE
                         tvTotalPrice.text = t.result.data.totalprice.toString()
                     }
                 })
@@ -185,27 +185,18 @@ class ShopFragment : BaseFragment(), Observer {
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
-//            mGoodsList = (activity as MainActivity).goodsList
+            mGoodsList.clear()
+            mGoodsMap = (activity as MainActivity).mGoodsMap
 
-            mDatas.clear()
-            mDatasMap = (activity as MainActivity).goodsMap
-
-            var iterator = mDatasMap.entries.iterator()
-            while (iterator.hasNext()){
-            var entry = iterator.next() as Map.Entry<ProductsBean, Int>
+            var iterator = mGoodsMap.entries.iterator()
+            while (iterator.hasNext()) {
+                var entry = iterator.next() as Map.Entry<ProductsBean, Int>
                 var key = entry.key
                 var value = entry.value
 
-                mDatas.add(key)
-
+                mGoodsList.add(key)
+                Collections.reverse(mGoodsList)
             }
-
-//            for (i in 0 until mDatasMap.size){
-//                mDatas.add(mDatasMap.(i))
-//                mDatas.get(i).amount = 1
-//            }
-//            mDatas.clear()
-//            mDatas.addAll(mGoodsList)
             mAdapter.notifyDataSetChanged()
         }
     }
@@ -214,7 +205,6 @@ class ShopFragment : BaseFragment(), Observer {
         var notifyMsgEntity = data as NotifyMsgEntity
         var type = notifyMsgEntity.code
         if (type == NotifyManager.TYPE_DFH_SUB_STATE_CHANGED) {
-            LogUtils.d("update:" + notifyMsgEntity.data.toString())
         }
 
     }

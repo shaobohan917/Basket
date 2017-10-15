@@ -35,6 +35,7 @@ public class ProductsBean {
     private String channelid;
     private String img;
     private int amount;
+    private boolean isCheck;
 
     public String getProductid() {
         return productid;
@@ -146,5 +147,13 @@ public class ProductsBean {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public boolean getIsCheck() {
+        return isCheck;
+    }
+
+    public void setIsCheck(boolean isCheck) {
+        this.isCheck = isCheck;
     }
 }

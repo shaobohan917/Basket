@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="106dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
@@ -16,6 +16,7 @@
             android:id="@+id/ivGoods"
             android:layout_width="90dp"
             android:layout_height="90dp"
+            android:background="@color/pic_bg"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout
@@ -29,9 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                tools:text="佳沛新西兰阳光金奇异果"
                 android:textColor="@color/gray33"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:text="佳沛新西兰阳光金奇异果" />
 
             <TextView
                 android:id="@+id/tvUnit"
@@ -51,19 +52,12 @@
                     android:layout_height="wrap_content"
                     tools:text="29.90" />
 
-                <com.first.basket.view.AmountView
-                    android:id="@+id/amoutView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:visibility="gone"/>
-
                 <ImageView
                     android:id="@+id/ivAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:src="@mipmap/ic_amount_add" />
+                    android:src="@mipmap/ic_add" />
 
                 <!--<TextView-->
                 <!--android:id="@+id/tvUnit"-->

@@ -108,14 +108,15 @@ class ContentFragment : BaseFragment() {
 
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             addGoodToCar(view.findViewById(R.id.ivGoods))
+            data.isCheck = true
             data.amount++
-            var map = (activity as MainActivity).goodsMap
-            if (map.containsKey(data)) {
-                map.set(data, map.getValue(data) + 1)
+            var goodsMap = (activity as MainActivity).mGoodsMap
+            if (goodsMap.containsKey(data)) {
+                goodsMap.put(data, goodsMap.getValue(data) + 1)
             } else {
-                map.set(data, 1)
+                goodsMap.put(data, 1)
             }
-            (activity as MainActivity).goodsMap = map
+            (activity as MainActivity).mGoodsMap = goodsMap
             (activity as MainActivity).setCountAdd()
         }
     }

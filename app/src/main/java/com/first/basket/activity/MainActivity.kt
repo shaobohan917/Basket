@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
     lateinit var nearby: BottomBarTab
 
     var mCount = 0
-    var goodsMap = LinkedHashMap<ProductsBean, Int>()   //添加到购物车的集合
+    var mGoodsMap = LinkedHashMap<ProductsBean, Int>()   //添加到购物车的集合
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

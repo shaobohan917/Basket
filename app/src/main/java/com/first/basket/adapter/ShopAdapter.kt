@@ -22,7 +22,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class MenuAdapter(list: ArrayList<ProductsBean>, listener: OnItemClickListener,cbListener: CompoundButton.OnCheckedChangeListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
     private var mDatas: ArrayList<ProductsBean> = list
     private var listener = listener
-    private var cbListener = cbListener
+//    private var cbListener = cbListener
 
     override fun getItemCount(): Int {
         return mDatas.size
@@ -45,9 +45,11 @@ class MenuAdapter(list: ArrayList<ProductsBean>, listener: OnItemClickListener,c
         holder.tvUnit1.text = bean.unit
         holder.tvPrice1.text = bean.price.toString()
         holder.amoutView.amount = bean.amount
-        holder.amoutView.setGoods_storage(10)
         ImageUtils.showImg(BaseApplication.getContext(), bean.img, holder.ivGoods)
-        holder.cbSelect.setOnCheckedChangeListener(cbListener)
+        holder.cbSelect.isChecked = bean.isCheck
+        holder.cbSelect.setOnCheckedChangeListener { compoundButton, b ->
+            bean.isCheck = b
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -61,7 +63,6 @@ class MenuAdapter(list: ArrayList<ProductsBean>, listener: OnItemClickListener,c
         init {
             itemView.onClick { listener.onItemClick(itemView) }
         }
-
     }
 
     interface OnItemClickListener {
