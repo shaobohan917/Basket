@@ -1,17 +1,15 @@
 package com.first.basket.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.first.basket.base.BaseActivity
 import com.first.basket.R
+import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductsBean
 import com.first.basket.fragment.*
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class MainActivity : BaseActivity() {
     private lateinit var bottomBar: BottomBar

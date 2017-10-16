@@ -158,8 +158,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setRecommendData(data: HomeBean.ResultBean.DataBean) {
-        ImageUtils.showImg(activity, data.shcs.image, ivSHCS)
         ImageUtils.showImg(activity, data.hltg.image, ivHLTG)
+        ImageUtils.showImg(activity, data.shcs.image, ivSHCS)
         ImageUtils.showImg(activity, data.qgcs.image, ivQGCS)
         ImageUtils.showImg(activity, data.jkss.image, ivJKSS)
 
@@ -174,7 +174,7 @@ class HomeFragment : BaseFragment() {
                 }
                 var intent = Intent(activity, WebViewActivity::class.java)
                 intent.putExtra("url", url)
-                startActivity(intent)
+//                startActivity(intent)
             }
         }
 

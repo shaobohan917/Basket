@@ -42,14 +42,12 @@
                 android:src="@mipmap/ic_position_arrow" />
         </LinearLayout>
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="8dp"
-            android:text="First Basket"
-            android:textColor="@color/gray33"
-            android:textSize="20sp" />
+            android:src="@mipmap/ic_home_title"
+            android:visibility="visible" />
 
         <ImageView
             android:id="@+id/ivSearch"
@@ -261,45 +259,159 @@
 
             <include layout="@layout/layout_gap" />
 
-            <ImageView
-                android:id="@+id/ivSHCS"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
-                android:layout_marginTop="26dp"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitXY" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="26dp">
 
-            <ImageView
-                android:id="@+id/ivHLTG"
-                android:layout_width="match_parent"
-                android:layout_height="145dp"
-                android:layout_marginTop="26dp"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitXY" />
+                <ImageView
+                    android:id="@+id/ivHLTG"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_logo_about" />
 
-            <ImageView
-                android:id="@+id/ivQGCS"
-                android:layout_width="match_parent"
-                android:layout_height="145dp"
-                android:layout_marginTop="26dp"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitXY" />
+                <TextView
+                    android:id="@+id/tvHLTG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="欢乐团购"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/ivJKSS"
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
-                android:layout_marginTop="26dp"
-                android:background="@color/white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:scaleType="fitXY" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="36dp">
+
+                <ImageView
+                    android:id="@+id/ivSHCS"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_logo_about" />
+
+                <TextView
+                    android:id="@+id/tvSHCS"
+                    android:text="上海菜市"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="36dp">
+
+                <ImageView
+                    android:id="@+id/ivQGCS"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_logo_about" />
+
+                <TextView
+                    android:id="@+id/tvQGCS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="全国菜市"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="36dp"
+                android:layout_marginTop="36dp">
+
+                <ImageView
+                    android:id="@+id/ivJKSS"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_logo_about" />
+
+                <TextView
+                    android:id="@+id/tvJKSS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="健康膳食"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

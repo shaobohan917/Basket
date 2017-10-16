@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
+import com.first.basket.R;
 import com.first.basket.bean.ProductsBean;
 import com.first.basket.utils.SPUtil;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -39,7 +40,7 @@ public class BaseApplication extends Application {
 
         //初始化sp
         SPUtil.init(this);
-        CrashReport.initCrashReport(getApplicationContext(), "8fab8931-4dd4-4578-9e36-91e55992e34d", true);
+        CrashReport.initCrashReport(getApplicationContext(), getString(R.string.bugly), true);
     }
 
     public static BaseApplication getInstance() {

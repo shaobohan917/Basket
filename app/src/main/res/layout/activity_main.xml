@@ -11,15 +11,12 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="49dp"
-        android:layout_weight="1"
-        app:layout_constraintTop_toTopOf="@+id/bottombar" />
+        android:layout_weight="1" />
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_weight="0"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"
-        app:layout_constraintBottom_toTopOf="parent" />
+        app:bb_tabXmlResource="@xml/bottombar_tabs" />
 </LinearLayout>
