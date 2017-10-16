@@ -2,9 +2,12 @@ package com.first.basket.activity
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.KeyEvent
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
+import com.first.basket.bean.ContactBean
 import com.first.basket.bean.ProductsBean
+import com.first.basket.db.ContactDao
 import com.first.basket.db.ProductDao
 import com.first.basket.fragment.*
 import com.first.basket.utils.LogUtils
@@ -12,6 +15,12 @@ import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
 import java.util.*
 import kotlin.collections.ArrayList
+import com.first.basket.common.StaticValue
+import com.first.basket.utils.SPUtil
+import com.first.basket.common.CommonMethod.hideKeyboard
+import android.view.KeyEvent.KEYCODE_BACK
+import com.first.basket.utils.ToastUtil
+
 
 class MainActivity : BaseActivity() {
     private lateinit var bottomBar: BottomBar
@@ -85,22 +94,24 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-
-        test111()
-
     }
 
-    private fun test111() {
-        var product = ProductsBean()
-        product.productid = "1"
-        product.productname = "luka"
-        product.price = "1.1"
+    private var exitTime: Long = 0
 
-        ProductDao.getInstance(this@MainActivity).insertOrUpdateItem(product)
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
 
-        var list = ProductDao.getInstance(this@MainActivity).products
-        LogUtils.d("li:"+list.size)
-
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - exitTime > 1000) {
+                ToastUtil.showToast("双击退出应用")
+                exitTime = System.currentTimeMillis()
+            } else {
+                //保存购物车数据
+//                ProductDao.getInstance(this@MainActivity).insertOrUpdateItem()
+                finish()
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
 
     }
 }

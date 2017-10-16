@@ -63,6 +63,7 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                             SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
                             SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
                             setResult(Activity.RESULT_OK)
+                            CommonMethod.hideKeyboard(etPassword)
                             Handler().postDelayed({ finish() }, 1000)
                         }else{
                             ToastUtil.showToast(this@LoginPwdActivity, t.info)

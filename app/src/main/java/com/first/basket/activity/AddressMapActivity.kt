@@ -12,15 +12,22 @@ import com.amap.api.maps2d.*
 import com.amap.api.maps2d.model.LatLng
 import com.first.basket.base.BaseActivity
 import com.first.basket.R
+import com.first.basket.bean.MapBean
 
 
 /**
  * Created by hanshaobo on 30/08/2017.
  */
-class AddressActivity : BaseActivity(), LocationSource, AMapLocationListener {
+class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener {
 
     private var mListener: LocationSource.OnLocationChangedListener? = null
     lateinit var aoiName: String
+    lateinit var district: String
+    lateinit var street: String
+    lateinit var adCode: String
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var mapBean = MapBean()
 
 
     override fun onLocationChanged(aMapLocation: AMapLocation?) {
@@ -29,12 +36,25 @@ class AddressActivity : BaseActivity(), LocationSource, AMapLocationListener {
             var country = aMapLocation.country
             var street = aMapLocation.street
             aoiName = aMapLocation.aoiName
+            district = aMapLocation.district
+            street = aMapLocation.street
+            adCode = aMapLocation.adCode
+            latitude = aMapLocation.latitude
+            longitude = aMapLocation.longitude
+
+            mapBean.aoiName = aoiName
+            mapBean.district = district
+            mapBean.street = street
+            mapBean.adCode = adCode
+            mapBean.latitude = latitude
+            mapBean.longitude = longitude
+
 
             tvAddress.text = aoiName
 
 
             aMap.moveCamera(CameraUpdateFactory.zoomTo(80f))
-            aMap.moveCamera(CameraUpdateFactory.changeLatLng(LatLng(aMapLocation.latitude,aMapLocation.longitude)))
+            aMap.moveCamera(CameraUpdateFactory.changeLatLng(LatLng(aMapLocation.latitude, aMapLocation.longitude)))
             mListener!!.onLocationChanged(aMapLocation)
             //获取定位信息
         }
@@ -62,14 +82,15 @@ class AddressActivity : BaseActivity(), LocationSource, AMapLocationListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_address)
+        setContentView(R.layout.activity_address_map)
         mapView = findViewById<MapView>(R.id.mapView)
         mapView.onCreate(savedInstanceState)
 
         tvAddress = findViewById<TextView>(R.id.tvAddress)
         tvAddress.setOnClickListener {
-            intent.putExtra("aoiName",aoiName)
-            setResult(Activity.RESULT_OK,intent)
+            intent.putExtra("aoiName", aoiName)
+            intent.putExtra("mapBean", mapBean)
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }
         initData()

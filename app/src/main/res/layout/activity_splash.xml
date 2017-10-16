@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7A7A7A">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpGuide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#242424" />
+
+    <ImageButton
+        android:id="@+id/ibGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/transparent"
+        android:paddingBottom="50dp"
+        android:src="@mipmap/icon_guide_button"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/transparent">
+
+        <LinearLayout
+            android:id="@+id/llDots"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp" />
+
+        <View
+            android:id="@+id/vPoint"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/guide_dot_selected" />
+    </RelativeLayout>
+
+</RelativeLayout>

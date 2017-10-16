@@ -11,7 +11,7 @@ import com.first.basket.rxjava.UITask
 /**
  * Created by hanshaobo on 30/08/2017.
  */
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity1 : AppCompatActivity() {
 
 
     private lateinit var mProgressDialog: ProgressDialog
@@ -46,7 +46,7 @@ open class BaseActivity : AppCompatActivity() {
         RxjavaUtil.doInUIThread(object : UITask<Any>() {
             override fun doInUIThread() {
                 if (mProgressDialog == null) {
-                    mProgressDialog = ProgressDialog(this@BaseActivity)
+                    mProgressDialog = ProgressDialog(this@BaseActivity1)
                     mProgressDialog.setCanceledOnTouchOutside(false)
                 }
                 mProgressDialog.setMessage(message)

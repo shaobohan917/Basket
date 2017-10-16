@@ -6,43 +6,41 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.first.basket.bean.ProductsBean;
+import com.first.basket.bean.ContactBean;
 import com.first.basket.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
  * Created by hanshaobo on 16/10/2017.
  */
 
-public class ProductDao {
+public class ContactDao {
 
-    private static final String TABLE = "table_product";
+    private static final String TABLE = "table_contact";
     private static final String ITEM_ROWID = "_id";
 
-    private static final String ITEM_PRODUCT = "product";   //具体
-    private static final String ITEM_PRODUCTID = "productid";   //具体
-    private static final String ITEM_COUNT = "count";       //个数
-
+    private static final String ITEM_CONTACT = "contact";   //具体
+    private static final String ITEM_CONTACT_ID = "user_id";
 
     public static String CREATE_TABLE = "create table " + TABLE + "(" + ITEM_ROWID + "  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            + ITEM_PRODUCTID + " text," + ITEM_PRODUCT + " text," + ITEM_COUNT + " text)";
+            + ITEM_CONTACT + " text," + ITEM_CONTACT_ID + " text)";
 
-    private static ProductDao mInstance;
+    private static ContactDao mInstance;
     private final DBHelper helper;
 
 
-    public ProductDao(Context context) {
+    public ContactDao(Context context) {
         helper = DBHelper.getInstance(context);
     }
 
-    public static ProductDao getInstance(Context context) {
+    public static ContactDao getInstance(Context context) {
         if (mInstance == null) {
-            synchronized (ProductDao.class) {
+            synchronized (ContactDao.class) {
                 if (mInstance == null) {
-                    mInstance = new ProductDao(context);
+                    mInstance = new ContactDao(context);
                 }
             }
         }
@@ -50,28 +48,28 @@ public class ProductDao {
     }
 
 
-    public synchronized void insertOrUpdateItem(ProductsBean productsBean) {
+    public synchronized void insertOrUpdateItem(ContactBean contactBean) {
         SQLiteDatabase db;
         Cursor cursor = null;
         try {
             Gson gson = new Gson();
-            String object = gson.toJson(productsBean);
+            String object = gson.toJson(contactBean);
             long result = -1;
             db = helper.openDatabase();
-            cursor = db.query(TABLE, new String[]{ITEM_ROWID}, ITEM_PRODUCTID + "=?",
-                    new String[]{productsBean.getProductid() + ""}, null, null, null);
+            cursor = db.query(TABLE, new String[]{ITEM_ROWID}, ITEM_CONTACT_ID + "=?",
+                    new String[]{contactBean.getUserid() + ""}, null, null, null);
             if (cursor.moveToFirst()) {
                 result = cursor.getLong(cursor.getColumnIndex(ITEM_ROWID));
             }
             ContentValues values = new ContentValues();
             if (result != -1) {
                 //已有
-                values.put(ITEM_PRODUCT, object);
+                values.put(ITEM_CONTACT, object);
                 db.update(TABLE, values, ITEM_ROWID + "=?", new String[]{result + ""});
                 LogUtils.Companion.d("更新成功");
             } else {
-                values.put(ITEM_PRODUCT, object);
-                values.put(ITEM_PRODUCTID, productsBean.getProductid());
+                values.put(ITEM_CONTACT, object);
+                values.put(ITEM_CONTACT_ID, contactBean.getUserid());
                 db.insert(TABLE, null, values);
                 LogUtils.Companion.d("插入成功");
             }
@@ -88,39 +86,36 @@ public class ProductDao {
         }
     }
 
-    public synchronized void insertOrUpdateItems(LinkedHashMap<ProductsBean, Integer> products) {
 
-    }
-
-
-    public ArrayList<ProductsBean> getProducts() {
+    public ArrayList<ContactBean> getContacts() {
         SQLiteDatabase db;
         Cursor cursor = null;
-        ArrayList<ProductsBean> productsBeans = new ArrayList<>();
+        ArrayList<ContactBean> contactBeans = new ArrayList<>();
         try {
             db = helper.openDatabase();
+//            String sql = "select * from " + TABLE + " where " + ITEM_CONTACT_ID + " = ?";
             String sql = "select * from " + TABLE;
-            cursor = db.rawQuery(sql, null);
+//            cursor = db.rawQuery(sql, new String[]{"123"});
+            cursor = db.rawQuery(sql,null);
 
-            ProductsBean productsBean;
+            ContactBean contactBean;
             while (cursor.moveToNext()) {
-                productsBean = new ProductsBean();
-                String object = cursor.getString(cursor.getColumnIndex(ITEM_PRODUCT));
+                contactBean = new ContactBean();
+                String object = cursor.getString(cursor.getColumnIndex(ITEM_CONTACT));
                 Gson gson = new Gson();
                 try {
-                    ProductsBean product = gson.fromJson(object, ProductsBean.class);
-                    productsBean.setProductid(product.getProductid());
-                    productsBean.setProductname(product.getProductname());
-                    productsBean.setUnit(product.getUnit());
-                    productsBean.setPrice(product.getPrice());
-                    productsBean.setImg(product.getImg());
+                    ContactBean contactBean1 = gson.fromJson(object, ContactBean.class);
+                    contactBean.setUserid(contactBean1.getUserid());
+                    contactBean.setPhone(contactBean1.getPhone());
+                    contactBean.setUsername(contactBean1.getUsername());
+                    contactBean.setAddress(contactBean1.getAddress());
 
                 } catch (JsonSyntaxException e) {
                     e.printStackTrace();
                     LogUtils.Companion.d("e:::" + e.getMessage());
                 }
 
-                productsBeans.add(productsBean);
+                contactBeans.add(contactBean);
             }
         } catch (Exception e) {
             LogUtils.Companion.d("e123:::" + e.getMessage());
@@ -133,6 +128,6 @@ public class ProductDao {
                 helper.closeDatabase();
             }
         }
-        return productsBeans;
+        return contactBeans;
     }
 }

@@ -33,7 +33,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.SplashActivity"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".a.AddressActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+          />
+        <!--android:theme="@style/LauncherAppTheme"-->
+        <activity android:name=".a.AddressMapActivity" />
         <activity android:name=".activity.AddressInfoActivity" />
         <activity android:name=".activity.GoodsDetailActivity" />
         <activity android:name=".activity.SearchActivity" />
@@ -67,6 +71,7 @@
         <activity android:name=".activity.PlaceOrderActivity" />
         <activity android:name=".activity.RangeActivity" />
         <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.AddressListActivity" />
 
     </application>
 

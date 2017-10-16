@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by hanshaobo on 11/10/2017.
  */
 
-public class UserBean implements Serializable{
+public class ContactBean implements Serializable{
 
     private String userid;
     private String username;

@@ -16,8 +16,11 @@ import com.first.basket.activity.SearchActivity
 import com.first.basket.activity.WebViewActivity
 import com.first.basket.adapter.MainActivity
 import com.first.basket.bean.HomeBean
+import com.first.basket.bean.ProductsBean
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
+import com.first.basket.db.ContactDao
+import com.first.basket.db.ProductDao
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
@@ -31,6 +34,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -78,12 +82,13 @@ class HomeFragment : BaseFragment() {
             startActivityForResult(intent, 0)
         }
 
-        ivSearch.onClick { startActivity(Intent(activity, SearchActivity::class.java)) }
-//        gvGoods.setOnClickListener {
-//            startActivity(Intent(activity, GoodsDetailActivity::class.java))
-//        }
+        ivSearch.onClick {
+            startActivity(Intent(activity, SearchActivity::class.java))
+        }
 
-        ivScan.onClick { startActivity(Intent(activity, MainActivity::class.java)) }
+        ivScan.onClick {
+            //            startActivity(Intent(activity, MainActivity::class.java))
+        }
 
         sqcs.setOnClickListener(myClickListener)
         qgcs.setOnClickListener(myClickListener)

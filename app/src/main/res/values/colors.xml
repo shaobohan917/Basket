@@ -7,6 +7,7 @@
     <color name="colorPrimaryDark">#263646</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="transparent">#00000000</color>
     <color name="colorText">#263646</color>
     <color name="gray33">#333333</color>
     <color name="gray66">#666666</color>

@@ -9,6 +9,13 @@
         <item name="android:windowBackground">@color/white</item>
     </style>
 
+
+    <!--启动页的theme,消除白屏-->
+    <style name="LauncherAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@mipmap/icon_launche</item>
+        <!--<item name="android:windowFullscreen">true</item>-->
+    </style>
+
     <!-- 顶部标题栏 -->
     <style name="titleView">
         <item name="android:layout_width">fill_parent</item>

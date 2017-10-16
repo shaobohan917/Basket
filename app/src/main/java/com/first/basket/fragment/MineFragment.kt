@@ -63,6 +63,10 @@ class MineFragment : BaseFragment() {
         aimvAbout.onClick {
             startActivity(Intent(activity, AboutActivity::class.java))
         }
+
+        aimvAddress.onClick {
+//            startActivity(Intent(activity, AddressListActivity::class.java))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

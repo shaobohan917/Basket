@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="浦东陆家嘴街道"
+            android:text="潍坊新村街道"
             android:textColor="@color/gray33"
             android:textSize="14sp" />
 
@@ -48,7 +48,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="浦东陆家嘴街道"
+            android:text="塘桥街道"
+            android:textColor="@color/gray33"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="东明路街道"
+            android:textColor="@color/gray33"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="洋泾街道"
+            android:textColor="@color/gray33"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="黄浦区半淞园路街道"
             android:textColor="@color/gray33"
             android:textSize="14sp" />
     </LinearLayout>

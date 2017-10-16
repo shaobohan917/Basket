@@ -54,24 +54,35 @@ interface ApiService {
     //立即下单
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun doPlaceOrder(@Field("action") action: String,@Field("productsid") productsid: String,@Field("productsNumber") productsNumber: String,@Field("userid") userid: String,@Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
+    fun doPlaceOrder(@Field("action") action: String, @Field("productsid") productsid: String, @Field("productsNumber") productsNumber: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
 
 
     //发送验证码
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getCode(@Field("action") action: String,@Field("phonenumber") phonenumber: String): Observable<HttpResult<CodeBean>>
+    fun getCode(@Field("action") action: String, @Field("phonenumber") phonenumber: String): Observable<HttpResult<CodeBean>>
 
 
-
-    //注册
+    //注册，修改密码
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun doRegister(@Field("action") action: String,@Field("phonenumber") phonenumber: String,@Field("code") code: String,@Field("password") password: String): Observable<HttpResult<LoginBean>>
+    fun doRegister(@Field("action") action: String, @Field("phonenumber") phonenumber: String, @Field("code") code: String, @Field("password") password: String): Observable<HttpResult<LoginBean>>
 
 
-    //登录，发送验证码
+    //登录
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun doLogin(@Field("action") action: String, @Field("phonenumber") phonenumber: String, @Field("code") code: String, @Field("password") password: String): Observable<HttpResult<LoginBean>>
+
+    //添加地址
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun addAddress(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<LoginBean>>
+
+    //获取街道/镇
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getSubdistrict(@Field("action") action: String, @Field("districtname") districtname: String): Observable<HttpResult<DistrictBean>>
+
+
 }

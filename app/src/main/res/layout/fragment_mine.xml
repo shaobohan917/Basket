@@ -140,6 +140,7 @@
     <include layout="@layout/layout_gap" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:id="@+id/aimvAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:accountManagerImg="@mipmap/ic_mine_address"

@@ -104,6 +104,7 @@ class RegisterActivity : BaseActivity(){
                             SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
                             SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
                             setResult(Activity.RESULT_OK)
+                            CommonMethod.hideKeyboard(etPassword)
                             Handler().postDelayed({ finish() }, 1000)
                         } else {
                             ToastUtil.showToast(this@RegisterActivity, t.info)
@@ -127,6 +128,7 @@ class RegisterActivity : BaseActivity(){
                         if (t.status == 0) {
                             ToastUtil.showToast(this@RegisterActivity, "修改成功")
                             setResult(Activity.RESULT_OK)
+                            CommonMethod.hideKeyboard(etPassword)
                             Handler().postDelayed({ finish() }, 1000)
                         } else {
                             ToastUtil.showToast(this@RegisterActivity, t.info)

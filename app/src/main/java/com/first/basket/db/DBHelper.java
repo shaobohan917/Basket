@@ -62,6 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		try {
 			db.execSQL(ProductDao.CREATE_TABLE);
+			db.execSQL(ContactDao.CREATE_TABLE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,6 +70,5 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
 	}
 }

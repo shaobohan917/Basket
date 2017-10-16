@@ -16,6 +16,7 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.constants.Constants
+import com.first.basket.db.ProductDao
 import com.first.basket.fragment.HomeFragment
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -72,6 +73,8 @@ class GoodsDetailActivity : BaseActivity() {
             tvCount.text = mCount.toString()
             LogUtils.d("count:" + mCount)
             badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+            ProductDao.getInstance(this@GoodsDetailActivity).insertOrUpdateItem(data.product)
         }
         ivCar.onClick {
             intent.putExtra("goods", data)
