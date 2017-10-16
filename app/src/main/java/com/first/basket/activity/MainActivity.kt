@@ -5,7 +5,9 @@ import android.os.Handler
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductsBean
+import com.first.basket.db.ProductDao
 import com.first.basket.fragment.*
+import com.first.basket.utils.LogUtils
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
 import java.util.*
@@ -83,6 +85,22 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+
+        test111()
+
+    }
+
+    private fun test111() {
+        var product = ProductsBean()
+        product.productid = "1"
+        product.productname = "luka"
+        product.price = "1.1"
+
+        ProductDao.getInstance(this@MainActivity).insertOrUpdateItem(product)
+
+        var list = ProductDao.getInstance(this@MainActivity).products
+        LogUtils.d("li:"+list.size)
+
 
     }
 }

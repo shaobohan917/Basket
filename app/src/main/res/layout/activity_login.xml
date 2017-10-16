@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:background="@color/colorLogin">
+        android:layout_height="51dp">
 
         <com.first.basket.view.TitleView
             android:id="@+id/titleView"
@@ -92,7 +91,6 @@
         <Button
             android:id="@+id/btLogin"
             style="@style/ButtonStyle"
-            android:layout_marginBottom="60dp"
             android:background="@color/colorLogin"
             android:text="登录" />
     </LinearLayout>

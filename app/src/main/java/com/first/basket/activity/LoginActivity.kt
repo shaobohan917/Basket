@@ -21,12 +21,17 @@ import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import android.app.ProgressDialog
+
+
 
 
 /**
  * Created by hanshaobo on 15/10/2017.
  */
 class LoginActivity : BaseActivity(), View.OnClickListener {
+    private val mProgressDialog: ProgressDialog? = null
+
     override fun onClick(p0: View?) {
 
 
@@ -55,11 +60,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
 
         tvRegister.onClick {
-            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            startActivityForResult(Intent(this@LoginActivity, RegisterActivity::class.java),101)
         }
 
         tvLoginPwd.onClick {
-            startActivity(Intent(this@LoginActivity, LoginPwdActivity::class.java))
+            startActivityForResult(Intent(this@LoginActivity, LoginPwdActivity::class.java),102)
         }
     }
 
@@ -97,15 +102,18 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        LogUtils.d(t.result.data.phone)
-                        ToastUtil.showToast(this@LoginActivity, "登陆成功")
-                        SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
+                        if(t.status==0){
+                            LogUtils.d(t.result.data.phone)
+                            ToastUtil.showToast(this@LoginActivity, "登录成功")
+                            SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
 
-                        SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
-                        SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
-                        setResult(Activity.RESULT_OK)
-                        Handler().postDelayed({ finish() }, 1000)
-
+                            SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
+                            SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
+                            setResult(Activity.RESULT_OK)
+                            Handler().postDelayed({ finish() }, 1000)
+                        }else{
+                            ToastUtil.showToast(this@LoginActivity, t.info)
+                        }
                     }
 
                     override fun onError(e: Throwable) {
@@ -150,5 +158,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun countDownComplete() {
         setButtonStatus(true)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode==Activity.RESULT_OK&&(requestCode==101||requestCode==102)){
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
     }
 }

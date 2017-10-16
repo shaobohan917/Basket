@@ -10,6 +10,7 @@
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:titleBackground="@color/colorLogin"
         app:titleColor="@color/white"
         app:titleText="注册" />
 
@@ -77,11 +78,14 @@
 
         <include layout="@layout/layout_line" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp" />
 
         <Button
             android:id="@+id/btLogin"
             style="@style/ButtonStyle"
-            android:layout_marginBottom="60dp"
             android:background="@color/colorLogin"
             android:text="注册" />
     </LinearLayout>

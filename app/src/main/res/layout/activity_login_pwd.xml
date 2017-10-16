@@ -6,29 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.first.basket.view.TitleView
+        android:id="@+id/titleView"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:background="@color/colorLogin">
-
-        <com.first.basket.view.TitleView
-            android:id="@+id/titleView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleColor="@color/white"
-            app:titleText="密码登录" />
-
-        <TextView
-            android:id="@+id/tvLoginPwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:gravity="center_vertical"
-            android:text="密码登录"
-            android:textColor="@color/white" />
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        app:titleBackground="@color/colorLogin"
+        app:titleColor="@color/white"
+        app:titleText="密码登录" />
 
 
     <LinearLayout
@@ -55,11 +39,6 @@
                 android:background="@null"
                 android:inputType="numberDecimal"
                 android:maxLength="11" />
-
-            <Button
-                android:id="@+id/btSendCode"
-                style="@style/SendCodeButtonStyle"
-                android:gravity="center" />
         </RelativeLayout>
 
         <include layout="@layout/layout_line" />
@@ -79,10 +58,14 @@
 
         <include layout="@layout/layout_line" />
 
+        <TextView
+            android:layout_marginBottom="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/btLogin"
             style="@style/ButtonStyle"
-            android:layout_marginBottom="60dp"
             android:background="@color/colorLogin"
             android:text="登录" />
     </LinearLayout>

@@ -272,8 +272,7 @@
                     android:layout_height="145dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/ic_logo_about" />
+                    android:scaleType="fitXY"/>
 
                 <TextView
                     android:id="@+id/tvHLTG"

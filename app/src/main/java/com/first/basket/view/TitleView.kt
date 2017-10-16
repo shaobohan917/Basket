@@ -12,16 +12,20 @@ import com.first.basket.R
 /**
  * Created by hanshaobo on 02/09/2017.
  */
-class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener {
+class TitleView : FrameLayout, View.OnClickListener {
 
     private lateinit var mTitleText: String
     private var mTitleColor: Int = 0
     private var mTitleBackgroundColor = 0
 
     private lateinit var tvTitle: TextView
-    private lateinit var rlRoot: RelativeLayout
+    private lateinit var rlyt_title: RelativeLayout
 
-    constructor(context: Context?, attrs: AttributeSet) : this(context) {
+    constructor(context: Context?) : this(context, null)
+
+    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         var typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.TitleView)
         for (i in 0..typedArray.indexCount) {
             var attr = typedArray.getIndex(i)
@@ -29,9 +33,9 @@ class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener 
                 R.styleable.TitleView_titleText ->
                     mTitleText = typedArray.getString(attr)
                 R.styleable.TitleView_titleBackground ->
-                    mTitleBackgroundColor = typedArray.getColor(attr, 0)
-//                R.styleable.TitleView_titleColor ->
-//                    mTitleColor = typedArray.getColor(attr, defStyleAttr)
+                    mTitleBackgroundColor = typedArray.getColor(attr, context.resources.getColor(R.color.white))
+                R.styleable.TitleView_titleColor ->
+                    mTitleColor = typedArray.getColor(attr, context.resources.getColor(R.color.gray33))
             }
         }
         typedArray.recycle()
@@ -42,14 +46,19 @@ class TitleView(context: Context?) : FrameLayout(context), View.OnClickListener 
 
     private fun initView() {
         tvTitle = findViewById(R.id.tvTitle)
-        rlRoot = findViewById(R.id.rlRoot)
+        rlyt_title = findViewById(R.id.rlyt_title)
         tvTitle.text = mTitleText
-        rlRoot.setBackgroundColor(mTitleBackgroundColor)
+        tvTitle.setTextColor(mTitleColor)
+        rlyt_title.setBackgroundColor(mTitleBackgroundColor)
 
     }
 
     override fun onClick(p0: View?) {
 
 
+    }
+
+    fun setTitle(string: String) {
+        tvTitle.text = string
     }
 }

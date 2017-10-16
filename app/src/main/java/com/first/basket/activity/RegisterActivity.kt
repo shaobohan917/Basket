@@ -3,6 +3,7 @@ package com.first.basket.activity
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils
 import android.view.View
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
@@ -17,18 +18,13 @@ import com.first.basket.http.TransformUtils
 import com.first.basket.utils.*
 import com.first.basket.view.TitleView
 import kotlinx.android.synthetic.main.activity_register.*
+import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by hanshaobo on 15/10/2017.
  */
-class RegisterActivity : BaseActivity(), View.OnClickListener {
-    override fun onClick(p0: View?) {
-
-
-    }
-
-    private lateinit var titleView: TitleView
+class RegisterActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +34,23 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         initListener()
 
     }
+
+    private fun initView() {
+        var titleView = findViewById<TitleView>(R.id.titleView)
+        var title = intent.getStringExtra("title")
+        if (TextUtils.isEmpty(title)) {
+            titleView.setTitle("注册")
+            btLogin.text = "注册"
+        } else {
+            titleView.setTitle("修改密码")
+            btLogin.text = "修改密码"
+        }
+    }
+
+    private fun initData() {
+
+    }
+
 
     private fun initListener() {
         btSendCode.onClick {
@@ -49,17 +62,13 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
         }
 
         btLogin.onClick {
-            doRegister(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etCode.text.toString()))
+            if (TextUtils.isEmpty(title)) {
+                doRegister(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
+            } else {
+
+                changePassword(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
+            }
         }
-    }
-
-    private fun initData() {
-
-    }
-
-    private fun initView() {
-//        titleView = findViewById(R.id.titleView)
-//        titleView.setBackgroundColor(resources.getColor(R.color.colorLogin))
     }
 
 
@@ -87,15 +96,41 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        LogUtils.d("注册成功" + t.result.data.phone)
-                        ToastUtil.showToast(this@RegisterActivity, "注册成功")
-                        SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
+                        if (t.status == 0) {
+                            LogUtils.d("注册成功" + t.result.data.phone)
+                            ToastUtil.showToast(this@RegisterActivity, "注册成功")
+                            SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
 
-                        SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
-                        SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
-                        setResult(Activity.RESULT_OK)
-                        Handler().postDelayed({ finish() }, 1000)
+                            SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
+                            SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
+                            setResult(Activity.RESULT_OK)
+                            Handler().postDelayed({ finish() }, 1000)
+                        } else {
+                            ToastUtil.showToast(this@RegisterActivity, t.info)
+                        }
+                    }
 
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        ToastUtil.showToast(this@RegisterActivity, e.message.toString())
+                    }
+                })
+    }
+
+    private fun changePassword(phonenumber: String, code: String, password: String) {
+        HttpMethods.createService()
+                .doRegister("do_changepassword", phonenumber, code, password)
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
+                    override fun onNext(t: HttpResult<LoginBean>) {
+                        super.onNext(t)
+                        if (t.status == 0) {
+                            ToastUtil.showToast(this@RegisterActivity, "修改成功")
+                            setResult(Activity.RESULT_OK)
+                            Handler().postDelayed({ finish() }, 1000)
+                        } else {
+                            ToastUtil.showToast(this@RegisterActivity, t.info)
+                        }
                     }
 
                     override fun onError(e: Throwable) {
@@ -129,7 +164,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
             btSendCode.setTextColor(resources.getColor(R.color.white))
             btSendCode.isClickable = true
             btSendCode.text = "获取验证码"
-            btSendCode.setOnClickListener(this)
         } else {
             btSendCode.background = resources.getDrawable(R.color.text_bg)
             btSendCode.setTextColor(resources.getColor(R.color.gray99))

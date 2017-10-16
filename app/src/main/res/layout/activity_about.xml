@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         app:titleText="关于我们" />
 
-    <include layout="@layout/layout_gap" />
+    <include layout="@layout/layout_line" />
 
     <ScrollView
         android:layout_width="match_parent"

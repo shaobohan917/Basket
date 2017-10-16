@@ -14,10 +14,7 @@ import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.CountDownUtil
-import com.first.basket.utils.LogUtils
-import com.first.basket.utils.SPUtil
-import com.first.basket.utils.ToastUtil
+import com.first.basket.utils.*
 import com.first.basket.view.TitleView
 import kotlinx.android.synthetic.main.activity_login_pwd.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -31,28 +28,18 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    private lateinit var titleView: TitleView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_pwd)
-        initView()
         initData()
         initListener()
 
     }
 
     private fun initListener() {
-        btSendCode.onClick {
-            if (!CommonMethod.isMobileNO(etPhone.getText().toString())) {
-                ToastUtil.showToast(this@LoginPwdActivity, "请输入正确的手机号")
-                return@onClick
-            }
-            getLoginVerifyCode(etPhone.getText().toString())
-        }
 
         btLogin.onClick {
-            doLogin(etPhone.text.toString(), etPassword.text.toString(), "")
+            doLogin(etPhone.text.toString(), "", Md5Util.getMd5Value(etPassword.text.toString()))
         }
     }
 
@@ -60,28 +47,6 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    private fun initView() {
-//        titleView = findViewById(R.id.titleView)
-//        titleView.setBackgroundColor(resources.getColor(R.color.colorLogin))
-    }
-
-
-    private fun getLoginVerifyCode(phonenumber: String) {
-
-        HttpMethods.createService()
-                .getCode("get_code", phonenumber)
-                .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<HttpResult<CodeBean>>() {
-                    override fun onNext(t: HttpResult<CodeBean>) {
-                        super.onNext(t)
-                        countDown()
-                    }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                    }
-                })
-    }
 
     private fun doLogin(phonenumber: String, code: String, password: String) {
         HttpMethods.createService()
@@ -90,15 +55,18 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        LogUtils.d(t.result.data.phone)
-                        ToastUtil.showToast(this@LoginPwdActivity, "登陆成功")
-                        SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
+                        if(t.status==0){
+                            LogUtils.d(t.result.data.phone)
+                            ToastUtil.showToast(this@LoginPwdActivity, "登录成功")
+                            SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
 
-                        SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
-                        SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
-                        setResult(Activity.RESULT_OK)
-                        Handler().postDelayed({ finish() }, 1000)
-
+                            SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
+                            SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
+                            setResult(Activity.RESULT_OK)
+                            Handler().postDelayed({ finish() }, 1000)
+                        }else{
+                            ToastUtil.showToast(this@LoginPwdActivity, t.info)
+                        }
                     }
 
                     override fun onError(e: Throwable) {
@@ -106,42 +74,5 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                         ToastUtil.showToast(this@LoginPwdActivity, e.message.toString())
                     }
                 })
-    }
-
-    private fun countDown() {
-        setButtonStatus(false)
-        CountDownUtil.countDown(120, object : CountDownUtil.onCountDownListener {
-            override fun onCountDownNext(integer: Int?) {
-                btSendCode.text = integer.toString() + "秒后重新发送"
-            }
-
-            override fun onCountDownError(e: Throwable?) {
-
-            }
-
-            override fun onCountDownComplete() {
-                countDownComplete()
-            }
-//            }
-        })
-    }
-
-    private fun setButtonStatus(isComplete: Boolean) {
-        if (isComplete) {
-            btSendCode.background = resources.getDrawable(R.color.colorLogin)
-            btSendCode.setTextColor(resources.getColor(R.color.white))
-            btSendCode.isClickable = true
-            btSendCode.text = "获取验证码"
-            btSendCode.setOnClickListener(this)
-        } else {
-            btSendCode.background = resources.getDrawable(R.color.text_bg)
-            btSendCode.setTextColor(resources.getColor(R.color.gray99))
-            btSendCode.isClickable = false
-            btSendCode.setOnClickListener(null)
-        }
-    }
-
-    private fun countDownComplete() {
-        setButtonStatus(true)
     }
 }

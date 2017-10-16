@@ -5,7 +5,7 @@ package com.first.basket.base;
  */
 
 public class HttpResult<T> {
-    private int status;
-    private String info;
+    public int status;
+    public String info;
     public T result;
 }
