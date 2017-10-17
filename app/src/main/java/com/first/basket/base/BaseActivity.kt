@@ -5,6 +5,8 @@ import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import com.amap.api.location.AMapLocationClient
+import com.amap.api.location.AMapLocationClientOption
 import com.first.basket.rxjava.RxjavaUtil
 import com.first.basket.rxjava.UITask
 
@@ -13,6 +15,9 @@ import com.first.basket.rxjava.UITask
  */
 open class BaseActivity : AppCompatActivity() {
 
+    val REQUEST_ONE = 101
+    val REQUEST_TWO = 102
+    val REQUEST_SPE = 100
 
     private lateinit var mProgressDialog: ProgressDialog
 
@@ -71,4 +76,21 @@ open class BaseActivity : AppCompatActivity() {
         startActivity(intent)
         if (needFinish) this.finish()
     }
+
+    fun myStartActivityForResult(cls: Class<*>, requestCode: Int) {
+        val intent = Intent(this, cls)
+        startActivityForResult(intent, requestCode)
+    }
+
+    fun myStartActivityForResult(intent: Intent, requestCode: Int) {
+        startActivityForResult(intent, requestCode)
+    }
+
+    fun myFinish() {
+        finish()
+    }
+
+
+
+
 }

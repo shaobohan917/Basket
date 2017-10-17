@@ -33,7 +33,7 @@
                 android:text="联系人" />
 
             <EditText
-                android:id="@+id/etContact"
+                android:id="@+id/etName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

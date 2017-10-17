@@ -51,6 +51,8 @@ public class ProductDao {
 
 
     public synchronized void insertOrUpdateItem(ProductsBean productsBean) {
+        String productid = productsBean.getProductid();
+
         SQLiteDatabase db;
         Cursor cursor = null;
         try {

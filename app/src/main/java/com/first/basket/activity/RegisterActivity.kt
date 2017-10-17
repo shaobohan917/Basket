@@ -4,7 +4,6 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
-import android.view.View
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
@@ -18,7 +17,6 @@ import com.first.basket.http.TransformUtils
 import com.first.basket.utils.*
 import com.first.basket.view.TitleView
 import kotlinx.android.synthetic.main.activity_register.*
-import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
@@ -162,7 +160,7 @@ class RegisterActivity : BaseActivity(){
 
     private fun setButtonStatus(isComplete: Boolean) {
         if (isComplete) {
-            btSendCode.background = resources.getDrawable(R.color.colorLogin)
+            btSendCode.background = resources.getDrawable(R.color.colorMain)
             btSendCode.setTextColor(resources.getColor(R.color.white))
             btSendCode.isClickable = true
             btSendCode.text = "获取验证码"

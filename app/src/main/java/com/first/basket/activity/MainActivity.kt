@@ -19,10 +19,16 @@ import com.first.basket.common.StaticValue
 import com.first.basket.utils.SPUtil
 import com.first.basket.common.CommonMethod.hideKeyboard
 import android.view.KeyEvent.KEYCODE_BACK
+import com.amap.api.location.AMapLocation
+import com.amap.api.location.AMapLocationClient
+import com.amap.api.location.AMapLocationClientOption
+import com.amap.api.location.AMapLocationListener
 import com.first.basket.utils.ToastUtil
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), AMapLocationListener {
+
+
     private lateinit var bottomBar: BottomBar
     private var baseFragment = BaseFragment()
     private var fragmentList = ArrayList<BaseFragment>()
@@ -94,6 +100,7 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+        location()
     }
 
     private var exitTime: Long = 0
@@ -113,5 +120,33 @@ class MainActivity : BaseActivity() {
         }
         return super.onKeyDown(keyCode, event)
 
+    }
+
+
+    lateinit var mLocationClient: AMapLocationClient
+    private fun location() {
+        mLocationClient = AMapLocationClient(applicationContext)
+        mLocationClient.setLocationListener(this)
+
+        var mLocationOption = AMapLocationClientOption()
+        mLocationOption.locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
+        mLocationOption.isNeedAddress = true
+        mLocationOption.isOnceLocation = false
+        mLocationOption.isWifiActiveScan = true
+        mLocationOption.isMockEnable = false
+        mLocationOption.interval = 2000
+        mLocationClient.setLocationOption(mLocationOption)
+
+        mLocationClient.startLocation()
+    }
+
+    private lateinit var aoiName: String
+
+    override fun onLocationChanged(aMapLocation: AMapLocation) {
+        if (aMapLocation.errorCode == 0) {
+            aoiName = aMapLocation.aoiName
+            (fragmentList[0] as HomeFragment).setLocation(aoiName)
+
+        }
     }
 }

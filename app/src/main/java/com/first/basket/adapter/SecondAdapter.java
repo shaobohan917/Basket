@@ -1,7 +1,6 @@
 package com.first.basket.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 
 import com.first.basket.R;
 import com.first.basket.bean.ClassifyBean;
-import com.first.basket.utils.LogUtils;
 
 import java.util.List;
 
@@ -62,7 +60,7 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.MyViewHold
 
         //更改状态
         if(position == layoutPosition){
-            holder.tvSecondLevel.setBackgroundColor(context.getResources().getColor(R.color.colorLogin));
+            holder.tvSecondLevel.setBackgroundColor(context.getResources().getColor(R.color.colorMain));
             holder.tvSecondLevel.setTextColor(context.getResources().getColor(R.color.white));
         }else{
             holder.tvSecondLevel.setBackgroundColor(context.getResources().getColor(R.color.grayF8));

@@ -144,7 +144,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun setButtonStatus(isComplete: Boolean) {
         if (isComplete) {
-            btSendCode.background = resources.getDrawable(R.color.colorLogin)
+            btSendCode.background = resources.getDrawable(R.color.colorMain)
             btSendCode.setTextColor(resources.getColor(R.color.white))
             btSendCode.isClickable = true
             btSendCode.text = "获取验证码"

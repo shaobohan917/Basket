@@ -7,6 +7,7 @@ import android.os.Handler;
 import com.first.basket.R;
 import com.first.basket.bean.ProductsBean;
 import com.first.basket.utils.SPUtil;
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +41,7 @@ public class BaseApplication extends Application {
 
         //初始化sp
         SPUtil.init(this);
-        CrashReport.initCrashReport(getApplicationContext(), getString(R.string.bugly), true);
+        Bugly.init(getApplicationContext(), getString(R.string.bugly), true);
     }
 
     public static BaseApplication getInstance() {

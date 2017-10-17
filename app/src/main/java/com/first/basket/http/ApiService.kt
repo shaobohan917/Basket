@@ -79,10 +79,30 @@ interface ApiService {
     @POST("ClintAPI.php")
     fun addAddress(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<LoginBean>>
 
+    //修改地址
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun ModifyAddress(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<LoginBean>>
+
     //获取街道/镇
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun getSubdistrict(@Field("action") action: String, @Field("districtname") districtname: String): Observable<HttpResult<DistrictBean>>
+
+    //获取地址列表
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun getAddressList(@Field("action") action: String, @Field("userid") userid: String): Observable<HttpResult<AddressListBean>>
+
+    //设置默认地址
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun doDefaultAddress(@Field("action") action: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
+
+    //删除地址
+    @FormUrlEncoded
+    @POST("ClintAPI.php")
+    fun doDeleteAddress(@Field("action") action: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
 
 
 }

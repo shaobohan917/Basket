@@ -616,4 +616,10 @@ public class CommonMethod {
             return true;
         }
     }
+
+    public static boolean isTrue(String str) {
+        return str.toLowerCase().equals("y");
+    }
+
+
 }

@@ -13,6 +13,8 @@ import com.amap.api.maps2d.model.LatLng
 import com.first.basket.base.BaseActivity
 import com.first.basket.R
 import com.first.basket.bean.MapBean
+import com.first.basket.common.StaticValue
+import com.first.basket.utils.SPUtil
 
 
 /**
@@ -88,6 +90,7 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener 
 
         tvAddress = findViewById<TextView>(R.id.tvAddress)
         tvAddress.setOnClickListener {
+            SPUtil.setString(StaticValue.SP_ADDRESS, aoiName)
             intent.putExtra("aoiName", aoiName)
             intent.putExtra("mapBean", mapBean)
             setResult(Activity.RESULT_OK, intent)

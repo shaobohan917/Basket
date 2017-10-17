@@ -8,7 +8,7 @@ import rx.Subscriber
  */
 
 open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
-//    private var t: T? = null
+    private var t: T? = null
 
 
     override fun onCompleted() {
@@ -18,6 +18,7 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
     }
 
     override fun onNext(t: T) {
+        this.t = t
     }
 
 //    override fun onNext(tHttpResult: HttpResult<T>) {
@@ -27,6 +28,13 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
 //            this.t = tHttpResult.result
 //            _onError(tHttpResult.status, Throwable(tHttpResult.info), tHttpResult.result)
 //        }
+//    }
+
+//    fun onSuccess(){
+//        if(t.){
+//
+//        }
+//
 //    }
 }
 

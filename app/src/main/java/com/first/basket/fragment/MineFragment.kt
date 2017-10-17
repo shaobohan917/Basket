@@ -65,7 +65,7 @@ class MineFragment : BaseFragment() {
         }
 
         aimvAddress.onClick {
-//            startActivity(Intent(activity, AddressListActivity::class.java))
+            startActivity(Intent(activity, AddressListActivity::class.java))
         }
     }
 

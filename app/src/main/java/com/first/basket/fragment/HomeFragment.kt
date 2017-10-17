@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.first.basket.activity.ClassifyActivity
 import com.first.basket.activity.SearchActivity
 import com.first.basket.activity.WebViewActivity
 import com.first.basket.adapter.MainActivity
+import com.first.basket.base.BaseActivity
 import com.first.basket.bean.HomeBean
 import com.first.basket.bean.ProductsBean
 import com.first.basket.common.StaticValue
@@ -79,7 +81,7 @@ class HomeFragment : BaseFragment() {
 
         llPosition.setOnClickListener {
             val intent = Intent(activity, AddressInfoActivity::class.java)
-            startActivityForResult(intent, 0)
+            startActivityForResult(intent, (activity as BaseActivity).REQUEST_ONE)
         }
 
         ivSearch.onClick {
@@ -116,9 +118,11 @@ class HomeFragment : BaseFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val aoi = data?.extras?.get("aoiName")
-        tvAddress.text = aoi.toString()
-
+        if (resultCode == Activity.RESULT_OK && requestCode == (activity as BaseActivity).REQUEST_ONE) {
+//            val adds = data!!.getStringExtra("adds")
+            val adds = SPUtil.getString(StaticValue.SP_ADDRESS, "")
+            tvAddress.text = adds
+        }
     }
 
 
@@ -189,5 +193,9 @@ class HomeFragment : BaseFragment() {
         ivQGCS.setOnClickListener(onIvClickListener)
         ivJKSS.setOnClickListener(onIvClickListener)
 
+    }
+
+    fun setLocation(aoiName: String?) {
+        tvAddress.text = aoiName
     }
 }

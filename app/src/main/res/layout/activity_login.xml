@@ -14,7 +14,7 @@
             android:id="@+id/titleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleBackground="@color/colorLogin"
+            app:titleBackground="@color/colorMain"
             app:titleColor="@color/white"
             app:titleText="登录" />
 
@@ -91,7 +91,7 @@
         <Button
             android:id="@+id/btLogin"
             style="@style/ButtonStyle"
-            android:background="@color/colorLogin"
+            android:background="@color/colorMain"
             android:text="登录" />
     </LinearLayout>
 
