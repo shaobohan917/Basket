@@ -50,21 +50,23 @@ open class BaseActivity : AppCompatActivity() {
     fun showProgressDialog(message: String) {
         RxjavaUtil.doInUIThread(object : UITask<Any>() {
             override fun doInUIThread() {
-                if (mProgressDialog == null) {
-                    mProgressDialog = ProgressDialog(this@BaseActivity)
-                    mProgressDialog.setCanceledOnTouchOutside(false)
-                }
+                mProgressDialog = ProgressDialog(this@BaseActivity)
+                mProgressDialog.setCanceledOnTouchOutside(false)
                 mProgressDialog.setMessage(message)
                 mProgressDialog.show()
             }
         })
     }
 
+    fun showProgressDialog() {
+        showProgressDialog("加载中...")
+    }
+
 
     fun hideProgress() {
         RxjavaUtil.doInUIThread(object : UITask<Any>() {
             override fun doInUIThread() {
-                if (mProgressDialog != null && mProgressDialog.isShowing) {
+                if (mProgressDialog.isShowing) {
                     mProgressDialog.hide()
                 }
             }
@@ -94,8 +96,6 @@ open class BaseActivity : AppCompatActivity() {
     fun myFinish() {
         finish()
     }
-
-
 
 
 }

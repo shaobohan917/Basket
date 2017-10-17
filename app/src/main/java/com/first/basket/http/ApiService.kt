@@ -34,16 +34,17 @@ interface ApiService {
     //热门推荐
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getHotRecommend(@Field("action") action: String): Observable<HotRecommendBean>
+    fun getHotRecommend(@Field("action") action: String,@Field("channel") channel: String): Observable<HotRecommendBean>
 
     //获取订单列表
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun getOrderList(@Field("action") action: String, @Field("userid") userid: String): Observable<OrderListBean>
 
+    //首页
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getHome(@Field("action") action: String): Observable<HomeBean>
+    fun getMainpage(@Field("action") action: String): Observable<HttpResult<HomeBean>>
 
     //计算商品价格
     @FormUrlEncoded

@@ -25,11 +25,12 @@ import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
-import com.first.basket.constants.Constants
+import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_content.*
 import java.util.*
@@ -38,8 +39,8 @@ import java.util.*
 /**
  * Created by hanshaobo on 17/09/2017.
  */
-class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
-
+class RecommendFragment(activity: MainActivity, data: ClassifyBean.DataBean) : BaseFragment() {
+    private var activity = activity
     private lateinit var mContentAdapter: ContentAdapter
 
     private var mContentDatas = ArrayList<ProductBean>()
@@ -66,10 +67,6 @@ class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
     private fun initListener() {
         contentRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-            }
 
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -106,7 +103,6 @@ class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
             } else {
                 goodsMap.put(data, 1)
             }
-//            (activity as MainActivity).mGoodsMap = goodsMap
             BaseApplication.getInstance().mGoodsMap = goodsMap
             (activity as MainActivity).setCountAdd()
         }
@@ -188,61 +184,24 @@ class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
         valueAnimator.start()
     }
 
-
-    /**
-     * 获取商品列表
-     */
-    private fun getProduct(leveltwoId: String) {
-
-        val type = SPUtil.getData(activity, Constants.HOME_CLASSIFY, 1) as Int
-        HttpMethods.createService().getProducts("get_products", type.toString(), leveltwoId)
-                .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<ClassifyContentBean>() {
-                    override fun onCompleted() {
-                    }
-
-                    override fun onError(e: Throwable) {
-                    }
-
-                    override fun onNext(t: ClassifyContentBean) {
-                        mContentDatas.clear()
-                        val dataBean = t.result.data
-
-                        for (i in 0 until dataBean.size) {
-                            mContentDatas.add(dataBean[i])
-                        }
-                        mContentAdapter.notifyDataSetChanged()
-                    }
-                })
-    }
-
-    fun setContentData(position: Int, dataBean: ClassifyBean.DataBean) {
-        if (position != 0) {
-//            getProduct(dataBean.leveltwo[0].leveltwoid)
-
-            var leveltwobean = ClassifyBean.DataBean.LeveltwoBean()
-            leveltwobean.leveltwodesc = "全部"
-            leveltwobean.leveltwoid = "000"
-
-        }else{
-
-        }
-    }
-
     fun getHotRecommend() {
+        LogUtils.d(activity.mChannel.toString()+".get")
         HttpMethods.createService()
-                .getHotRecommend("get_hotrecommend")
+                .getHotRecommend("get_hotrecommend", activity.mChannel.toString())
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
                     override fun onNext(t: HotRecommendBean) {
                         super.onNext(t)
                         setRecommendData(t.result.data)
+                        activity.hideProgress()
                     }
                 })
     }
 
 
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
+        mContentDatas.clear()
+        mContentAdapter = ContentAdapter(activity,mContentDatas)
         ivHot.visibility = View.VISIBLE
         ImageUtils.showImg(activity, data.hotimage, ivHot)
         mContentDatas.addAll(data.products)

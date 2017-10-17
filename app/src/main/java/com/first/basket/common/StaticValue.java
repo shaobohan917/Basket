@@ -1,5 +1,7 @@
 package com.first.basket.common;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Created by hanshaobo on 2016/10/17.
  */
@@ -53,5 +55,7 @@ public class StaticValue {
     public static final String USER_NAME = "user_name";
     public static final String USER_ADDRESS = "user_address";
     public static final String USER_PHONE = "user_phone";
+
+//    public static final String CHANNEL = "channel";
 }
 

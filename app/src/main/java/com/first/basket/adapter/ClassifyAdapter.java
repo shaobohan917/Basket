@@ -69,7 +69,6 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
             holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.text_bg));
         }
     }
-
     @Override
     public long getItemId(int position) {
         return position;

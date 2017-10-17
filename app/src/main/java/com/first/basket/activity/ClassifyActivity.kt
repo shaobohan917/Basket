@@ -16,10 +16,10 @@ class ClassifyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_classify)
 
-        channel = intent.getStringExtra("channel")
+        channel = intent.getStringExtra("mChannel")
         var classifyFragment = ClassifyFragment()
         var bundle = Bundle()
-        bundle.putString("channel", channel)
+        bundle.putString("mChannel", channel)
         classifyFragment.arguments = bundle
         var transaction = supportFragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).add(R.id.fragmentContainer, classifyFragment).commit()

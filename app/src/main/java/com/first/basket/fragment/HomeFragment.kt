@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,11 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.AddressInfoActivity
+import com.first.basket.activity.MainActivity
 import com.first.basket.activity.SearchActivity
 import com.first.basket.activity.WebViewActivity
 import com.first.basket.base.BaseActivity
+import com.first.basket.base.HttpResult
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
@@ -38,6 +41,9 @@ import kotlin.collections.ArrayList
 class HomeFragment : BaseFragment() {
     private var images = ArrayList<String>()
     private var images1 = ArrayList<String>()
+    private lateinit var recommendData: HomeBean.DataBean
+
+    private lateinit var myClickListener: MyClickListener
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,25 +58,24 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initView() {
-        tvAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, "  "))
+        tvAddress.text = SPUtil.getString(StaticValue.SP_ADDRESS, "  ")
     }
 
     private fun initData() {
 
-        class Sub : HttpResultSubscriber<HomeBean>() {
-            override fun onNext(t: HomeBean) {
-                super.onNext(t)
-                setData(t.result!!.data!!)
-            }
-        }
-
-        HttpMethods.createService().getHome("get_mainpage")
+        HttpMethods.createService().getMainpage("get_mainpage")
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(Sub())
+                .subscribe(object : HttpResultSubscriber<HttpResult<HomeBean>>() {
+                    override fun onNext(t: HttpResult<HomeBean>) {
+                        super.onNext(t)
+                        setData(t.result.data)
+                    }
+                })
     }
 
+
     private fun initListener() {
-        var myClickListener = MyClickListener()
+        myClickListener = MyClickListener()
 
         llPosition.setOnClickListener {
             val intent = Intent(activity, AddressInfoActivity::class.java)
@@ -88,25 +93,37 @@ class HomeFragment : BaseFragment() {
         sqcs.setOnClickListener(myClickListener)
         qgcs.setOnClickListener(myClickListener)
         shcs.setOnClickListener(myClickListener)
+        hltg.setOnClickListener(myClickListener)
+        jkss.setOnClickListener(myClickListener)
     }
 
     inner class MyClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             when (view.id) {
-                R.id.sqcs -> goClassify(1)
-                R.id.shcs -> goClassify(2)
-                R.id.qgcs -> goClassify(3)
+                R.id.sqcs -> {
+                    goClassify(1)
+                }
+                R.id.shcs, R.id.ivSHCS -> goClassify(2)
+                R.id.qgcs, R.id.ivQGCS -> goClassify(3)
+                R.id.hltg, R.id.ivHLTG -> {
+                    val intent = Intent(activity, WebViewActivity::class.java)
+                    intent.putExtra("url", recommendData.hltg.url)
+                    startActivity(intent)
+                }
+                R.id.jkss, R.id.ivJKSS -> {
+                    val intent = Intent(activity, WebViewActivity::class.java)
+                    intent.putExtra("url", recommendData.jkss.url)
+                    startActivity(intent)
+                }
             }
         }
+    }
 
-        private fun goClassify(channel: Int) {
-//            var intent = Intent(activity, ClassifyActivity::class.java)
-//            intent.putExtra("channel", channel)
-//            startActivity(intent)
 
-            SPUtil.setData(activity, Constants.HOME_CLASSIFY, channel)
-            activity.bottombar.selectTabAtPosition(1)
-        }
+    private fun goClassify(channel: Int) {
+        (activity as MainActivity).mChannel = channel
+//        SPUtil.setInt(StaticValue.CHANNEL, channel)
+        activity.bottombar.selectTabAtPosition(1)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -126,7 +143,7 @@ class HomeFragment : BaseFragment() {
     }
 
 
-    private fun setData(data: HomeBean.ResultBean.DataBean) {
+    private fun setData(data: HomeBean.DataBean) {
         //设置banner
         (0 until data.carouselfigure.size)
                 .map { Constants.BASE_IMG_URL + data.carouselfigure[it].image }
@@ -137,6 +154,13 @@ class HomeFragment : BaseFragment() {
                 .setDelayTime(5000)
                 .setIndicatorGravity(BannerConfig.RIGHT)
                 .start()
+        banner.setOnBannerListener {
+            if (!TextUtils.isEmpty(data.carouselfigure[0].url)) {
+                var intent = Intent(activity, WebViewActivity::class.java)
+                intent.putExtra("url", data.carouselfigure[0].url)
+                startActivity(intent)
+            }
+        }
 
         //设置垂直轮播
         for (i in 0 until data.sqcs.carouselfigure.size) {
@@ -149,9 +173,11 @@ class HomeFragment : BaseFragment() {
                 Glide.with(view.context)
                         .load(data)
                         .into(view)
+                view.onClick {
+                    goClassify(1)
+                }
             }
         }).setOrientation(cn.ymex.banner.Banner.VERTICAL).execute(images1)
-
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)
@@ -160,32 +186,18 @@ class HomeFragment : BaseFragment() {
         setRecommendData(data)
     }
 
-    private fun setRecommendData(data: HomeBean.ResultBean.DataBean) {
+
+    private fun setRecommendData(data: HomeBean.DataBean) {
+        this.recommendData = data
         ImageUtils.showImg(activity, data.hltg.image, ivHLTG)
         ImageUtils.showImg(activity, data.shcs.image, ivSHCS)
         ImageUtils.showImg(activity, data.qgcs.image, ivQGCS)
         ImageUtils.showImg(activity, data.jkss.image, ivJKSS)
 
-        class OnIvClickListener : View.OnClickListener {
-            var url = ""
-            override fun onClick(view: View) {
-                when (view.id) {
-                    R.id.ivSHCS -> url = data.shcs.url
-                    R.id.ivHLTG -> url = data.hltg.url
-                    R.id.ivQGCS -> url = data.qgcs.url
-                    R.id.ivJKSS -> url = data.jkss.url
-                }
-                var intent = Intent(activity, WebViewActivity::class.java)
-                intent.putExtra("url", url)
-//                startActivity(intent)
-            }
-        }
-
-        var onIvClickListener = OnIvClickListener()
-        ivSHCS.setOnClickListener(onIvClickListener)
-        ivHLTG.setOnClickListener(onIvClickListener)
-        ivQGCS.setOnClickListener(onIvClickListener)
-        ivJKSS.setOnClickListener(onIvClickListener)
+        ivSHCS.setOnClickListener(myClickListener)
+        ivHLTG.setOnClickListener(myClickListener)
+        ivQGCS.setOnClickListener(myClickListener)
+        ivJKSS.setOnClickListener(myClickListener)
 
     }
 

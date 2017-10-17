@@ -55,14 +55,14 @@ class GoodsDetailActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().mGoodsMap.size
+//        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().mGoodsMap.size
         LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
 
 
     }
 
     private fun initView() {
-        badgeView = QBadgeView(this@GoodsDetailActivity)
+//        badgeView = QBadgeView(this@GoodsDetailActivity)
     }
 
     private fun initListener() {
@@ -70,7 +70,7 @@ class GoodsDetailActivity : BaseActivity() {
             addGoodToCar(ivGoods)
 
             tvCount.text = mCount.toString()
-            badgeView.bindTarget(tvCount).badgeNumber = mCount
+//            badgeView.bindTarget(tvCount).badgeNumber = mCount
 
             ProductDao.getInstance(this@GoodsDetailActivity).insertOrUpdateItem(data.product)
 

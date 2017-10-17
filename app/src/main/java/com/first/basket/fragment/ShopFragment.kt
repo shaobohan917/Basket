@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
+import com.first.basket.activity.MainActivity
 import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
@@ -77,7 +78,7 @@ class ShopFragment : BaseFragment(), Observer {
 
     private fun getHotRecommend() {
         HttpMethods.createService()
-                .getHotRecommend("get_hotrecommend")
+                .getHotRecommend("get_hotrecommend",(activity as MainActivity).mChannel.toString())
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
                     override fun onNext(t: HotRecommendBean) {

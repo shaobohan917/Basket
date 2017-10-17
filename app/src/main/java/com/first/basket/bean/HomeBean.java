@@ -1,334 +1,129 @@
 package com.first.basket.bean;
 
 import java.util.List;
+
 /**
  * Created by hanshaobo on 10/10/2017.
  */
 
 public class HomeBean {
     /**
-     * status : 0
-     * info : 成功
-     * result : {"data":{"Carouselfigure":[{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"},"SHCS":{"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QGCS":{"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}}
+     * data : {"Carouselfigure":[{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"},"SHCS":{"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QGCS":{"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}
      */
 
-    private int status;
-    private String info;
-    private ResultBean result;
+    private DataBean data;
 
-    public int getStatus() {
-        return status;
+    public DataBean getData() {
+        return data;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setData(DataBean data) {
+        this.data = data;
     }
 
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public ResultBean getResult() {
-        return result;
-    }
-
-    public void setResult(ResultBean result) {
-        this.result = result;
-    }
-
-    public static class ResultBean {
+    public static class DataBean {
         /**
-         * data : {"Carouselfigure":[{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"},"SHCS":{"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QGCS":{"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}
+         * Carouselfigure : [{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}]
+         * SQCS : {"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"}
+         * SHCS : {"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""}
+         * HLTG : {"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+         * QGCS : {"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+         * JKSS : {"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
          */
 
-        private DataBean data;
+        private SQCSBean SQCS;
+        private SHCSBean SHCS;
+        private HLTGBean HLTG;
+        private QGCSBean QGCS;
+        private JKSSBean JKSS;
+        private List<CarouselfigureBeanX> Carouselfigure;
 
-        public DataBean getData() {
-            return data;
+        public SQCSBean getSQCS() {
+            return SQCS;
         }
 
-        public void setData(DataBean data) {
-            this.data = data;
+        public void setSQCS(SQCSBean SQCS) {
+            this.SQCS = SQCS;
         }
 
-        public static class DataBean {
+        public SHCSBean getSHCS() {
+            return SHCS;
+        }
+
+        public void setSHCS(SHCSBean SHCS) {
+            this.SHCS = SHCS;
+        }
+
+        public HLTGBean getHLTG() {
+            return HLTG;
+        }
+
+        public void setHLTG(HLTGBean HLTG) {
+            this.HLTG = HLTG;
+        }
+
+        public QGCSBean getQGCS() {
+            return QGCS;
+        }
+
+        public void setQGCS(QGCSBean QGCS) {
+            this.QGCS = QGCS;
+        }
+
+        public JKSSBean getJKSS() {
+            return JKSS;
+        }
+
+        public void setJKSS(JKSSBean JKSS) {
+            this.JKSS = JKSS;
+        }
+
+        public List<CarouselfigureBeanX> getCarouselfigure() {
+            return Carouselfigure;
+        }
+
+        public void setCarouselfigure(List<CarouselfigureBeanX> Carouselfigure) {
+            this.Carouselfigure = Carouselfigure;
+        }
+
+        public static class SQCSBean {
             /**
-             * Carouselfigure : [{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}]
-             * SQCS : {"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"}
-             * SHCS : {"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""}
-             * HLTG : {"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
-             * QGCS : {"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
-             * JKSS : {"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+             * Carouselfigure : [{"image":"/AppImage/SQCS_0_20171007.png","url":""}]
+             * Vegetables : /AppImage/TJvegetables_20171007.png
+             * Meat : /AppImage/TJmeat_20171007.png
              */
 
-            private SQCSBean SQCS;
-            private SHCSBean SHCS;
-            private HLTGBean HLTG;
-            private QGCSBean QGCS;
-            private JKSSBean JKSS;
-            private List<CarouselfigureBeanX> Carouselfigure;
+            private String Vegetables;
+            private String Meat;
+            private List<CarouselfigureBean> Carouselfigure;
 
-            public SQCSBean getSQCS() {
-                return SQCS;
+            public String getVegetables() {
+                return Vegetables;
             }
 
-            public void setSQCS(SQCSBean SQCS) {
-                this.SQCS = SQCS;
+            public void setVegetables(String Vegetables) {
+                this.Vegetables = Vegetables;
             }
 
-            public SHCSBean getSHCS() {
-                return SHCS;
+            public String getMeat() {
+                return Meat;
             }
 
-            public void setSHCS(SHCSBean SHCS) {
-                this.SHCS = SHCS;
+            public void setMeat(String Meat) {
+                this.Meat = Meat;
             }
 
-            public HLTGBean getHLTG() {
-                return HLTG;
-            }
-
-            public void setHLTG(HLTGBean HLTG) {
-                this.HLTG = HLTG;
-            }
-
-            public QGCSBean getQGCS() {
-                return QGCS;
-            }
-
-            public void setQGCS(QGCSBean QGCS) {
-                this.QGCS = QGCS;
-            }
-
-            public JKSSBean getJKSS() {
-                return JKSS;
-            }
-
-            public void setJKSS(JKSSBean JKSS) {
-                this.JKSS = JKSS;
-            }
-
-            public List<CarouselfigureBeanX> getCarouselfigure() {
+            public List<CarouselfigureBean> getCarouselfigure() {
                 return Carouselfigure;
             }
 
-            public void setCarouselfigure(List<CarouselfigureBeanX> Carouselfigure) {
+            public void setCarouselfigure(List<CarouselfigureBean> Carouselfigure) {
                 this.Carouselfigure = Carouselfigure;
             }
 
-            public static class SQCSBean {
+            public static class CarouselfigureBean {
                 /**
-                 * Carouselfigure : [{"image":"/AppImage/SQCS_0_20171007.png","url":""}]
-                 * Vegetables : /AppImage/TJvegetables_20171007.png
-                 * Meat : /AppImage/TJmeat_20171007.png
-                 */
-
-                private String Vegetables;
-                private String Meat;
-                private List<CarouselfigureBean> Carouselfigure;
-
-                public String getVegetables() {
-                    return Vegetables;
-                }
-
-                public void setVegetables(String Vegetables) {
-                    this.Vegetables = Vegetables;
-                }
-
-                public String getMeat() {
-                    return Meat;
-                }
-
-                public void setMeat(String Meat) {
-                    this.Meat = Meat;
-                }
-
-                public List<CarouselfigureBean> getCarouselfigure() {
-                    return Carouselfigure;
-                }
-
-                public void setCarouselfigure(List<CarouselfigureBean> Carouselfigure) {
-                    this.Carouselfigure = Carouselfigure;
-                }
-
-                public static class CarouselfigureBean {
-                    /**
-                     * image : /AppImage/SQCS_0_20171007.png
-                     * url :
-                     */
-
-                    private String image;
-                    private String url;
-
-                    public String getImage() {
-                        return image;
-                    }
-
-                    public void setImage(String image) {
-                        this.image = image;
-                    }
-
-                    public String getUrl() {
-                        return url;
-                    }
-
-                    public void setUrl(String url) {
-                        this.url = url;
-                    }
-                }
-            }
-
-            public static class SHCSBean {
-                /**
-                 * Image : /AppImage/SHCS.png
-                 * Title : 【安全食品、吃的放心】
-                 * URL :
-                 */
-
-                private String Image;
-                private String Title;
-                private String URL;
-
-                public String getImage() {
-                    return Image;
-                }
-
-                public void setImage(String Image) {
-                    this.Image = Image;
-                }
-
-                public String getTitle() {
-                    return Title;
-                }
-
-                public void setTitle(String Title) {
-                    this.Title = Title;
-                }
-
-                public String getURL() {
-                    return URL;
-                }
-
-                public void setURL(String URL) {
-                    this.URL = URL;
-                }
-            }
-
-            public static class HLTGBean {
-                /**
-                 * Image : /AppImage/HLTG.png
-                 * Title : 迎中秋，庆国庆，口福享不停
-                 * URL :
-                 */
-
-                private String Image;
-                private String Title;
-                private String URL;
-
-                public String getImage() {
-                    return Image;
-                }
-
-                public void setImage(String Image) {
-                    this.Image = Image;
-                }
-
-                public String getTitle() {
-                    return Title;
-                }
-
-                public void setTitle(String Title) {
-                    this.Title = Title;
-                }
-
-                public String getURL() {
-                    return URL;
-                }
-
-                public void setURL(String URL) {
-                    this.URL = URL;
-                }
-            }
-
-            public static class QGCSBean {
-                /**
-                 * Image : /AppImage/QGCS.png
-                 * Title : 迎中秋，庆国庆，口福享不停
-                 * URL :
-                 */
-
-                private String Image;
-                private String Title;
-                private String URL;
-
-                public String getImage() {
-                    return Image;
-                }
-
-                public void setImage(String Image) {
-                    this.Image = Image;
-                }
-
-                public String getTitle() {
-                    return Title;
-                }
-
-                public void setTitle(String Title) {
-                    this.Title = Title;
-                }
-
-                public String getURL() {
-                    return URL;
-                }
-
-                public void setURL(String URL) {
-                    this.URL = URL;
-                }
-            }
-
-            public static class JKSSBean {
-                /**
-                 * Image : /AppImage/JKSS.png
-                 * Title : 迎中秋，庆国庆，口福享不停
-                 * URL :
-                 */
-
-                private String Image;
-                private String Title;
-                private String URL;
-
-                public String getImage() {
-                    return Image;
-                }
-
-                public void setImage(String Image) {
-                    this.Image = Image;
-                }
-
-                public String getTitle() {
-                    return Title;
-                }
-
-                public void setTitle(String Title) {
-                    this.Title = Title;
-                }
-
-                public String getURL() {
-                    return URL;
-                }
-
-                public void setURL(String URL) {
-                    this.URL = URL;
-                }
-            }
-
-            public static class CarouselfigureBeanX {
-                /**
-                 * image : /AppImage/Banner_0_20171007.png
+                 * image : /AppImage/SQCS_0_20171007.png
                  * url :
                  */
 
@@ -350,6 +145,176 @@ public class HomeBean {
                 public void setUrl(String url) {
                     this.url = url;
                 }
+            }
+        }
+
+        public static class SHCSBean {
+            /**
+             * Image : /AppImage/SHCS.png
+             * Title : 【安全食品、吃的放心】
+             * URL :
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class HLTGBean {
+            /**
+             * Image : /AppImage/HLTG.png
+             * Title : 迎中秋，庆国庆，口福享不停
+             * URL :
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class QGCSBean {
+            /**
+             * Image : /AppImage/QGCS.png
+             * Title : 迎中秋，庆国庆，口福享不停
+             * URL :
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class JKSSBean {
+            /**
+             * Image : /AppImage/JKSS.png
+             * Title : 迎中秋，庆国庆，口福享不停
+             * URL :
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class CarouselfigureBeanX {
+            /**
+             * image : /AppImage/Banner_0_20171007.png
+             * url :
+             */
+
+            private String image;
+            private String url;
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
             }
         }
     }

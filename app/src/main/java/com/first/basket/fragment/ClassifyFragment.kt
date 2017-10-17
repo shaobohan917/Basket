@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
+import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
-import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.SPUtil
+import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
 
 /**
@@ -31,10 +31,10 @@ class ClassifyFragment : BaseFragment() {
 
     private lateinit var mCategoryAdapter: ClassifyAdapter
 
-    private var isGetHot: Boolean = false
+    private var isGetedRecommend: Boolean = false
 
     //1：社区菜市；2：上海菜市 ；3：全国菜市
-    private var preType: Int = 1
+    private var preType = 1
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_classify, container, false)!!
@@ -42,6 +42,7 @@ class ClassifyFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        preType = (activity as MainActivity).mChannel
         initView()
         initData()
     }
@@ -64,10 +65,10 @@ class ClassifyFragment : BaseFragment() {
         }
 
         //获取分类列表
-        getClassify(preType)
+        getClassify(preType, true)
     }
 
-    private fun getClassify(channel: Int) {
+    private fun getClassify(channel: Int, needRefresh: Boolean) {
         //获取商品分类
         HttpMethods.createService().getClassify("get_productclassification", channel.toString())
                 .compose(TransformUtils.defaultSchedulers())
@@ -75,6 +76,12 @@ class ClassifyFragment : BaseFragment() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {
                         super.onNext(t)
                         mCategoryDatas.clear()
+                        fragmentList.clear()
+                        indexList.clear()
+
+//                        mCategoryAdapter = ClassifyAdapter(activity, mCategoryDatas)
+//                        categoryRecyclerView.layoutManager.smoothScrollToPosition(categoryRecyclerView, null, mCategoryAdapter.itemCount - 1)
+
                         var list = t.result.data
                         for (i in 0 until list.size) {
                             mCategoryDatas.add(list[i])
@@ -85,48 +92,58 @@ class ClassifyFragment : BaseFragment() {
                         //有多少分类，创建多少fragment
                         var fragment: BaseFragment
                         for (i in 0 until list.size) {
-                            if (i == 0) {
-                                fragment = RecommendFragment(list[i])
+                            fragment = if (i == 0) {
+                                RecommendFragment(activity as MainActivity, list[i])
                             } else {
-                                fragment = ContentFragment(list[i])
+                                ContentFragment(activity as MainActivity, list[i])
                             }
                             fragmentList.add(fragment)
                         }
-
-                        //获取推荐列表
-                        refreshContent(0)
+                        if (needRefresh) {
+                            //获取推荐列表
+                            refreshContent(0)
+                        }
                     }
                 })
     }
 
 
-    private fun refreshContent(l: Int) {
-        val fragment = fragmentList[l]
+    private fun refreshContent(position: Int) {
+        val fragment = fragmentList[position]
 
-        if (l == 0 && !isGetHot) {
+        if (position == 0 && !isGetedRecommend) {
             (fragment as RecommendFragment).getHotRecommend()
-            isGetHot = true
+            isGetedRecommend = true
+
         }
         replaceContent(fragment, R.id.fragmentContainer1)
         //设置数据
-        if(l!=0){
-            if (!indexList.contains(l)) {
+        if (position != 0) {
+            if (!indexList.contains(position)) {
                 Handler().postDelayed({
-                    (fragmentList[l] as ContentFragment).setContentData(l, mCategoryDatas[l])
-                }, 500)
-                indexList.add(l)
+                    (fragmentList[position] as ContentFragment).setContentData(position, mCategoryDatas[position])
+                }, 300)
+                indexList.add(position)
             }
         }
+
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
-            val type = SPUtil.getData(activity, Constants.HOME_CLASSIFY, 1) as Int
+            val type = (activity as MainActivity).mChannel
+            LogUtils.d("cha:" + type)
+
             if (preType != type) {
                 //切换菜市，重新加载
-                getClassify(type)
-                preType = type
+                (activity as MainActivity).showProgressDialog()
+                Handler().postDelayed({
+                    getClassify(type, true)
+                    isGetedRecommend = false
+                    preType = type
+                }, 1000)
+
             }
         }
     }

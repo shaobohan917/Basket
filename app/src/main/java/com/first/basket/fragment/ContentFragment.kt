@@ -27,7 +27,7 @@ import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
-import com.first.basket.constants.Constants
+import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
@@ -40,7 +40,8 @@ import java.util.*
 /**
  * Created by hanshaobo on 17/09/2017.
  */
-class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
+class ContentFragment(activity: MainActivity,data: ClassifyBean.DataBean) : BaseFragment() {
+    private var activity = activity
     private var mDatas = data
 
     private lateinit var mContentAdapter: ContentAdapter
@@ -218,9 +219,7 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
-
-        val type = SPUtil.getData(activity, Constants.HOME_CLASSIFY, 1) as Int
-        HttpMethods.createService().getProducts("get_products", type.toString(), leveltwoId)
+        HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<ClassifyContentBean>() {
                     override fun onCompleted() {
@@ -237,6 +236,7 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
                             mContentDatas.add(dataBean[i])
                         }
                         mContentAdapter.notifyDataSetChanged()
+                        activity.hideProgress()
                     }
                 })
     }
@@ -261,29 +261,8 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
             //默认选中第一个
 //            secondRecyclerView.getLayoutManager().smoothScrollToPosition(secondRecyclerView, null, mSecondAdapter.getItemCount() - 1)
-        }else{
+        } else {
 
         }
-    }
-
-    fun getHotRecommend() {
-        HttpMethods.createService()
-                .getHotRecommend("get_hotrecommend")
-                .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
-                    override fun onNext(t: HotRecommendBean) {
-                        super.onNext(t)
-                        setRecommendData(t.result.data)
-                    }
-                })
-    }
-
-
-    private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
-        secondRecyclerView.visibility = View.GONE
-        ivHot.visibility = View.VISIBLE
-        ImageUtils.showImg(activity, data.hotimage, ivHot)
-        mContentDatas.addAll(data.products)
-        mContentAdapter.notifyDataSetChanged()
     }
 }

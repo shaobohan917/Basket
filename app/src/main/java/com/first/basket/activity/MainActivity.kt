@@ -34,8 +34,9 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
     lateinit var nearby: BottomBarTab
 
+    var mChannel: Int = 1   //菜市，默认为社区菜市
+
     var mCount = 0
-    var mGoodsMap = LinkedHashMap<ProductBean, Int>()   //添加到购物车的集合
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
