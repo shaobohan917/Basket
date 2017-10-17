@@ -38,13 +38,13 @@ public class ClassifyContentBean {
     }
 
     public static class ResultBean {
-        public List<ProductsBean> data;
+        public List<ProductBean> data;
 
-        public List<ProductsBean> getData() {
+        public List<ProductBean> getData() {
             return data;
         }
 
-        public void setData(List<ProductsBean> data) {
+        public void setData(List<ProductBean> data) {
             this.data = data;
         }
     }

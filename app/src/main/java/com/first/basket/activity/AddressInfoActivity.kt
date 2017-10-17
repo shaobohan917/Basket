@@ -245,6 +245,9 @@ class AddressInfoActivity : BaseActivity() {
                             setResult(Activity.RESULT_OK)
 //                            intent.putExtra("adds",etAddress.text.toString())
                             SPUtil.setString(StaticValue.SP_ADDRESS, etAddress.text.toString())
+                            SPUtil.setString(StaticValue.USER_NAME, etName.text.toString())
+                            SPUtil.setString(StaticValue.USER_ADDRESS, etAddress.text.toString())
+                            SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
                             myFinish()
                         } else {
                             ToastUtil.showToast(this@AddressInfoActivity, "fail")

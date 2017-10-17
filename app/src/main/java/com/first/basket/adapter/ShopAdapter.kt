@@ -1,7 +1,5 @@
 package com.first.basket.adapter
 
-import android.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
-import com.first.basket.bean.GoodsDetailBean
-import com.first.basket.bean.ProductsBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.utils.ImageUtils
 import com.first.basket.view.AmountView
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
@@ -19,8 +16,8 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 /**
  * Created by hanshaobo on 14/09/2017.
  */
-class MenuAdapter(list: ArrayList<ProductsBean>, listener: OnItemClickListener, cbListener: CompoundButton.OnCheckedChangeListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
-    private var mDatas: ArrayList<ProductsBean> = list
+class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: CompoundButton.OnCheckedChangeListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
+    private var mDatas: ArrayList<ProductBean> = list
     private var listener = listener
     private var cbListener = cbListener
 

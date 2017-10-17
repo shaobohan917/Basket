@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_active.*
  * Created by hanshaobo on 30/08/2017.
  */
 class ActiveFragment : BaseFragment() {
-    private var mDatas = ArrayList<Boolean>()
     private val url = "https://www.yhclzgc.com/yhclz/H5/append.html"
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

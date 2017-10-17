@@ -24,7 +24,7 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
-import com.first.basket.bean.ProductsBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -42,7 +42,7 @@ class RecommendFragment(data: ClassifyBean.DataBean) : BaseFragment() {
 
     private lateinit var mContentAdapter: ContentAdapter
 
-    private var mContentDatas = ArrayList<ProductsBean>()
+    private var mContentDatas = ArrayList<ProductBean>()
 
     private lateinit var contentRecyclerView: RecyclerView
 

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.first.basket.bean.ProductsBean;
 import com.first.basket.bean.ContactBean;
 import com.first.basket.utils.LogUtils;
 import com.google.gson.Gson;

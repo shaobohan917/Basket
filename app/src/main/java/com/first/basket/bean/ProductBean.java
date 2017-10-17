@@ -6,21 +6,23 @@ import java.io.Serializable;
  * Created by hanshaobo on 11/10/2017.
  */
 
-public class ProductsBean implements Serializable {
+public class ProductBean implements Serializable {
     /**
-     * productid : 10000489
-     * genda : 50
+     * productid : 10000483
+     * genda : 30
      * calssificationid : null
-     * level2id : 101002
-     * productname : 土豆
+     * level2id : 101003
+     * productname : 西红柿
      * packaging : 马夹袋
-     * weight : 2斤
+     * weight : 1斤
      * unit : 份
-     * cost : 5.5
-     * price : 5.5
+     * cost : 5.3
+     * price : 4
      * Status : on
      * channelid : 1
-     * img : /prod_pic/101/10000489.png
+     * img : /prod_pic/101/10000483.png
+     * promboolean : y
+     * promdata : {"promprice":"3","promstarttime":"2017-10-15 00:00:01","promendtime":"2017-10-28 23:59:59","promlimit":"1","promproducttype":"素"}
      */
 
     private String productid;
@@ -36,8 +38,27 @@ public class ProductsBean implements Serializable {
     private String Status;
     private String channelid;
     private String img;
+    private String promboolean;
+    private PromdataBean promdata;
+
     private int amount;
     private boolean isCheck;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean getIsCheck() {
+        return isCheck;
+    }
+
+    public void setIsCheck(boolean isCheck) {
+        this.isCheck = isCheck;
+    }
 
     public String getProductid() {
         return productid;
@@ -143,19 +164,75 @@ public class ProductsBean implements Serializable {
         this.img = img;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getPromboolean() {
+        return promboolean;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setPromboolean(String promboolean) {
+        this.promboolean = promboolean;
     }
 
-    public boolean getIsCheck() {
-        return isCheck;
+    public PromdataBean getPromdata() {
+        return promdata;
     }
 
-    public void setIsCheck(boolean isCheck) {
-        this.isCheck = isCheck;
+    public void setPromdata(PromdataBean promdata) {
+        this.promdata = promdata;
+    }
+
+    public static class PromdataBean {
+        /**
+         * promprice : 3
+         * promstarttime : 2017-10-15 00:00:01
+         * promendtime : 2017-10-28 23:59:59
+         * promlimit : 1
+         * promproducttype : 素
+         */
+
+        private String promprice;
+        private String promstarttime;
+        private String promendtime;
+        private String promlimit;
+        private String promproducttype;
+
+        public String getPromprice() {
+            return promprice;
+        }
+
+        public void setPromprice(String promprice) {
+            this.promprice = promprice;
+        }
+
+        public String getPromstarttime() {
+            return promstarttime;
+        }
+
+        public void setPromstarttime(String promstarttime) {
+            this.promstarttime = promstarttime;
+        }
+
+        public String getPromendtime() {
+            return promendtime;
+        }
+
+        public void setPromendtime(String promendtime) {
+            this.promendtime = promendtime;
+        }
+
+        public String getPromlimit() {
+            return promlimit;
+        }
+
+        public void setPromlimit(String promlimit) {
+            this.promlimit = promlimit;
+        }
+
+        public String getPromproducttype() {
+            return promproducttype;
+        }
+
+        public void setPromproducttype(String promproducttype) {
+            this.promproducttype = promproducttype;
+        }
     }
 }

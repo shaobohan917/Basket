@@ -17,8 +17,8 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.wrapContent
 
 /**
-* Created by hanshaobo on 12/09/2017.
-*/
+ * Created by hanshaobo on 12/09/2017.
+ */
 class SearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +56,8 @@ class SearchActivity : BaseActivity() {
             tv.onClick {
                 var intent = Intent(this@SearchActivity, GoodsDetailActivity::class.java)
                 intent.putExtra("id", data[i].productid)
-                startActivity(intent)
+                myStartActivity(intent, true)
             }
-
             llRecommend.addView(tv)
         }
     }

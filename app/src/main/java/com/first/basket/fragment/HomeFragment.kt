@@ -12,22 +12,16 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.AddressInfoActivity
-import com.first.basket.activity.ClassifyActivity
 import com.first.basket.activity.SearchActivity
 import com.first.basket.activity.WebViewActivity
-import com.first.basket.adapter.MainActivity
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.HomeBean
-import com.first.basket.bean.ProductsBean
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
-import com.first.basket.db.ContactDao
-import com.first.basket.db.ProductDao
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
@@ -35,7 +29,6 @@ import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import java.util.*
 import kotlin.collections.ArrayList
 
 

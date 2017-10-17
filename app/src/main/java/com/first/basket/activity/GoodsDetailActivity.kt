@@ -2,7 +2,6 @@ package com.first.basket.activity
 
 import android.animation.Animator
 import android.animation.ValueAnimator
-import android.app.Activity
 import android.graphics.Path
 import android.graphics.PathMeasure
 import android.os.Bundle
@@ -15,6 +14,7 @@ import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.GoodsDetailBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.constants.Constants
 import com.first.basket.db.ProductDao
 import com.first.basket.fragment.HomeFragment
@@ -23,11 +23,9 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
-import com.first.basket.utils.ToastUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.right_list_item.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import q.rorbin.badgeview.QBadgeView
 
@@ -35,6 +33,7 @@ import q.rorbin.badgeview.QBadgeView
  * Created by hanshaobo on 02/09/2017.
  */
 class GoodsDetailActivity : BaseActivity() {
+
     private lateinit var data: GoodsDetailBean.ResultBean.DataBean
 
     private var images = ArrayList<GoodsDetailBean.ResultBean.DataBean.ImagesBean>()
@@ -71,17 +70,26 @@ class GoodsDetailActivity : BaseActivity() {
             addGoodToCar(ivGoods)
 
             tvCount.text = mCount.toString()
-            LogUtils.d("count:" + mCount)
             badgeView.bindTarget(tvCount).badgeNumber = mCount
 
             ProductDao.getInstance(this@GoodsDetailActivity).insertOrUpdateItem(data.product)
+
+            var product = data.product
+            product.isCheck = true
+            product.amount++
+            var goodsMap = BaseApplication.getInstance().mGoodsMap
+            if (goodsMap.containsKey(product)) {
+                goodsMap.put(product, goodsMap.getValue(product) + 1)
+            } else {
+                goodsMap.put(product, 1)
+            }
+            BaseApplication.getInstance().mGoodsMap = goodsMap
+            MainActivity.getInstance1().setCountAdd()
         }
         ivCar.onClick {
-            intent.putExtra("goods", data)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+            MainActivity.getInstance1().setCurrentPage(3)
+            myFinish()
         }
-
     }
 
     private fun getData(id: String) {

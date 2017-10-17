@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.first.basket.bean.ProductsBean;
+import com.first.basket.bean.ProductBean;
 import com.first.basket.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -50,7 +50,7 @@ public class ProductDao {
     }
 
 
-    public synchronized void insertOrUpdateItem(ProductsBean productsBean) {
+    public synchronized void insertOrUpdateItem(ProductBean productsBean) {
         String productid = productsBean.getProductid();
 
         SQLiteDatabase db;
@@ -90,27 +90,27 @@ public class ProductDao {
         }
     }
 
-    public synchronized void insertOrUpdateItems(LinkedHashMap<ProductsBean, Integer> products) {
+    public synchronized void insertOrUpdateItems(LinkedHashMap<ProductBean, Integer> products) {
 
     }
 
 
-    public ArrayList<ProductsBean> getProducts() {
+    public ArrayList<ProductBean> getProducts() {
         SQLiteDatabase db;
         Cursor cursor = null;
-        ArrayList<ProductsBean> productsBeans = new ArrayList<>();
+        ArrayList<ProductBean> productsBeans = new ArrayList<>();
         try {
             db = helper.openDatabase();
             String sql = "select * from " + TABLE;
             cursor = db.rawQuery(sql, null);
 
-            ProductsBean productsBean;
+            ProductBean productsBean;
             while (cursor.moveToNext()) {
-                productsBean = new ProductsBean();
+                productsBean = new ProductBean();
                 String object = cursor.getString(cursor.getColumnIndex(ITEM_PRODUCT));
                 Gson gson = new Gson();
                 try {
-                    ProductsBean product = gson.fromJson(object, ProductsBean.class);
+                    ProductBean product = gson.fromJson(object, ProductBean.class);
                     productsBean.setProductid(product.getProductid());
                     productsBean.setProductname(product.getProductname());
                     productsBean.setUnit(product.getUnit());

@@ -42,8 +42,8 @@ import kotlin.collections.HashMap
 class ShopFragment : BaseFragment(), Observer {
 
     private var isAllChecked: Boolean = false
-    private var mGoodsList = ArrayList<ProductsBean>()
-    private var mGoodsMap = HashMap<ProductsBean, Int>()
+    private var mGoodsList = ArrayList<ProductBean>()
+    private var mGoodsMap = HashMap<ProductBean, Int>()
 
     private var mAdapter = MenuAdapter(mGoodsList, object : MenuAdapter.OnItemClickListener {
         override fun onItemClick(view: View) {
@@ -169,7 +169,7 @@ class ShopFragment : BaseFragment(), Observer {
         }
     }
 
-    private fun getPrice(mDatas: ArrayList<ProductsBean>) {
+    private fun getPrice(mDatas: ArrayList<ProductBean>) {
         var productidString = StringBuilder()
         var numString = StringBuilder()
         for (i in 0 until smRecyclerView.childCount) {
@@ -197,7 +197,7 @@ class ShopFragment : BaseFragment(), Observer {
 
             var iterator = mGoodsMap.entries.iterator()
             while (iterator.hasNext()) {
-                var entry = iterator.next() as Map.Entry<ProductsBean, Int>
+                var entry = iterator.next() as Map.Entry<ProductBean, Int>
                 var key = entry.key
                 var value = entry.value
 

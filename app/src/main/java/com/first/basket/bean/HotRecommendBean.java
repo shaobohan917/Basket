@@ -63,7 +63,7 @@ public class HotRecommendBean {
              */
 
             private String hotimage;
-            private List<ProductsBean> products;
+            private List<ProductBean> products;
 
             public String getHotimage() {
                 return hotimage;
@@ -73,11 +73,11 @@ public class HotRecommendBean {
                 this.hotimage = hotimage;
             }
 
-            public List<ProductsBean> getProducts() {
+            public List<ProductBean> getProducts() {
                 return products;
             }
 
-            public void setProducts(List<ProductsBean> products) {
+            public void setProducts(List<ProductBean> products) {
                 this.products = products;
             }
 

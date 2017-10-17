@@ -77,6 +77,11 @@ open class BaseActivity : AppCompatActivity() {
         if (needFinish) this.finish()
     }
 
+    fun myStartActivity(intent: Intent, needFinish: Boolean) {
+        startActivity(intent)
+        if (needFinish) this.finish()
+    }
+
     fun myStartActivityForResult(cls: Class<*>, requestCode: Int) {
         val intent = Intent(this, cls)
         startActivityForResult(intent, requestCode)

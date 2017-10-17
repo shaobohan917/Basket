@@ -1,5 +1,7 @@
 package com.first.basket.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
@@ -7,15 +9,15 @@ import com.first.basket.R
 import com.first.basket.adapter.PlaceOrderAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
-import com.first.basket.bean.ProductsBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.activity_place_order.*
-import kotlinx.android.synthetic.main.layout_order_header.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 import kotlin.collections.LinkedHashMap
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.TextView
 
 
@@ -24,8 +26,12 @@ import android.widget.TextView
  */
 class PlaceOrderActivity : BaseActivity() {
 
-    private var mGoodsMap: LinkedHashMap<ProductsBean, Int> = LinkedHashMap()
-    private var mGoodsList = ArrayList<ProductsBean>()
+    private var mGoodsMap: LinkedHashMap<ProductBean, Int> = LinkedHashMap()
+    private var mGoodsList = ArrayList<ProductBean>()
+
+    private lateinit var header: View
+    private lateinit var footer: View
+    private lateinit var address: TextView
 
     private lateinit var mAdapter: PlaceOrderAdapter
 
@@ -47,7 +53,7 @@ class PlaceOrderActivity : BaseActivity() {
 
         var iterator = mGoodsMap.entries.iterator()
         while (iterator.hasNext()) {
-            var entry = iterator.next() as Map.Entry<ProductsBean, Int>
+            var entry = iterator.next() as Map.Entry<ProductBean, Int>
             var key = entry.key
             var value = entry.value
 
@@ -65,21 +71,38 @@ class PlaceOrderActivity : BaseActivity() {
     }
 
     private fun setHeaderView() {
-        val header = LayoutInflater.from(this).inflate(R.layout.layout_order_header, recyclerView, false)
+        header = LayoutInflater.from(this).inflate(R.layout.layout_order_header, recyclerView, false)
         if (TextUtils.isEmpty(SPUtil.getString(StaticValue.USER_ADDRESS, ""))) {
-            header.findViewById<TextView>(R.id.tvAddress).text = "请先添加收货地址"
+            address = header.findViewById<TextView>(R.id.tvAddress)
+            address.text = "请先添加收货地址"
+            address.onClick {
+                myStartActivityForResult(AddressInfoActivity::class.java, REQUEST_ONE)
+            }
+
         } else {
-            header.findViewById<TextView>(R.id.tvName).text = SPUtil.getString(StaticValue.USER_NAME, "")
-            header.findViewById<TextView>(R.id.tvPhone).text = SPUtil.getString(StaticValue.USER_PHONE, "")
-            header.findViewById<TextView>(R.id.tvAddress).text = SPUtil.getString(StaticValue.USER_ADDRESS, "")
+            refreshHeader(header)
+
         }
         mAdapter.setHeaderView(header)
+    }
 
+    private fun refreshHeader(header: View) {
+        header.findViewById<TextView>(R.id.tvName).text = SPUtil.getString(StaticValue.USER_NAME, "")
+        header.findViewById<TextView>(R.id.tvPhone).text = SPUtil.getString(StaticValue.USER_PHONE, "")
+        header.findViewById<TextView>(R.id.tvAddress).text = SPUtil.getString(StaticValue.USER_ADDRESS, "")
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (Activity.RESULT_OK == resultCode && requestCode == REQUEST_ONE) {
+            refreshHeader(header)
+        }
     }
 
 
     private fun setFooterView() {
-        val footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
+        footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         var price = intent.getStringExtra("price")
         footer.findViewById<TextView>(R.id.tvPrice).text = price
         mAdapter.setFooterView(footer)

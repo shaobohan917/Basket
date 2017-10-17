@@ -1,30 +1,20 @@
 package com.first.basket.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.view.KeyEvent
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
-import com.first.basket.bean.ContactBean
-import com.first.basket.bean.ProductsBean
-import com.first.basket.db.ContactDao
-import com.first.basket.db.ProductDao
+import com.first.basket.bean.ProductBean
 import com.first.basket.fragment.*
-import com.first.basket.utils.LogUtils
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
 import java.util.*
 import kotlin.collections.ArrayList
-import com.first.basket.common.StaticValue
-import com.first.basket.utils.SPUtil
-import com.first.basket.common.CommonMethod.hideKeyboard
-import android.view.KeyEvent.KEYCODE_BACK
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
-import com.first.basket.app.BaseApplication
 import com.first.basket.utils.ToastUtil
 import com.first.basket.fragment.BaseFragment
 
@@ -45,7 +35,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     lateinit var nearby: BottomBarTab
 
     var mCount = 0
-    var mGoodsMap = LinkedHashMap<ProductsBean, Int>()   //添加到购物车的集合
+    var mGoodsMap = LinkedHashMap<ProductBean, Int>()   //添加到购物车的集合
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -181,7 +171,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
     fun setCurrentPage(index: Int) {
-        switchFragment(0)
+        switchFragment(index)
         bottomBar.selectTabAtPosition(index)
     }
 }

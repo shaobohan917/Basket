@@ -5,15 +5,11 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.first.basket.R;
-import com.first.basket.bean.ProductsBean;
+import com.first.basket.bean.ProductBean;
 import com.first.basket.utils.SPUtil;
 import com.tencent.bugly.Bugly;
-import com.tencent.bugly.crashreport.CrashReport;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -28,8 +24,8 @@ public class BaseApplication extends Application {
 
     private static BaseApplication instance;
 
-    public ArrayList<ProductsBean> mProductBean = new ArrayList<>();
-    public LinkedHashMap<ProductsBean, Integer> mGoodsMap = new LinkedHashMap();   //添加到购物车的集合
+    public ArrayList<ProductBean> mProductBean = new ArrayList<>();
+    public LinkedHashMap<ProductBean, Integer> mGoodsMap = new LinkedHashMap();   //添加到购物车的集合
 
     @Override
     public void onCreate() {

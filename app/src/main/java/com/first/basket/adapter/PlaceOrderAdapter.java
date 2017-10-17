@@ -8,8 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.first.basket.R;
-import com.first.basket.bean.ClassifyBean;
-import com.first.basket.bean.ProductsBean;
+import com.first.basket.bean.ProductBean;
 import com.first.basket.utils.ImageUtils;
 
 import org.jetbrains.annotations.Nullable;
@@ -25,7 +24,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
     private static final int TYPE_HEADER = 1;
     private static final int TYPE_FOOTER = 2;
     private Context context;
-    private List<ProductsBean> mDatas;
+    private List<ProductBean> mDatas;
     private OnRecyclerViewItemClickListener mOnItemClickListener;
     private MyViewHolder holder;
     private int layoutPosition;
@@ -43,10 +42,10 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
     }
 
     public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, ProductsBean data, int position);
+        void onItemClick(View view, ProductBean data, int position);
     }
 
-    public PlaceOrderAdapter(Context context, List<ProductsBean> datas) {
+    public PlaceOrderAdapter(Context context, List<ProductBean> datas) {
         this.context = context;
         this.mDatas = datas;
     }
@@ -75,7 +74,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
         if (getItemViewType(position) == TYPE_NORMAL) {
             if (holder instanceof MyViewHolder) {
                 //这里加载数据的时候要注意，是从position-1开始，因为position==0已经被header占用了
-                ProductsBean bean = mDatas.get(position - 1);
+                ProductBean bean = mDatas.get(position - 1);
                 holder.tvName.setText(bean.getProductname());
                 holder.tvUnit.setText(bean.getUnit());
                 holder.tvPrice.setText(bean.getPrice());
@@ -89,7 +88,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
                         //获取当前点击的位置
                         layoutPosition = holder.getLayoutPosition();
                         notifyDataSetChanged();
-                        mOnItemClickListener.onItemClick(holder.itemView, (ProductsBean) holder.itemView.getTag(), layoutPosition);
+                        mOnItemClickListener.onItemClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
                     }
                 });
                 return;

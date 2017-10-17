@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.first.basket.R;
-import com.first.basket.bean.ProductsBean;
+import com.first.basket.bean.ProductBean;
 import com.first.basket.utils.ImageUtils;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHolder> {
     private Context context;
-    private List<ProductsBean> mDatas;
+    private List<ProductBean> mDatas;
     private OnRecyclerViewItemClickListener mOnItemClickListener;
     private OnAddItemClickListener onAddItemClickListener;
     private OnAmountChangeListener mOnAmountChangeListener;
@@ -27,18 +27,18 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private int layoutPosition;
 
     public interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view, ProductsBean data, int position);
+        void onItemClick(View view, ProductBean data, int position);
     }
 
     public interface OnAddItemClickListener {
-        void onAddClick(View view, ProductsBean data, int position);
+        void onAddClick(View view, ProductBean data, int position);
     }
 
     public interface OnAmountChangeListener {
         void onAmountChange(View imageView, int position);
     }
 
-    public ContentAdapter(Context context, List<ProductsBean> data) {
+    public ContentAdapter(Context context, List<ProductBean> data) {
         this.context = context;
         this.mDatas = data;
     }
@@ -78,14 +78,14 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
                 //获取当前点击的位置
                 layoutPosition = holder.getLayoutPosition();
                 notifyDataSetChanged();
-                mOnItemClickListener.onItemClick(holder.itemView, (ProductsBean) holder.itemView.getTag(), layoutPosition);
+                mOnItemClickListener.onItemClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
             }
         });
 
         holder.ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onAddItemClickListener.onAddClick(holder.itemView, (ProductsBean) holder.itemView.getTag(), layoutPosition);
+                onAddItemClickListener.onAddClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
             }
         });
 

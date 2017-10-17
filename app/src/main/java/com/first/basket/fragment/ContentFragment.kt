@@ -26,17 +26,14 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
-import com.first.basket.bean.ProductsBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_content.*
-import kotlinx.android.synthetic.main.fragment_shop.*
-import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import java.util.*
 
 @SuppressLint("ValidFragment")
@@ -49,7 +46,7 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
     private lateinit var mContentAdapter: ContentAdapter
     private lateinit var mSecondAdapter: SecondAdapter
 
-    private var mContentDatas = ArrayList<ProductsBean>()
+    private var mContentDatas = ArrayList<ProductBean>()
     private var mSecondDatas = ArrayList<ClassifyBean.DataBean.LeveltwoBean>()
 
     private lateinit var contentRecyclerView: RecyclerView
@@ -129,7 +126,6 @@ class ContentFragment(data: ClassifyBean.DataBean) : BaseFragment() {
             addGoodToCar(view.findViewById(R.id.ivGoods))
             data.isCheck = true
             data.amount++
-//            var goodsMap = (activity as MainActivity).mGoodsMap
             var goodsMap = BaseApplication.getInstance().mGoodsMap
             if (goodsMap.containsKey(data)) {
                 goodsMap.put(data, goodsMap.getValue(data) + 1)
