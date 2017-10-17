@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
 import com.first.basket.activity.*
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
@@ -65,7 +66,11 @@ class MineFragment : BaseFragment() {
         }
 
         aimvAddress.onClick {
-            startActivity(Intent(activity, AddressListActivity::class.java))
+            if (CommonMethod.isLogin()) {
+                startActivity(Intent(activity, AddressListActivity::class.java))
+            } else {
+                CommonMethod.showLogin()
+            }
         }
     }
 

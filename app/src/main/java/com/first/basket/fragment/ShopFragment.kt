@@ -17,6 +17,7 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.app.NotifyManager
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.*
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
@@ -46,14 +47,14 @@ class ShopFragment : BaseFragment(), Observer {
 
     private var mAdapter = MenuAdapter(mGoodsList, object : MenuAdapter.OnItemClickListener {
         override fun onItemClick(view: View) {
-
-            LogUtils.d("onClick:" + smRecyclerView.getChildAdapterPosition(view))
         }
 
     }, CompoundButton.OnCheckedChangeListener { p0, p1 ->
         if (p1) {
 //            getPrice(mGoodsList)
             notifySubscribeStateChanged("123", 123)
+        } else {
+            cbSelectAll.isChecked = false
         }
     })
 
@@ -146,14 +147,20 @@ class ShopFragment : BaseFragment(), Observer {
             startActivityForResult(intent, 0)
         }
         ivBuy.onClick {
-            startActivity(Intent(activity, PlaceOrderActivity::class.java))
+            if (CommonMethod.isLogin()) {
+                var intent = Intent(activity, PlaceOrderActivity::class.java)
+                intent.putExtra("price", tvTotalPrice.text)
+                startActivity(intent)
+            } else {
+                CommonMethod.showLogin()
+            }
         }
         cbSelectAll.onClick {
             isAllChecked = !isAllChecked
             for (i in 0 until smRecyclerView.childCount) {
                 smRecyclerView.getChildAt(i).findViewById<AppCompatCheckBox>(R.id.cbSelect).isChecked = isAllChecked
             }
-            if (isAllChecked) {
+            if (isAllChecked && mGoodsList.size > 0) {
                 getPrice(mGoodsList)
                 llTotalPrice.visibility = View.VISIBLE
             } else {
@@ -186,7 +193,6 @@ class ShopFragment : BaseFragment(), Observer {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             mGoodsList.clear()
-//            mGoodsMap = (activity as MainActivity).mGoodsMap
             mGoodsMap = BaseApplication.getInstance().mGoodsMap
 
             var iterator = mGoodsMap.entries.iterator()
@@ -197,6 +203,9 @@ class ShopFragment : BaseFragment(), Observer {
 
                 mGoodsList.add(key)
                 Collections.reverse(mGoodsList)
+            }
+            if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
+                cbSelectAll.performClick()
             }
             mAdapter.notifyDataSetChanged()
         }

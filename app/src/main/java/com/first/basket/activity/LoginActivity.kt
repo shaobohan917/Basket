@@ -48,7 +48,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun initListener() {
         btSendCode.onClick {
-            if (!CommonMethod.isMobileNO(etPhone.getText().toString())) {
+            if (!CommonMethod.isMobile(etPhone.getText().toString())) {
                 ToastUtil.showToast(this@LoginActivity, "请输入正确的手机号")
                 return@onClick
             }

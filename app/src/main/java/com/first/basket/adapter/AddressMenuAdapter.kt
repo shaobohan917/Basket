@@ -40,9 +40,9 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
 
         val bean = mDatas[position]
 
-        holder.etName.text = bean.receiver
-        holder.etPhone.text = bean.recvphone
-        holder.etAddress.text = bean.street
+        holder.tvName.text = bean.receiver
+        holder.tvPhone.text = bean.recvphone
+        holder.tvAddress.text = bean.street
 
         holder.cbDefault.isChecked = CommonMethod.isTrue(mDatas[position].defaultaddr)
         holder.cbDefault.setOnCheckedChangeListener { compoundButton, b ->
@@ -50,38 +50,22 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
                 cbListener.onItemChecked(mDatas[position].addressid)
             }
         }
+        holder.ivDelete.visibility = View.GONE
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var etName = itemView.findViewById<TextView>(R.id.etName)
-        var etPhone = itemView.findViewById<TextView>(R.id.etPhone)
-        var etAddress = itemView.findViewById<TextView>(R.id.etAddress)
+        var tvName = itemView.findViewById<TextView>(R.id.tvName)
+        var tvPhone = itemView.findViewById<TextView>(R.id.tvPhone)
+        var tvAddress = itemView.findViewById<TextView>(R.id.tvAddress)
 
         var cbDefault = itemView.findViewById<CheckBox>(R.id.cbDefault)
         var ivModify = itemView.findViewById<ImageView>(R.id.ivModify)
+        var ivDelete = itemView.findViewById<ImageView>(R.id.ivDelete)
 
         init {
             ivModify.onClick {
                 listener.onItemClick(itemView, position)
-                setModifiable(true)
             }
-
-            setModifiable(false)
-        }
-
-        fun setModifiable(modifiable: Boolean) {
-            etName.isEnabled = modifiable
-            etPhone.isEnabled = modifiable
-            etAddress.isEnabled = modifiable
-
-            if (modifiable) {
-
-            } else {
-                etName.background = null
-                etAddress.background = null
-                etPhone.background = null
-            }
-
         }
     }
 
@@ -93,10 +77,4 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
         //        fun onItemChecked(view: View, isChecked: Boolean, position: Int)
         fun onItemChecked(addressid: String)
     }
-
-//    fun setModifiable(holder: AddressMenuAdapter.ViewHolder,modifiable:Boolean){
-//        holder.etName.isClickable = modifiable
-//        holder.etAddress.isClickable = modifiable
-//        holder.etPhone.isClickable = modifiable
-//    }
 }

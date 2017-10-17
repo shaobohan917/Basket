@@ -77,6 +77,7 @@
         <activity android:name=".activity.RangeActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.AddressListActivity" />
+        <activity android:name=".activity.OrderResultActivity" />
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

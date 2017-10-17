@@ -50,5 +50,8 @@ public class StaticValue {
     //basket
     public static final String SP_ADDRESS = "sp_address";
     public static final String USER_ID = "user_id";
+    public static final String USER_NAME = "user_name";
+    public static final String USER_ADDRESS = "user_address";
+    public static final String USER_PHONE = "user_phone";
 }
 

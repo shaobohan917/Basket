@@ -151,6 +151,7 @@ class HomeFragment : BaseFragment() {
         }
         vBanner.bindView(object : cn.ymex.banner.Banner.BindViewCallBack<AppCompatImageView, String> {
             override fun bindView(view: AppCompatImageView, data: String, position: Int) {
+                view.scaleType = ImageView.ScaleType.FIT_CENTER
                 //图片加载
                 Glide.with(view.context)
                         .load(data)

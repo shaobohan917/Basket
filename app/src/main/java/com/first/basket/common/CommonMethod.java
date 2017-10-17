@@ -24,6 +24,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ScrollView;
 
 import com.first.basket.utils.SPUtil;
+import com.first.basket.utils.ToastUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -70,10 +71,13 @@ public class CommonMethod {
      * @param mobiles
      * @return
      */
-    public static boolean isMobileNO(String mobiles) {
+    public static boolean isMobile(String mobiles) {
         String telRegex = "13\\d{9}|14[57]\\d{8}|15[012356789]\\d{8}|18[0123456789]\\d{8}|17[0123456789]\\d{8}";
         if (TextUtils.isEmpty(mobiles)) return false;
-        else return mobiles.matches(telRegex);
+        else {
+            if (mobiles.startsWith("86")) mobiles.substring(mobiles.indexOf("86"));
+            return mobiles.matches(telRegex);
+        }
     }
 
     /**
@@ -622,4 +626,7 @@ public class CommonMethod {
     }
 
 
+    public static void showLogin() {
+        ToastUtil.INSTANCE.showToast("请登录");
+    }
 }

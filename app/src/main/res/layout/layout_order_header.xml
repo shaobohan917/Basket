@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/headerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/grayF8"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
+        <LinearLayout
+            android:id="@+id/rlName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray33"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/gray33"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlName"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/gray99"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <com.first.basket.view.AccountItemManagerView
+        app:accountManagerRight="尽快送达"
+        app:accountManagerTitle="送达时间"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.first.basket.view.AccountItemManagerView
+        app:accountManagerRight="货到付款"
+        app:accountManagerTitle="支付方式"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.first.basket.view.AccountItemManagerView
+        app:accountManagerRight="免运费"
+        app:accountManagerTitle="运费"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

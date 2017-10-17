@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_sqcs" />
+                        android:src="@mipmap/ic_home_sqcs" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -269,15 +269,15 @@
                 <ImageView
                     android:id="@+id/ivHLTG"
                     android:layout_width="match_parent"
-                    android:layout_height="145dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"/>
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tvHLTG"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="欢乐团购"
                     android:textColor="@color/gray33"
@@ -306,18 +306,17 @@
                 <ImageView
                     android:id="@+id/ivSHCS"
                     android:layout_width="match_parent"
-                    android:layout_height="145dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/ic_logo_about" />
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tvSHCS"
-                    android:text="上海菜市"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="10dp"
+                    android:text="上海菜市"
                     android:textColor="@color/gray33"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -345,11 +344,10 @@
                 <ImageView
                     android:id="@+id/ivQGCS"
                     android:layout_width="match_parent"
-                    android:layout_height="145dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/ic_logo_about" />
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tvQGCS"
@@ -376,19 +374,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="36dp"
                 android:layout_marginTop="36dp">
 
                 <ImageView
                     android:id="@+id/ivJKSS"
                     android:layout_width="match_parent"
-                    android:layout_height="145dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@mipmap/ic_logo_about" />
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tvJKSS"

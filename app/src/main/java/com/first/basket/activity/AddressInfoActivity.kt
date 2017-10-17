@@ -74,7 +74,7 @@ class AddressInfoActivity : BaseActivity() {
                 ToastUtil.showToast("请填写收货人姓名")
                 return@onClick
             }
-            if (!CommonMethod.isMobileNO(etPhone.text.toString())) {
+            if (!CommonMethod.isMobile(etPhone.text.toString())) {
                 ToastUtil.showToast("请填写正确的手机号码")
                 return@onClick
             }
@@ -94,6 +94,9 @@ class AddressInfoActivity : BaseActivity() {
             } else {
                 ToastUtil.showToast("请登录!")
             }
+            SPUtil.setString(StaticValue.USER_NAME, etName.text.toString())
+            SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
+            SPUtil.setString(StaticValue.USER_ADDRESS, etAddress.text.toString())
         }
 
     }

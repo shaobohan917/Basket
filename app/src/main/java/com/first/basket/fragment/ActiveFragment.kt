@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_active.*
  */
 class ActiveFragment : BaseFragment() {
     private var mDatas = ArrayList<Boolean>()
+    private val url = "https://www.yhclzgc.com/yhclz/H5/append.html"
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_active, container, false)!!
@@ -27,13 +28,13 @@ class ActiveFragment : BaseFragment() {
         settings.javaScriptEnabled = true
         settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         webview.webViewClient = MyWebViewClient()
-        webview.loadUrl("https://www.baidu.com")
+        webview.loadUrl(url)
         initView()
     }
 
 
     private fun initView() {
-        ivDoding.visibility = View.VISIBLE
+
     }
 
     class MyWebViewClient : WebViewClient() {

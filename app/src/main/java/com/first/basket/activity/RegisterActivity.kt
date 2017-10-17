@@ -52,7 +52,7 @@ class RegisterActivity : BaseActivity(){
 
     private fun initListener() {
         btSendCode.onClick {
-            if (!CommonMethod.isMobileNO(etPhone.getText().toString())) {
+            if (!CommonMethod.isMobile(etPhone.getText().toString())) {
                 ToastUtil.showToast(this@RegisterActivity, "请输入正确的手机号")
                 return@onClick
             }

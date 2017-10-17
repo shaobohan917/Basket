@@ -1,5 +1,6 @@
 package com.first.basket.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.view.KeyEvent
@@ -23,7 +24,9 @@ import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
+import com.first.basket.app.BaseApplication
 import com.first.basket.utils.ToastUtil
+import com.first.basket.fragment.BaseFragment
 
 
 class MainActivity : BaseActivity(), AMapLocationListener {
@@ -47,7 +50,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        instance = this
         initView()
         initData()
     }
@@ -148,5 +151,37 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             (fragmentList[0] as HomeFragment).setLocation(aoiName)
 
         }
+    }
+
+    fun switchFragment(index: Int) {
+        var fragment: BaseFragment? = null
+        when (index) {
+            0 -> fragment = homeFragment
+            1 -> fragment = classifyFragment
+            2 -> fragment = activeFragment
+            3 -> fragment = shopFragment
+            4 -> fragment = mineFragment
+        }
+        if (baseFragment == null) {
+            replaceContent(fragment!!, R.id.fragmentContainer)
+            baseFragment = fragment
+        } else {
+            if (fragment != null) {
+                switchContent(baseFragment, fragment, R.id.fragmentContainer)
+                baseFragment = fragment
+            }
+        }
+    }
+
+    companion object {
+        private lateinit var instance: MainActivity
+        fun getInstance1(): MainActivity {
+            return instance
+        }
+    }
+
+    fun setCurrentPage(index: Int) {
+        switchFragment(0)
+        bottomBar.selectTabAtPosition(index)
     }
 }

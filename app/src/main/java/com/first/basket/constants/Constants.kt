@@ -18,4 +18,9 @@ class Constants {
         //
         val HOME_CLASSIFY = "home_classify"
     }
+
+    /**
+     * 加header
+     * http://www.jianshu.com/p/991062d964cf
+     */
 }
