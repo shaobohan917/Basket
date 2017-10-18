@@ -19,16 +19,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a4aead0c-132b-4489-ba39-75de042c7f06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/release/output.json" afterPath="$PROJECT_DIR$/app/release/output.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,23 +61,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClassifyFragment.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt">
+      <file leaf-file-name="item_recycler_content.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
-              <folding>
-                <element signature="e#35#761#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_recommend.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recommend.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+            <state relative-caret-position="107">
+              <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -91,94 +74,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecommendFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt">
+      <file leaf-file-name="ContentAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="202" column="52" lean-forward="false" selection-start-line="202" selection-start-column="52" selection-end-line="202" selection-end-column="52" />
+            <state relative-caret-position="152">
+              <caret line="69" column="2" lean-forward="true" selection-start-line="69" selection-start-column="2" selection-end-line="70" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_content.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_content.xml">
+      <file leaf-file-name="ShopAdapter.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShopFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="123" column="53" lean-forward="false" selection-start-line="123" selection-start-column="53" selection-end-line="123" selection-end-column="53" />
-              <folding>
-                <element signature="e#35#1337#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassifyAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="75">
+              <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_recycler_category.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_category.xml">
+      <file leaf-file-name="ProductBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            <state relative-caret-position="44">
+              <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item_recycler_shop.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_classify.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContentFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="227" column="56" lean-forward="false" selection-start-line="227" selection-start-column="56" selection-end-line="227" selection-end-column="56" />
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
@@ -199,8 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>second</find>
-      <find>gethotre</find>
       <find>cha:</find>
       <find>contentfra</find>
       <find>选中</find>
@@ -223,12 +166,14 @@
       <find>get_hotrecommend</find>
       <find>BaseBannerAdapter</find>
       <find>getpro</find>
-      <find>onitemclick</find>
       <find>adapter</find>
-      <find>onclick</find>
       <find>getclass</find>
-      <find>ivHot</find>
       <find>ivhot</find>
+      <find>onitemclick</find>
+      <find>onclick</find>
+      <find>ivHot</find>
+      <find>tvPrice</find>
+      <find>holder.</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -240,8 +185,8 @@
       <replace>webView</replace>
       <replace>webview</replace>
       <replace>bean</replace>
-      <replace>channel</replace>
       <replace>etName</replace>
+      <replace>channel</replace>
     </replaceStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2136,9 +2081,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_address_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/AddressListBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/AddressBean.java" />
@@ -2160,7 +2102,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/PlaceOrderAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_order_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_order_footer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/OrderResultActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_active.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt" />
@@ -2180,13 +2121,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/base/BaseActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/MainActivity.kt" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ClassifyAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
       </list>
     </option>
   </component>
@@ -2296,7 +2241,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="60800f72" />
-    <property name="SearchEverywhereHistoryKey" value="re&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt&#10;con&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;recom&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt&#10;fragmenre&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_recommend.xml&#10;cla&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;contentfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;classify&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;addremap&#9;null&#9;null&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;build.gra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;stati&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;class&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;home&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;classf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;content&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;goode&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;fraho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;apiser&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/http/ApiService.kt&#10;Main&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;staticva&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;productbe&#9;PSI&#9;JAVA://com.first.basket.bean.ProductsBean&#10;contefra&#9;null&#9;null&#10;sear&#9;null&#9;null&#10;acfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt&#10;ac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_active.xml&#10;consta&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;active&#9;null&#9;null&#10;orresuac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderResultActivity.kt&#10;baseapp&#9;PSI&#9;JAVA://com.first.basket.app.BaseApplication&#10;frasho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;addreme&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt&#10;shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;or&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;addrein&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt&#10;static&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;item&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_address.xml&#10;order&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;homf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;fra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;fragmentho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;addli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;androidmanife&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;actira&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_range.xml&#10;icsqcs&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_sqcs.png&#10;icjks&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_home_jkss.png&#10;com&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/CommonMethod.java&#10;minefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;addreada&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt" />
+    <property name="SearchEverywhereHistoryKey" value="shopada&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt&#10;itemsho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_shop.xml&#10;produ&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/ProductBean.java&#10;itemcon&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_content.xml&#10;build.gra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;re&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt&#10;con&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;recom&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/RecommendFragment.kt&#10;fragmenre&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_recommend.xml&#10;cla&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;contentfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;classify&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;addremap&#9;null&#9;null&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;stati&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;class&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;home&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;classf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;content&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;goode&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt&#10;fraho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;apiser&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/http/ApiService.kt&#10;Main&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;staticva&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;productbe&#9;PSI&#9;JAVA://com.first.basket.bean.ProductsBean&#10;contefra&#9;null&#9;null&#10;sear&#9;null&#9;null&#10;acfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ActiveFragment.kt&#10;ac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_active.xml&#10;consta&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/constants/Constants.kt&#10;active&#9;null&#9;null&#10;orresuac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderResultActivity.kt&#10;baseapp&#9;PSI&#9;JAVA://com.first.basket.app.BaseApplication&#10;frasho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;addreme&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt&#10;shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;or&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;addrein&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressInfoActivity.kt&#10;static&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;item&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_address.xml&#10;order&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;homf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;fra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;fragmentho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_home.xml&#10;addli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;androidmanife&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;actira&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_range.xml&#10;icsqcs&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/mipmap-xhdpi/ic_sqcs.png" />
     <property name="android.profiler.active" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="sm919-60800f72" />
     <property name="DEBUGGABLE_PROCESS" value="com.first.basket" />
@@ -2448,7 +2393,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508294025538" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508297586957" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2495,7 +2440,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508294025538" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508297586958" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2776,7 +2721,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31629393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10393701" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3236815" sideWeight="0.48509052" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236815" sideWeight="0.48509052" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20268872" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2647363" sideWeight="0.5537806" order="11" side_tool="true" content_ui="tabs" />
@@ -2958,46 +2903,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="70" column="20" lean-forward="false" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-          <folding>
-            <element signature="e#35#536#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CommonMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="512" column="30" lean-forward="false" selection-start-line="512" selection-start-column="30" selection-end-line="512" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_address.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_result.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -3082,14 +2987,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="47" column="51" lean-forward="false" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/UIUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -3172,35 +3069,6 @@
         <state relative-caret-position="458">
           <caret line="66" column="29" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="44" column="28" lean-forward="false" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-          <folding>
-            <element signature="e#1166#1167#0" expanded="false" />
-            <element signature="e#1195#1196#0" expanded="false" />
-            <element signature="e#1236#1237#0" expanded="false" />
-            <element signature="e#1272#1273#0" expanded="false" />
-            <element signature="e#1307#1308#0" expanded="false" />
-            <element signature="e#1337#1338#0" expanded="false" />
-            <element signature="e#1384#1385#0" expanded="false" />
-            <element signature="e#1422#1423#0" expanded="false" />
-            <element signature="e#2200#2201#0" expanded="false" />
-            <element signature="e#2246#2247#0" expanded="false" />
-            <element signature="e#3496#3497#0" expanded="false" />
-            <element signature="e#3542#3543#0" expanded="false" />
-            <element signature="e#3583#3584#0" expanded="false" />
-            <element signature="e#3614#3615#0" expanded="false" />
-            <element signature="e#3668#3669#0" expanded="false" />
-            <element signature="e#3708#3709#0" expanded="false" />
-            <element signature="e#4462#4463#0" expanded="false" />
-            <element signature="e#4520#4521#0" expanded="false" />
-            <element signature="e#4662#4663#0" expanded="false" />
-            <element signature="e#4716#4717#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3349,14 +3217,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-26/android.jar!/android/view/View.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -3457,10 +3317,72 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+          <caret line="114" column="49" lean-forward="false" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
           <folding>
             <element signature="e#35#761#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_content.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/ProductBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ContentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="69" column="2" lean-forward="true" selection-start-line="69" selection-start-column="2" selection-end-line="70" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_shop.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>

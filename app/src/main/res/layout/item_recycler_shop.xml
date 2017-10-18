@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="106dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="佳沛新西兰阳光金奇异果"
+                tools:text="果果"
                 android:textColor="@color/gray33"
                 android:textSize="14sp" />
 
@@ -47,15 +48,33 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="18dp">
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp">
+
+
+                <TextView
+                    android:id="@+id/tvP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="6dp"
+                    android:text="¥"
+                    android:gravity="bottom"
+                    android:paddingBottom="1dp"
+                    android:textColor="@color/gray33"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvPrice1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="29.90" />
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:layout_toRightOf="@id/tvP"
+                    android:textColor="@color/gray33"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="29.90" />
 
                 <com.first.basket.view.AmountView
                     android:id="@+id/amoutView"

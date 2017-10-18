@@ -65,11 +65,12 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     @Override
 
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.tvName.setText(mDatas.get(position).getProductname());
-        holder.tvUnit.setText(mDatas.get(position).getUnit());
-        holder.tvPrice.setText(mDatas.get(position).getPrice());
+        ProductBean product = mDatas.get(position);
+        holder.tvName.setText(product.getProductname());
+        holder.tvUnit.setText(product.getWeight() + "/" + product.getUnit());
+        holder.tvPrice.setText(product.getPrice());
 
-        ImageUtils.showImg(context, mDatas.get(position).getImg(), holder.ivGoods);
+        ImageUtils.showImg(context, product.getImg(), holder.ivGoods);
 
         holder.itemView.setTag(mDatas.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -36,18 +36,20 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
     override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
         holder.itemView.tag = mDatas[position]
 
-        val bean = mDatas[position]
+        val product = mDatas[position]
 
-        holder.tvName1.text = bean.productname
-        holder.tvUnit1.text = bean.unit
-        holder.tvPrice1.text = bean.price.toString()
-        holder.amoutView.amount = bean.amount
-        ImageUtils.showImg(BaseApplication.getInstance(), bean.img, holder.ivGoods)
-        holder.cbSelect.isChecked = bean.isCheck
+        holder.tvName1.text = product.productname
+
+        holder.tvUnit1.text = product.weight + "/" + product.unit
+        holder.tvPrice1.text = product.price
+        holder.amoutView.amount = product.amount
+        ImageUtils.showImg(BaseApplication.getInstance(), product.img, holder.ivGoods)
+        holder.cbSelect.isChecked = product.isCheck
         holder.cbSelect.setOnCheckedChangeListener { compoundButton, b ->
-            bean.isCheck = b
+            product.isCheck = b
             cbListener.onCheckedChanged(compoundButton, b)
         }
+
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
