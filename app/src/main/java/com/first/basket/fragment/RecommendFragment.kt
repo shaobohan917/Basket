@@ -39,7 +39,7 @@ import java.util.*
 /**
  * Created by hanshaobo on 17/09/2017.
  */
-class RecommendFragment(activity: MainActivity, data: ClassifyBean.DataBean) : BaseFragment() {
+class RecommendFragment(activity: MainActivity) : BaseFragment() {
     private var activity = activity
     private lateinit var mContentAdapter: ContentAdapter
 

@@ -23,7 +23,7 @@ import com.first.basket.utils.SPUtil
 class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener {
 
     private var mListener: LocationSource.OnLocationChangedListener? = null
-    lateinit var aoiName: String
+    var aoiName: String? = null
     lateinit var district: String
     lateinit var street: String
     lateinit var adCode: String
@@ -50,7 +50,6 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener 
             mapBean.adCode = adCode
             mapBean.latitude = latitude
             mapBean.longitude = longitude
-
 
             tvAddress.text = aoiName
 
@@ -85,10 +84,10 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_address_map)
-        mapView = findViewById<MapView>(R.id.mapView)
+        mapView = findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
 
-        tvAddress = findViewById<TextView>(R.id.tvAddress)
+        tvAddress = findViewById(R.id.tvAddress)
         tvAddress.setOnClickListener {
             SPUtil.setString(StaticValue.SP_ADDRESS, aoiName)
             intent.putExtra("aoiName", aoiName)

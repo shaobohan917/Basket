@@ -94,7 +94,7 @@ class ClassifyFragment : BaseFragment() {
                         var fragment: BaseFragment
                         for (i in 0 until list.size) {
                             fragment = if (i == 0) {
-                                RecommendFragment(activity as MainActivity, list[i])
+                                RecommendFragment(activity as MainActivity)
                             } else {
                                 ContentFragment(activity as MainActivity, list[i])
                             }

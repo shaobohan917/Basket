@@ -66,7 +66,6 @@
         <Button
             android:id="@+id/btLogin"
             style="@style/ButtonStyle"
-            android:background="@color/colorMain"
             android:text="登录" />
     </LinearLayout>
 

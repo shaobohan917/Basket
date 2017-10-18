@@ -82,15 +82,15 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
                 ImageUtils.showImg(context, bean.getImg(), holder.ivGoods);
 
                 holder.itemView.setTag(bean);
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //获取当前点击的位置
-                        layoutPosition = holder.getLayoutPosition();
-                        notifyDataSetChanged();
-                        mOnItemClickListener.onItemClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
-                    }
-                });
+//                holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        //获取当前点击的位置
+//                        layoutPosition = holder.getLayoutPosition();
+//                        notifyDataSetChanged();
+//                        mOnItemClickListener.onItemClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
+//                    }
+//                });
                 return;
             }
             return;

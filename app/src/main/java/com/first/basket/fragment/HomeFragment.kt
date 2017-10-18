@@ -41,7 +41,7 @@ import kotlin.collections.ArrayList
 class HomeFragment : BaseFragment() {
     private var images = ArrayList<String>()
     private var images1 = ArrayList<String>()
-    private lateinit var recommendData: HomeBean.DataBean
+    private var recommendData: HomeBean.DataBean? = HomeBean.DataBean()
 
     private lateinit var myClickListener: MyClickListener
 
@@ -107,12 +107,12 @@ class HomeFragment : BaseFragment() {
                 R.id.qgcs, R.id.ivQGCS -> goClassify(3)
                 R.id.hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData.hltg.url)
+                    intent.putExtra("url", recommendData?.hltg?.url)
                     startActivity(intent)
                 }
                 R.id.jkss, R.id.ivJKSS -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData.jkss.url)
+                    intent.putExtra("url", recommendData?.jkss?.url)
                     startActivity(intent)
                 }
             }
@@ -186,12 +186,12 @@ class HomeFragment : BaseFragment() {
     }
 
 
-    private fun setRecommendData(data: HomeBean.DataBean) {
+    private fun setRecommendData(data: HomeBean.DataBean?) {
         this.recommendData = data
-        ImageUtils.showImg(activity, data.hltg.image, ivHLTG)
-        ImageUtils.showImg(activity, data.shcs.image, ivSHCS)
-        ImageUtils.showImg(activity, data.qgcs.image, ivQGCS)
-        ImageUtils.showImg(activity, data.jkss.image, ivJKSS)
+        ImageUtils.showImg(activity, data?.hltg?.image, ivHLTG)
+        ImageUtils.showImg(activity, data?.hltg?.image, ivSHCS)
+        ImageUtils.showImg(activity,data?.hltg?.image, ivQGCS)
+        ImageUtils.showImg(activity, data?.hltg?.image, ivJKSS)
 
         ivSHCS.setOnClickListener(myClickListener)
         ivHLTG.setOnClickListener(myClickListener)
