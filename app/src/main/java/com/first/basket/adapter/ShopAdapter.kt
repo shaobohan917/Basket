@@ -56,7 +56,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         var tvName1 = itemView.findViewById<TextView>(R.id.tvName1)
         var tvUnit1 = itemView.findViewById<TextView>(R.id.tvUnit1)
         var tvPrice1 = itemView.findViewById<TextView>(R.id.tvPrice1)
-        var amoutView = itemView.findViewById<AmountView>(R.id.amoutView)
+        var amoutView = itemView.findViewById<AmountView>(R.id.amoutView)!!
         var ivGoods = itemView.findViewById<ImageView>(R.id.ivGoods)
         var cbSelect = itemView.findViewById<CheckBox>(R.id.cbSelect)
 

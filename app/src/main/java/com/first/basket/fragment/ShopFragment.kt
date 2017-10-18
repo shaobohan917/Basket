@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.CompoundButton
 import com.first.basket.R
 import com.first.basket.activity.GoodsDetailActivity
@@ -68,8 +69,8 @@ class ShopFragment : BaseFragment(), Observer {
         NotifyManager.getNotifyManager().addObserver(this)
         initView()
         initData()
-        initListener()
         onHiddenChanged(false)
+        initListener()
     }
 
     private fun initData() {
@@ -159,7 +160,7 @@ class ShopFragment : BaseFragment(), Observer {
         cbSelectAll.onClick {
             isAllChecked = !isAllChecked
             for (i in 0 until smRecyclerView.childCount) {
-                smRecyclerView.getChildAt(i).findViewById<AppCompatCheckBox>(R.id.cbSelect).isChecked = isAllChecked
+                smRecyclerView.getChildAt(i).findViewById<CheckBox>(R.id.cbSelect).isChecked = isAllChecked
             }
             if (isAllChecked && mGoodsList.size > 0) {
                 getPrice(mGoodsList)
@@ -176,7 +177,12 @@ class ShopFragment : BaseFragment(), Observer {
 
         for (i in 0 until mDatas.size) {
             productidString.append(mDatas[i].productid).append("|")
-            numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
+            val childView = smRecyclerView.layoutManager.findViewByPosition(i)
+            val holder = smRecyclerView.getChildViewHolder(childView)
+            val amount = holder.itemView.amoutView.amount
+            numString.append(amount).append("|")
+
+//            numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
         }
         val ps: String = productidString.toString().substring(0, productidString.length - 1)
         val ns: String = numString.toString().substring(0, numString.length - 1)
