@@ -13,6 +13,7 @@
         android:background="@mipmap/ic_category_search_bg"
         android:drawableLeft="@mipmap/ic_category_search"
         android:gravity="center"
+        android:focusable="false"
         android:hint="搜索" />
 
     <include layout="@layout/layout_line" />
@@ -23,15 +24,9 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/categoryRecyclerView"
+            android:id="@+id/classifyRecyclerView"
             android:layout_width="80dp"
             android:layout_height="match_parent" />
-
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/contentRecyclerView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1" />-->
 
         <FrameLayout
             android:id="@+id/fragmentContainer1"

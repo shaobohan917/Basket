@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ClassifyAdapter
@@ -16,12 +17,13 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
+import kotlinx.android.synthetic.main.item_recycler_category.view.*
 
 /**
  * Created by hanshaobo on 30/08/2017.
  */
 class ClassifyFragment : BaseFragment() {
-    private var mCategoryDatas = ArrayList<ClassifyBean.DataBean>()
+    private var mClassifyDatas = ArrayList<ClassifyBean.DataBean>()
     //存储商品分类id
     private var mIds = ArrayList<String>()
 
@@ -29,7 +31,7 @@ class ClassifyFragment : BaseFragment() {
 
     private var indexList = ArrayList<Int>()
 
-    private lateinit var mCategoryAdapter: ClassifyAdapter
+    private lateinit var mClassifyAdapter: ClassifyAdapter
 
     private var isGetedRecommend: Boolean = false
 
@@ -52,15 +54,15 @@ class ClassifyFragment : BaseFragment() {
         drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
         etSearch.setCompoundDrawables(drawable, null, null, null)
 
-        categoryRecyclerView.layoutManager = LinearLayoutManager(activity)
+        classifyRecyclerView.layoutManager = LinearLayoutManager(activity)
     }
 
 
     private fun initData() {
         //初始化分类列表adapter
-        mCategoryAdapter = ClassifyAdapter(activity, mCategoryDatas)
-        categoryRecyclerView.adapter = mCategoryAdapter
-        mCategoryAdapter.setOnItemClickListener { view, data, position ->
+        mClassifyAdapter = ClassifyAdapter(activity, mClassifyDatas)
+        classifyRecyclerView.adapter = mClassifyAdapter
+        mClassifyAdapter.setOnItemClickListener { view, data, position ->
             refreshContent(position)
         }
 
@@ -75,19 +77,18 @@ class ClassifyFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyBean>>() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {
                         super.onNext(t)
-                        mCategoryDatas.clear()
+                        mClassifyDatas.clear()
                         fragmentList.clear()
                         indexList.clear()
 
-//                        mCategoryAdapter = ClassifyAdapter(activity, mCategoryDatas)
-//                        categoryRecyclerView.layoutManager.smoothScrollToPosition(categoryRecyclerView, null, mCategoryAdapter.itemCount - 1)
+                        mClassifyAdapter = ClassifyAdapter(activity, mClassifyDatas)
 
-                        var list = t.result.data
+                        val list = t.result.data
                         for (i in 0 until list.size) {
-                            mCategoryDatas.add(list[i])
+                            mClassifyDatas.add(list[i])
                             mIds.add(list[i].leveloneid)
                         }
-                        mCategoryAdapter.notifyDataSetChanged()
+                        mClassifyAdapter.notifyDataSetChanged()
 
                         //有多少分类，创建多少fragment
                         var fragment: BaseFragment
@@ -114,19 +115,17 @@ class ClassifyFragment : BaseFragment() {
         if (position == 0 && !isGetedRecommend) {
             (fragment as RecommendFragment).getHotRecommend()
             isGetedRecommend = true
-
         }
         replaceContent(fragment, R.id.fragmentContainer1)
         //设置数据
         if (position != 0) {
             if (!indexList.contains(position)) {
                 Handler().postDelayed({
-                    (fragmentList[position] as ContentFragment).setContentData(position, mCategoryDatas[position])
+                    (fragmentList[position] as ContentFragment).setContentData(position, mClassifyDatas[position])
                 }, 300)
                 indexList.add(position)
             }
         }
-
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

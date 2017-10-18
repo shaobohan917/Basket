@@ -122,7 +122,6 @@ class HomeFragment : BaseFragment() {
 
     private fun goClassify(channel: Int) {
         (activity as MainActivity).mChannel = channel
-//        SPUtil.setInt(StaticValue.CHANNEL, channel)
         activity.bottombar.selectTabAtPosition(1)
     }
 

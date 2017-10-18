@@ -200,10 +200,9 @@ class RecommendFragment(activity: MainActivity, data: ClassifyBean.DataBean) : B
 
 
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
+        ImageUtils.showImg(activity, data.hotimage, ivHot)
         mContentDatas.clear()
         mContentAdapter = ContentAdapter(activity,mContentDatas)
-        ivHot.visibility = View.VISIBLE
-        ImageUtils.showImg(activity, data.hotimage, ivHot)
         mContentDatas.addAll(data.products)
         mContentAdapter.notifyDataSetChanged()
     }

@@ -140,7 +140,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         if (aMapLocation.errorCode == 0) {
             aoiName = aMapLocation.aoiName
             (fragmentList[0] as HomeFragment).setLocation(aoiName)
-
+            mLocationClient.stopLocation()
         }
     }
 

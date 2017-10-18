@@ -23,6 +23,11 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
     private OnRecyclerViewItemClickListener mOnItemClickListener;
     private MyViewHolder holder;
     private int layoutPosition;
+
+    public void setSelete0() {
+
+    }
+
     public  interface OnRecyclerViewItemClickListener {
         void onItemClick(View view , ClassifyBean.DataBean data, int position);
     }

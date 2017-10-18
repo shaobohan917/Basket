@@ -78,7 +78,7 @@ class ShopFragment : BaseFragment(), Observer {
 
     private fun getHotRecommend() {
         HttpMethods.createService()
-                .getHotRecommend("get_hotrecommend",(activity as MainActivity).mChannel.toString())
+                .getHotRecommend("get_hotrecommend", (activity as MainActivity).mChannel.toString())
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
                     override fun onNext(t: HotRecommendBean) {
@@ -173,20 +173,23 @@ class ShopFragment : BaseFragment(), Observer {
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
         var productidString = StringBuilder()
         var numString = StringBuilder()
+        if (smRecyclerView.childCount > 0) {
+
+        }
         for (i in 0 until smRecyclerView.childCount) {
             productidString.append(mDatas[i].productid).append("|")
             numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
-        }
-        HttpMethods.createService().getPrice("get_price", productidString.toString().substring(0, productidString.length - 1), numString.toString().substring(0, numString.length - 1))
-                .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
-                    override fun onNext(t: HttpResult<PriceBean>) {
-                        super.onNext(t)
-                        tvTotalPrice.visibility = View.VISIBLE
-                        tvTotalPrice.text = t.result.data.totalprice.toString()
-                    }
-                })
 
+            HttpMethods.createService().getPrice("get_price", productidString.toString().substring(0, productidString.length - 1), numString.toString().substring(0, numString.length - 1))
+                    .compose(TransformUtils.defaultSchedulers())
+                    .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
+                        override fun onNext(t: HttpResult<PriceBean>) {
+                            super.onNext(t)
+                            tvTotalPrice.visibility = View.VISIBLE
+                            tvTotalPrice.text = t.result.data.totalprice.toString()
+                        }
+                    })
+        }
     }
 
 
