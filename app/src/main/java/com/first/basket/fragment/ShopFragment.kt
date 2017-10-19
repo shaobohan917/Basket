@@ -3,7 +3,6 @@ package com.first.basket.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.AppCompatCheckBox
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -18,14 +17,15 @@ import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.app.NotifyManager
 import com.first.basket.base.HttpResult
-import com.first.basket.bean.*
+import com.first.basket.bean.HotRecommendBean
+import com.first.basket.bean.NotifyMsgEntity
+import com.first.basket.bean.PriceBean
+import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
-import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
@@ -95,7 +95,6 @@ class ShopFragment : BaseFragment(), Observer {
 
     private fun initView() {
         tvAddress.text = SPUtil.getString(StaticValue.SP_ADDRESS, "")
-        ImageUtils.showImg(activity, Constants.PIC_URL, ivBanner)
 
         smRecyclerView.layoutManager = LinearLayoutManager(activity)
         smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
@@ -136,16 +135,15 @@ class ShopFragment : BaseFragment(), Observer {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            val goods = data!!.extras.getSerializable("goods") as GoodsDetailBean.ResultBean.DataBean
+//            val goods = data!!.extras.getSerializable("goods") as GoodsDetailBean.ResultBean.DataBean
 //            mGoodsList.add(goods)
-            mAdapter.notifyDataSetChanged()
+//            mAdapter.notifyDataSetChanged()
         }
     }
 
     fun initListener() {
         gvGoods.onClick {
             var intent = Intent(activity, GoodsDetailActivity::class.java)
-//            intent.putExtra("id".)
             startActivityForResult(intent, 0)
         }
         ivBuy.onClick {
@@ -181,8 +179,6 @@ class ShopFragment : BaseFragment(), Observer {
             val holder = smRecyclerView.getChildViewHolder(childView)
             val amount = holder.itemView.amoutView.amount
             numString.append(amount).append("|")
-
-//            numString.append(smRecyclerView.getChildAt(i).amoutView.amount).append("|")
         }
         val ps: String = productidString.toString().substring(0, productidString.length - 1)
         val ns: String = numString.toString().substring(0, numString.length - 1)

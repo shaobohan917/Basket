@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ClassifyAdapter
@@ -17,7 +16,6 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
-import kotlinx.android.synthetic.main.item_recycler_category.view.*
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -77,29 +75,7 @@ class ClassifyFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyBean>>() {
                     override fun onNext(t: HttpResult<ClassifyBean>) {
                         super.onNext(t)
-                        mClassifyDatas.clear()
-                        fragmentList.clear()
-                        indexList.clear()
-
-                        mClassifyAdapter = ClassifyAdapter(activity, mClassifyDatas)
-
-                        val list = t.result.data
-                        for (i in 0 until list.size) {
-                            mClassifyDatas.add(list[i])
-                            mIds.add(list[i].leveloneid)
-                        }
-                        mClassifyAdapter.notifyDataSetChanged()
-
-                        //有多少分类，创建多少fragment
-                        var fragment: BaseFragment
-                        for (i in 0 until list.size) {
-                            fragment = if (i == 0) {
-                                RecommendFragment(activity as MainActivity)
-                            } else {
-                                ContentFragment(activity as MainActivity, list[i])
-                            }
-                            fragmentList.add(fragment)
-                        }
+                        setClassify(t)
                         if (needRefresh) {
                             //获取推荐列表
                             refreshContent(0)
@@ -109,11 +85,40 @@ class ClassifyFragment : BaseFragment() {
     }
 
 
+    private fun setClassify(t: HttpResult<ClassifyBean>) {
+
+        mClassifyDatas.clear()
+        fragmentList.clear()
+        indexList.clear()
+
+        mClassifyAdapter = ClassifyAdapter(activity, mClassifyDatas)
+
+        val list = t.result.data
+        for (i in 0 until list.size) {
+            mClassifyDatas.add(list[i])
+            mIds.add(list[i].leveloneid)
+        }
+        mClassifyAdapter.notifyDataSetChanged()
+
+        //有多少分类，创建多少fragment
+        var fragment: BaseFragment
+        for (i in 0 until list.size) {
+            fragment = if (i == 0) {
+                RecommendFragment()
+            } else {
+                ContentFragment(activity as MainActivity, list[i])
+            }
+            fragmentList.add(fragment)
+        }
+
+    }
+
+
     private fun refreshContent(position: Int) {
         val fragment = fragmentList[position]
 
         if (position == 0 && !isGetedRecommend) {
-            (fragment as RecommendFragment).getHotRecommend()
+            (fragment as RecommendFragment).getHotRecommend(activity as MainActivity)
             isGetedRecommend = true
         }
         replaceContent(fragment, R.id.fragmentContainer1)

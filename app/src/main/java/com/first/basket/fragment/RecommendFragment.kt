@@ -2,11 +2,11 @@ package com.first.basket.fragment
 
 import android.animation.Animator
 import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Path
 import android.graphics.PathMeasure
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -21,26 +21,20 @@ import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.app.BaseApplication
-import com.first.basket.bean.ClassifyBean
-import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
-import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
-import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_content.*
 import java.util.*
 
-@SuppressLint("ValidFragment")
 /**
  * Created by hanshaobo on 17/09/2017.
  */
-class RecommendFragment(activity: MainActivity) : BaseFragment() {
-    private var activity = activity
+class RecommendFragment : BaseFragment() {
     private lateinit var mContentAdapter: ContentAdapter
 
     private var mContentDatas = ArrayList<ProductBean>()
@@ -59,7 +53,6 @@ class RecommendFragment(activity: MainActivity) : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentRecyclerView = view.findViewById(R.id.contentRecyclerView)
-
         initView()
         initData()
         initListener()
@@ -184,8 +177,8 @@ class RecommendFragment(activity: MainActivity) : BaseFragment() {
         valueAnimator.start()
     }
 
-    fun getHotRecommend() {
-        LogUtils.d(activity.mChannel.toString()+".get")
+    fun getHotRecommend(activity: MainActivity) {
+        LogUtils.d(activity.mChannel.toString() + ".get")
         HttpMethods.createService()
                 .getHotRecommend("get_hotrecommend", activity.mChannel.toString())
                 .compose(TransformUtils.defaultSchedulers())
@@ -202,7 +195,7 @@ class RecommendFragment(activity: MainActivity) : BaseFragment() {
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
         ImageUtils.showImg(activity, data.hotimage, ivHot)
         mContentDatas.clear()
-        mContentAdapter = ContentAdapter(activity,mContentDatas)
+        mContentAdapter = ContentAdapter(activity, mContentDatas)
         mContentDatas.addAll(data.products)
         mContentAdapter.notifyDataSetChanged()
     }

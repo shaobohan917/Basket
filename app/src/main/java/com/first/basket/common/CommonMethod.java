@@ -25,6 +25,7 @@ import android.widget.ScrollView;
 
 import com.first.basket.utils.SPUtil;
 import com.first.basket.utils.ToastUtil;
+import com.first.basket.utils.UIUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,6 +40,7 @@ import java.util.regex.Pattern;
 public class CommonMethod {
 
     private static InputMethodManager imm;
+    private static Context context = UIUtils.getContext();
 
     /**
      * 隐藏软键盘
@@ -556,10 +558,9 @@ public class CommonMethod {
     /**
      * get App verside
      *
-     * @param context
      * @return
      */
-    public static String getVersionCode(Context context) {
+    public static String getVersionCode() {
         PackageManager packageManager = context.getPackageManager();
         PackageInfo packageInfo;
         String versionCode = "";
@@ -575,10 +576,9 @@ public class CommonMethod {
     /**
      * get App versionName
      *
-     * @param context
      * @return
      */
-    public static String getVersionName(Context context) {
+    public static String getVersionName() {
         PackageManager packageManager = context.getPackageManager();
         PackageInfo packageInfo;
         String versionName = "";

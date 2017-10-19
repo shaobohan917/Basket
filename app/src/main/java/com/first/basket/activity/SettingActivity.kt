@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.rxjava.RxjavaUtil
 import com.first.basket.rxjava.UITask
@@ -22,6 +23,7 @@ class SettingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         initView()
+
     }
 
     private fun initView() {
@@ -46,8 +48,10 @@ class SettingActivity : BaseActivity() {
 
         rlModifyPwd.onClick {
             var intent = Intent(this@SettingActivity, RegisterActivity::class.java)
-            intent.putExtra("title","修改密码")
+            intent.putExtra("title", "修改密码")
             startActivity(intent)
         }
+
+        tvVersion.text = CommonMethod.getVersionName()
     }
 }

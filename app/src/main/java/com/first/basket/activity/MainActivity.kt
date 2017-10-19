@@ -20,7 +20,12 @@ import com.first.basket.fragment.BaseFragment
 
 
 class MainActivity : BaseActivity(), AMapLocationListener {
-
+    companion object {
+        private lateinit var instance: MainActivity
+        fun getInstance1(): MainActivity {
+            return instance
+        }
+    }
 
     private lateinit var bottomBar: BottomBar
     private var baseFragment = BaseFragment()
@@ -164,15 +169,10 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         }
     }
 
-    companion object {
-        private lateinit var instance: MainActivity
-        fun getInstance1(): MainActivity {
-            return instance
-        }
-    }
-
     fun setCurrentPage(index: Int) {
-        switchFragment(index)
-        bottomBar.selectTabAtPosition(index)
+        if (fragmentList[index].isAdded) {
+            switchFragment(index)
+            bottomBar.selectTabAtPosition(index)
+        }
     }
 }
