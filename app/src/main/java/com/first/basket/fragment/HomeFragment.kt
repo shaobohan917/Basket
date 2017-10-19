@@ -189,9 +189,9 @@ class HomeFragment : BaseFragment() {
     private fun setRecommendData(data: HomeBean.DataBean?) {
         this.recommendData = data
         ImageUtils.showImg(activity, data?.hltg?.image, ivHLTG)
-        ImageUtils.showImg(activity, data?.hltg?.image, ivSHCS)
-        ImageUtils.showImg(activity,data?.hltg?.image, ivQGCS)
-        ImageUtils.showImg(activity, data?.hltg?.image, ivJKSS)
+        ImageUtils.showImg(activity, data?.shcs?.image, ivSHCS)
+        ImageUtils.showImg(activity,data?.qgcs?.image, ivQGCS)
+        ImageUtils.showImg(activity, data?.jkss?.image, ivJKSS)
 
         ivSHCS.setOnClickListener(myClickListener)
         ivHLTG.setOnClickListener(myClickListener)
