@@ -46,10 +46,6 @@ class OrderListActivity : BaseActivity() {
                         super.onNext(t)
                         setData(t.result.data)
                     }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                    }
                 })
     }
 
@@ -62,6 +58,9 @@ class OrderListActivity : BaseActivity() {
             view.tvLimitTime.text = resources.getString(R.string.order_limit_time, item.orderdt)
             view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.cost)
 
+            view.onClick {
+
+            }
             view.onClick {
                 startActivity(Intent(this@OrderListActivity, OrderDetailActivity::class.java))
             }

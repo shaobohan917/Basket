@@ -19,6 +19,12 @@ import kotlin.collections.LinkedHashMap
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import com.first.basket.base.HttpResult
+import com.first.basket.bean.CodeBean
+import com.first.basket.bean.GoodsDetailBean
+import com.first.basket.http.HttpMethods
+import com.first.basket.http.HttpResultSubscriber
+import com.first.basket.http.TransformUtils
 
 
 /**
@@ -74,14 +80,13 @@ class PlaceOrderActivity : BaseActivity() {
         header = LayoutInflater.from(this).inflate(R.layout.layout_order_header, recyclerView, false)
         if (TextUtils.isEmpty(SPUtil.getString(StaticValue.USER_ADDRESS, ""))) {
             address = header.findViewById<TextView>(R.id.tvAddress)
-            address.text = "请先添加收货地址"
+            address.text = getString(R.string.add_address)
             address.onClick {
                 myStartActivityForResult(AddressInfoActivity::class.java, REQUEST_ONE)
             }
 
         } else {
             refreshHeader(header)
-
         }
         mAdapter.setHeaderView(header)
     }
@@ -120,8 +125,14 @@ class PlaceOrderActivity : BaseActivity() {
     private fun doPlaceOrder() {
         myStartActivity(OrderResultActivity::class.java, true)
 
-//        HttpMethods.createService().doPlaceOrder("do_placeorder","","",SPUtil.getString(StaticValue.USER_ID,""),"")
-//                .compose(TransformUtils.defaultSchedulers())
+        HttpMethods.createService().doPlaceOrder("do_placeorder", "", "", SPUtil.getString(StaticValue.USER_ID, ""), "")
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<HttpResult<CodeBean>>() {
+                    override fun onNext(t: HttpResult<CodeBean>) {
+                        super.onNext(t)
+
+                    }
+                })
 //
     }
 

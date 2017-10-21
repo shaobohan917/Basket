@@ -19,9 +19,6 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
  * Created by hanshaobo on 30/08/2017.
  */
 class MineFragment : BaseFragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_mine, container, false)
@@ -36,7 +33,7 @@ class MineFragment : BaseFragment() {
         setLoginStatus()
 
         rlOrder.onClick {
-            //            startActivity(Intent(activity, OrderListActivity::class.java))
+//                        startActivity(Intent(activity, OrderListActivity::class.java))
         }
 
         ivAva.onClick {

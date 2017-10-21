@@ -69,7 +69,17 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LoginPwdActivity" />
-        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.SettingActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="com.first.basket"
+                    android:host="setting" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.PlaceOrderActivity" />
         <activity android:name=".activity.RangeActivity" />
         <activity android:name=".activity.AboutActivity" />

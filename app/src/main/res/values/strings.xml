@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">1号菜篮子工程</string>
-
+    <string name="bugly">b0437cb805</string>
 
     <string name="price">¥ %s</string>
     <string name="order_price">共%1s件商品 合计：¥ %2s</string>
@@ -14,5 +14,5 @@
     <string name="about4">\t\t\t\t健康和食品安全紧密相关，是国家和地方政府重点关注的民生工程，1号菜篮子工程作为国家民生工程的运营方，这也是我们的关注重点。在1号菜篮子工程，我们绝不会放过任何有害的食品，让它们流到社区居民的餐桌上，饭碗中。</string>
     <string name="about5">\t\t\t\t1号菜篮子工程平台提供手机App、微信公众号、电脑、电话、DM单等多种途径，方便社区居民来购买我们的新鲜、放心、平价食品，获得我们的服务。如果您希望有个健康的生活，希望吃的放心、买的舒心，1号菜篮子工程绝对是您的不二选择。</string>
 
-    <string name="bugly">b0437cb805</string>
+    <string name="add_address">请先添加收货地址</string>
 </resources>
