@@ -219,7 +219,7 @@ class ContentFragment(activity: MainActivity,data: ClassifyBean.DataBean) : Base
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
-        HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId)
+        HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId,"","")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<ClassifyContentBean>() {
                     override fun onCompleted() {

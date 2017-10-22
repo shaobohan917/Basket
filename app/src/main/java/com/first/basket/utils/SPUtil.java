@@ -10,6 +10,7 @@ import com.first.basket.common.StaticValue;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Set;
 
 /**
  * Created by Luka on 2016/3/29.
@@ -79,6 +80,8 @@ public class SPUtil {
             return sharedPreferences.getFloat(key, (Float) defValue);
         } else if ("Long".equals(type)) {
             return sharedPreferences.getLong(key, (Long) defValue);
+        }else if ("Set".equals(type)) {
+            return sharedPreferences.getStringSet(key, (Set<String>) defValue);
         }
 
         return null;
@@ -89,6 +92,12 @@ public class SPUtil {
         if (sPrefs == null)
             return null;
         return sPrefs.getString(key, defaultValue);
+    }
+
+    public static Set<String> getStringSet(String key, Set<String> defaultValue) {
+        if (sPrefs == null)
+            return null;
+        return sPrefs.getStringSet(key, defaultValue);
     }
 
     public static void setString(String key, String value) {
@@ -131,6 +140,12 @@ public class SPUtil {
         if (sPrefs == null)
             return;
         sPrefs.edit().putInt(key, value).commit();
+    }
+
+    public static void setStringSet(String key, Set<String> value) {
+        if (sPrefs == null)
+            return;
+        sPrefs.edit().putStringSet(key,value).commit();
     }
 
 

@@ -56,6 +56,8 @@ public class StaticValue {
     public static final String USER_ADDRESS = "user_address";
     public static final String USER_PHONE = "user_phone";
 
+    public static final String SEARCH = "search";
+
 //    public static final String CHANNEL = "channel";
 }
 

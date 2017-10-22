@@ -122,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
-        android:background="@color/bt_bg"
+        android:background="@color/colorMain"
         android:text="保存并使用"
         android:textColor="@color/white" />
 </RelativeLayout>

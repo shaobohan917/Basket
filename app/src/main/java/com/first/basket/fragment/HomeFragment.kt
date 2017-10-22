@@ -16,6 +16,7 @@ import com.first.basket.activity.*
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.HomeBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
@@ -75,8 +76,13 @@ class HomeFragment : BaseFragment() {
         myClickListener = MyClickListener()
 
         llPosition.setOnClickListener {
-            val intent = Intent(activity, AddressInfoActivity::class.java)
-            startActivityForResult(intent, (activity as BaseActivity).REQUEST_ONE)
+            if (CommonMethod.isLogin()) {
+                val intent = Intent(activity, AddressListActivity::class.java)
+                startActivityForResult(intent, (activity as BaseActivity).REQUEST_ONE)
+            } else {
+                (activity as MainActivity).showLogin()
+            }
+
         }
 
         ivSearch.onClick {

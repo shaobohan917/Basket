@@ -1,8 +1,14 @@
 package com.first.basket.activity
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.KeyEvent
+import android.view.View
+import android.widget.PopupWindow
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
@@ -174,5 +180,25 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             switchFragment(index)
             bottomBar.selectTabAtPosition(index)
         }
+    }
+
+    fun showLogin() {
+        var dialog = AlertDialog.Builder(this@MainActivity)
+        dialog.setTitle("提示")
+        dialog.setMessage("您尚未登录，请先登录")
+        dialog.setPositiveButton("去登录", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                myStartActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            }
+
+        })
+        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                p0?.dismiss()
+            }
+
+        })
+        dialog.show()
+
     }
 }

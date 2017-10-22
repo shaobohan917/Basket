@@ -24,6 +24,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.activity_address_list.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 
 /**
@@ -40,6 +41,14 @@ class AddressListActivity : BaseActivity() {
         setContentView(R.layout.activity_address_list)
         initData()
         initView()
+        initListener()
+    }
+
+    private fun initListener() {
+
+        btAdd.onClick {
+            myStartActivity(Intent(this@AddressListActivity,AddressInfoActivity::class.java))
+        }
     }
 
     private fun initData() {

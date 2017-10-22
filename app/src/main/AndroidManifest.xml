@@ -87,6 +87,7 @@
         <activity android:name=".activity.AddressListActivity" />
         <activity android:name=".activity.OrderResultActivity" />
         <activity android:name=".activity.DecoderActivity" />
+        <activity android:name=".activity.SearchListActivity" />
         <activity
             android:name=".activity.New_LocalActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

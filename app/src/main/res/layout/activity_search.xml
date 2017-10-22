@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <EditText
@@ -14,13 +14,18 @@
         android:background="@mipmap/ic_category_search_bg"
         android:drawableLeft="@mipmap/ic_category_search"
         android:gravity="center"
-        android:hint="搜索" />
+        android:hint="搜索"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLength="17"
+        android:maxLines="1" />
+
 
     <include layout="@layout/layout_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:orientation="vertical">
 
@@ -48,7 +53,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,27 +61,22 @@
             android:textColor="@color/gray99"
             android:textSize="12sp" />
 
-
-        <LinearLayout
-            android:id="@+id/llRecommend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"/>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
-
-        <com.coding.tag_layouter.AutoLayoutContainer
-            android:id="@+id/alc_vertical"
+        <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dist_horizontal="12dp"
-            app:dist_vertical="12dp"
-            app:orientation="vertical" />
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
 
-    </ScrollView>
+            <com.coding.tag_layouter.AutoLayoutContainer
+                android:id="@+id/alc_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:dist_horizontal="12dp"
+                app:dist_vertical="12dp"
+                app:orientation="vertical" />
+
+        </ScrollView>
+    </LinearLayout>
+
+
 </LinearLayout>
