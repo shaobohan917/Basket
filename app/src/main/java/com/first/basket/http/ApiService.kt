@@ -15,7 +15,7 @@ import rx.Observable
 interface ApiService {
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveltwoid") leveltwoid: String, @Field("productname") productname: String, @Field("productid") productid: String): Observable<ClassifyContentBean>
+    fun getProducts(@Field("action") action: String, @Field("channel") channel: String, @Field("leveltwoid") leveltwoid: String, @Field("productname") productname: String, @Field("productid") productid: String): Observable<HttpResult<ClassifyContentBean>>
 
     @FormUrlEncoded
     @POST("ClintAPI.php")

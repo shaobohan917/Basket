@@ -23,6 +23,7 @@ import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.adapter.SecondAdapter
 import com.first.basket.app.BaseApplication
+import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.HotRecommendBean
@@ -221,14 +222,10 @@ class ContentFragment(activity: MainActivity,data: ClassifyBean.DataBean) : Base
     private fun getProduct(leveltwoId: String) {
         HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId,"","")
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<ClassifyContentBean>() {
-                    override fun onCompleted() {
-                    }
+                .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyContentBean>>() {
 
-                    override fun onError(e: Throwable) {
-                    }
-
-                    override fun onNext(t: ClassifyContentBean) {
+                    override fun onNext(t: HttpResult<ClassifyContentBean>) {
+                        super.onNext(t)
                         mContentDatas.clear()
                         val dataBean = t.result.data
 

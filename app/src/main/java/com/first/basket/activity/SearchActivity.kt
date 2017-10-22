@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.coding.tag_layouter.AutoLayoutContainer
 import com.first.basket.R
@@ -16,19 +15,14 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
-import com.first.basket.utils.ScreenUtils
 import kotlinx.android.synthetic.main.activity_search.*
-import org.jetbrains.anko.padding
-import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.wrapContent
-import java.util.*
-import kotlin.collections.HashSet
 
 /**
  * Created by hanshaobo on 12/09/2017.
  */
 class SearchActivity : BaseActivity() {
     private lateinit var alc_vertical: AutoLayoutContainer
+
     private var listSet = HashSet<String>()
 
 
@@ -41,28 +35,42 @@ class SearchActivity : BaseActivity() {
         initListener()
     }
 
-    private fun initData() {
+    private fun initView() {
+        alc_vertical = findViewById(R.id.alc_vertical)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        etSearch.setText("")
         listSet = SPUtil.getStringSet(StaticValue.SEARCH, listSet) as HashSet<String>
         LogUtils.d("listset.size;" + listSet.size)
+        if (listSet.size > 0) {
+            alc_vertical_recent.addTag<TextView>(R.layout.layout_tag, listSet.elementAt(0))
+            alc_vertical_recent.setOnSelectListener { tag, position ->
+                var intent = Intent(this@SearchActivity, SearchListActivity::class.java)
+                intent.putExtra("search", listSet.elementAt(0))
+                startActivity(intent)
+            }
+        }
+    }
+
+    private fun initData() {
 
     }
 
     private fun initListener() {
         etSearch.setOnEditorActionListener { p0, p1, p2 ->
             if (p1 == EditorInfo.IME_ACTION_SEARCH) {
-                LogUtils.d("sousuo:" + p0.text)
-                var intent = Intent(this@SearchActivity,SearchListActivity::class.java)
-                intent.putExtra("search",p0.text)
+                listSet.add(p0.text.toString())
+                SPUtil.setStringSet(StaticValue.SEARCH, listSet)
+                var intent = Intent(this@SearchActivity, SearchListActivity::class.java)
+                intent.putExtra("search", p0.text.toString())
                 myStartActivity(intent)
             }
             false
         }
     }
 
-    private fun initView() {
-        alc_vertical = findViewById(R.id.alc_vertical)
-
-    }
 
     private fun getSuspect() {
         HttpMethods.createService().getRecommend("get_recommend")
@@ -77,43 +85,26 @@ class SearchActivity : BaseActivity() {
 
 
     private fun setData(data: List<RecommendBean.ResultBean.DataBean>) {
-        var strs = ArrayList<String>()
-        var sb = StringBuilder()
-
-        for (i in 0 until data.size) {
-            val p = ScreenUtils.dip2px(this, 10f)
-            val tv = TextView(this)
-            val params = LinearLayout.LayoutParams(wrapContent, wrapContent)
-            params.setMargins(0, 0, p, p)
-            tv.padding = p
-            tv.setBackgroundColor(resources.getColor(R.color.grayF4))
-            tv.layoutParams = params
-
-            tv.text = data[i].productname
-            tv.onClick {
-                var intent = Intent(this@SearchActivity, GoodsDetailActivity::class.java)
-                intent.putExtra("id", data[i].productid)
-                myStartActivity(intent, true)
-            }
-//            llRecommend.addView(tv)
-
-            strs.add(data[i].productname)
-            sb.append(data[i].productname + ",")
-        }
-        var sss = strs.toString()
-        sss = sss.substring(1, sss.length - 1)
+        val strs = (0 until data.size).map { data[it].productname }
         alc_vertical.addTag<TextView>(R.layout.layout_tag, strs[0], strs[1], strs[2], strs[3], strs[4], strs[5])
 
         alc_vertical.setOnSelectListener(object : AutoLayoutContainer.OnSelectListener {
             override fun onSelect(tag: View?, position: Int) {
-                var str = strs[position]
-                listSet.add(str)
-                SPUtil.setStringSet(StaticValue.SEARCH, listSet)
-                LogUtils.d("xuanzhong:" + strs[position])
-                var intent = Intent(this@SearchActivity,SearchListActivity::class.java)
-                intent.putExtra("search",str)
-                startActivity(intent)
+
+                LogUtils.d("sele:" + position)
             }
+
         })
+
+//        alc_vertical.setOnSelectListener { tag, position ->
+//            LogUtils.d("pos:"+position)
+//            var str = strs[position]
+//            listSet.add(str)
+//            SPUtil.setStringSet(StaticValue.SEARCH, listSet)
+//            LogUtils.d("xuanzhong:" + strs[position])
+//            var intent = Intent(this@SearchActivity, SearchListActivity::class.java)
+//            intent.putExtra("search", str)
+//            startActivity(intent)
+//        }
     }
 }
