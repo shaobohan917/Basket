@@ -6,6 +6,7 @@ import android.graphics.Path
 import android.graphics.PathMeasure
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
@@ -17,6 +18,7 @@ import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.constants.Constants
 import com.first.basket.db.ProductDao
 import com.first.basket.fragment.HomeFragment
@@ -110,8 +112,11 @@ class GoodsDetailActivity : BaseActivity() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<GoodsDetailBean>>() {
                     override fun onNext(t: HttpResult<GoodsDetailBean>) {
                         super.onNext(t)
-                        val data = t.result
-                        setData(data.data)
+                        if (t.status == 0) {
+                            val data = t.result
+                            setData(data.data)
+                        }
+
                     }
                 })
     }
@@ -137,6 +142,9 @@ class GoodsDetailActivity : BaseActivity() {
                 .start()
 
         ImageUtils.showImg(this@GoodsDetailActivity, data.images.get(0).image, ivGoods)
+        if (CommonMethod.isTrue(data.product.promboolean)) {
+            tvProm.visibility = View.VISIBLE
+        }
     }
 
 
@@ -217,8 +225,10 @@ class GoodsDetailActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
+//        if(data!=null&&data.product!=null){
+//            //加入购物车
+//            BaseApplication.getInstance().mGoodsMap.put(data.product, mCount)
+//        }
 
-        //加入购物车
-        BaseApplication.getInstance().mGoodsMap.put(data.product, mCount)
     }
 }

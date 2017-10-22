@@ -152,7 +152,7 @@ class ShopFragment : BaseFragment(), Observer {
                 intent.putExtra("price", tvTotalPrice.text)
                 startActivity(intent)
             } else {
-                CommonMethod.showLogin()
+                (activity as MainActivity).showLogin()
             }
         }
         cbSelectAll.onClick {
@@ -194,21 +194,41 @@ class ShopFragment : BaseFragment(), Observer {
     }
 
 
+//    override fun onHiddenChanged(hidden: Boolean) {
+//        super.onHiddenChanged(hidden)
+//        if (!hidden) {
+//            mGoodsList.clear()
+//            mGoodsMap = BaseApplication.getInstance().mGoodsMap
+//
+//            var iterator = mGoodsMap.entries.iterator()
+//            while (iterator.hasNext()) {
+//                var entry = iterator.next() as Map.Entry<ProductBean, Int>
+//                var key = entry.key
+//                var value = entry.value
+//
+//                mGoodsList.add(key)
+//
+//                Collections.reverse(mGoodsList)
+//            }
+//            if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
+//                cbSelectAll.performClick()
+//            }
+//            mAdapter.notifyDataSetChanged()
+//        }
+//    }
+
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
+
         if (!hidden) {
             mGoodsList.clear()
-            mGoodsMap = BaseApplication.getInstance().mGoodsMap
+            mGoodsList.addAll(BaseApplication.getInstance().getmProductsList())
+            Collections.reverse(mGoodsList)
 
-            var iterator = mGoodsMap.entries.iterator()
-            while (iterator.hasNext()) {
-                var entry = iterator.next() as Map.Entry<ProductBean, Int>
-                var key = entry.key
-                var value = entry.value
-
-                mGoodsList.add(key)
-                Collections.reverse(mGoodsList)
+            for (i in 0 until mGoodsList.size){
+                LogUtils.d("频道排序："+mGoodsList[i].channelid)
             }
+
             if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
                 cbSelectAll.performClick()
             }

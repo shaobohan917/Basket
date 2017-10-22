@@ -30,6 +30,7 @@ import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_content.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by hanshaobo on 17/09/2017.
@@ -89,15 +90,22 @@ class RecommendFragment : BaseFragment() {
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             addGoodToCar(view.findViewById(R.id.ivGoods))
             data.isCheck = true
-            data.amount++
-            var goodsMap = BaseApplication.getInstance().mGoodsMap
-            if (goodsMap.containsKey(data)) {
-                goodsMap.put(data, goodsMap.getValue(data) + 1)
-            } else {
-                goodsMap.put(data, 1)
+
+            var products = BaseApplication.getInstance().getmProductsList()
+            var ids = ArrayList<String>()
+            for (i in 0 until products.size) {
+                ids.add(products[i].productid)
             }
-            BaseApplication.getInstance().mGoodsMap = goodsMap
+            if (ids.contains(data.productid)) {
+                val i = ids.indexOf(data.productid)
+                //已包含
+                products[i].amount += 1
+            }else{
+                data.amount++
+                products.add(data)
+            }
             (activity as MainActivity).setCountAdd()
+            BaseApplication.getInstance().setmProductsList(products)
         }
     }
 

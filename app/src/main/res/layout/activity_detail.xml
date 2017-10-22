@@ -50,14 +50,33 @@
                 tools:text="【今日下单，明日采摘，后天到家】" />
 
 
-            <TextView
-                android:id="@+id/tvPrice"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/gray33"
-                android:textSize="22sp"
-                tools:text="12.00" />
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray33"
+                    android:textSize="22sp"
+                    tools:text="12.00" />
+
+                <TextView
+                    android:id="@+id/tvProm"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="#FF6C6C"
+                    android:padding="4dp"
+                    android:text="每周特惠"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tvDetail"

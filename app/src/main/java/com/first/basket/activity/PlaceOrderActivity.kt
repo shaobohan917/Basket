@@ -81,7 +81,7 @@ class PlaceOrderActivity : BaseActivity() {
             address = header.findViewById<TextView>(R.id.tvAddress)
             address.text = getString(R.string.add_address)
             address.onClick {
-                myStartActivityForResult(AddressAddActivity::class.java, REQUEST_ONE)
+                myStartActivityForResult(AddressListActivity::class.java, REQUEST_ONE)
             }
 
         } else {

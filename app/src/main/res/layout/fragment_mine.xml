@@ -163,6 +163,7 @@
         android:focusable="true" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:id="@+id/aimvHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:accountManagerImg="@mipmap/ic_mine_contact"

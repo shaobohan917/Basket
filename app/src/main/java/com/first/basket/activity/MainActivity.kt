@@ -1,28 +1,30 @@
 package com.first.basket.activity
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils
 import android.view.KeyEvent
-import android.view.View
-import android.widget.PopupWindow
-import com.first.basket.R
-import com.first.basket.base.BaseActivity
-import com.first.basket.bean.ProductBean
-import com.first.basket.fragment.*
-import com.roughike.bottombar.BottomBar
-import com.roughike.bottombar.BottomBarTab
-import java.util.*
-import kotlin.collections.ArrayList
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
+import com.first.basket.R
+import com.first.basket.app.BaseApplication
+import com.first.basket.base.BaseActivity
+import com.first.basket.bean.ProductBean
+import com.first.basket.common.StaticValue
+import com.first.basket.fragment.*
+import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
-import com.first.basket.fragment.BaseFragment
+import com.google.gson.Gson
+import com.roughike.bottombar.BottomBar
+import com.roughike.bottombar.BottomBarTab
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 
 
 class MainActivity : BaseActivity(), AMapLocationListener {
@@ -105,7 +107,25 @@ class MainActivity : BaseActivity(), AMapLocationListener {
                 }
             }
         }
+        //定位
         location()
+        //从数据库中获取购物车中的商品
+        var str = SPUtil.getString(StaticValue.GOODS_LIST, "")
+        LogUtils.d("str:" + str)
+        if (!TextUtils.isEmpty(str)) {
+            val gson = GsonBuilder().create()
+            val productListBean = gson.fromJson<ArrayList<ProductBean>>(str, object : TypeToken<ArrayList<ProductBean>>() {
+
+            }.type)
+            for (i in 0 until productListBean.size) {
+                mCount += productListBean[i].amount
+                LogUtils.d("ll:" + mCount)
+                LogUtils.d("商品：" + productListBean[i].productname + "," + productListBean[i].amount)
+            }
+            BaseApplication.getInstance().setmProductsList(productListBean)
+
+            nearby.setBadgeCount(mCount)
+        }
     }
 
     private var exitTime: Long = 0
@@ -116,6 +136,11 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             if (System.currentTimeMillis() - exitTime > 1000) {
                 ToastUtil.showToast("双击退出应用")
                 exitTime = System.currentTimeMillis()
+
+                var products = BaseApplication.getInstance().getmProductsList()
+                var gson = Gson()
+                var str = gson.toJson(products)
+                SPUtil.setString(StaticValue.GOODS_LIST, str)
             } else {
                 //保存购物车数据
 //                ProductDao.getInstance(this@MainActivity).insertOrUpdateItem()
@@ -199,6 +224,34 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
         })
         dialog.show()
+    }
 
+    override fun onDestroy() {
+
+
+        super.onDestroy()
+//        LogUtils.d("保存：" + str)
+//        showPop("确定退出？", "", "退出", object : DialogInterface.OnClickListener {
+//            override fun onClick(p0: DialogInterface?, p1: Int) {
+//                this@MainActivity.onDestroy()
+//                this@MainActivity.super.onDestroy()
+//            }
+//        })
+
+    }
+
+
+    fun showPop(title: String, content: String, positive: String, listener: DialogInterface.OnClickListener) {
+        var dialog = AlertDialog.Builder(this@MainActivity)
+        dialog.setTitle(title)
+        dialog.setMessage(content)
+        dialog.setPositiveButton(positive, listener)
+        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                p0?.dismiss()
+            }
+
+        })
+        dialog.show()
     }
 }

@@ -91,7 +91,8 @@ public class ProductDao {
     }
 
     public synchronized void insertOrUpdateItems(LinkedHashMap<ProductBean, Integer> products) {
-
+        for (int i = 0; i < products.size(); i++) {
+        }
     }
 
 

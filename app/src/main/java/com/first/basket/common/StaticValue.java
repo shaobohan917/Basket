@@ -58,6 +58,9 @@ public class StaticValue {
 
     public static final String SEARCH = "search";
 
+    public static final String GOODS_MAP = "goods_map";
+    public static final String GOODS_LIST = "goods_list";
+
 //    public static final String CHANNEL = "channel";
 }
 

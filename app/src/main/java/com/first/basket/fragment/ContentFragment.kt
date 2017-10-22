@@ -26,14 +26,11 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
-import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
-import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.SPUtil
+import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_content.*
 import java.util.*
 
@@ -127,15 +124,22 @@ class ContentFragment(activity: MainActivity,data: ClassifyBean.DataBean) : Base
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             addGoodToCar(view.findViewById(R.id.ivGoods))
             data.isCheck = true
-            data.amount++
-            var goodsMap = BaseApplication.getInstance().mGoodsMap
-            if (goodsMap.containsKey(data)) {
-                goodsMap.put(data, goodsMap.getValue(data) + 1)
-            } else {
-                goodsMap.put(data, 1)
+
+            var products = BaseApplication.getInstance().getmProductsList()
+            var ids = ArrayList<String>()
+            for (i in 0 until products.size) {
+                ids.add(products[i].productid)
             }
-            BaseApplication.getInstance().mGoodsMap = goodsMap
+            if (ids.contains(data.productid)) {
+                val i = ids.indexOf(data.productid)
+                //已包含
+                products[i].amount += 1
+            }else{
+                data.amount++
+                products.add(data)
+            }
             (activity as MainActivity).setCountAdd()
+            BaseApplication.getInstance().setmProductsList(products)
         }
     }
 

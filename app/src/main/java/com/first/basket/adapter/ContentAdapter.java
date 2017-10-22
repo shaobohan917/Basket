@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.first.basket.R;
 import com.first.basket.bean.ProductBean;
+import com.first.basket.common.CommonMethod;
 import com.first.basket.utils.ImageUtils;
 
 import java.util.List;
@@ -89,6 +90,11 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
                 onAddItemClickListener.onAddClick(holder.itemView, (ProductBean) holder.itemView.getTag(), layoutPosition);
             }
         });
+        if (CommonMethod.isTrue(product.getPromboolean())) {
+            holder.tvProm.setVisibility(View.VISIBLE);
+        }else{
+            holder.tvProm.setVisibility(View.GONE);
+        }
 
         //更改状态
 //        if (position == layoutPosition) {
@@ -120,6 +126,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         private final TextView tvName;
         private final TextView tvUnit;
         private final TextView tvPrice;
+        private final TextView tvProm;
         private final ImageView ivAdd;
 
         MyViewHolder(View itemView) {
@@ -127,6 +134,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             tvName = itemView.findViewById(R.id.tvName);
             tvUnit = itemView.findViewById(R.id.tvUnit);
             tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvProm = itemView.findViewById(R.id.tvProm);
             ivAdd = itemView.findViewById(R.id.ivAdd);
             ivGoods = itemView.findViewById(R.id.ivGoods);
         }
