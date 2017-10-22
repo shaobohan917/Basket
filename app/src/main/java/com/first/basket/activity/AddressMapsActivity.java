@@ -46,7 +46,7 @@ import butterknife.ButterKnife;
  * Created by hanshaobo on 21/10/2017.
  */
 
-public class New_LocalActivity extends BaseActivity implements LocationSource,
+public class AddressMapsActivity extends BaseActivity implements LocationSource,
         AMapLocationListener, AMap.OnCameraChangeListener, PoiSearch.OnPoiSearchListener {
 
     @BindView(R.id.map_local)

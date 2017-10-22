@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.amap.api.services.core.PoiItem;
 import com.first.basket.R;
-import com.first.basket.activity.New_LocalActivity;
+import com.first.basket.activity.AddressMapsActivity;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class PoiSearch_adapter extends BaseAdapter {
     private Context ctx;
     private List<PoiItem> list;
 
-    public PoiSearch_adapter(New_LocalActivity context, List<PoiItem> poiItems) {
+    public PoiSearch_adapter(AddressMapsActivity context, List<PoiItem> poiItems) {
         this.ctx = context;
         this.list = poiItems;
     }

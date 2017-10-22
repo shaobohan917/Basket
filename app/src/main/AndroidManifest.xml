@@ -51,7 +51,7 @@
         <activity android:name=".activity.MainActivity" />
         <!--android:theme="@style/LauncherAppTheme"-->
         <activity android:name=".a.AddressMapActivity" />
-        <activity android:name=".activity.AddressInfoActivity" />
+        <activity android:name=".activity.AddressAddActivity" />
         <activity android:name=".activity.GoodsDetailActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.OrderListActivity" />
@@ -89,7 +89,7 @@
         <activity android:name=".activity.DecoderActivity" />
         <activity android:name=".activity.SearchListActivity" />
         <activity
-            android:name=".activity.New_LocalActivity"
+            android:name=".activity.AddressMapsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity

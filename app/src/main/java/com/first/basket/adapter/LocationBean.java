@@ -16,6 +16,16 @@ public class LocationBean implements Serializable {
     private String township;
     private String formatAddress;
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    private String street;
+
     public void setLon(double lon) {
         this.lon = lon;
     }

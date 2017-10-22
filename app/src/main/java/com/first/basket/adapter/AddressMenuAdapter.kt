@@ -45,12 +45,17 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
         holder.tvAddress.text = bean.street
 
         holder.cbDefault.isChecked = CommonMethod.isTrue(mDatas[position].defaultaddr)
+        if (CommonMethod.isTrue(mDatas[position].defaultaddr)) {
+            holder.cbDefault.text = "默认地址"
+        } else {
+            holder.cbDefault.text = "设为默认"
+        }
         holder.cbDefault.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
                 cbListener.onItemChecked(mDatas[position].addressid)
             }
         }
-        holder.ivDelete.visibility = View.GONE
+        holder.itemView.setOnClickListener { listener.onItemClick(holder.itemView, position) }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -64,7 +69,11 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
 
         init {
             ivModify.onClick {
-                listener.onItemClick(itemView, position)
+//                listener.onItemClick(itemView, position)
+                cbListener.onItemModify(position)
+            }
+            ivDelete.onClick {
+                cbListener.onItemDelete(position)
             }
         }
     }
@@ -76,5 +85,7 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
     interface OnItemCheckedListener {
         //        fun onItemChecked(view: View, isChecked: Boolean, position: Int)
         fun onItemChecked(addressid: String)
+        fun onItemDelete(position:Int)
+        fun onItemModify(position:Int)
     }
 }

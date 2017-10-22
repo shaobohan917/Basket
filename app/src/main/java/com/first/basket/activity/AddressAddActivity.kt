@@ -26,7 +26,7 @@ import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
-import kotlinx.android.synthetic.main.activity_address_info.*
+import kotlinx.android.synthetic.main.activity_address_add.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -34,14 +34,16 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
  * Created by hanshaobo on 10/09/2017.
  * 权限申请：http://blog.csdn.net/yhaolpz/article/details/51290265
  */
-class AddressInfoActivity : BaseActivity() {
+class AddressAddActivity : BaseActivity() {
     private var from: Int = 0
     private lateinit var address: AddressBean
     private var mDistrictDatas = ArrayList<DistrictBean.DataBean>()
 
+    private lateinit var locationBean: LocationBean
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_address_info)
+        setContentView(R.layout.activity_address_add)
         initData()
         initView()
         initListener()
@@ -57,6 +59,9 @@ class AddressInfoActivity : BaseActivity() {
         from = intent.getIntExtra("from", 0)
         if (from == 1) {
             address = intent.getSerializableExtra("address") as AddressBean
+            titleView.setTitle("修改地址")
+        }else{
+            titleView.setTitle("添加地址")
         }
     }
 
@@ -68,7 +73,7 @@ class AddressInfoActivity : BaseActivity() {
         }
 
         ivAddressSelect.onClick {
-            startActivityForResult(Intent(this@AddressInfoActivity, New_LocalActivity::class.java), REQUEST_TWO)
+            startActivityForResult(Intent(this@AddressAddActivity, AddressMapsActivity::class.java), REQUEST_TWO)
         }
         btSave.onClick {
             if (TextUtils.isEmpty(etName.text)) {
@@ -99,7 +104,6 @@ class AddressInfoActivity : BaseActivity() {
             SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
             SPUtil.setString(StaticValue.USER_ADDRESS, etAddress.text.toString())
         }
-
     }
 
     private fun saveToDb() {
@@ -107,9 +111,10 @@ class AddressInfoActivity : BaseActivity() {
         user.address = etAddress.text.toString()
         user.phone = etPhone.text.toString()
         user.username = etName.text.toString()
-        ContactDao.getInstance(this@AddressInfoActivity).insertOrUpdateItem(user)
+        ContactDao.getInstance(this@AddressAddActivity).insertOrUpdateItem(user)
         LogUtils.d("保存成功！")
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -129,7 +134,7 @@ class AddressInfoActivity : BaseActivity() {
                 REQUEST_TWO -> {
 //                    etAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, ""))
 //                    etAddress.setText(data?.getStringExtra("des"))
-                    var locationBean = data.getSerializableExtra("locationBean") as LocationBean
+                    locationBean = data.getSerializableExtra("locationBean") as LocationBean
                     LogUtils.d("address:" + locationBean.formatAddress)
                     LogUtils.d("township:" + locationBean.township)
                     etAddress.setText(locationBean.title)
@@ -212,7 +217,7 @@ class AddressInfoActivity : BaseActivity() {
     }
 
     private fun anothre(latitude: Double, longitude: Double) {
-        var geo = Geocoder(this@AddressInfoActivity)
+        var geo = Geocoder(this@AddressAddActivity)
         var list = geo.getFromLocation(latitude, longitude, 10) as List<Address>
         for (i in 0 until list.size) {
             LogUtils.d(list[i].featureName)
@@ -232,7 +237,8 @@ class AddressInfoActivity : BaseActivity() {
                         var list = t.result.data as ArrayList<DistrictBean.DataBean>
                         (0 until list.size)
                                 .filter { locationBean.township.equals(list[it].subdistrict) }
-                                .forEach { LogUtils.d("匹配到街道："+locationBean.township+",,,"+list[it].svc) }
+                                .forEach { LogUtils.d("匹配到街道："+locationBean.township+",,,"+list[it].svc)
+                               }
                     }
                 })
     }
@@ -244,9 +250,9 @@ class AddressInfoActivity : BaseActivity() {
         hashmap.put("receiver", etName.text.toString())
         hashmap.put("recvphone", etPhone.text.toString())
         hashmap.put("address", etAddress.text.toString())
-        hashmap.put("street", "")
+        hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", "")
+        hashmap.put("subdistrict", locationBean.township)
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -262,7 +268,7 @@ class AddressInfoActivity : BaseActivity() {
                             SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
                             myFinish()
                         } else {
-                            ToastUtil.showToast(this@AddressInfoActivity, "fail")
+                            ToastUtil.showToast(this@AddressAddActivity, "fail")
                         }
                     }
                 })
@@ -276,24 +282,23 @@ class AddressInfoActivity : BaseActivity() {
         hashmap.put("receiver", etName.text.toString())
         hashmap.put("recvphone", etPhone.text.toString())
         hashmap.put("address", etAddress.text.toString())
-        hashmap.put("street", "")
+        hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", "")
+        hashmap.put("subdistrict", locationBean.township)
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        ToastUtil.showToast(this@AddressInfoActivity, t.info)
+                        ToastUtil.showToast(this@AddressAddActivity, t.info)
                         if (t.status == 0) {
                             setResult(Activity.RESULT_OK)
                             myFinish()
                         } else {
-                            ToastUtil.showToast(this@AddressInfoActivity, "fail")
+                            ToastUtil.showToast(this@AddressAddActivity, "fail")
                         }
                     }
                 })
-
     }
 }

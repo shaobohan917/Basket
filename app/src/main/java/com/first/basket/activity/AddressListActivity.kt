@@ -1,6 +1,8 @@
 package com.first.basket.activity
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -47,7 +49,7 @@ class AddressListActivity : BaseActivity() {
     private fun initListener() {
 
         btAdd.onClick {
-            myStartActivity(Intent(this@AddressListActivity,AddressInfoActivity::class.java))
+            myStartActivity(Intent(this@AddressListActivity, AddressAddActivity::class.java))
         }
     }
 
@@ -56,17 +58,60 @@ class AddressListActivity : BaseActivity() {
 
         mAdapter = AddressMenuAdapter(mDatas, object : AddressMenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                var intent = Intent(this@AddressListActivity, AddressInfoActivity::class.java)
+
+                showChoose(mDatas[position].street)
+            }
+
+        }, object : AddressMenuAdapter.OnItemCheckedListener {
+            override fun onItemDelete(position: Int) {
+
+                showDelete(mDatas[position].street, position)
+
+            }
+
+            override fun onItemModify(position: Int) {
+                var intent = Intent(this@AddressListActivity, AddressAddActivity::class.java)
                 intent.putExtra("from", 1)
                 intent.putExtra("address", mDatas[position])
                 myStartActivityForResult(intent, REQUEST_ONE)
             }
 
-        }, object : AddressMenuAdapter.OnItemCheckedListener {
             override fun onItemChecked(addressid: String) {
                 doDefaultAddress(addressid)
             }
         })
+    }
+
+    fun showChoose(str: String) {
+        var dialog = AlertDialog.Builder(this@AddressListActivity)
+        dialog.setTitle("提示")
+        dialog.setMessage("本次配送地址为：" + str)
+        dialog.setPositiveButton("确定", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                intent.putExtra("adds", str)
+                setResult(Activity.RESULT_OK)
+                myFinish()
+            }
+
+        })
+        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                p0?.dismiss()
+            }
+
+        })
+        dialog.show()
+    }
+
+    fun showDelete(str: String, position: Int) {
+        var dialog = AlertDialog.Builder(this@AddressListActivity)
+        dialog.setTitle("提示")
+        dialog.setMessage("确定删除：" + str)
+        dialog.setPositiveButton("确定") { p0, p1 ->
+            deleteAddress(position)
+        }
+        dialog.setNegativeButton("取消") { p0, p1 -> p0?.dismiss() }
+        dialog.show()
     }
 
     private fun getAddressList() {
@@ -89,8 +134,6 @@ class AddressListActivity : BaseActivity() {
 
 
     private fun initView() {
-
-
         smRecyclerView.layoutManager = LinearLayoutManager(this@AddressListActivity)
         smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
 
@@ -98,7 +141,7 @@ class AddressListActivity : BaseActivity() {
 
         smRecyclerView.setSwipeMenuItemClickListener { closeable, adapterPosition, menuPosition, direction ->
             this.closeable = closeable
-                  if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
+            if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
                 deleteAddress(adapterPosition)
             }
         }
@@ -111,11 +154,9 @@ class AddressListActivity : BaseActivity() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<CodeBean>>() {
                     override fun onNext(t: HttpResult<CodeBean>) {
                         super.onNext(t)
-                        ToastUtil.showToast(t.info)
                         if (t.status == 0) {
                             closeable.smoothCloseMenu()
-                            mDatas.remove(mDatas[position])
-                            mAdapter.notifyDataSetChanged()
+                            getAddressList()
                         }
                     }
                 })
@@ -147,16 +188,15 @@ class AddressListActivity : BaseActivity() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<CodeBean>>() {
                     override fun onNext(t: HttpResult<CodeBean>) {
                         super.onNext(t)
-                        ToastUtil.showToast(t.info)
+                        getAddressList()
                     }
                 })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_ONE) {
+        if (resultCode == Activity.RESULT_OK) {
             getAddressList()
         }
-
     }
 }

@@ -132,7 +132,8 @@ class HomeFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == (activity as BaseActivity).REQUEST_ONE) {
 //            val adds = data!!.getStringExtra("adds")
-            val adds = SPUtil.getString(StaticValue.SP_ADDRESS, "")
+//            val adds = SPUtil.getString(StaticValue.SP_ADDRESS, "")
+            val adds = data?.getStringExtra("adds")
             tvAddress.text = adds
         }
     }
