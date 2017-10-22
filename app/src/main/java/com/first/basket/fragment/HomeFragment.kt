@@ -12,10 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.first.basket.R
-import com.first.basket.activity.AddressInfoActivity
-import com.first.basket.activity.MainActivity
-import com.first.basket.activity.SearchActivity
-import com.first.basket.activity.WebViewActivity
+import com.first.basket.activity.*
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.HomeBean
@@ -87,7 +84,7 @@ class HomeFragment : BaseFragment() {
         }
 
         ivScan.onClick {
-            //            startActivity(Intent(activity, MainActivity::class.java))
+            startActivity(Intent(activity, DecoderActivity::class.java))
         }
 
         sqcs.setOnClickListener(myClickListener)
@@ -190,7 +187,7 @@ class HomeFragment : BaseFragment() {
         this.recommendData = data
         ImageUtils.showImg(activity, data?.hltg?.image, ivHLTG)
         ImageUtils.showImg(activity, data?.shcs?.image, ivSHCS)
-        ImageUtils.showImg(activity,data?.qgcs?.image, ivQGCS)
+        ImageUtils.showImg(activity, data?.qgcs?.image, ivQGCS)
         ImageUtils.showImg(activity, data?.jkss?.image, ivJKSS)
 
         ivSHCS.setOnClickListener(myClickListener)

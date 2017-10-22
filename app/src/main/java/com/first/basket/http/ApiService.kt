@@ -23,7 +23,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getDetail(@Field("action") action: String, @Field("productid") id: String): Observable<GoodsDetailBean>
+    fun getDetail(@Field("action") action: String, @Field("productid") id: String?, @Field("productocr") productocr: String?): Observable<HttpResult<GoodsDetailBean>>
 
     //猜你想要
     @FormUrlEncoded

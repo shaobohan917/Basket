@@ -24,6 +24,7 @@ android {
         versionCode 6
         versionName "0.0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
         ndk {
             //设置支持的SO库架构
@@ -60,6 +61,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.youth.banner:banner:1.4.9'
+
+    compile 'com.android.support:multidex:1.0.0'
 
     //注解框架需要
     compile "com.jakewharton:butterknife:$butterknife_version"
@@ -126,6 +129,9 @@ dependencies {
 //    compile 'com.amap.api:3dmap:latest.integration'
     compile 'com.amap.api:location:3.6.1'
     compile 'com.amap.api:search:5.3.1'
+
+    compile 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.2'
+    compile 'com.gunter:tag-layouter:1.0.0'
 }
 
 repositories {

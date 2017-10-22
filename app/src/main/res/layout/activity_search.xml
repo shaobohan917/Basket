@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <EditText
@@ -64,4 +65,19 @@
             android:layout_marginTop="15dp"
             android:orientation="horizontal"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <com.coding.tag_layouter.AutoLayoutContainer
+            android:id="@+id/alc_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dist_horizontal="12dp"
+            app:dist_vertical="12dp"
+            app:orientation="vertical" />
+
+    </ScrollView>
 </LinearLayout>

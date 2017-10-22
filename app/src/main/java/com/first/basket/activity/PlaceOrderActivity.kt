@@ -5,26 +5,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.adapter.PlaceOrderAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
+import com.first.basket.base.HttpResult
+import com.first.basket.bean.CodeBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.StaticValue
+import com.first.basket.http.HttpMethods
+import com.first.basket.http.HttpResultSubscriber
+import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.activity_place_order.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 import kotlin.collections.LinkedHashMap
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
-import com.first.basket.base.HttpResult
-import com.first.basket.bean.CodeBean
-import com.first.basket.bean.GoodsDetailBean
-import com.first.basket.http.HttpMethods
-import com.first.basket.http.HttpResultSubscriber
-import com.first.basket.http.TransformUtils
 
 
 /**

@@ -13,7 +13,7 @@ import android.provider.ContactsContract
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
 import com.first.basket.R
-import com.first.basket.a.AddressMapActivity
+import com.first.basket.adapter.LocationBean
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.*
@@ -37,6 +37,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class AddressInfoActivity : BaseActivity() {
     private var from: Int = 0
     private lateinit var address: AddressBean
+    private var mDistrictDatas = ArrayList<DistrictBean.DataBean>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +68,7 @@ class AddressInfoActivity : BaseActivity() {
         }
 
         ivAddressSelect.onClick {
-            startActivityForResult(Intent(this@AddressInfoActivity, AddressMapActivity::class.java), REQUEST_TWO)
+            startActivityForResult(Intent(this@AddressInfoActivity, New_LocalActivity::class.java), REQUEST_TWO)
         }
         btSave.onClick {
             if (TextUtils.isEmpty(etName.text)) {
@@ -110,7 +111,7 @@ class AddressInfoActivity : BaseActivity() {
         LogUtils.d("保存成功！")
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
         if (Activity.RESULT_OK == resultCode) {
             when (requestCode) {
@@ -121,12 +122,19 @@ class AddressInfoActivity : BaseActivity() {
                     val mapBean = data?.getSerializableExtra("mapBean") as MapBean
                     LogUtils.d("map:" + mapBean.aoiName + "," + mapBean.district + "," + mapBean.street + "," + mapBean.adCode)
                     etAddress.setText(aoi.toString())
-                    getSubdistrict(mapBean.district)
+//                    getSubdistrict(mapBean.district)
 
                     anothre(mapBean.getLatitude(), mapBean.getLongitude())
                 }
-                REQUEST_TWO ->
-                    etAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, ""))
+                REQUEST_TWO -> {
+//                    etAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, ""))
+//                    etAddress.setText(data?.getStringExtra("des"))
+                    var locationBean = data.getSerializableExtra("locationBean") as LocationBean
+                    LogUtils.d("address:" + locationBean.formatAddress)
+                    LogUtils.d("township:" + locationBean.township)
+                    etAddress.setText(locationBean.title)
+                    getSubdistrict(locationBean)
+                }
             }
         }
     }
@@ -213,15 +221,19 @@ class AddressInfoActivity : BaseActivity() {
 
     }
 
-    private fun getSubdistrict(district: String) {
-        HttpMethods.createService().getSubdistrict("get_subdistrict", district)
+    private fun getSubdistrict(locationBean: LocationBean) {
+        HttpMethods.createService().getSubdistrict("get_subdistrict", locationBean.district)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<DistrictBean>>() {
                     override fun onNext(t: HttpResult<DistrictBean>) {
                         super.onNext(t)
-
+                        //获取这个区的所有街道
+//                        mDistrictDatas.addAll(t.result.data)
+                        var list = t.result.data as ArrayList<DistrictBean.DataBean>
+                        (0 until list.size)
+                                .filter { locationBean.township.equals(list[it].subdistrict) }
+                                .forEach { LogUtils.d("匹配到街道："+locationBean.township+",,,"+list[it].svc) }
                     }
-
                 })
     }
 

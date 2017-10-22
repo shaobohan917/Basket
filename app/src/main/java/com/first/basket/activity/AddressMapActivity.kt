@@ -21,6 +21,8 @@ import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 
 
+
+
 /**
  * Created by hanshaobo on 30/08/2017.
  */
@@ -35,71 +37,6 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener,
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var mapBean = MapBean()
-
-
-    override fun onLocationChanged(aMapLocation: AMapLocation?) {
-        if (aMapLocation?.errorCode == 0) {
-            var type = aMapLocation.locationType
-            var country = aMapLocation.country
-            var street = aMapLocation.street
-            aoiName = aMapLocation.aoiName
-            district = aMapLocation.district
-            street = aMapLocation.street
-            adCode = aMapLocation.adCode
-            latitude = aMapLocation.latitude
-            longitude = aMapLocation.longitude
-
-            mapBean.aoiName = aoiName
-            mapBean.district = district
-            mapBean.street = street
-            mapBean.adCode = adCode
-            mapBean.latitude = latitude
-            mapBean.longitude = longitude
-
-            tvAddress.text = aoiName
-
-
-            aMap.moveCamera(CameraUpdateFactory.zoomTo(100f))
-            aMap.moveCamera(CameraUpdateFactory.changeLatLng(LatLng(aMapLocation.latitude, aMapLocation.longitude)))
-            mListener!!.onLocationChanged(aMapLocation)
-            //获取定位信息
-
-            //附近位置
-            doSearchQuery(mapBean)
-        }
-
-    }
-
-    private fun doSearchQuery(mapBean: MapBean) {
-        var keyWord = mapBean.aoiName
-        var query = PoiSearch.Query(keyWord, "", "北京市")
-        query.setPageSize(20)// 设置每页最多返回多少条poiitem
-        query.setPageNum(0)// 设置查第一页
-
-//        var lp = LatLonPoint()
-//        var poiSearch = PoiSearch(this, query)
-//        poiSearch.setOnPoiSearchListener(this)
-//        poiSearch.bound = PoiSearch.SearchBound(lp, 5000, true)//
-//        poiSearch.searchPOIAsyn()// 异步搜索
-    }
-
-    override fun deactivate() {
-        Log.d("luka", "deactivate")
-
-    }
-
-
-    override fun activate(p0: LocationSource.OnLocationChangedListener?) {
-        this.mListener = p0
-        Log.d("luka", "activate")
-    }
-
-    lateinit var mapView: MapView
-    lateinit var mLocationClient: AMapLocationClient
-    lateinit var aMap: AMap
-    lateinit var settings: UiSettings
-
-    lateinit var tvAddress: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,29 +87,81 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener,
 
     }
 
-    private fun search(mapBean: MapBean) {
-        var query = PoiSearch.Query(mapBean.aoiName, "商务住宅", "")
-        query.pageSize = 10
-        query.pageNum = 1
+    override fun onLocationChanged(aMapLocation: AMapLocation?) {
+        if (aMapLocation?.errorCode == 0) {
+            var type = aMapLocation.locationType
+            var country = aMapLocation.country
+            var street = aMapLocation.street
+            aoiName = aMapLocation.aoiName
+            district = aMapLocation.district
+            street = aMapLocation.street
+            adCode = aMapLocation.adCode
+            latitude = aMapLocation.latitude
+            longitude = aMapLocation.longitude
 
-        var poiSearch = PoiSearch(this, query)
-        poiSearch.bound = PoiSearch.SearchBound(LatLonPoint(mapBean.latitude,
-                mapBean.longitude), 1000)//设置周边搜索的中心点以及区域
-        poiSearch.setOnPoiSearchListener(this)
+            mapBean.aoiName = aoiName
+            mapBean.district = district
+            mapBean.street = street
+            mapBean.adCode = adCode
+            mapBean.latitude = latitude
+            mapBean.longitude = longitude
 
-        poiSearch.searchPOIAsyn()
+            tvAddress.text = aoiName
+
+
+            aMap.moveCamera(CameraUpdateFactory.zoomTo(100f))
+            aMap.moveCamera(CameraUpdateFactory.changeLatLng(LatLng(aMapLocation.latitude, aMapLocation.longitude)))
+            mListener!!.onLocationChanged(aMapLocation)
+            //获取定位信息
+
+            //附近位置
+            doSearchQuery(mapBean)
+        }
 
     }
+
+    private fun doSearchQuery(mapBean: MapBean) {
+        var keyWord = mapBean.aoiName
+        LogUtils.d("key:"+keyWord)
+        var query = PoiSearch.Query(keyWord, "", "上海市")
+        query.pageSize = 10// 设置每页最多返回多少条poiitem
+        query.pageNum = 1// 设置查第一页
+
+        var lp = LatLonPoint(mapBean.latitude,mapBean.longitude)
+        var poiSearch = PoiSearch(this, query)
+        poiSearch.setOnPoiSearchListener(this)
+        poiSearch.bound = PoiSearch.SearchBound(lp, 5000, true)//
+        poiSearch.searchPOIAsyn()// 异步搜索
+    }
+
+    override fun deactivate() {
+        Log.d("luka", "deactivate")
+
+    }
+
+
+    override fun activate(p0: LocationSource.OnLocationChangedListener?) {
+        this.mListener = p0
+        Log.d("luka", "activate")
+    }
+
+    lateinit var mapView: MapView
+    lateinit var mLocationClient: AMapLocationClient
+    lateinit var aMap: AMap
+    lateinit var settings: UiSettings
+
+    lateinit var tvAddress: TextView
+
 
     override fun onPoiItemSearched(p0: com.amap.api.services.core.PoiItem?, p1: Int) {
         LogUtils.d("onPoiItemSearched")
     }
 
     override fun onPoiSearched(p0: PoiResult, p1: Int) {
-        LogUtils.d("onPoiSearched")
+        LogUtils.d("onPoiSearched:"+p1)
         var pois = p0.pois
         for (i in 0 until (pois.size)) {
-            LogUtils.d("pos" + i + ":" + pois[i].adName)
+            LogUtils.d("pos" + i + ":" + pois[i].businessArea)
         }
     }
 

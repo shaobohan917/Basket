@@ -23,11 +23,13 @@
     <!--用于申请获取蓝牙信息进行室内定位-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.BaseApplication"
@@ -46,9 +48,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.MainActivity"
-          />
+        <activity android:name=".activity.MainActivity" />
         <!--android:theme="@style/LauncherAppTheme"-->
         <activity android:name=".a.AddressMapActivity" />
         <activity android:name=".activity.AddressInfoActivity" />
@@ -69,15 +69,16 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LoginPwdActivity" />
-        <activity android:name=".activity.SettingActivity" >
+        <activity android:name=".activity.SettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="com.first.basket"
-                    android:host="setting" />
+                    android:host="setting"
+                    android:scheme="com.first.basket" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.PlaceOrderActivity" />
@@ -85,11 +86,16 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.AddressListActivity" />
         <activity android:name=".activity.OrderResultActivity" />
+        <activity android:name=".activity.DecoderActivity" />
+        <activity
+            android:name=".activity.New_LocalActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
@@ -97,7 +103,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
     </application>

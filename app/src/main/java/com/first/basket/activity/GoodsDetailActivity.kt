@@ -5,6 +5,7 @@ import android.animation.ValueAnimator
 import android.graphics.Path
 import android.graphics.PathMeasure
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
@@ -13,6 +14,7 @@ import butterknife.ButterKnife
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
+import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.constants.Constants
@@ -34,9 +36,10 @@ import q.rorbin.badgeview.QBadgeView
  */
 class GoodsDetailActivity : BaseActivity() {
 
-    private lateinit var data: GoodsDetailBean.ResultBean.DataBean
-
-    private var images = ArrayList<GoodsDetailBean.ResultBean.DataBean.ImagesBean>()
+    private lateinit var data: GoodsDetailBean.DataBean
+    private var images = ArrayList<GoodsDetailBean.DataBean.ImagesBean>()
+    //    private var images = ArrayList<GoodsDetailBean.ResultBean.DataBean.ImagesBean>()
+//    private lateinit var images: String
     private lateinit var badgeView: QBadgeView
 
     //购物车
@@ -49,14 +52,23 @@ class GoodsDetailActivity : BaseActivity() {
         ButterKnife.bind(this)
         setContentView(R.layout.activity_detail)
         initView()
-        getData(intent.extras.getString("id", ""))
+        initData()
         initListener()
+    }
+
+    private fun initData() {
+        var id = intent.extras.getString("id")
+        if (TextUtils.isEmpty(id)) {
+            getProductDetail("", intent.extras.getString("ocr"))
+        } else {
+            getProductDetail(id, "")
+        }
     }
 
     override fun onResume() {
         super.onResume()
 //        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().mGoodsMap.size
-        LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
+//        LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
 
 
     }
@@ -92,23 +104,20 @@ class GoodsDetailActivity : BaseActivity() {
         }
     }
 
-    private fun getData(id: String) {
-        HttpMethods.createService().getDetail("get_productdetailpage", id)
+    private fun getProductDetail(id: String?, ocr: String?) {
+        HttpMethods.createService().getDetail("get_productdetailpage", id, ocr)
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<GoodsDetailBean>() {
-                    override fun onNext(t: GoodsDetailBean) {
-                        val data = t.result!!.data
-                        setData(data!!)
+                .subscribe(object : HttpResultSubscriber<HttpResult<GoodsDetailBean>>() {
+                    override fun onNext(t: HttpResult<GoodsDetailBean>) {
+                        super.onNext(t)
+                        val data = t.result
+                        setData(data.data)
                     }
-
-                    override fun onError(e: Throwable) {
-                    }
-
                 })
     }
 
 
-    private fun setData(data: GoodsDetailBean.ResultBean.DataBean) {
+    private fun setData(data: GoodsDetailBean.DataBean) {
         this.data = data
         tvName.text = data.title
         tvDes.text = data.subtitle.toString()
@@ -210,6 +219,6 @@ class GoodsDetailActivity : BaseActivity() {
         super.onStop()
 
         //加入购物车
-//        BaseApplication.getInstance().mGoodsMap.put(data.product, mCount)
+        BaseApplication.getInstance().mGoodsMap.put(data.product, mCount)
     }
 }

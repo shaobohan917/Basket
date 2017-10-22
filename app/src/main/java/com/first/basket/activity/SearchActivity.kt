@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 import org.jetbrains.anko.padding
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.wrapContent
+import java.util.*
 
 /**
  * Created by hanshaobo on 12/09/2017.
@@ -24,6 +25,12 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         getSuspect()
+        initView()
+    }
+
+    private fun initView() {
+
+
     }
 
     private fun getSuspect() {
@@ -34,15 +41,13 @@ class SearchActivity : BaseActivity() {
                         super.onNext(t)
                         setData(t.result.data)
                     }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                    }
                 })
     }
 
 
     private fun setData(data: List<RecommendBean.ResultBean.DataBean>) {
+        var strs  = ArrayList<String>()
+
         for (i in 0 until data.size) {
             val p = ScreenUtils.dip2px(this, 10f)
             val tv = TextView(this)
@@ -59,6 +64,10 @@ class SearchActivity : BaseActivity() {
                 myStartActivity(intent, true)
             }
             llRecommend.addView(tv)
+
+            strs.add(data[i].productname)
+
         }
+//        alc_vertical.addTag(R.layout.layout_tag,strs[0],strs[1])
     }
 }
