@@ -58,7 +58,7 @@ class AddressListActivity : BaseActivity() {
         mAdapter = AddressMenuAdapter(mDatas, object : AddressMenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
 
-                showChoose(mDatas[position].street,position)
+                showChoose(mDatas[position].street, position)
             }
 
         }, object : AddressMenuAdapter.OnItemCheckedListener {
@@ -87,8 +87,8 @@ class AddressListActivity : BaseActivity() {
         dialog.setMessage("本次配送地址为：" + str)
         dialog.setPositiveButton("确定", object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
-                intent.putExtra("address", mDatas[position])
-                setResult(Activity.RESULT_OK,intent)
+                intent.putExtra("addressInfo", mDatas[position])
+                setResult(Activity.RESULT_OK, intent)
                 myFinish()
             }
 

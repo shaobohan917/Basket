@@ -18,6 +18,7 @@
         android:background="#BAC9D0"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
+        android:text="@string/add_address"
         android:textColor="@color/white"
         android:textSize="12sp" />
 
@@ -116,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/total_price"
                 android:textColor="@color/black"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -100,9 +100,6 @@ class AddressAddActivity : BaseActivity() {
             } else {
                 ToastUtil.showToast("请登录!")
             }
-            SPUtil.setString(StaticValue.USER_NAME, etName.text.toString())
-            SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
-            SPUtil.setString(StaticValue.USER_ADDRESS, etAddress.text.toString())
         }
     }
 
@@ -261,11 +258,6 @@ class AddressAddActivity : BaseActivity() {
                         super.onNext(t)
                         if (t.status == 0) {
                             setResult(Activity.RESULT_OK)
-//                            intent.putExtra("adds",etAddress.text.toString())
-                            SPUtil.setString(StaticValue.SP_ADDRESS, etAddress.text.toString())
-                            SPUtil.setString(StaticValue.USER_NAME, etName.text.toString())
-                            SPUtil.setString(StaticValue.USER_ADDRESS, etAddress.text.toString())
-                            SPUtil.setString(StaticValue.USER_PHONE, etPhone.text.toString())
                             myFinish()
                         } else {
                             ToastUtil.showToast(this@AddressAddActivity, "fail")

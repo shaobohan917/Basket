@@ -47,7 +47,6 @@ class AddressMapActivity : BaseActivity(), LocationSource, AMapLocationListener,
 
         tvAddress = findViewById(R.id.tvAddress)
         tvAddress.setOnClickListener {
-            SPUtil.setString(StaticValue.SP_ADDRESS, aoiName)
             intent.putExtra("aoiName", aoiName)
             intent.putExtra("mapBean", mapBean)
             setResult(Activity.RESULT_OK, intent)

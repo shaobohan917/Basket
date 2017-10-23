@@ -1,7 +1,6 @@
 package com.first.basket.fragment
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,7 +33,11 @@ class MineFragment : BaseFragment() {
         setLoginStatus()
 
         rlOrder.onClick {
-//                        startActivity(Intent(activity, OrderListActivity::class.java))
+            if (CommonMethod.isLogin()) {
+                startActivity(Intent(activity, OrderListActivity::class.java))
+            } else {
+                CommonMethod.showLogin()
+            }
         }
 
         ivAva.onClick {

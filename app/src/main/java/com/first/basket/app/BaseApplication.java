@@ -10,6 +10,7 @@ import com.first.basket.bean.ProductsListBean;
 import com.first.basket.utils.SPUtil;
 import com.tencent.bugly.Bugly;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -29,6 +30,21 @@ public class BaseApplication extends MultiDexApplication {
 
     public void setmProductsList(ArrayList<ProductBean> mProductsList) {
         this.mProductsList = mProductsList;
+    }
+
+    /**
+     * 获取所有选中的商品
+     *
+     * @return
+     */
+    public ArrayList<ProductBean> getIsCheckProducts() {
+        ArrayList<ProductBean> list = new ArrayList<ProductBean>();
+        for (int i = 0; i < mProductsList.size(); i++) {
+            if (mProductsList.get(i).getIsCheck()) {
+                list.add(mProductsList.get(i));
+            }
+        }
+        return list;
     }
 
     private ArrayList<ProductBean> mProductsList = new ArrayList<>();

@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initView() {
-        tvAddress.text = SPUtil.getString(StaticValue.SP_ADDRESS, "  ")
+
     }
 
     private fun initData() {

@@ -14,9 +14,15 @@ import com.amap.api.location.AMapLocationListener
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
+import com.first.basket.base.HttpResult
+import com.first.basket.bean.AddressListBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
+import com.first.basket.http.HttpMethods
+import com.first.basket.http.HttpResultSubscriber
+import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
@@ -108,7 +114,12 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         }
         //定位
         location()
-        //从数据库中获取购物车中的商品
+        //从SP中获取购物车中的商品
+        getProducts()
+
+    }
+
+    private fun getProducts() {
         var str = SPUtil.getString(StaticValue.GOODS_LIST, "")
         if (!TextUtils.isEmpty(str)) {
             val gson = GsonBuilder().create()
@@ -122,6 +133,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
             nearby.setBadgeCount(mCount)
         }
+
     }
 
     private var exitTime: Long = 0
@@ -171,9 +183,8 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     override fun onLocationChanged(aMapLocation: AMapLocation) {
         if (aMapLocation.errorCode == 0) {
             aoiName = aMapLocation.aoiName
-            (fragmentList[0] as HomeFragment).setLocation(aoiName)
-            (fragmentList[2] as ShopFragment).setLocation(aoiName)
             mLocationClient.stopLocation()
+            (fragmentList[0] as HomeFragment).setLocation(aoiName)
         }
     }
 

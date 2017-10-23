@@ -1,10 +1,7 @@
 package com.first.basket.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -20,12 +17,13 @@ import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_place_order.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
-import kotlin.collections.LinkedHashMap
 
 
 /**
@@ -33,12 +31,11 @@ import kotlin.collections.LinkedHashMap
  */
 class PlaceOrderActivity : BaseActivity() {
 
-    private var mGoodsMap: LinkedHashMap<ProductBean, Int> = LinkedHashMap()
     private var mGoodsList = ArrayList<ProductBean>()
 
     private lateinit var header: View
     private lateinit var footer: View
-    private lateinit var address1: TextView
+    private lateinit var addressInfo: AddressBean
 
     private lateinit var mAdapter: PlaceOrderAdapter
 
@@ -47,113 +44,83 @@ class PlaceOrderActivity : BaseActivity() {
         setContentView(R.layout.activity_place_order)
         initView()
         initData()
-
         initListener()
-    }
-
-
-    private fun initData() {
-
-        mAdapter = PlaceOrderAdapter(this@PlaceOrderActivity, mGoodsList)
-        recyclerView.adapter = mAdapter
-
-        mGoodsMap = BaseApplication.getInstance().mGoodsMap
-
-        var iterator = mGoodsMap.entries.iterator()
-        while (iterator.hasNext()) {
-            var entry = iterator.next() as Map.Entry<ProductBean, Int>
-            var key = entry.key
-            var value = entry.value
-
-            mGoodsList.add(key)
-            Collections.reverse(mGoodsList)
-        }
-
-        setHeaderView()
-        setFooterView()
-        mAdapter.notifyDataSetChanged()
     }
 
     private fun initView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun setHeaderView() {
+    private fun initData() {
+
+        mGoodsList.addAll(BaseApplication.getInstance().isCheckProducts)
+        mAdapter = PlaceOrderAdapter(this@PlaceOrderActivity, mGoodsList)
+        recyclerView.adapter = mAdapter
+
+        setHeader()
+        setFooter()
+        mAdapter.notifyDataSetChanged()
+    }
+
+    private fun setHeader() {
         header = LayoutInflater.from(this).inflate(R.layout.layout_order_header, recyclerView, false)
-        if (TextUtils.isEmpty(SPUtil.getString(StaticValue.USER_ADDRESS, ""))) {
-            address1 = header.findViewById<TextView>(R.id.tvAddress)
-            address1.text = getString(R.string.add_address)
-            address1.onClick {
-                myStartActivityForResult(AddressListActivity::class.java, REQUEST_ONE)
-            }
-
-        } else {
-            refreshHeader(header, null)
-        }
-        mAdapter.setHeaderView(header)
-    }
-
-    private fun refreshHeader(header: View, address: AddressBean?) {
-        if (address != null) {
-            header.findViewById<TextView>(R.id.tvName).text = address.receiver
-            header.findViewById<TextView>(R.id.tvPhone).text = address.recvphone
-            header.findViewById<TextView>(R.id.tvAddress).text = address.street
-        }
-
-
-//        header.findViewById<TextView>(R.id.tvName).text = SPUtil.getString(StaticValue.USER_NAME, "")
-//        header.findViewById<TextView>(R.id.tvPhone).text = SPUtil.getString(StaticValue.USER_PHONE, "")
-//        header.findViewById<TextView>(R.id.tvAddress).text = SPUtil.getString(StaticValue.USER_ADDRESS, "")
-
-    }
-
-    private var addressInfo: AddressBean? = null
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (Activity.RESULT_OK == resultCode && requestCode == REQUEST_ONE) {
-            addressInfo = data?.getSerializableExtra("address") as AddressBean
-            refreshHeader(header, addressInfo)
-        }
+        var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
+        addressInfo = GsonBuilder().create().fromJson(str, AddressBean::class.java)
+        header.findViewById<TextView>(R.id.tvName).text = addressInfo.receiver
+        header.findViewById<TextView>(R.id.tvPhone).text = addressInfo.recvphone
+        header.findViewById<TextView>(R.id.tvAddress).text = addressInfo.street
+        mAdapter.addHeaderView(header)
     }
 
 
-    private fun setFooterView() {
+    private fun setFooter() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         var price = intent.getStringExtra("price")
         footer.findViewById<TextView>(R.id.tvPrice).text = price
-        mAdapter.setFooterView(footer)
+        mAdapter.addFooterView(footer)
 
     }
 
 
     private fun initListener() {
         ivBuy.onClick {
-            if (addressInfo == null) {
-                ToastUtil.showToast("请先添加收货地址")
-            } else {
-                doPlaceOrder()
-            }
-
+            doPlaceOrder()
         }
-
     }
 
     private fun doPlaceOrder() {
-        HttpMethods.createService().doPlaceOrder("do_placeorder", "", "", SPUtil.getString(StaticValue.USER_ID, ""), "")
+        var productidString = StringBuilder()
+        var numString = StringBuilder()
+
+        for (i in 0 until mGoodsList.size) {
+            productidString.append(mGoodsList[i].productid).append("|")
+            numString.append(mGoodsList[i].amount).append("|")
+        }
+        val ps: String = productidString.toString().substring(0, productidString.length - 1)
+        val ns: String = numString.toString().substring(0, numString.length - 1)
+
+        HttpMethods.createService().doPlaceOrder("do_placeorder", ps, ns, SPUtil.getString(StaticValue.USER_ID, ""), addressInfo.addressid)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<CodeBean>>() {
                     override fun onNext(t: HttpResult<CodeBean>) {
                         super.onNext(t)
-
                         if (t.status == 0) {
+                            //delete
+                            deleteProducts()
                             myStartActivity(OrderResultActivity::class.java, true)
                         } else {
                             ToastUtil.showToast(t.info)
                         }
                     }
                 })
-//
+    }
+
+    private fun deleteProducts() {
+        for (i in 0 until mGoodsList.size) {
+            var product = BaseApplication.getInstance().getmProductsList().remove(mGoodsList[i])
+            LogUtils.d("delete:" + product)
+        }
+
     }
 
 }

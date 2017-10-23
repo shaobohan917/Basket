@@ -4,16 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
+import com.first.basket.activity.AddressListActivity
 import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.MainActivity
 import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.HttpResult
+import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.PriceBean
 import com.first.basket.bean.ProductBean
@@ -24,6 +27,10 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
@@ -37,11 +44,7 @@ import kotlin.collections.ArrayList
  * Created by hanshaobo on 30/08/2017.
  */
 class ShopFragment : BaseFragment() {
-    private var isAllClick: Boolean = true
-    private var isFromHidden: Boolean = true
-
     private var mGoodsList = ArrayList<ProductBean>()
-
     private lateinit var mAdapter: MenuAdapter
 
 
@@ -69,10 +72,10 @@ class ShopFragment : BaseFragment() {
 
         }, object : MenuAdapter.OnItemCheckedListener {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
-                if (!isFromHidden) {
-                    mGoodsList[index].isCheck = b
-                    getPrice(mGoodsList)
-                }
+//                if (!isFromHidden) {
+                mGoodsList[index].isCheck = b
+//                    getPrice(mGoodsList)
+//                }
             }
         }, object : MenuAdapter.OnItemAmountChangedListener {
             override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
@@ -86,6 +89,21 @@ class ShopFragment : BaseFragment() {
         })
         smRecyclerView.adapter = mAdapter
         getHotRecommend()
+        setDefaultAddress()
+    }
+
+    private fun setDefaultAddress() {
+        var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
+        if (!TextUtils.isEmpty(str)) {
+            val gson = GsonBuilder().create()
+            val addressInfo = gson.fromJson(str, AddressBean::class.java)
+            tvAddress.text = addressInfo.street
+        } else {
+            tvAddress.text = activity.getString(R.string.add_address)
+        }
+        tvAddress.onClick {
+            startActivityForResult(Intent(activity, AddressListActivity::class.java), 101)
+        }
     }
 
     private fun refresh() {
@@ -109,21 +127,25 @@ class ShopFragment : BaseFragment() {
             startActivityForResult(intent, 0)
         }
         ivBuy.onClick {
-            if (CommonMethod.isLogin()) {
-                var intent = Intent(activity, PlaceOrderActivity::class.java)
-                intent.putExtra("price", tvTotalPrice.text)
-                startActivity(intent)
-            } else {
+            if (!CommonMethod.isLogin()) {
                 (activity as MainActivity).showLogin()
+                return@onClick
             }
+            if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
+                ToastUtil.showToast(activity.getString(R.string.add_address))
+                return@onClick
+            }
+            var intent = Intent(activity, PlaceOrderActivity::class.java)
+            intent.putExtra("price", tvTotalPrice.text)
+            startActivity(intent)
         }
+
         cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
             LogUtils.d("b:" + b)
             if (b) {
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = true
                 }
-
                 getPrice(mGoodsList)
             } else {
                 for (i in 0 until mGoodsList.size) {
@@ -132,10 +154,9 @@ class ShopFragment : BaseFragment() {
                 llTotalPrice.visibility = View.GONE
             }
             mAdapter.notifyDataSetChanged()
-            isFromHidden = false
         }
-    }
 
+    }
 
     private fun getHotRecommend() {
         HttpMethods.createService()
@@ -175,9 +196,12 @@ class ShopFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-//            val goods = data!!.extras.getSerializable("goods") as GoodsDetailBean.ResultBean.DataBean
-//            mGoodsList.add(goods)
-//            mAdapter.notifyDataSetChanged()
+            if (requestCode == 101) {
+                //设置地址
+                var addressInfo = data?.getSerializableExtra("addressInfo") as AddressBean?
+                tvAddress.text = addressInfo?.street
+                SPUtil.setString(StaticValue.DEFAULT_ADDRESS, Gson().toJson(addressInfo))
+            }
         }
     }
 
@@ -223,7 +247,6 @@ class ShopFragment : BaseFragment() {
         if (!hidden) {
             //回到购物车页面
             setShopData()
-            isFromHidden = true
         }
     }
 
@@ -239,7 +262,7 @@ class ShopFragment : BaseFragment() {
             (0 until oldList.size)
                     .filter { "2".equals(oldList[it].channelid) }
                     .mapTo(list) { oldList[it] }
-            (0 until mGoodsList.size)
+            (0 until oldList.size)
                     .filter { "3".equals(oldList[it].channelid) }
                     .mapTo(list) { oldList[it] }
 
@@ -252,9 +275,5 @@ class ShopFragment : BaseFragment() {
             cbSelectAll.isChecked = false
             cbSelectAll.isChecked = true
         }
-    }
-
-    fun setLocation(aoiName: String?) {
-        tvAddress.text = aoiName
     }
 }
