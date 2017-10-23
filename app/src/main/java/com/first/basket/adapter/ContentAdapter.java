@@ -92,23 +92,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         });
         if (CommonMethod.isTrue(product.getPromboolean())) {
             holder.tvProm.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.tvProm.setVisibility(View.GONE);
         }
-
-        //更改状态
-//        if (position == layoutPosition) {
-//            Drawable drawable = context.getResources().getDrawable(R.drawable.category_line);
-//            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-//            holder.tvCategory.setCompoundDrawables(drawable, null, null, null);
-//            holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.text_bg));
-//        } else {
-//            Drawable drawable = context.getResources().getDrawable(R.drawable.category_line);
-//            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-//            holder.tvCategory.setCompoundDrawables(null, null, null, null);
-//            holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.white));
-//        }
-
     }
 
     @Override

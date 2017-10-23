@@ -16,6 +16,7 @@ import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.item_et_search.*
 
 /**
  * Created by hanshaobo on 12/09/2017.
@@ -41,7 +42,6 @@ class SearchActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        etSearch.setText("")
         listSet = SPUtil.getStringSet(StaticValue.SEARCH, listSet) as HashSet<String>
         LogUtils.d("listset.size;" + listSet.size)
         if (listSet.size > 0) {

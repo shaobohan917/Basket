@@ -5,25 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:background="@mipmap/ic_category_search_bg"
-        android:drawableLeft="@mipmap/ic_category_search"
-        android:drawablePadding="4dp"
-        android:gravity="center_vertical"
-        android:hint="搜索"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:maxLength="17"
-        android:maxLines="1"
-        android:paddingLeft="10dp" />
-
-
-    <include layout="@layout/layout_line" />
+    <include layout="@layout/item_et_search" />
 
     <LinearLayout
         android:layout_width="match_parent"

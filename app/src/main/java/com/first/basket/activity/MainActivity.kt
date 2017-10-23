@@ -111,7 +111,6 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         location()
         //从数据库中获取购物车中的商品
         var str = SPUtil.getString(StaticValue.GOODS_LIST, "")
-        LogUtils.d("str:" + str)
         if (!TextUtils.isEmpty(str)) {
             val gson = GsonBuilder().create()
             val productListBean = gson.fromJson<ArrayList<ProductBean>>(str, object : TypeToken<ArrayList<ProductBean>>() {
@@ -119,8 +118,6 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             }.type)
             for (i in 0 until productListBean.size) {
                 mCount += productListBean[i].amount
-                LogUtils.d("ll:" + mCount)
-                LogUtils.d("商品：" + productListBean[i].productname + "," + productListBean[i].amount)
             }
             BaseApplication.getInstance().setmProductsList(productListBean)
 
@@ -224,20 +221,6 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
         })
         dialog.show()
-    }
-
-    override fun onDestroy() {
-
-
-        super.onDestroy()
-//        LogUtils.d("保存：" + str)
-//        showPop("确定退出？", "", "退出", object : DialogInterface.OnClickListener {
-//            override fun onClick(p0: DialogInterface?, p1: Int) {
-//                this@MainActivity.onDestroy()
-//                this@MainActivity.super.onDestroy()
-//            }
-//        })
-
     }
 
 

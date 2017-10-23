@@ -16,6 +16,7 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
+import kotlinx.android.synthetic.main.item_et_search.*
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -42,9 +43,9 @@ class ClassifyFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        preType = (activity as MainActivity).mChannel
         initView()
         initData()
+        initListener()
     }
 
     private fun initView() {
@@ -57,15 +58,18 @@ class ClassifyFragment : BaseFragment() {
 
 
     private fun initData() {
+        preType = (activity as MainActivity).mChannel
         //初始化分类列表adapter
         mClassifyAdapter = ClassifyAdapter(activity, mClassifyDatas)
         classifyRecyclerView.adapter = mClassifyAdapter
+        //获取分类列表
+        getClassify(preType, true)
+    }
+
+    private fun initListener() {
         mClassifyAdapter.setOnItemClickListener { view, data, position ->
             refreshContent(position)
         }
-
-        //获取分类列表
-        getClassify(preType, true)
     }
 
     private fun getClassify(channel: Int, needRefresh: Boolean) {
@@ -79,6 +83,10 @@ class ClassifyFragment : BaseFragment() {
                         if (needRefresh) {
                             //获取推荐列表
                             refreshContent(0)
+
+                            classifyRecyclerView.smoothScrollToPosition(0)
+                            var holder = classifyRecyclerView.getChildViewHolder(classifyRecyclerView.getChildAt(0)) as ClassifyAdapter.MyViewHolder
+                            holder.itemView.performClick()
                         }
                     }
                 })
@@ -86,7 +94,6 @@ class ClassifyFragment : BaseFragment() {
 
 
     private fun setClassify(t: HttpResult<ClassifyBean>) {
-
         mClassifyDatas.clear()
         fragmentList.clear()
         indexList.clear()
@@ -103,51 +110,52 @@ class ClassifyFragment : BaseFragment() {
         //有多少分类，创建多少fragment
         var fragment: BaseFragment
         for (i in 0 until list.size) {
-            fragment = if (i == 0) {
-                RecommendFragment()
-            } else {
-                ContentFragment(activity as MainActivity, list[i])
-            }
+            fragment = ContentFragment(activity as MainActivity, list[i])
             fragmentList.add(fragment)
         }
-
     }
 
 
     private fun refreshContent(position: Int) {
-        val fragment = fragmentList[position]
+        val fragment = fragmentList[position] as ContentFragment
 
-        if (position == 0 && !isGetedRecommend) {
-            (fragment as RecommendFragment).getHotRecommend(activity as MainActivity)
-            isGetedRecommend = true
-        }
-        replaceContent(fragment, R.id.fragmentContainer1)
-        //设置数据
-        if (position != 0) {
+        if (position == 0) {
+            if (!isGetedRecommend) {
+                fragment.getHotRecommend(activity as MainActivity)
+                isGetedRecommend = true
+            } else {
+                Handler().postDelayed({
+                    fragment.showHotImg(true)
+                }, 100)
+            }
+        } else {
             if (!indexList.contains(position)) {
                 Handler().postDelayed({
-                    (fragmentList[position] as ContentFragment).setContentData(position, mClassifyDatas[position])
+                    fragment.setContentData(position, mClassifyDatas[position])
                 }, 300)
                 indexList.add(position)
             }
         }
+        fragmentList[position] = fragment
+
+        replaceContent(fragment, R.id.fragmentContainer1)
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             val type = (activity as MainActivity).mChannel
-            LogUtils.d("cha:" + type)
+            LogUtils.d("菜市:" + type)
 
             if (preType != type) {
                 //切换菜市，重新加载
                 (activity as MainActivity).showProgressDialog()
+
                 Handler().postDelayed({
                     getClassify(type, true)
                     isGetedRecommend = false
                     preType = type
                 }, 1000)
-
             }
         }
     }

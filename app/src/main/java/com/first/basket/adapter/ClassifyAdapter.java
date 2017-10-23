@@ -24,14 +24,11 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
     private MyViewHolder holder;
     private int layoutPosition;
 
-    public void setSelete0() {
-
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view, ClassifyBean.DataBean data, int position);
     }
 
-    public  interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view , ClassifyBean.DataBean data, int position);
-    }
-    public ClassifyAdapter(Context context, List<ClassifyBean.DataBean> data){
+    public ClassifyAdapter(Context context, List<ClassifyBean.DataBean> data) {
         this.context = context;
         this.data = data;
     }
@@ -39,6 +36,7 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
     public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = View.inflate(context, R.layout.item_recycler_category, null);
@@ -62,18 +60,19 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
         });
 
         //更改状态
-        if(position == layoutPosition){
+        if (position == layoutPosition) {
             Drawable drawable = context.getResources().getDrawable(R.drawable.category_line);
             drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             holder.tvCategory.setCompoundDrawables(drawable, null, null, null);
             holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.white));
-        }else{
+        } else {
             Drawable drawable = context.getResources().getDrawable(R.drawable.category_line);
             drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             holder.tvCategory.setCompoundDrawables(null, null, null, null);
             holder.tvCategory.setBackgroundColor(context.getResources().getColor(R.color.text_bg));
         }
     }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -83,8 +82,10 @@ public class ClassifyAdapter extends RecyclerView.Adapter<ClassifyAdapter.MyView
     public int getItemCount() {
         return data.size();
     }
-    class MyViewHolder extends RecyclerView.ViewHolder {
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvCategory;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             tvCategory = itemView.findViewById(R.id.tvCategory);

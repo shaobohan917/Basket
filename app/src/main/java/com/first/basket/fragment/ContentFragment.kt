@@ -9,7 +9,6 @@ import android.graphics.PathMeasure
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,13 +25,14 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
+import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.LogUtils
+import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_content.*
@@ -46,14 +46,13 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
     private var activity = activity
     private var mDatas = data
 
+    private var hotData: HotRecommendBean.ResultBean.DataBean? = null
+
     private lateinit var mContentAdapter: ContentAdapter
     private lateinit var mSecondAdapter: SecondAdapter
 
     private var mContentDatas = ArrayList<ProductBean>()
     private var mSecondDatas = ArrayList<ClassifyBean.DataBean.LeveltwoBean>()
-
-    private lateinit var contentRecyclerView: RecyclerView
-    private lateinit var secondRecyclerView: RecyclerView
 
     //购物车
     private lateinit var mPathMeasure: PathMeasure
@@ -66,29 +65,8 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contentRecyclerView = view.findViewById(R.id.contentRecyclerView)
-        secondRecyclerView = view.findViewById(R.id.secondRecyclerView)
-
         initView()
         initData()
-        initListener()
-    }
-
-    private fun initListener() {
-        contentRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0) {
-                } else if (dy < 0) {
-                }
-            }
-        })
-
     }
 
     private fun initView() {
@@ -129,13 +107,13 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
             if (CommonMethod.isTrue(data.promboolean)) {
                 if (!SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
-                    addData(view,data)
+                    addData(view, data)
                     SPUtil.setBoolean(StaticValue.PROM_HUN, true)
                 } else {
                     ToastUtil.showToast("特惠商品只可添加一件")
                 }
-            }else{
-                addData(view,data)
+            } else {
+                addData(view, data)
             }
         }
     }
@@ -264,7 +242,6 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
     fun setContentData(position: Int, dataBean: ClassifyBean.DataBean) {
         if (position != 0) {
-
             var twoidSb = StringBuilder()
             for (i in 0 until mDatas.leveltwo.size) {
                 twoidSb.append(mDatas.leveltwo[i].leveltwoid).append(",")
@@ -280,10 +257,46 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
             mSecondDatas.addAll(dataBean.leveltwo)
             mSecondAdapter.notifyDataSetChanged()
 
-            //默认选中第一个
-//            secondRecyclerView.getLayoutManager().smoothScrollToPosition(secondRecyclerView, null, mSecondAdapter.getItemCount() - 1)
+            showHotImg(false)
         } else {
-
+            showHotImg(true)
         }
+    }
+
+    fun showHotImg(b: Boolean) {
+        if (b) {
+            if (hotData != null) {
+                ImageUtils.showImg(activity, hotData?.hotimage, ivHot)
+                ivHot.visibility = View.VISIBLE
+                secondRecyclerView.visibility = View.GONE
+            }
+        } else {
+            ivHot.visibility = View.GONE
+            secondRecyclerView.visibility = View.VISIBLE
+        }
+    }
+
+
+    fun getHotRecommend(activity: MainActivity) {
+        HttpMethods.createService()
+                .getHotRecommend("get_hotrecommend", activity.mChannel.toString())
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
+                    override fun onNext(t: HotRecommendBean) {
+                        super.onNext(t)
+                        setRecommendData(t.result.data)
+                        activity.hideProgress()
+                    }
+                })
+    }
+
+    private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
+        this.hotData = data
+        showHotImg(true)
+        ImageUtils.showImg(activity, data.hotimage, ivHot)
+        mContentDatas.clear()
+        mContentAdapter = ContentAdapter(activity, mContentDatas)
+        mContentDatas.addAll(data.products)
+        mContentAdapter.notifyDataSetChanged()
     }
 }
