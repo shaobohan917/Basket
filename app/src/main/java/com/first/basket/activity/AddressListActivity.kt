@@ -20,7 +20,6 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
-import com.first.basket.utils.ToastUtil
 import com.yanzhenjie.recyclerview.swipe.Closeable
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
@@ -59,7 +58,7 @@ class AddressListActivity : BaseActivity() {
         mAdapter = AddressMenuAdapter(mDatas, object : AddressMenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
 
-                showChoose(mDatas[position].street)
+                showChoose(mDatas[position].street,position)
             }
 
         }, object : AddressMenuAdapter.OnItemCheckedListener {
@@ -82,14 +81,14 @@ class AddressListActivity : BaseActivity() {
         })
     }
 
-    fun showChoose(str: String) {
+    fun showChoose(str: String, position: Int) {
         var dialog = AlertDialog.Builder(this@AddressListActivity)
         dialog.setTitle("提示")
         dialog.setMessage("本次配送地址为：" + str)
         dialog.setPositiveButton("确定", object : DialogInterface.OnClickListener {
             override fun onClick(p0: DialogInterface?, p1: Int) {
-                intent.putExtra("adds", str)
-                setResult(Activity.RESULT_OK)
+                intent.putExtra("address", mDatas[position])
+                setResult(Activity.RESULT_OK,intent)
                 myFinish()
             }
 

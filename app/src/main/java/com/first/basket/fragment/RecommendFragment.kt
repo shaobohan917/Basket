@@ -23,11 +23,15 @@ import com.first.basket.adapter.ContentAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
+import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_content.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -88,25 +92,41 @@ class RecommendFragment : BaseFragment() {
         }
 
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
-            addGoodToCar(view.findViewById(R.id.ivGoods))
-            data.isCheck = true
 
-            var products = BaseApplication.getInstance().getmProductsList()
-            var ids = ArrayList<String>()
-            for (i in 0 until products.size) {
-                ids.add(products[i].productid)
-            }
-            if (ids.contains(data.productid)) {
-                val i = ids.indexOf(data.productid)
-                //已包含
-                products[i].amount += 1
+            if (CommonMethod.isTrue(data.promboolean)) {
+                if (!SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
+                    addData(view,data)
+                    SPUtil.setBoolean(StaticValue.PROM_HUN, true)
+                } else {
+                    ToastUtil.showToast("特惠商品只可添加一件")
+                }
             }else{
-                data.amount++
-                products.add(data)
+                addData(view,data)
             }
-            (activity as MainActivity).setCountAdd()
-            BaseApplication.getInstance().setmProductsList(products)
         }
+    }
+
+    private fun addData(view: View, data: ProductBean) {
+
+        addGoodToCar(view.findViewById(R.id.ivGoods))
+        data.isCheck = true
+
+        var products = BaseApplication.getInstance().getmProductsList()
+        var ids = java.util.ArrayList<String>()
+        for (i in 0 until products.size) {
+            ids.add(products[i].productid)
+        }
+        if (ids.contains(data.productid)) {
+            val i = ids.indexOf(data.productid)
+            //已包含
+            products[i].amount += 1
+        } else {
+            data.amount++
+            products.add(data)
+        }
+        (activity as MainActivity).setCountAdd()
+        BaseApplication.getInstance().setmProductsList(products)
+
     }
 
 

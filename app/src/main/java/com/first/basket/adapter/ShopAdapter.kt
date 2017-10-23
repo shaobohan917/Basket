@@ -9,17 +9,22 @@ import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.bean.ProductBean
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
 import com.first.basket.view.AmountView
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
+
 /**
  * Created by hanshaobo on 14/09/2017.
  */
-class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: CompoundButton.OnCheckedChangeListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: OnItemCheckedListener, amountListener: OnItemAmountChangedListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
     private var mDatas: ArrayList<ProductBean> = list
     private var listener = listener
     private var cbListener = cbListener
+    private var amountListener = amountListener
+
+    private var preId: String = ""
 
     override fun getItemCount(): Int {
         return mDatas.size
@@ -35,6 +40,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
 
     override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
         holder.itemView.tag = mDatas[position]
+        LogUtils.d("bind:" + position + "," + mDatas[position].productname)
 
         val product = mDatas[position]
 
@@ -47,12 +53,40 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         holder.cbSelect.isChecked = product.isCheck
         holder.cbSelect.setOnCheckedChangeListener { compoundButton, b ->
             product.isCheck = b
-            cbListener.onCheckedChanged(compoundButton, b)
+            cbListener.onItemCheck(compoundButton, b, position)
+        }
+        holder.amoutView.setOnAmountChangeListener { view, amount ->
+            amountListener.onItemAmountChanged(view, amount, position)
+        }
+
+//        var data= holder.itemView.getTag(position) as ProductBean
+        if (position == 0) {
+            holder.tvTitle.visibility = View.VISIBLE
+            setTitle(holder.tvTitle, mDatas[0].channelid)
+        } else {
+            if (preId.equals(mDatas[position].channelid)) {
+                //相同，不展示
+                holder.tvTitle.visibility = View.GONE
+            } else {
+                holder.tvTitle.visibility = View.VISIBLE
+                setTitle(holder.tvTitle, mDatas[position].channelid)
+            }
+        }
+        LogUtils.d("pre:" + mDatas[position].channelid)
+        preId = mDatas[position].channelid
+    }
+
+    fun setTitle(tv: TextView, str: String) {
+        when (str) {
+            "1" -> tv.text = "社区菜市"
+            "2" -> tv.text = "上海菜市"
+            "3" -> tv.text = "全国菜市"
         }
 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
         var tvName1 = itemView.findViewById<TextView>(R.id.tvName1)
         var tvUnit1 = itemView.findViewById<TextView>(R.id.tvUnit1)
         var tvPrice1 = itemView.findViewById<TextView>(R.id.tvPrice1)
@@ -68,4 +102,14 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
     interface OnItemClickListener {
         fun onItemClick(view: View)
     }
+
+    interface OnItemCheckedListener {
+        fun onItemCheck(view: View, b: Boolean, index: Int)
+    }
+
+    interface OnItemAmountChangedListener {
+        fun onItemAmountChanged(view: View, amount: Int, index: Int)
+    }
+
+
 }

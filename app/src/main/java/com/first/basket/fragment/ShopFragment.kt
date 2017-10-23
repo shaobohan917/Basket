@@ -2,8 +2,10 @@ package com.first.basket.fragment
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +30,7 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.view.FloatingItemDecoration
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
@@ -35,6 +38,7 @@ import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
@@ -45,20 +49,31 @@ class ShopFragment : BaseFragment(), Observer {
 
     private var isAllChecked: Boolean = false
     private var mGoodsList = ArrayList<ProductBean>()
-    private var mGoodsMap = HashMap<ProductBean, Int>()
 
     private var mAdapter = MenuAdapter(mGoodsList, object : MenuAdapter.OnItemClickListener {
         override fun onItemClick(view: View) {
         }
 
-    }, CompoundButton.OnCheckedChangeListener { p0, p1 ->
-        if (p1) {
-//            getPrice(mGoodsList)
-            notifySubscribeStateChanged("123", 123)
-        } else {
-            cbSelectAll.isChecked = false
+    }, object : MenuAdapter.OnItemCheckedListener {
+        override fun onItemCheck(view: View, b: Boolean, index: Int) {
+            if (b) {
+                getPrice(mGoodsList.get(index))
+            }
+        }
+    }, object : MenuAdapter.OnItemAmountChangedListener {
+        override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
+            if (amount == 0) {
+                mGoodsList.removeAt(index)
+                refresh()
+            } else {
+                mGoodsList[index].amount = amount
+            }
         }
     })
+
+    private fun refresh() {
+        mAdapter.notifyDataSetChanged()
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -111,6 +126,19 @@ class ShopFragment : BaseFragment(), Observer {
                 mAdapter.notifyDataSetChanged()
             }
         }
+
+        /**
+         * 标题
+         */
+//        var keys = HashMap<Int, String>()//存放所有key的位置和内容
+//        for (i in 0 until mGoodsList.size) {
+//            keys.put(i, mGoodsList[i].channelid)
+//        }
+//
+//        var floatingItemDecoration = FloatingItemDecoration(activity, Color.BLUE, 1F, 1F);
+//        floatingItemDecoration.setKeys(keys)
+//        floatingItemDecoration.setmTitleHeight(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50F, getResources().getDisplayMetrics()).toInt());
+//        smRecyclerView.addItemDecoration(floatingItemDecoration);
     }
 
     /**
@@ -155,18 +183,43 @@ class ShopFragment : BaseFragment(), Observer {
                 (activity as MainActivity).showLogin()
             }
         }
-        cbSelectAll.onClick {
-            isAllChecked = !isAllChecked
-            for (i in 0 until smRecyclerView.childCount) {
-                smRecyclerView.getChildAt(i).findViewById<CheckBox>(R.id.cbSelect).isChecked = isAllChecked
-            }
-            if (isAllChecked && mGoodsList.size > 0) {
-                getPrice(mGoodsList)
-                llTotalPrice.visibility = View.VISIBLE
+        cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
+            LogUtils.d("b:" + b)
+            if (b) {
+                tvTotalPrice.visibility = View.VISIBLE
+                for (i in 0 until mGoodsList.size) {
+                    mGoodsList[i].isCheck = true
+                }
+                mAdapter.notifyDataSetChanged()
             } else {
-                llTotalPrice.visibility = View.GONE
+                tvTotalPrice.visibility = View.GONE
+                for (i in 0 until mGoodsList.size) {
+                    mGoodsList[i].isCheck = false
+                }
+                mAdapter.notifyDataSetChanged()
             }
         }
+//        cbSelectAll.onClick {
+//            doSelect()
+//
+//        }
+    }
+
+    private fun doSelect() {
+        if (isAllChecked && mGoodsList.size > 0) {
+            for (i in 0 until mGoodsList.size) {
+                mGoodsList[i].isCheck = true
+            }
+            mAdapter.notifyDataSetChanged()
+            getPrice(mGoodsList)
+        } else {
+            for (i in 0 until mGoodsList.size) {
+                mGoodsList[i].isCheck = false
+            }
+            mAdapter.notifyDataSetChanged()
+            llTotalPrice.visibility = View.GONE
+        }
+
     }
 
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
@@ -175,10 +228,11 @@ class ShopFragment : BaseFragment(), Observer {
 
         for (i in 0 until mDatas.size) {
             productidString.append(mDatas[i].productid).append("|")
-            val childView = smRecyclerView.layoutManager.findViewByPosition(i)
-            val holder = smRecyclerView.getChildViewHolder(childView)
-            val amount = holder.itemView.amoutView.amount
-            numString.append(amount).append("|")
+            numString.append(mDatas[i].amount).append("|")
+//            val childView = smRecyclerView.layoutManager.findViewByPosition(i)
+//            val holder = smRecyclerView.getChildViewHolder(childView)
+//            val amount = holder.itemView.amoutView.amount
+//            numString.append(amount).append("|")
         }
         val ps: String = productidString.toString().substring(0, productidString.length - 1)
         val ns: String = numString.toString().substring(0, numString.length - 1)
@@ -187,35 +241,34 @@ class ShopFragment : BaseFragment(), Observer {
                 .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                     override fun onNext(t: HttpResult<PriceBean>) {
                         super.onNext(t)
-                        tvTotalPrice.visibility = View.VISIBLE
-                        tvTotalPrice.text = t.result.data.totalprice.toString()
+                        setPrice(t.result.data.totalcost)
+
                     }
                 })
     }
 
+    private fun setPrice(totalcost: Float) {
+        tvTotalPrice.visibility = View.VISIBLE
+        tvTotalPrice.text = "¥ " + totalcost.toString()
 
-//    override fun onHiddenChanged(hidden: Boolean) {
-//        super.onHiddenChanged(hidden)
-//        if (!hidden) {
-//            mGoodsList.clear()
-//            mGoodsMap = BaseApplication.getInstance().mGoodsMap
-//
-//            var iterator = mGoodsMap.entries.iterator()
-//            while (iterator.hasNext()) {
-//                var entry = iterator.next() as Map.Entry<ProductBean, Int>
-//                var key = entry.key
-//                var value = entry.value
-//
-//                mGoodsList.add(key)
-//
-//                Collections.reverse(mGoodsList)
-//            }
-//            if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
-//                cbSelectAll.performClick()
-//            }
-//            mAdapter.notifyDataSetChanged()
-//        }
-//    }
+    }
+
+    private fun getPrice(product: ProductBean) {
+        var productidString = product.productid.toString()
+        var numString = product.amount.toString()
+
+        val ps: String = productidString
+        val ns: String = numString
+        HttpMethods.createService().getPrice("get_price", ps, ns)
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
+                    override fun onNext(t: HttpResult<PriceBean>) {
+                        super.onNext(t)
+                        setPrice(t.result.data.totalcost)
+                    }
+                })
+    }
+
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
@@ -225,15 +278,35 @@ class ShopFragment : BaseFragment(), Observer {
             mGoodsList.addAll(BaseApplication.getInstance().getmProductsList())
             Collections.reverse(mGoodsList)
 
-            for (i in 0 until mGoodsList.size){
-                LogUtils.d("频道排序："+mGoodsList[i].channelid)
+            var list = ArrayList<ProductBean>()
+
+            (0 until mGoodsList.size)
+                    .filter { "1".equals(mGoodsList[it].channelid) }
+                    .mapTo(list) { mGoodsList[it] }
+            (0 until mGoodsList.size)
+                    .filter { "2".equals(mGoodsList[it].channelid) }
+                    .mapTo(list) { mGoodsList[it] }
+            (0 until mGoodsList.size)
+                    .filter { "3".equals(mGoodsList[it].channelid) }
+                    .mapTo(list) { mGoodsList[it] }
+
+            mGoodsList.clear()
+            mGoodsList.addAll(list)
+
+            if (mGoodsList.size > 0) {
+                cbSelectAll.isChecked = true
             }
 
-            if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
-                cbSelectAll.performClick()
-            }
+//            if (!cbSelectAll.isChecked && mGoodsList.size > 0) {
+//                cbSelectAll.performClick()
+//            }
+//
+//            getPrice(mGoodsList)
+
+            smRecyclerView.smoothScrollToPosition(0)
             mAdapter.notifyDataSetChanged()
         }
+
     }
 
     override fun update(observable: Observable?, data: Any?) {
@@ -248,4 +321,6 @@ class ShopFragment : BaseFragment(), Observer {
         val entity = NotifyMsgEntity(NotifyManager.TYPE_DFH_SUB_STATE_CHANGED, dfhid, isdy)
         NotifyManager.getNotifyManager().notifyChange(entity)
     }
+
+
 }

@@ -73,7 +73,7 @@
             android:id="@+id/etPassword"
             style="@style/LoginInputStyle"
             android:background="@null"
-            android:inputType="numberDecimal"
+            android:inputType="textPassword"
             android:maxLength="11" />
 
         <include layout="@layout/layout_line" />
