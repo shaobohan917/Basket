@@ -11,7 +11,7 @@ import com.first.basket.app.BaseApplication;
 
 public class UIUtils {
     public static Context getContext() {
-        return BaseApplication.getContext();
+        return BaseApplication.getInstance();
     }
 
     // 判断是否是主线的方法

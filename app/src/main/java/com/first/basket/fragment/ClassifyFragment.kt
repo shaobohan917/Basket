@@ -14,7 +14,6 @@ import com.first.basket.bean.ClassifyBean
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
 import kotlinx.android.synthetic.main.item_et_search.*
 
@@ -145,7 +144,6 @@ class ClassifyFragment : BaseFragment() {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             val type = (activity as MainActivity).mChannel
-            LogUtils.d("菜市:" + type)
 
             if (preType != type) {
                 //切换菜市，重新加载

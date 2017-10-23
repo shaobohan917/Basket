@@ -40,7 +40,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
 
     override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
         holder.itemView.tag = mDatas[position]
-        LogUtils.d("bind:" + position + "," + mDatas[position].productname)
+//        LogUtils.d("bind:" + position + "," + mDatas[position].productname)
 
         val product = mDatas[position]
 

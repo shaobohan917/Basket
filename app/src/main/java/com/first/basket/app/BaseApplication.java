@@ -21,8 +21,6 @@ public class BaseApplication extends MultiDexApplication {
     private static int mMainThreadId;// 主线程Id
     private static Handler mHandler;// Handler对象
 
-    private static Context context;
-
     private static BaseApplication instance;
 
     public ArrayList<ProductBean> getmProductsList() {
@@ -34,13 +32,12 @@ public class BaseApplication extends MultiDexApplication {
     }
 
     private ArrayList<ProductBean> mProductsList = new ArrayList<>();
+
     public LinkedHashMap<ProductBean, Integer> mGoodsMap = new LinkedHashMap();   //添加到购物车的集合
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
-//        mProductsList.data = new ArrayList<ProductBean>();
         this.instance = this;
         BaseApplication.setMainThreadId(android.os.Process.myTid());
         BaseApplication.setHandler(new Handler());
@@ -53,11 +50,6 @@ public class BaseApplication extends MultiDexApplication {
     public static BaseApplication getInstance() {
         return instance;
     }
-
-    public static Context getContext() {
-        return context;
-    }
-
 
     public static int getMainThreadId() {
         return mMainThreadId;

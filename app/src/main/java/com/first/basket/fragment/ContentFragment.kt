@@ -124,10 +124,7 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
         data.isCheck = true
 
         var products = BaseApplication.getInstance().getmProductsList()
-        var ids = ArrayList<String>()
-        for (i in 0 until products.size) {
-            ids.add(products[i].productid)
-        }
+        val ids = (0 until products.size).mapTo(ArrayList<String>()) { products[it].productid }
         if (ids.contains(data.productid)) {
             val i = ids.indexOf(data.productid)
             //已包含
@@ -136,8 +133,8 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
             data.amount++
             products.add(data)
         }
-        (activity as MainActivity).setCountAdd()
         BaseApplication.getInstance().setmProductsList(products)
+        activity.setCountAdd()
 
     }
 

@@ -116,8 +116,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/total_price"
                 android:textColor="@color/black"
-                android:textSize="12sp"
-                android:visibility="invisible"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:layout_width="wrap_content"

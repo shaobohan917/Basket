@@ -17,14 +17,13 @@ import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
-import com.roughike.bottombar.BottomBar
-import com.roughike.bottombar.BottomBarTab
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.roughike.bottombar.BottomBar
+import com.roughike.bottombar.BottomBarTab
 
 
 class MainActivity : BaseActivity(), AMapLocationListener {
@@ -173,6 +172,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         if (aMapLocation.errorCode == 0) {
             aoiName = aMapLocation.aoiName
             (fragmentList[0] as HomeFragment).setLocation(aoiName)
+            (fragmentList[2] as ShopFragment).setLocation(aoiName)
             mLocationClient.stopLocation()
         }
     }
