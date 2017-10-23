@@ -111,11 +111,13 @@ class HomeFragment : BaseFragment() {
                 R.id.hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.hltg?.url)
+                    intent.putExtra("title","欢乐团购")
                     startActivity(intent)
                 }
                 R.id.jkss, R.id.ivJKSS -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.jkss?.url)
+                    intent.putExtra("title","健康膳食")
                     startActivity(intent)
                 }
             }

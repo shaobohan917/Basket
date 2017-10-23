@@ -74,7 +74,7 @@ class ShopFragment : BaseFragment() {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
 //                if (!isFromHidden) {
                 mGoodsList[index].isCheck = b
-//                    getPrice(mGoodsList)
+//                getPrice(mGoodsList)
 //                }
             }
         }, object : MenuAdapter.OnItemAmountChangedListener {
@@ -133,6 +133,10 @@ class ShopFragment : BaseFragment() {
             }
             if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
                 ToastUtil.showToast(activity.getString(R.string.add_address))
+                return@onClick
+            }
+            if (!cbSelectAll.isChecked) {
+                ToastUtil.showToast("请选择全部商品")
                 return@onClick
             }
             var intent = Intent(activity, PlaceOrderActivity::class.java)
@@ -246,7 +250,12 @@ class ShopFragment : BaseFragment() {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             //回到购物车页面
+            cbSelectAll.isChecked = true
             setShopData()
+            for (i in 0 until mGoodsList.size) {
+                mGoodsList[i].isCheck = true
+            }
+            getPrice(mGoodsList)
         }
     }
 
@@ -270,10 +279,10 @@ class ShopFragment : BaseFragment() {
             mGoodsList.addAll(list)
             mAdapter.notifyDataSetChanged()
             LogUtils.d("长度：" + mGoodsList.size)
-
-            //设置全选
-            cbSelectAll.isChecked = false
-            cbSelectAll.isChecked = true
+//
+//            //设置全选
+//            cbSelectAll.isChecked = false
+//            cbSelectAll.isChecked = true
         }
     }
 }

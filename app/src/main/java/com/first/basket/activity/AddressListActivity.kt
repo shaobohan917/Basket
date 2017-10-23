@@ -20,10 +20,8 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
-import com.yanzhenjie.recyclerview.swipe.Closeable
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
-import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.activity_address_list.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
@@ -34,8 +32,6 @@ import java.util.*
 class AddressListActivity : BaseActivity() {
     private var mDatas = ArrayList<AddressBean>()
     private lateinit var mAdapter: AddressMenuAdapter
-
-    private lateinit var closeable: Closeable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,16 +130,10 @@ class AddressListActivity : BaseActivity() {
 
     private fun initView() {
         smRecyclerView.layoutManager = LinearLayoutManager(this@AddressListActivity)
-        smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
+//        smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
+        smRecyclerView.isItemViewSwipeEnabled = false
 
         smRecyclerView.adapter = mAdapter
-
-        smRecyclerView.setSwipeMenuItemClickListener { closeable, adapterPosition, menuPosition, direction ->
-            this.closeable = closeable
-            if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-                deleteAddress(adapterPosition)
-            }
-        }
     }
 
     private fun deleteAddress(position: Int) {
@@ -154,7 +144,6 @@ class AddressListActivity : BaseActivity() {
                     override fun onNext(t: HttpResult<CodeBean>) {
                         super.onNext(t)
                         if (t.status == 0) {
-                            closeable.smoothCloseMenu()
                             getAddressList()
                         }
                     }

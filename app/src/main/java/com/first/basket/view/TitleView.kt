@@ -1,8 +1,10 @@
 package com.first.basket.view
 
 import android.content.Context
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
@@ -59,6 +61,8 @@ class TitleView : FrameLayout, View.OnClickListener {
     }
 
     fun setTitle(string: String) {
-        tvTitle.text = string
+        if (!TextUtils.isEmpty(string)) {
+            tvTitle.text = string
+        }
     }
 }

@@ -25,6 +25,7 @@ class WebViewActivity : BaseActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun initData() {
         url = intent.getStringExtra("url")
+        titleView.setTitle(intent.getStringExtra("title"))
 
         var webSettings = webview.settings
 
