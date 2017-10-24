@@ -43,7 +43,7 @@ class AddressAddActivity : BaseActivity() {
     private lateinit var address: AddressBean
 
     private var poiItem: PoiItem? = null
-    private var township: String = ""
+    private var districtid: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,21 +134,19 @@ class AddressAddActivity : BaseActivity() {
                     val mapBean = data?.getSerializableExtra("mapBean") as MapBean
                     LogUtils.d("map:" + mapBean.aoiName + "," + mapBean.district + "," + mapBean.street + "," + mapBean.adCode)
                     etAddress.setText(aoi.toString())
-//                    getSubdistrict(mapBean.district)
-
                     anothre(mapBean.getLatitude(), mapBean.getLongitude())
                 }
                 REQUEST_TWO -> {
                     if (data != null) {
-                        poiItem = data.getParcelableExtra<PoiItem>("poiItem")
+                        poiItem = data.getParcelableExtra("poiItem")
                         if (poiItem != null) {
                             geoGetStreet(poiItem!!)
-                            etAddress.setText(poiItem!!.title + " " + poiItem!!.snippet)
+                            etAddress.setText(poiItem!!.snippet + " " + poiItem!!.title)
                         }
                     }
                 }
                 REQUEST_THREE -> {
-                    LogUtils.d("get:" + (data?.getStringExtra("ss")))
+                    districtid = data?.getStringExtra("subdistrict")
                 }
             }
         }
@@ -177,7 +175,7 @@ class AddressAddActivity : BaseActivity() {
                 LogUtils.d("getcode:" + rCode)
                 if (rCode == 1000) {
                     //拿到街道
-                    township = result.regeocodeAddress.township
+                    var township = result.regeocodeAddress.township
                     LogUtils.d("街道：" + township)
                     getSubdistrict(poiItem.adName, township)
                 }
@@ -275,6 +273,7 @@ class AddressAddActivity : BaseActivity() {
 
     }
 
+
     private fun getSubdistrict(district: String, township: String) {
         HttpMethods.createService().getSubdistrict("get_subdistrict", district)
                 .compose(TransformUtils.defaultSchedulers())
@@ -288,7 +287,8 @@ class AddressAddActivity : BaseActivity() {
                         (0 until list.size)
                                 .filter { township.equals(list[it].subdistrict) }
                                 .forEach {
-                                    LogUtils.d("匹配到街道：" + township + ",,," + list[it].svc)
+                                    districtid = list[it].districtid
+                                    LogUtils.d("匹配到街道：" + township + ",districtid" + list[it].districtid)
                                     isMatch = true
                                 }
                         if (!isMatch) {
@@ -303,14 +303,14 @@ class AddressAddActivity : BaseActivity() {
 
 
     private fun addAddress() {
-        var hashmap: HashMap<String, String> = HashMap()
+        var hashmap: HashMap<String, String?> = HashMap()
         hashmap.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
         hashmap.put("receiver", etName.text.toString())
         hashmap.put("recvphone", etPhone.text.toString())
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", township)
+        hashmap.put("subdistrict", districtid)
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -329,7 +329,7 @@ class AddressAddActivity : BaseActivity() {
     }
 
     private fun modifyAddress() {
-        var hashmap: HashMap<String, String> = HashMap()
+        var hashmap: HashMap<String, String?> = HashMap()
         hashmap.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
         hashmap.put("addressid", address.addressid)
         hashmap.put("receiver", etName.text.toString())
@@ -337,7 +337,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", township)
+        hashmap.put("subdistrict", districtid)
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())

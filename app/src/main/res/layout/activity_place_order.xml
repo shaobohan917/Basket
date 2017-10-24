@@ -31,7 +31,7 @@
         android:gravity="center_vertical">
 
         <Button
-            android:id="@+id/ivBuy"
+            android:id="@+id/btBuy"
             style="@style/ButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@id/ivBuy"
+            android:layout_toLeftOf="@id/btBuy"
             android:text="@string/total_price"
             android:textColor="@color/black"
             android:textSize="12sp" />

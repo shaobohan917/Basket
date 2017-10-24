@@ -77,13 +77,11 @@ class MineFragment : BaseFragment() {
         }
 
         aimvHelp.onClick {
-            (activity as MainActivity).showDialog("联系客服", activity.getString(R.string.service_phone), "拨打", object : DialogInterface.OnClickListener {
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    val intent = Intent(Intent.ACTION_DIAL)
-                    val data = Uri.parse("tel:" + activity.getString(R.string.service_phone))
-                    intent.data = data
-                    startActivity(intent)
-                }
+            (activity as MainActivity).showDialog("联系客服", activity.getString(R.string.service_phone), "拨打", DialogInterface.OnClickListener { p0, p1 ->
+                val intent = Intent(Intent.ACTION_DIAL)
+                val data = Uri.parse("tel:" + activity.getString(R.string.service_phone))
+                intent.data = data
+                startActivity(intent)
             })
         }
     }

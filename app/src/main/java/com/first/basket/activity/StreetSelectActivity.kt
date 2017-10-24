@@ -8,7 +8,7 @@ import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.bean.DistrictBean
-import kotlinx.android.synthetic.main.activity_select.*
+import kotlinx.android.synthetic.main.activity_street_select.*
 import kotlinx.android.synthetic.main.item_recycler_district.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -18,7 +18,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class StreetSelectActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select)
+        setContentView(R.layout.activity_street_select)
         initData()
         initView()
     }
@@ -34,7 +34,7 @@ class StreetSelectActivity : BaseActivity() {
         var adapter = BaseRecyclerAdapter(R.layout.item_recycler_district, mDatas) { view: View, item: DistrictBean.DataBean ->
             view.tvDistrict.text = item.subdistrict
             view.tvDistrict.onClick {
-                intent.putExtra("ss", item.districtid)
+                intent.putExtra("subdistrict", item.districtid)
                 setResult(Activity.RESULT_OK, intent)
                 myFinish()
             }

@@ -7,10 +7,10 @@
     <TextView
         android:id="@+id/tvDistrict"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="44dp"
         android:gravity="center"
         android:textColor="@color/gray33"
-        android:textSize="17sp"/>
+        android:textSize="17sp" />
 
     <include layout="@layout/layout_line" />
 

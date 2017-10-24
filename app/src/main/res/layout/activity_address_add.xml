@@ -97,12 +97,14 @@
             <EditText
                 android:id="@+id/etAddress"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tvAddress"
                 android:background="@null"
+                android:ellipsize="end"
                 android:hint="收货地址"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:textColor="@color/gray33"
                 android:textSize="14sp" />
 

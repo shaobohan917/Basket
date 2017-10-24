@@ -51,6 +51,7 @@ class ClassifyFragment : BaseFragment() {
         val drawable = activity.resources.getDrawable(R.mipmap.ic_category_search)
         drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
         etSearch.setCompoundDrawables(drawable, null, null, null)
+        etSearch.isClickable = false
 
         classifyRecyclerView.layoutManager = LinearLayoutManager(activity)
     }

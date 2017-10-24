@@ -78,7 +78,7 @@ interface ApiService {
     //添加地址
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun addAddress(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<LoginBean>>
+    fun addAddress(@Field("action") action: String, @FieldMap map: HashMap<String, String?>): Observable<HttpResult<LoginBean>>
 
     //修改地址
     @FormUrlEncoded

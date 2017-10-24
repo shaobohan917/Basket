@@ -132,7 +132,7 @@ class HomeFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == (activity as BaseActivity).REQUEST_ONE) {
-            val addressInfo = data?.getStringExtra("addressInfo") as AddressBean
+            val addressInfo = data?.getSerializableExtra("addressInfo") as AddressBean
             tvAddress.text = addressInfo.street.replace("&", " ")
         }
     }
@@ -168,7 +168,6 @@ class HomeFragment : BaseFragment() {
         for (i in 0 until data.sqcs.carouselfigure.size) {
             images1.add(Constants.BASE_IMG_URL + data.sqcs.carouselfigure[i].image)
         }
-        LogUtils.d("i1长度：" + images1.size)
         vBanner.setImages(images1)
                 .setImageLoader(GlideImageLoader())
                 .setBannerAnimation(Transformer.ScaleInOut)

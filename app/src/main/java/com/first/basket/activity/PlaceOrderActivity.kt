@@ -85,7 +85,7 @@ class PlaceOrderActivity : BaseActivity() {
 
 
     private fun initListener() {
-        ivBuy.onClick {
+        btBuy.onClick {
             doPlaceOrder()
         }
     }

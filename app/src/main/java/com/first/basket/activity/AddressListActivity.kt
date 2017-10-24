@@ -20,6 +20,7 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
+import com.google.gson.Gson
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import kotlinx.android.synthetic.main.activity_address_list.*
@@ -76,7 +77,9 @@ class AddressListActivity : BaseActivity() {
 
     fun showChoose(str: String, position: Int) {
         showDialog("提示", "本次配送地址为：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
-            intent.putExtra("addressInfo", mDatas[position])
+            var addressInfo = mDatas[position]
+            SPUtil.setString(StaticValue.DEFAULT_ADDRESS, Gson().toJson(addressInfo))
+            intent.putExtra("addressInfo", addressInfo)
             setResult(Activity.RESULT_OK, intent)
             myFinish()
         })

@@ -93,7 +93,6 @@ class ShopFragment : BaseFragment() {
 
         smRecyclerView.adapter = mAdapter
         getHotRecommend()
-        setDefaultAddress()
     }
 
     private fun setDefaultAddress() {
@@ -105,7 +104,7 @@ class ShopFragment : BaseFragment() {
         if (!TextUtils.isEmpty(str)) {
             val gson = GsonBuilder().create()
             val addressInfo = gson.fromJson(str, AddressBean::class.java)
-            tvAddress.text = addressInfo.street
+            tvAddress.text = addressInfo.street.replace("&", " ")
         } else {
             tvAddress.text = activity.getString(R.string.add_address)
         }
@@ -134,7 +133,11 @@ class ShopFragment : BaseFragment() {
             var intent = Intent(activity, GoodsDetailActivity::class.java)
             startActivityForResult(intent, 0)
         }
-        ivBuy.onClick {
+        btBuy.onClick {
+            if (mGoodsList.size == 0) {
+                ToastUtil.showToast(activity.getString(R.string.buy))
+                return@onClick
+            }
             if (!CommonMethod.isLogin()) {
                 (activity as MainActivity).showLogin()
                 return@onClick
@@ -213,8 +216,7 @@ class ShopFragment : BaseFragment() {
             if (requestCode == 101) {
                 //设置地址
                 var addressInfo = data?.getSerializableExtra("addressInfo") as AddressBean?
-                tvAddress.text = addressInfo?.street
-                SPUtil.setString(StaticValue.DEFAULT_ADDRESS, Gson().toJson(addressInfo))
+                tvAddress.text = addressInfo?.street?.replace("&", " ") ?: ""
             }
         }
     }
@@ -262,17 +264,23 @@ class ShopFragment : BaseFragment() {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             //回到购物车页面
-            cbSelectAll.isChecked = true
+            setDefaultAddress()
+            cbSelectAll.isChecked = (mGoodsList.size > 0)
             setShopData()
+            llTotalPrice.visibility = if (mGoodsList.size > 0) (View.VISIBLE) else (View.GONE)
             for (i in 0 until mGoodsList.size) {
                 mGoodsList[i].isCheck = true
             }
-
             getPrice(mGoodsList)
         } else {
-            BaseApplication.getInstance().setProductsList(mGoodsList)
+            BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LogUtils.d("onResume")
     }
 
     private fun setShopData() {
@@ -294,11 +302,6 @@ class ShopFragment : BaseFragment() {
             mGoodsList.clear()
             mGoodsList.addAll(list)
             mAdapter.notifyDataSetChanged()
-            LogUtils.d("长度：" + mGoodsList.size)
-//
-//            //设置全选
-//            cbSelectAll.isChecked = false
-//            cbSelectAll.isChecked = true
         }
     }
 }

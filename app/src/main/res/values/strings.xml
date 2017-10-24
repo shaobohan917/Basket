@@ -16,5 +16,6 @@
     <string name="about5">\t\t\t\t1号菜篮子工程平台提供手机App、微信公众号、电脑、电话、DM单等多种途径，方便社区居民来购买我们的新鲜、放心、平价食品，获得我们的服务。如果您希望有个健康的生活，希望吃的放心、买的舒心，1号菜篮子工程绝对是您的不二选择。</string>
 
     <string name="add_address">请先添加收货地址</string>
+    <string name="buy">请选购商品</string>
     <string name="service_phone">4000877021</string>
 </resources>
