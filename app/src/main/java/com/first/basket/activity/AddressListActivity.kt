@@ -44,7 +44,7 @@ class AddressListActivity : BaseActivity() {
     private fun initListener() {
 
         btAdd.onClick {
-            myStartActivity(Intent(this@AddressListActivity, AddressAddActivity::class.java))
+            myStartActivityForResult(Intent(this@AddressListActivity, AddressAddActivity::class.java), REQUEST_ONE)
         }
     }
 
@@ -184,7 +184,9 @@ class AddressListActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            getAddressList()
+            if (requestCode == REQUEST_ONE) {
+                getAddressList()
+            }
         }
     }
 }

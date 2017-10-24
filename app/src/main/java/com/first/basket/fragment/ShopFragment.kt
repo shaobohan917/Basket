@@ -1,8 +1,10 @@
 package com.first.basket.fragment
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -30,7 +32,6 @@ import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
@@ -46,7 +47,7 @@ import kotlin.collections.ArrayList
 class ShopFragment : BaseFragment() {
     private var mGoodsList = ArrayList<ProductBean>()
     private lateinit var mAdapter: MenuAdapter
-
+    private var isAllSelect = true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -72,21 +73,28 @@ class ShopFragment : BaseFragment() {
 
         }, object : MenuAdapter.OnItemCheckedListener {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
-//                if (!isFromHidden) {
                 mGoodsList[index].isCheck = b
-//                getPrice(mGoodsList)
-//                }
+
+                if (!isAllSelect) {
+                    getPrice(mGoodsList)
+                }
             }
         }, object : MenuAdapter.OnItemAmountChangedListener {
             override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
                 if (amount == 0) {
-                    mGoodsList.removeAt(index)
-                    refresh()
+                    (activity as MainActivity).showPop("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
+                        override fun onClick(p0: DialogInterface?, p1: Int) {
+                            mGoodsList.removeAt(index)
+                            refresh()
+                        }
+                    })
                 } else {
                     mGoodsList[index].amount = amount
+                    getPrice(mGoodsList)
                 }
             }
         })
+
         smRecyclerView.adapter = mAdapter
         getHotRecommend()
         setDefaultAddress()
@@ -147,17 +155,24 @@ class ShopFragment : BaseFragment() {
         cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
             LogUtils.d("b:" + b)
             if (b) {
+                isAllSelect = true
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = true
                 }
+                mAdapter.notifyDataSetChanged()
                 getPrice(mGoodsList)
             } else {
+                isAllSelect = true
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = false
                 }
+                mAdapter.notifyDataSetChanged()
                 llTotalPrice.visibility = View.GONE
+                Handler().postDelayed({
+                    isAllSelect = false
+                }, 1000)
+
             }
-            mAdapter.notifyDataSetChanged()
         }
 
     }
@@ -226,17 +241,19 @@ class ShopFragment : BaseFragment() {
                 productidString.append(mSelectProductsList[i].productid).append("|")
                 numString.append(mSelectProductsList[i].amount).append("|")
             }
-            val ps: String = productidString.toString().substring(0, productidString.length - 1)
-            val ns: String = numString.toString().substring(0, numString.length - 1)
-            HttpMethods.createService().getPrice("get_price", ps, ns)
-                    .compose(TransformUtils.defaultSchedulers())
-                    .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
-                        override fun onNext(t: HttpResult<PriceBean>) {
-                            super.onNext(t)
-                            LogUtils.d("jiage:" + t.result.data.totalcost)
-                            setPrice(t.result.data.totalcost)
-                        }
-                    })
+            if (!TextUtils.isEmpty(productidString) && !TextUtils.isEmpty(numString)) {
+                val ps: String = productidString.toString().substring(0, productidString.length - 1)
+                val ns: String = numString.toString().substring(0, numString.length - 1)
+                HttpMethods.createService().getPrice("get_price", ps, ns)
+                        .compose(TransformUtils.defaultSchedulers())
+                        .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
+                            override fun onNext(t: HttpResult<PriceBean>) {
+                                super.onNext(t)
+                                LogUtils.d("jiage:" + t.result.data.totalcost)
+                                setPrice(t.result.data.totalcost)
+                            }
+                        })
+            }
         }
     }
 
@@ -255,7 +272,12 @@ class ShopFragment : BaseFragment() {
             for (i in 0 until mGoodsList.size) {
                 mGoodsList[i].isCheck = true
             }
+
+            isAllSelect = true
             getPrice(mGoodsList)
+        } else {
+            BaseApplication.getInstance().setmProductsList(mGoodsList)
+            (activity as MainActivity).setCount()
         }
     }
 

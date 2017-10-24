@@ -116,8 +116,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:paddingRight="10dp"
-                android:textColor="@color/white" />
+                android:padding="10dp"
+                android:textColor="@color/black" />
         </RelativeLayout>
 
 

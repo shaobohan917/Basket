@@ -39,7 +39,7 @@ class AddressAddActivity : BaseActivity() {
     private lateinit var address: AddressBean
     private var mDistrictDatas = ArrayList<DistrictBean.DataBean>()
 
-    private lateinit var locationBean: LocationBean
+    private var locationBean: LocationBean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class AddressAddActivity : BaseActivity() {
         if (from == 1) {
             address = intent.getSerializableExtra("address") as AddressBean
             titleView.setTitle("修改地址")
-        }else{
+        } else {
             titleView.setTitle("添加地址")
         }
     }
@@ -129,13 +129,13 @@ class AddressAddActivity : BaseActivity() {
                     anothre(mapBean.getLatitude(), mapBean.getLongitude())
                 }
                 REQUEST_TWO -> {
-//                    etAddress.setText(SPUtil.getString(StaticValue.SP_ADDRESS, ""))
-//                    etAddress.setText(data?.getStringExtra("des"))
                     locationBean = data.getSerializableExtra("locationBean") as LocationBean
-                    LogUtils.d("address:" + locationBean.formatAddress)
-                    LogUtils.d("township:" + locationBean.township)
-                    etAddress.setText(locationBean.title)
-                    getSubdistrict(locationBean)
+                    if (locationBean != null) {
+                        LogUtils.d("address:" + locationBean!!.formatAddress)
+                        LogUtils.d("township:" + locationBean!!.township)
+                        etAddress.setText(locationBean!!.title)
+                        getSubdistrict(locationBean!!)
+                    }
                 }
             }
         }
@@ -234,8 +234,9 @@ class AddressAddActivity : BaseActivity() {
                         var list = t.result.data as ArrayList<DistrictBean.DataBean>
                         (0 until list.size)
                                 .filter { locationBean.township.equals(list[it].subdistrict) }
-                                .forEach { LogUtils.d("匹配到街道："+locationBean.township+",,,"+list[it].svc)
-                               }
+                                .forEach {
+                                    LogUtils.d("匹配到街道：" + locationBean.township + ",,," + list[it].svc)
+                                }
                     }
                 })
     }
@@ -249,7 +250,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", locationBean.township)
+        hashmap.put("subdistrict", locationBean?.township.toString())
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -276,7 +277,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", locationBean.township)
+        hashmap.put("subdistrict", locationBean?.township.toString())
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())

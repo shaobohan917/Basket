@@ -33,7 +33,7 @@ import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.first.basket.R;
 import com.first.basket.adapter.LocationBean;
-import com.first.basket.adapter.PoiSearch_adapter;
+import com.first.basket.adapter.PoiSearchAdapter;
 import com.first.basket.base.BaseActivity;
 import com.first.basket.utils.LogUtils;
 
@@ -72,13 +72,13 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     public List<PoiItem> poiItems;// poi数据
     public List<LocationBean> locationItems;// poi数据
 
-    private PoiSearch_adapter adapter;
+    private PoiSearchAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poi);
+        setContentView(R.layout.activity_maps);
         ButterKnife.bind(this);
         mapView.onCreate(savedInstanceState);
         init();
@@ -198,9 +198,9 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
                     List<SuggestionCity> suggestionCities = poiResult
                             .getSearchSuggestionCitys();
                     if (poiItems != null && poiItems.size() > 0) {
-                        adapter = new PoiSearch_adapter(this, poiItems);
+                        adapter = new PoiSearchAdapter(this, poiItems);
                         listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new mOnItemClickListener());
+                        listView.setOnItemClickListener(new OnItemClickListener());
                     }
                 } else {
                     LogUtils.Companion.d("无结果");
@@ -243,18 +243,12 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     }
 
 
-    class mOnItemClickListener implements AdapterView.OnItemClickListener {
+    class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             LogUtils.Companion.d("点击："+position);
             //点击具体地址，通过逆地理获取所在街道后，再关闭
             searchGeo(position);
-//            Intent intent = new Intent();
-//            intent.putExtra(KEY_LAT, poiItems.get(position).getLatLonPoint().getLatitude());
-//            intent.putExtra(KEY_LNG, poiItems.get(position).getLatLonPoint().getLongitude());
-//            intent.putExtra(KEY_DES, poiItems.get(position).getTitle());
-//            setResult(RESULT_OK, intent);
-//            finish();
         }
     }
 

@@ -16,11 +16,11 @@ import java.util.List;
  * Created by hanshaobo on 22/10/2017.
  */
 
-public class PoiSearch_adapter extends BaseAdapter {
+public class PoiSearchAdapter extends BaseAdapter {
     private Context ctx;
     private List<PoiItem> list;
 
-    public PoiSearch_adapter(AddressMapsActivity context, List<PoiItem> poiItems) {
+    public PoiSearchAdapter(AddressMapsActivity context, List<PoiItem> poiItems) {
         this.ctx = context;
         this.list = poiItems;
     }

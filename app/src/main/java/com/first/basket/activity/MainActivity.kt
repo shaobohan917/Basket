@@ -71,6 +71,16 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         }, 500)
     }
 
+    fun setCount() {
+        var productListBean = BaseApplication.getInstance().getmProductsList()
+        var count = 0
+        for (i in 0 until productListBean.size) {
+            count += productListBean[i].amount
+        }
+        nearby.setBadgeCount(count)
+        mCount = count
+    }
+
     private fun initView() {
         bottomBar = findViewById(R.id.bottombar)
         bottomBar.setTabTitleTextAppearance(10)

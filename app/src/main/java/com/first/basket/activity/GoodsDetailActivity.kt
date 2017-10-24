@@ -59,6 +59,7 @@ class GoodsDetailActivity : BaseActivity() {
     }
 
     private fun initData() {
+        mCount = BaseApplication.getInstance().getmProductsList().size
         var id = intent.extras.getString("id")
         if (TextUtils.isEmpty(id)) {
             getProductDetail("", intent.extras.getString("ocr"))
@@ -69,14 +70,14 @@ class GoodsDetailActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-//        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().mGoodsMap.size
-//        LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
+        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().getmProductsList().size
+        LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
 
 
     }
 
     private fun initView() {
-//        badgeView = QBadgeView(this@GoodsDetailActivity)
+        badgeView = QBadgeView(this@GoodsDetailActivity)
     }
 
     private fun initListener() {
@@ -84,9 +85,7 @@ class GoodsDetailActivity : BaseActivity() {
             addGoodToCar(ivGoods)
 
             tvCount.text = mCount.toString()
-//            badgeView.bindTarget(tvCount).badgeNumber = mCount
-
-            ProductDao.getInstance(this@GoodsDetailActivity).insertOrUpdateItem(data.product)
+            badgeView.bindTarget(tvCount).badgeNumber = mCount
 
             var product = data.product
             product.isCheck = true
@@ -116,7 +115,6 @@ class GoodsDetailActivity : BaseActivity() {
                             val data = t.result
                             setData(data.data)
                         }
-
                     }
                 })
     }
