@@ -117,7 +117,7 @@ class PlaceOrderActivity : BaseActivity() {
 
     private fun deleteProducts() {
         for (i in 0 until mGoodsList.size) {
-            var product = BaseApplication.getInstance().getmProductsList().remove(mGoodsList[i])
+            var product = BaseApplication.getInstance().getProductsList().remove(mGoodsList[i])
             LogUtils.d("delete:" + product)
         }
 

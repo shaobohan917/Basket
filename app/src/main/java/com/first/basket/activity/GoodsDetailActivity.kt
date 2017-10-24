@@ -20,7 +20,6 @@ import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.constants.Constants
-import com.first.basket.db.ProductDao
 import com.first.basket.fragment.HomeFragment
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -40,9 +39,9 @@ class GoodsDetailActivity : BaseActivity() {
 
     private lateinit var data: GoodsDetailBean.DataBean
     private var images = ArrayList<GoodsDetailBean.DataBean.ImagesBean>()
-    //    private var images = ArrayList<GoodsDetailBean.ResultBean.DataBean.ImagesBean>()
-//    private lateinit var images: String
     private lateinit var badgeView: QBadgeView
+
+    private lateinit var mProductsList: ArrayList<ProductBean>
 
     //购物车
     private lateinit var mPathMeasure: PathMeasure
@@ -58,8 +57,15 @@ class GoodsDetailActivity : BaseActivity() {
         initListener()
     }
 
+    private fun initView() {
+        badgeView = QBadgeView(this@GoodsDetailActivity)
+    }
+
+
     private fun initData() {
-        mCount = BaseApplication.getInstance().getmProductsList().size
+        mProductsList = BaseApplication.getInstance().productsList
+        mCount = BaseApplication.getInstance().productsCount
+        badgeView.bindTarget(tvCount).badgeNumber = mCount
         var id = intent.extras.getString("id")
         if (TextUtils.isEmpty(id)) {
             getProductDetail("", intent.extras.getString("ocr"))
@@ -68,35 +74,10 @@ class GoodsDetailActivity : BaseActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        badgeView.bindTarget(tvCount).badgeNumber = BaseApplication.getInstance().getmProductsList().size
-        LogUtils.d("basecount:" + BaseApplication.getInstance().mGoodsMap.size)
-
-
-    }
-
-    private fun initView() {
-        badgeView = QBadgeView(this@GoodsDetailActivity)
-    }
-
     private fun initListener() {
         btAdd.onClick {
             addGoodToCar(ivGoods)
-
-            tvCount.text = mCount.toString()
-            badgeView.bindTarget(tvCount).badgeNumber = mCount
-
-            var product = data.product
-            product.isCheck = true
-            product.amount++
-            var goodsMap = BaseApplication.getInstance().mGoodsMap
-            if (goodsMap.containsKey(product)) {
-                goodsMap.put(product, goodsMap.getValue(product) + 1)
-            } else {
-                goodsMap.put(product, 1)
-            }
-            BaseApplication.getInstance().mGoodsMap = goodsMap
+            BaseApplication.getInstance().addProduct(data.product)
             MainActivity.getInstance1().setCountAdd()
         }
         ivCar.onClick {
@@ -198,7 +179,8 @@ class GoodsDetailActivity : BaseActivity() {
             override fun onAnimationEnd(p0: Animator?) {
                 // 购物车的数量加1
                 mCount++
-//                mCountTv.setText(String.valueOf(mCount))
+                tvCount.text = mCount.toString()
+                badgeView.bindTarget(tvCount).badgeNumber = mCount
                 // 把移动的图片imageview从父布局里移除
                 rlRoot.removeView(view)
 
@@ -219,14 +201,5 @@ class GoodsDetailActivity : BaseActivity() {
         })
 
         valueAnimator.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-//        if(data!=null&&data.product!=null){
-//            //加入购物车
-//            BaseApplication.getInstance().mGoodsMap.put(data.product, mCount)
-//        }
-
     }
 }

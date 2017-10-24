@@ -17,20 +17,18 @@ import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
-import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.SPUtil
+import com.first.basket.utils.LogUtils
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import kotlin.collections.ArrayList
 
 
 /**
@@ -133,8 +131,6 @@ class HomeFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == (activity as BaseActivity).REQUEST_ONE) {
-//            val adds = data!!.getStringExtra("adds")
-//            val adds = SPUtil.getString(StaticValue.SP_ADDRESS, "")
             val adds = data?.getStringExtra("adds")
             tvAddress.text = adds
         }
@@ -171,18 +167,25 @@ class HomeFragment : BaseFragment() {
         for (i in 0 until data.sqcs.carouselfigure.size) {
             images1.add(Constants.BASE_IMG_URL + data.sqcs.carouselfigure[i].image)
         }
-        vBanner.bindView(object : cn.ymex.banner.Banner.BindViewCallBack<AppCompatImageView, String> {
-            override fun bindView(view: AppCompatImageView, data: String, position: Int) {
-                view.scaleType = ImageView.ScaleType.FIT_CENTER
-                //图片加载
-                Glide.with(view.context)
-                        .load(data)
-                        .into(view)
-                view.onClick {
-                    goClassify(1)
-                }
-            }
-        }).setOrientation(cn.ymex.banner.Banner.VERTICAL).execute(images1)
+        LogUtils.d("i1长度："+images1.size)
+        vBanner.setImages(images1)
+                .setImageLoader(GlideImageLoader())
+                .setBannerAnimation(Transformer.ScaleInOut)
+                .setDelayTime(5000)
+                .start()
+
+//        vBanner.bindView(object : cn.ymex.banner.Banner.BindViewCallBack<AppCompatImageView, String> {
+//            override fun bindView(view: AppCompatImageView, data: String, position: Int) {
+//                view.scaleType = ImageView.ScaleType.FIT_CENTER
+//                //图片加载
+//                Glide.with(view.context)
+//                        .load(data)
+//                        .into(view)
+//                view.onClick {
+//                    goClassify(1)
+//                }
+//            }
+//        }).setOrientation(cn.ymex.banner.Banner.VERTICAL).execute(images1)
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)

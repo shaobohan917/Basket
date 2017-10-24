@@ -9,6 +9,7 @@
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:showBack="false"
         app:titleText="购物车" />
 
     <TextView
@@ -127,7 +128,5 @@
                 android:textColor="@color/orange"
                 android:textSize="12sp" />
         </LinearLayout>
-
-
     </RelativeLayout>
 </LinearLayout>

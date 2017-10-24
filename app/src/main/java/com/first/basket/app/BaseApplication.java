@@ -23,13 +23,24 @@ public class BaseApplication extends MultiDexApplication {
     private static Handler mHandler;// Handler对象
 
     private static BaseApplication instance;
+    private ArrayList<ProductBean> mProductsList = new ArrayList<>();
 
-    public ArrayList<ProductBean> getmProductsList() {
+    //获取列表
+    public ArrayList<ProductBean> getProductsList() {
         return mProductsList;
     }
 
-    public void setmProductsList(ArrayList<ProductBean> mProductsList) {
+    public void setProductsList(ArrayList<ProductBean> mProductsList) {
         this.mProductsList = mProductsList;
+    }
+
+    //获取数目
+    public int getProductsCount() {
+        int count = 0;
+        for (int i = 0; i < mProductsList.size(); i++) {
+            count += mProductsList.get(i).getAmount();
+        }
+        return count;
     }
 
     /**
@@ -47,9 +58,22 @@ public class BaseApplication extends MultiDexApplication {
         return list;
     }
 
-    private ArrayList<ProductBean> mProductsList = new ArrayList<>();
+    public void addProduct(ProductBean productBean) {
+        productBean.setIsCheck(true);
+        String id = productBean.getProductid();
+        ArrayList<String> ids = new ArrayList<>();
 
-    public LinkedHashMap<ProductBean, Integer> mGoodsMap = new LinkedHashMap();   //添加到购物车的集合
+        for (int i = 0; i < mProductsList.size(); i++) {
+            ids.add(mProductsList.get(i).getProductid());
+        }
+        if (ids.contains(id)) {
+            int index = ids.indexOf(id);
+            mProductsList.get(index).setAmount(mProductsList.get(index).getAmount() + 1);
+        } else {
+            productBean.setAmount(1);
+            mProductsList.add(productBean);
+        }
+    }
 
     @Override
     public void onCreate() {

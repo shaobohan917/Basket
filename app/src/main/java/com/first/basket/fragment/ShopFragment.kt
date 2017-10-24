@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -267,13 +266,13 @@ class ShopFragment : BaseFragment() {
 
             getPrice(mGoodsList)
         } else {
-            BaseApplication.getInstance().setmProductsList(mGoodsList)
+            BaseApplication.getInstance().setProductsList(mGoodsList)
             (activity as MainActivity).setCount()
         }
     }
 
     private fun setShopData() {
-        var oldList = BaseApplication.getInstance().getmProductsList()
+        var oldList = BaseApplication.getInstance().getProductsList()
         if (oldList != null && oldList.size > 0) {
             Collections.reverse(oldList)
             var list = ArrayList<ProductBean>()

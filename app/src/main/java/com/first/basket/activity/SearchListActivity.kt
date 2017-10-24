@@ -55,16 +55,16 @@ class SearchListActivity : BaseActivity() {
             startActivity(intent)
         }
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
-            addGoodToCar(view.findViewById(R.id.ivGoods))
-            data.isCheck = true
-            data.amount++
-            var goodsMap = BaseApplication.getInstance().mGoodsMap
-            if (goodsMap.containsKey(data)) {
-                goodsMap.put(data, goodsMap.getValue(data) + 1)
-            } else {
-                goodsMap.put(data, 1)
-            }
-            BaseApplication.getInstance().mGoodsMap = goodsMap
+//            addGoodToCar(view.findViewById(R.id.ivGoods))
+//            data.isCheck = true
+//            data.amount++
+//            var goodsMap = BaseApplication.getInstance().mGoodsMap
+//            if (goodsMap.containsKey(data)) {
+//                goodsMap.put(data, goodsMap.getValue(data) + 1)
+//            } else {
+//                goodsMap.put(data, 1)
+//            }
+//            BaseApplication.getInstance().mGoodsMap = goodsMap
         }
 
         ivCar.onClick {

@@ -4,14 +4,13 @@ import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
-import kotlinx.android.synthetic.main.layout_widget_title.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -26,6 +25,7 @@ class TitleView : FrameLayout, View.OnClickListener {
 
     private lateinit var tvTitle: TextView
     private lateinit var rlyt_title: RelativeLayout
+    private lateinit var ivBack: ImageView
 
     private var mIsShowBack: Boolean = true
 
@@ -57,17 +57,16 @@ class TitleView : FrameLayout, View.OnClickListener {
 
     private fun initView() {
         tvTitle = findViewById(R.id.tvTitle)
+        ivBack = findViewById(R.id.ivBack)
         rlyt_title = findViewById(R.id.rlyt_title)
         tvTitle.text = mTitleText
         tvTitle.setTextColor(mTitleColor)
         rlyt_title.setBackgroundColor(mTitleBackgroundColor)
 
-
+        ivBack.visibility = if (mIsShowBack) View.VISIBLE else View.GONE
         ivBack.onClick {
             (getContext() as BaseActivity).myFinish()
         }
-        ivBack.visibility = if (mIsShowBack) View.VISIBLE else View.GONE
-
     }
 
     override fun onClick(p0: View?) {

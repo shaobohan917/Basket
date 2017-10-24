@@ -211,7 +211,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <cn.ymex.banner.Banner
+                <com.youth.banner.Banner
                     android:id="@+id/vBanner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

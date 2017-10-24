@@ -107,35 +107,22 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
             if (CommonMethod.isTrue(data.promboolean)) {
                 if (!SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
-                    addData(view, data)
+                    addGoodToCar(view.findViewById(R.id.ivGoods))
+                    addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_HUN, true)
                 } else {
                     ToastUtil.showToast("特惠商品只可添加一件")
                 }
             } else {
-                addData(view, data)
+                addGoodToCar(view.findViewById(R.id.ivGoods))
+                addData(data)
             }
         }
     }
 
-    private fun addData(view: View, data: ProductBean) {
-
-        addGoodToCar(view.findViewById(R.id.ivGoods))
-        data.isCheck = true
-
-        var products = BaseApplication.getInstance().getmProductsList()
-        val ids = (0 until products.size).mapTo(ArrayList<String>()) { products[it].productid }
-        if (ids.contains(data.productid)) {
-            val i = ids.indexOf(data.productid)
-            //已包含
-            products[i].amount += 1
-        } else {
-            data.amount++
-            products.add(data)
-        }
-        BaseApplication.getInstance().setmProductsList(products)
+    private fun addData(data: ProductBean) {
+        BaseApplication.getInstance().addProduct(data)
         activity.setCountAdd()
-
     }
 
 

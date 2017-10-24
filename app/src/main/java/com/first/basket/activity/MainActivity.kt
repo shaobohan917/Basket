@@ -14,15 +14,9 @@ import com.amap.api.location.AMapLocationListener
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
-import com.first.basket.base.HttpResult
-import com.first.basket.bean.AddressListBean
 import com.first.basket.bean.ProductBean
-import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
-import com.first.basket.http.HttpMethods
-import com.first.basket.http.HttpResultSubscriber
-import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
@@ -72,7 +66,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
     fun setCount() {
-        var productListBean = BaseApplication.getInstance().getmProductsList()
+        var productListBean = BaseApplication.getInstance().getProductsList()
         var count = 0
         for (i in 0 until productListBean.size) {
             count += productListBean[i].amount
@@ -139,7 +133,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             for (i in 0 until productListBean.size) {
                 mCount += productListBean[i].amount
             }
-            BaseApplication.getInstance().setmProductsList(productListBean)
+            BaseApplication.getInstance().setProductsList(productListBean)
 
             nearby.setBadgeCount(mCount)
         }
@@ -155,7 +149,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
                 ToastUtil.showToast("双击退出应用")
                 exitTime = System.currentTimeMillis()
 
-                var products = BaseApplication.getInstance().getmProductsList()
+                var products = BaseApplication.getInstance().getProductsList()
                 var gson = Gson()
                 var str = gson.toJson(products)
                 SPUtil.setString(StaticValue.GOODS_LIST, str)
