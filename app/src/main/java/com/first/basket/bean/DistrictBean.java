@@ -1,5 +1,6 @@
 package com.first.basket.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public class DistrictBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * subdistrictid : 40000001
          * districtid : 30000011

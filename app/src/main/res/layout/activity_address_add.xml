@@ -101,7 +101,10 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tvAddress"
                 android:background="@null"
-                android:hint="收货地址" />
+                android:hint="收货地址"
+                android:maxLines="1"
+                android:textColor="@color/gray33"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/ivAddressSelect"
@@ -137,7 +140,10 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tvNumber"
                 android:background="@null"
-                android:hint="门牌号" />
+                android:hint="门牌号"
+                android:maxLines="1"
+                android:textColor="@color/gray33"
+                android:textSize="14sp" />
 
             <include layout="@layout/layout_line" />
         </RelativeLayout>

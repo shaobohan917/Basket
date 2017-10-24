@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.amap.api.services.core.PoiItem;
@@ -48,18 +49,20 @@ public class PoiSearchAdapter extends BaseAdapter {
             convertView = View.inflate(ctx, R.layout.item_poisearch, null);
             holder.poititle = convertView.findViewById(R.id.poititle);
             holder.poititle2 = convertView.findViewById(R.id.poititle2);
+            holder.cbSelect = convertView.findViewById(R.id.cbSelect);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         PoiItem item = (PoiItem) getItem(position);
         holder.poititle.setText(item.getTitle());
-        holder.poititle2.setText(item.getBusinessArea()+"");
+        holder.poititle2.setText(item.getSnippet()+"");
         return convertView;
     }
 
     private class ViewHolder {
         TextView poititle;
         TextView poititle2;
+        CheckBox cbSelect;
     }
 }

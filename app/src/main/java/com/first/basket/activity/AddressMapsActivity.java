@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.amap.api.location.AMapLocation;
@@ -25,6 +26,7 @@ import com.amap.api.maps2d.overlay.PoiOverlay;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.core.SuggestionCity;
+import com.amap.api.services.geocoder.GeocodeQuery;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeQuery;
@@ -36,6 +38,7 @@ import com.first.basket.adapter.LocationBean;
 import com.first.basket.adapter.PoiSearchAdapter;
 import com.first.basket.base.BaseActivity;
 import com.first.basket.utils.LogUtils;
+import com.first.basket.utils.ToastUtil;
 
 import java.util.List;
 
@@ -54,25 +57,19 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     @BindView(R.id.map_list)
     ListView listView;
 
-    public static final String KEY_LAT = "lat";
-    public static final String KEY_LNG = "lng";
-    public static final String KEY_DES = "des";
-
-
     private AMapLocationClient mLocationClient;
     private LocationSource.OnLocationChangedListener mListener;
     private LatLng latlng;
     private String city;
     private AMap aMap;
-    private String deepType = "";// poi搜索类型
+    private String deepType = "";// poi搜索类型 商务住宅
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;
     private PoiResult poiResult; // poi返回的结果
-    private PoiOverlay poiOverlay;// poi图层
     public List<PoiItem> poiItems;// poi数据
-    public List<LocationBean> locationItems;// poi数据
 
     private PoiSearchAdapter adapter;
+    private PoiItem poiItem;
 
 
     @Override
@@ -82,6 +79,19 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
         ButterKnife.bind(this);
         mapView.onCreate(savedInstanceState);
         init();
+        initListener();
+    }
+
+    private void initListener() {
+        findViewById(R.id.btSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("poiItem", poiItem);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
     }
 
     private void init() {
@@ -90,8 +100,6 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
             aMap.setOnCameraChangeListener(this);
             setUpMap();
         }
-
-        deepType = "商务住宅";//这里以餐饮为例
     }
 
     //-------- 定位 Start ------
@@ -195,12 +203,19 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
                 if (result.getQuery().equals(query)) {// 是否是同一条
                     poiResult = result;
                     poiItems = poiResult.getPois();// 取得第一页的poiitem数据，页数从数字0开始
-                    List<SuggestionCity> suggestionCities = poiResult
-                            .getSearchSuggestionCitys();
+
+
                     if (poiItems != null && poiItems.size() > 0) {
                         adapter = new PoiSearchAdapter(this, poiItems);
                         listView.setAdapter(adapter);
-                        listView.setOnItemClickListener(new OnItemClickListener());
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                poiItem = poiItems.get(i);
+                                CheckBox checkBox = view.findViewById(R.id.cbSelect);
+                                checkBox.setChecked(true);
+                            }
+                        });
                     }
                 } else {
                     LogUtils.Companion.d("无结果");
@@ -208,12 +223,8 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
             } else {
                 LogUtils.Companion.d("无结果");
             }
-        } else if (rCode == 27) {
-            LogUtils.Companion.d("error_network");
-        } else if (rCode == 32) {
-            LogUtils.Companion.d("error_key");
         } else {
-            LogUtils.Companion.d("error_other：" + rCode);
+            ToastUtil.INSTANCE.showToast("暂无搜索结果");
         }
     }
 
@@ -240,73 +251,6 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     protected void onDestroy() {
         mLocationClient.onDestroy();
         super.onDestroy();
-    }
-
-
-    class OnItemClickListener implements AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            LogUtils.Companion.d("点击："+position);
-            //点击具体地址，通过逆地理获取所在街道后，再关闭
-            searchGeo(position);
-        }
-    }
-
-
-    /**
-     * 逆地理
-     */
-
-    private void searchGeo(final int position) {
-        GeocodeSearch geocoderSearch = new GeocodeSearch(this);//传入context
-        LatLonPoint latLonPoint = new LatLonPoint(poiItems.get(position).getLatLonPoint().getLatitude(), poiItems.get(position).getLatLonPoint().getLongitude());
-        // 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
-
-        RegeocodeQuery query = new RegeocodeQuery(latLonPoint, 200, GeocodeSearch.AMAP);
-        geocoderSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
-            /**
-             * 逆地理编码回调
-             */
-            @Override
-            public void onRegeocodeSearched(RegeocodeResult result, int rCode) {
-                LogUtils.Companion.d("getcode:"+rCode);
-                if (rCode == 1000) {
-                    LogUtils.Companion.d("get0:"+result.getRegeocodeAddress().getStreetNumber());
-
-                    List<PoiItem> poiItems = result.getRegeocodeAddress().getPois();
-                    for (PoiItem poiItem : poiItems) {
-                       LogUtils.Companion.d(poiItem.getTitle());//输出周边poi的信息
-                    }
-
-                    Intent intent = new Intent();
-                    intent.putExtra(KEY_LAT, poiItems.get(position).getLatLonPoint().getLatitude());
-                    intent.putExtra(KEY_LNG, poiItems.get(position).getLatLonPoint().getLongitude());
-                    intent.putExtra(KEY_DES, poiItems.get(position).getTitle());
-
-                    LocationBean locationBean = new LocationBean();
-                    locationBean.setTitle(poiItems.get(position).getTitle());
-                    locationBean.setFormatAddress(result.getRegeocodeAddress().getFormatAddress());
-                    locationBean.setTownship(result.getRegeocodeAddress().getTownship());
-                    locationBean.setDistrict(result.getRegeocodeAddress().getDistrict());
-
-
-                    intent.putExtra("locationBean",locationBean);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                } else {
-
-                }
-            }
-
-            @Override
-            public void onGeocodeSearched(GeocodeResult arg0, int arg1) {
-                // TODO Auto-generated method stub
-                LogUtils.Companion.d("onGeocodeSearched:");
-
-            }
-
-        });
-        geocoderSearch.getFromLocationAsyn(query);
     }
 }
 

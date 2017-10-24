@@ -15,6 +15,7 @@ import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
+import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.constants.Constants
@@ -109,13 +110,13 @@ class HomeFragment : BaseFragment() {
                 R.id.hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.hltg?.url)
-                    intent.putExtra("title","欢乐团购")
+                    intent.putExtra("title", "欢乐团购")
                     startActivity(intent)
                 }
                 R.id.jkss, R.id.ivJKSS -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.jkss?.url)
-                    intent.putExtra("title","健康膳食")
+                    intent.putExtra("title", "健康膳食")
                     startActivity(intent)
                 }
             }
@@ -131,8 +132,8 @@ class HomeFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == (activity as BaseActivity).REQUEST_ONE) {
-            val adds = data?.getStringExtra("adds")
-            tvAddress.text = adds
+            val addressInfo = data?.getStringExtra("addressInfo") as AddressBean
+            tvAddress.text = addressInfo.street.replace("&", " ")
         }
     }
 
@@ -167,7 +168,7 @@ class HomeFragment : BaseFragment() {
         for (i in 0 until data.sqcs.carouselfigure.size) {
             images1.add(Constants.BASE_IMG_URL + data.sqcs.carouselfigure[i].image)
         }
-        LogUtils.d("i1长度："+images1.size)
+        LogUtils.d("i1长度：" + images1.size)
         vBanner.setImages(images1)
                 .setImageLoader(GlideImageLoader())
                 .setBannerAnimation(Transformer.ScaleInOut)

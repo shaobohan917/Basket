@@ -11,7 +11,7 @@
         <ImageView
             android:id="@+id/ivBack"
             style="@style/titleViewBack"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tvTitle"

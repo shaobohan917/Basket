@@ -77,8 +77,10 @@ class PlaceOrderActivity : BaseActivity() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         var price = intent.getStringExtra("price")
         footer.findViewById<TextView>(R.id.tvPrice).text = price
+        footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, BaseApplication.getInstance().productsCount.toString())
         mAdapter.addFooterView(footer)
 
+        tvTotalPrice.text = price
     }
 
 

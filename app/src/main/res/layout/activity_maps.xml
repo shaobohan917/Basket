@@ -20,6 +20,15 @@
         android:id="@+id/map_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:divider="@null" />
+
+    <Button
+        android:id="@+id/btSave"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="保存" />
 
 </LinearLayout>

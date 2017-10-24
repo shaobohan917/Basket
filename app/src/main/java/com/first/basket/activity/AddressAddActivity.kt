@@ -12,8 +12,12 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.support.v4.app.ActivityCompat
 import android.text.TextUtils
+import com.amap.api.services.core.PoiItem
+import com.amap.api.services.geocoder.GeocodeResult
+import com.amap.api.services.geocoder.GeocodeSearch
+import com.amap.api.services.geocoder.RegeocodeQuery
+import com.amap.api.services.geocoder.RegeocodeResult
 import com.first.basket.R
-import com.first.basket.adapter.LocationBean
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.*
@@ -37,9 +41,9 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 class AddressAddActivity : BaseActivity() {
     private var from: Int = 0
     private lateinit var address: AddressBean
-    private var mDistrictDatas = ArrayList<DistrictBean.DataBean>()
 
-    private var locationBean: LocationBean? = null
+    private var poiItem: PoiItem? = null
+    private var township: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +73,13 @@ class AddressAddActivity : BaseActivity() {
         if (from == 1) {
             etName.setText(address.receiver)
             etPhone.setText(address.recvphone)
-            etAddress.setText(address.street)
+            if (address.street.contains("&")) {
+                etAddress.setText(address.street.substring(0, address.street.indexOf("&")))
+                etNumber.setText(address.street.substring(address.street.indexOf("&") + 1, address.street.length))
+            } else {
+                etAddress.setText(address.street)
+            }
+
         }
 
         ivAddressSelect.onClick {
@@ -129,16 +139,58 @@ class AddressAddActivity : BaseActivity() {
                     anothre(mapBean.getLatitude(), mapBean.getLongitude())
                 }
                 REQUEST_TWO -> {
-                    locationBean = data?.getSerializableExtra("locationBean") as LocationBean
-                    if (locationBean != null) {
-                        LogUtils.d("address:" + locationBean!!.formatAddress)
-                        LogUtils.d("township:" + locationBean!!.township)
-                        etAddress.setText(locationBean!!.title)
-                        getSubdistrict(locationBean!!)
+                    if (data != null) {
+                        poiItem = data.getParcelableExtra<PoiItem>("poiItem")
+                        if (poiItem != null) {
+                            geoGetStreet(poiItem!!)
+                            etAddress.setText(poiItem!!.title + " " + poiItem!!.snippet)
+                        }
                     }
+                }
+                REQUEST_THREE -> {
+                    LogUtils.d("get:" + (data?.getStringExtra("ss")))
                 }
             }
         }
+    }
+
+    private fun geoGetStreet(poiItem: PoiItem) {
+        searchGeo(poiItem)
+    }
+
+
+    /**
+     * 逆地理
+     */
+
+    private fun searchGeo(poiItem: PoiItem) {
+        val geocoderSearch = GeocodeSearch(this@AddressAddActivity)//传入context
+        val latLonPoint = poiItem.latLonPoint
+        // 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
+
+        val query = RegeocodeQuery(latLonPoint, 200f, GeocodeSearch.AMAP)
+        geocoderSearch.setOnGeocodeSearchListener(object : GeocodeSearch.OnGeocodeSearchListener {
+            /**
+             * 逆地理编码回调
+             */
+            override fun onRegeocodeSearched(result: RegeocodeResult, rCode: Int) {
+                LogUtils.d("getcode:" + rCode)
+                if (rCode == 1000) {
+                    //拿到街道
+                    township = result.regeocodeAddress.township
+                    LogUtils.d("街道：" + township)
+                    getSubdistrict(poiItem.adName, township)
+                }
+            }
+
+            override fun onGeocodeSearched(arg0: GeocodeResult, arg1: Int) {
+                // TODO Auto-generated method stub
+                LogUtils.d("onGeocodeSearched:" + arg0.geocodeAddressList[0].township)
+
+            }
+
+        })
+        geocoderSearch.getFromLocationAsyn(query)
     }
 
     private fun setUser(data: Intent?) {
@@ -223,8 +275,8 @@ class AddressAddActivity : BaseActivity() {
 
     }
 
-    private fun getSubdistrict(locationBean: LocationBean) {
-        HttpMethods.createService().getSubdistrict("get_subdistrict", locationBean.district)
+    private fun getSubdistrict(district: String, township: String) {
+        HttpMethods.createService().getSubdistrict("get_subdistrict", district)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<DistrictBean>>() {
                     override fun onNext(t: HttpResult<DistrictBean>) {
@@ -232,11 +284,19 @@ class AddressAddActivity : BaseActivity() {
                         //获取这个区的所有街道
 //                        mDistrictDatas.addAll(t.result.data)
                         var list = t.result.data as ArrayList<DistrictBean.DataBean>
+                        var isMatch = false
                         (0 until list.size)
-                                .filter { locationBean.township.equals(list[it].subdistrict) }
+                                .filter { township.equals(list[it].subdistrict) }
                                 .forEach {
-                                    LogUtils.d("匹配到街道：" + locationBean.township + ",,," + list[it].svc)
+                                    LogUtils.d("匹配到街道：" + township + ",,," + list[it].svc)
+                                    isMatch = true
                                 }
+                        if (!isMatch) {
+                            //如果是上海，跳转到选择接到列表
+                            var intent = Intent(this@AddressAddActivity, StreetSelectActivity::class.java)
+                            intent.putExtra("list", list)
+                            myStartActivityForResult(intent, REQUEST_THREE)
+                        }
                     }
                 })
     }
@@ -250,7 +310,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", locationBean?.township.toString())
+        hashmap.put("subdistrict", township)
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -277,7 +337,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", locationBean?.township.toString())
+        hashmap.put("subdistrict", township)
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())

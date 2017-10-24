@@ -8,14 +8,13 @@
         android:id="@+id/llTop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ivBuy"
+        android:layout_above="@id/rlBootom"
         android:orientation="vertical">
 
         <com.first.basket.view.TitleView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:titleText="确认订单" />
-
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -24,13 +23,31 @@
 
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/ivBuy"
-        style="@style/ButtonStyle"
+    <RelativeLayout
+        android:id="@+id/rlBootom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="立即下单" />
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/ivBuy"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="去结算" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/ivBuy"
+            android:text="@string/total_price"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
 </RelativeLayout>

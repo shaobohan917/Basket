@@ -19,6 +19,7 @@ open class BaseActivity : AppCompatActivity() {
 
     val REQUEST_ONE = 101
     val REQUEST_TWO = 102
+    val REQUEST_THREE = 103
     val REQUEST_SPE = 100
 
     private lateinit var mProgressDialog: ProgressDialog
@@ -103,7 +104,7 @@ open class BaseActivity : AppCompatActivity() {
         finish()
     }
 
-    fun showPop(title: String, content: String, positive: String, listener: DialogInterface.OnClickListener) {
+    fun showDialog(title: String, content: String, positive: String, listener: DialogInterface.OnClickListener) {
         var dialog = AlertDialog.Builder(this@BaseActivity)
         dialog.setTitle(title)
         dialog.setMessage(content)

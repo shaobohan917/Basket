@@ -42,7 +42,7 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
 
         holder.tvName.text = bean.receiver
         holder.tvPhone.text = bean.recvphone
-        holder.tvAddress.text = bean.street
+        holder.tvAddress.text = bean.street.replace("&", " ")
 
         holder.cbDefault.isChecked = CommonMethod.isTrue(mDatas[position].defaultaddr)
         if (CommonMethod.isTrue(mDatas[position].defaultaddr)) {
@@ -69,7 +69,7 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
 
         init {
             ivModify.onClick {
-//                listener.onItemClick(itemView, position)
+                //                listener.onItemClick(itemView, position)
                 cbListener.onItemModify(position)
             }
             ivDelete.onClick {
@@ -85,7 +85,8 @@ class AddressMenuAdapter(list: ArrayList<AddressBean>, listener: OnItemClickList
     interface OnItemCheckedListener {
         //        fun onItemChecked(view: View, isChecked: Boolean, position: Int)
         fun onItemChecked(addressid: String)
-        fun onItemDelete(position:Int)
-        fun onItemModify(position:Int)
+
+        fun onItemDelete(position: Int)
+        fun onItemModify(position: Int)
     }
 }

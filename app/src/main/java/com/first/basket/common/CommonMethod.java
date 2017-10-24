@@ -629,4 +629,8 @@ public class CommonMethod {
     public static void showLogin() {
         ToastUtil.INSTANCE.showToast("请登录");
     }
+
+    public static void replaceStreet(String street){
+
+    }
 }

@@ -78,7 +78,7 @@ class ShopFragment : BaseFragment() {
         }, object : MenuAdapter.OnItemAmountChangedListener {
             override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
                 if (amount == 0) {
-                    (activity as MainActivity).showPop("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
+                    (activity as MainActivity).showDialog("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
                         override fun onClick(p0: DialogInterface?, p1: Int) {
                             mGoodsList.removeAt(index)
                             refresh()
@@ -97,6 +97,10 @@ class ShopFragment : BaseFragment() {
     }
 
     private fun setDefaultAddress() {
+        if (!CommonMethod.isLogin()) {
+            tvAddress.text = "请登录"
+            return
+        }
         var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
         if (!TextUtils.isEmpty(str)) {
             val gson = GsonBuilder().create()
@@ -139,10 +143,10 @@ class ShopFragment : BaseFragment() {
                 ToastUtil.showToast(activity.getString(R.string.add_address))
                 return@onClick
             }
-            if (!cbSelectAll.isChecked) {
-                ToastUtil.showToast("请选择全部商品")
-                return@onClick
-            }
+//            if (!cbSelectAll.isChecked) {
+//                ToastUtil.showToast("请选择全部商品")
+//                return@onClick
+//            }
             var intent = Intent(activity, PlaceOrderActivity::class.java)
             intent.putExtra("price", tvTotalPrice.text)
             startActivity(intent)
@@ -250,7 +254,7 @@ class ShopFragment : BaseFragment() {
 
     private fun setPrice(totalcost: Float) {
         llTotalPrice.visibility = View.VISIBLE
-        tvTotalPrice.text = "¥ " + totalcost.toString()
+        tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
     }
 
 

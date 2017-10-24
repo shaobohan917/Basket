@@ -53,15 +53,12 @@ class AddressListActivity : BaseActivity() {
 
         mAdapter = AddressMenuAdapter(mDatas, object : AddressMenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-
-                showChoose(mDatas[position].street, position)
+                showChoose(mDatas[position].street.replace("&", " "), position)
             }
 
         }, object : AddressMenuAdapter.OnItemCheckedListener {
             override fun onItemDelete(position: Int) {
-
-                showDelete(mDatas[position].street, position)
-
+                showDelete(mDatas[position].street.replace("&", " "), position)
             }
 
             override fun onItemModify(position: Int) {
@@ -78,35 +75,17 @@ class AddressListActivity : BaseActivity() {
     }
 
     fun showChoose(str: String, position: Int) {
-        var dialog = AlertDialog.Builder(this@AddressListActivity)
-        dialog.setTitle("提示")
-        dialog.setMessage("本次配送地址为：" + str)
-        dialog.setPositiveButton("确定", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                intent.putExtra("addressInfo", mDatas[position])
-                setResult(Activity.RESULT_OK, intent)
-                myFinish()
-            }
-
+        showDialog("提示", "本次配送地址为：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
+            intent.putExtra("addressInfo", mDatas[position])
+            setResult(Activity.RESULT_OK, intent)
+            myFinish()
         })
-        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                p0?.dismiss()
-            }
-
-        })
-        dialog.show()
     }
 
     fun showDelete(str: String, position: Int) {
-        var dialog = AlertDialog.Builder(this@AddressListActivity)
-        dialog.setTitle("提示")
-        dialog.setMessage("确定删除：" + str)
-        dialog.setPositiveButton("确定") { p0, p1 ->
+        showDialog("提示", "确定删除：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
             deleteAddress(position)
-        }
-        dialog.setNegativeButton("取消") { p0, p1 -> p0?.dismiss() }
-        dialog.show()
+        })
     }
 
     private fun getAddressList() {

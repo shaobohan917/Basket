@@ -17,6 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:background="#BAC9D0"
+        android:drawableLeft="@mipmap/ic_location_mark"
+        android:drawablePadding="4dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:text="@string/add_address"
