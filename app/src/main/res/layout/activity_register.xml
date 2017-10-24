@@ -74,7 +74,7 @@
             style="@style/LoginInputStyle"
             android:background="@null"
             android:inputType="textPassword"
-            android:maxLength="11" />
+            android:maxLength="16" />
 
         <include layout="@layout/layout_line" />
 

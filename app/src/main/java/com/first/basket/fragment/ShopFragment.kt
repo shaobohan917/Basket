@@ -47,7 +47,6 @@ import kotlin.collections.ArrayList
 class ShopFragment : BaseFragment() {
     private var mGoodsList = ArrayList<ProductBean>()
     private lateinit var mAdapter: MenuAdapter
-    private var isAllSelect = true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -75,9 +74,7 @@ class ShopFragment : BaseFragment() {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
                 mGoodsList[index].isCheck = b
 
-                if (!isAllSelect) {
-                    getPrice(mGoodsList)
-                }
+                getPrice(mGoodsList)
             }
         }, object : MenuAdapter.OnItemAmountChangedListener {
             override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
@@ -155,22 +152,17 @@ class ShopFragment : BaseFragment() {
         cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
             LogUtils.d("b:" + b)
             if (b) {
-                isAllSelect = true
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = true
                 }
                 mAdapter.notifyDataSetChanged()
                 getPrice(mGoodsList)
             } else {
-                isAllSelect = true
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = false
                 }
                 mAdapter.notifyDataSetChanged()
                 llTotalPrice.visibility = View.GONE
-                Handler().postDelayed({
-                    isAllSelect = false
-                }, 1000)
 
             }
         }
@@ -273,7 +265,6 @@ class ShopFragment : BaseFragment() {
                 mGoodsList[i].isCheck = true
             }
 
-            isAllSelect = true
             getPrice(mGoodsList)
         } else {
             BaseApplication.getInstance().setmProductsList(mGoodsList)

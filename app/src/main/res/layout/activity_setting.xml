@@ -48,11 +48,12 @@
             android:textSize="14sp" />
     </RelativeLayout>
 
-    <include layout="@layout/layout_gap" />
+    <!--<include layout="@layout/layout_gap" />-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:visibility="gone"
         android:background="@color/white">
 
         <TextView

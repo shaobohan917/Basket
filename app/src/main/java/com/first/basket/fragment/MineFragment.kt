@@ -1,7 +1,9 @@
 package com.first.basket.fragment
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -75,7 +77,14 @@ class MineFragment : BaseFragment() {
         }
 
         aimvHelp.onClick {
-
+            (activity as MainActivity).showPop("联系客服", activity.getString(R.string.service_phone), "拨打", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    val data = Uri.parse("tel:" + activity.getString(R.string.service_phone))
+                    intent.data = data
+                    startActivity(intent)
+                }
+            })
         }
     }
 

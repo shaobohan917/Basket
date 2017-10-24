@@ -243,19 +243,4 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         })
         dialog.show()
     }
-
-
-    fun showPop(title: String, content: String, positive: String, listener: DialogInterface.OnClickListener) {
-        var dialog = AlertDialog.Builder(this@MainActivity)
-        dialog.setTitle(title)
-        dialog.setMessage(content)
-        dialog.setPositiveButton(positive, listener)
-        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                p0?.dismiss()
-            }
-
-        })
-        dialog.show()
-    }
 }

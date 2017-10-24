@@ -22,6 +22,7 @@
         <item name="android:layout_height">51dp</item>
         <item name="android:background">@color/white</item>
     </style>
+
     <!-- 标题栏返回按键 -->
     <style name="titleViewBack">
         <item name="android:layout_width">wrap_content</item>
@@ -30,7 +31,7 @@
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
         <item name="android:layout_centerVertical">true</item>
-        <!--<item name="android:src">@drawable/icon_back_black</item>-->
+        <item name="android:src">@mipmap/ic_back</item>
     </style>
 
     <!-- 标题栏文字 -->

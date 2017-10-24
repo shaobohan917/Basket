@@ -1,6 +1,8 @@
 package com.first.basket.base
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
@@ -101,5 +103,18 @@ open class BaseActivity : AppCompatActivity() {
         finish()
     }
 
+    fun showPop(title: String, content: String, positive: String, listener: DialogInterface.OnClickListener) {
+        var dialog = AlertDialog.Builder(this@BaseActivity)
+        dialog.setTitle(title)
+        dialog.setMessage(content)
+        dialog.setPositiveButton(positive, listener)
+        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                p0?.dismiss()
+            }
+
+        })
+        dialog.show()
+    }
 
 }
