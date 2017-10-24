@@ -16,7 +16,6 @@ import com.first.basket.utils.LogUtils
  */
 class DecoderActivity : BaseActivity(), OnQRCodeReadListener {
 
-    private val resultTextView: TextView? = null
     private lateinit var qrCodeReaderView: QRCodeReaderView
 
     override fun onCreate(savedInstanceState: Bundle?) {

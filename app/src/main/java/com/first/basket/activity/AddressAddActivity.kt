@@ -113,7 +113,7 @@ class AddressAddActivity : BaseActivity() {
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (Activity.RESULT_OK == resultCode) {
             when (requestCode) {
@@ -129,7 +129,7 @@ class AddressAddActivity : BaseActivity() {
                     anothre(mapBean.getLatitude(), mapBean.getLongitude())
                 }
                 REQUEST_TWO -> {
-                    locationBean = data.getSerializableExtra("locationBean") as LocationBean
+                    locationBean = data?.getSerializableExtra("locationBean") as LocationBean
                     if (locationBean != null) {
                         LogUtils.d("address:" + locationBean!!.formatAddress)
                         LogUtils.d("township:" + locationBean!!.township)

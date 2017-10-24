@@ -37,7 +37,7 @@ import q.rorbin.badgeview.QBadgeView
  */
 class GoodsDetailActivity : BaseActivity() {
 
-    private lateinit var data: GoodsDetailBean.DataBean
+    private var data: GoodsDetailBean.DataBean? = null
     private var images = ArrayList<GoodsDetailBean.DataBean.ImagesBean>()
     private lateinit var badgeView: QBadgeView
 
@@ -76,9 +76,11 @@ class GoodsDetailActivity : BaseActivity() {
 
     private fun initListener() {
         btAdd.onClick {
-            addGoodToCar(ivGoods)
-            BaseApplication.getInstance().addProduct(data.product)
-            MainActivity.getInstance1().setCountAdd()
+            if (data != null) {
+                addGoodToCar(ivGoods)
+                BaseApplication.getInstance().addProduct(data!!.product)
+                MainActivity.getInstance1().setCountAdd()
+            }
         }
         ivCar.onClick {
             MainActivity.getInstance1().setCurrentPage(3)
@@ -93,39 +95,39 @@ class GoodsDetailActivity : BaseActivity() {
                     override fun onNext(t: HttpResult<GoodsDetailBean>) {
                         super.onNext(t)
                         if (t.status == 0) {
-                            val data = t.result
-                            setData(data.data)
+                            setData(t.result.data)
                         }
                     }
                 })
     }
 
 
-    private fun setData(data: GoodsDetailBean.DataBean) {
-        this.data = data
-        tvName.text = data.title
-        tvDes.text = data.subtitle.toString()
-        tvPrice.text = getString(R.string.price, data.price.toString())
-        tvDetail.text = data.productdetail ?: ""
-        //设置banner
-        images.addAll(data.images)
-        var imgs = ArrayList<String>()
-        for (i in 0 until images.size) {
-            imgs.add(Constants.BASE_IMG_URL + images[i].image)
-        }
-        banner.setImages(imgs)
-                .setImageLoader(HomeFragment.GlideImageLoader())
-                .setBannerAnimation(Transformer.DepthPage)
-                .setDelayTime(3000)
-                .setIndicatorGravity(BannerConfig.RIGHT)
-                .start()
+    private fun setData(data: GoodsDetailBean.DataBean?) {
+        if (data != null) {
+            this.data = data
+            tvName.text = data.title
+            tvDes.text = data.subtitle.toString()
+            tvPrice.text = getString(R.string.price, data.price.toString())
+            tvDetail.text = data.productdetail ?: ""
+            //设置banner
+            images.addAll(data.images)
+            var imgs = ArrayList<String>()
+            for (i in 0 until images.size) {
+                imgs.add(Constants.BASE_IMG_URL + images[i].image)
+            }
+            banner.setImages(imgs)
+                    .setImageLoader(HomeFragment.GlideImageLoader())
+                    .setBannerAnimation(Transformer.DepthPage)
+                    .setDelayTime(3000)
+                    .setIndicatorGravity(BannerConfig.RIGHT)
+                    .start()
 
-        ImageUtils.showImg(this@GoodsDetailActivity, data.images.get(0).image, ivGoods)
-        if (CommonMethod.isTrue(data.product.promboolean)) {
-            tvProm.visibility = View.VISIBLE
+            ImageUtils.showImg(this@GoodsDetailActivity, data.images.get(0).image, ivGoods)
+            if (CommonMethod.isTrue(data.product.promboolean)) {
+                tvProm.visibility = View.VISIBLE
+            }
         }
     }
-
 
     /**
      * 将商品添加到购物车
