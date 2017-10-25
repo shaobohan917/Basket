@@ -13,14 +13,10 @@ import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
-import com.first.basket.utils.UIUtils
 import com.first.basket.view.AmountView
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
-import kotlinx.android.synthetic.main.fragment_shop.*
-import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -32,6 +28,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
     private var listener = listener
     private var cbListener = cbListener
     private var amountListener = amountListener
+    var isModifyMode = false
 
     override fun getItemCount(): Int {
         return mDatas.size
@@ -78,8 +75,14 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
                 setTitle(holder.tvTitle, mDatas[position].channelid)
             }
         }
+        if (isModifyMode) {
+            holder.llShadow.visibility = View.GONE
+        } else {
+            checkStatus(holder, position)
+        }
+    }
 
-
+    private fun checkStatus(holder: ViewHolder, position: Int) {
         //判断菜市是否可选
         val str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
         if (!TextUtils.isEmpty(str)) {
@@ -92,6 +95,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
                 mDatas[position].channelid == "3" -> holder.llShadow.visibility = if (CommonMethod.isTrue(addressInfo.isqgcs)) (View.GONE) else (View.VISIBLE)
             }
         }
+
     }
 
     fun setTitle(tv: TextView, str: String) {
@@ -129,16 +133,8 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         fun onItemAmountChanged(view: View, amount: Int, index: Int)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        var product = mDatas[position]
-        checkChannel(product.channelid)
-        return super.getItemViewType(position)
+    fun setIsModifyMode(b: Boolean) {
+        isModifyMode = b
+        notifyDataSetChanged()
     }
-
-    private fun checkChannel(channelid: String?) {
-
-
-    }
-
-
 }

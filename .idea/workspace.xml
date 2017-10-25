@@ -17,24 +17,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4aead0c-132b-4489-ba39-75de042c7f06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstBasket.iml" afterPath="$PROJECT_DIR$/FirstBasket.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/OrderListActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/OrderListActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/WebViewActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/WebViewActivity.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_orderlist.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_orderlist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,63 +61,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OrderFragment.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt">
+      <file leaf-file-name="TitleView.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="44" column="82" lean-forward="false" selection-start-line="44" selection-start-column="82" selection-end-line="44" selection-end-column="82" />
-              <folding>
-                <element signature="e#35#831#0" expanded="true" />
-                <element signature="e#1646#1709#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderListBean.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="110" column="22" lean-forward="false" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
-              <folding>
-                <element signature="e#5640#5641#0" expanded="true" />
-                <element signature="e#5674#5675#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            <state relative-caret-position="165">
+              <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_order.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="attrs.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="90">
+              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_recycler_order.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml">
+      <file leaf-file-name="layout_widget_title.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_widget_title.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            <state relative-caret-position="445">
+              <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="53" column="40" lean-forward="false" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+              <folding>
+                <element signature="e#35#1394#0" expanded="true" />
+                <element signature="e#6255#6287#1" expanded="true" />
+                <element signature="e#6633#6673#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddressBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/AddressBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopAdapter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="95" column="13" lean-forward="false" selection-start-line="91" selection-start-column="10" selection-end-line="95" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_shop.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -151,15 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tvaddress</find>
-      <find>R.layout</find>
-      <find>imeActionLabel</find>
-      <find>imeActionLabe</find>
-      <find>imeActionLab</find>
-      <find>imeActionLa</find>
-      <find>imeActionL</find>
-      <find>imeAction</find>
-      <find>imAction</find>
       <find>iAction</find>
       <find>Action</find>
       <find>etSearch</find>
@@ -181,6 +189,15 @@
       <find>get_orderlist</find>
       <find>onitem</find>
       <find>strorderid</find>
+      <find>titleViewRight</find>
+      <find>titleView</find>
+      <find>tvMore</find>
+      <find>getprice</find>
+      <find>BTBUY.ONCLI</find>
+      <find>onitema</find>
+      <find>onhidden</find>
+      <find>addressinfo</find>
+      <find>street</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -2105,9 +2122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/app/BaseApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SearchListActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/GoodsDetailActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/DecoderActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/constants/Constants.kt" />
@@ -2119,12 +2133,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_order_footer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_place_order.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_widget_title.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/base/BaseActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/common/CommonMethod.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/MineFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_classify.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_district.xml" />
@@ -2145,17 +2157,22 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/WebViewActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ContentFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/http/ApiService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_orderlist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/OrderListActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_widget_title.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt" />
       </list>
     </option>
   </component>
@@ -2223,150 +2240,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FirstBasket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basket" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -2377,7 +2250,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="60800f72" />
-    <property name="SearchEverywhereHistoryKey" value="orderfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/OrderFragment.kt&#10;orderli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderListActivity.kt&#10;ContentFragment&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;webview&#9;null&#9;null&#10;shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;place&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;searlistac&#9;null&#9;null&#10;activitysear&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_search_list.xml&#10;activityse&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_street_select.xml&#10;activity_maps&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_maps.xml&#10;addressmaps&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java&#10;addressadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_address_add.xml&#10;build.g&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;minefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;pla&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;static&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;item&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_district.xml&#10;AddressListActivity&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;poibe&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/PoiBean.java&#10;addmap&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java&#10;addadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressAddActivity.kt&#10;stre&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/StreetSelectActivity.kt&#10;dis&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_district.xml&#10;addreadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_address_add.xml&#10;classifra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;fracl&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_classify.xml&#10;fragmin&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_mine.xml&#10;setting&#9;null&#9;null&#10;addresli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;staticv&#9;PSI&#9;JAVA://com.first.basket.common.StaticValue&#10;spu&#9;PSI&#9;JAVA://com.first.basket.utils.SPUtil&#10;shopfr&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;addadapter&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt&#10;common&#9;PSI&#9;JAVA://com.first.basket.common.CommonMethod&#10;addressli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;frasho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;strings&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/values/strings.xml&#10;footer&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/layout_order_footer.xml&#10;fragmentsho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;placor&#9;null&#9;null&#10;order&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderListActivity.kt&#10;addreli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;stree&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/StreetSelectActivity.kt&#10;itemsecon&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_second.xml&#10;itemrecy&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_second.xml&#10;shopf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml&#10;itemrese&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_second.xml" />
+    <property name="SearchEverywhereHistoryKey" value="shopfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;titleview&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/view/TitleView.kt&#10;orderfra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/OrderFragment.kt&#10;orderli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderListActivity.kt&#10;ContentFragment&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ContentFragment.kt&#10;webview&#9;null&#9;null&#10;place&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;searlistac&#9;null&#9;null&#10;activitysear&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_search_list.xml&#10;activityse&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_street_select.xml&#10;activity_maps&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_maps.xml&#10;addressmaps&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java&#10;addressadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_address_add.xml&#10;build.g&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/build.gradle&#10;minefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/MineFragment.kt&#10;pla&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/PlaceOrderActivity.kt&#10;static&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/common/StaticValue.java&#10;item&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_district.xml&#10;AddressListActivity&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;poibe&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/bean/PoiBean.java&#10;addmap&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressMapsActivity.java&#10;addadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressAddActivity.kt&#10;stre&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/StreetSelectActivity.kt&#10;dis&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_district.xml&#10;addreadd&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/activity_address_add.xml&#10;classifra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ClassifyFragment.kt&#10;fracl&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_classify.xml&#10;fragmin&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_mine.xml&#10;setting&#9;null&#9;null&#10;addresli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;staticv&#9;PSI&#9;JAVA://com.first.basket.common.StaticValue&#10;spu&#9;PSI&#9;JAVA://com.first.basket.utils.SPUtil&#10;shopfr&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;mainac&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/MainActivity.kt&#10;homefra&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/HomeFragment.kt&#10;addadapter&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/adapter/AddressMenuAdapter.kt&#10;common&#9;PSI&#9;JAVA://com.first.basket.common.CommonMethod&#10;addressli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;frasho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;strings&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/values/strings.xml&#10;footer&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/layout_order_footer.xml&#10;fragmentsho&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/fragment_shop.xml&#10;placor&#9;null&#9;null&#10;order&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/OrderListActivity.kt&#10;addreli&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/AddressListActivity.kt&#10;stree&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/activity/StreetSelectActivity.kt&#10;itemsecon&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_second.xml&#10;itemrecy&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/res/layout/item_recycler_second.xml&#10;shopf&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/java/com/first/basket/fragment/ShopFragment.kt&#10;androidmani&#9;FILE&#9;file:///Users/hanshaobo/AndroidStudioProjects/FirstBasket/app/src/main/AndroidManifest.xml" />
     <property name="android.profiler.active" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="smartisan-sm919-60800f72" />
     <property name="DEBUGGABLE_PROCESS" value="com.first.basket" />
@@ -2530,7 +2403,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508938530641" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508943072063" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2577,7 +2450,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508938530641" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508943072063" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2759,7 +2632,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508938530643" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1508943072069" />
       </method>
     </configuration>
     <list size="2">
@@ -2843,28 +2716,29 @@
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32598424" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21405493" sideWeight="0.50790066" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21102363" sideWeight="0.5670436" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3672131" sideWeight="0.43295637" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16830601" sideWeight="0.47337595" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19781421" sideWeight="0.5468498" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21405493" sideWeight="0.50790066" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21102363" sideWeight="0.5670436" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27848774" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10393701" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29180327" sideWeight="0.4822294" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18251365" sideWeight="0.4978701" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3672131" sideWeight="0.43295637" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26456693" sideWeight="0.5537806" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13897763" sideWeight="0.49209931" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3828756" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38579234" sideWeight="0.47337595" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2874,7 +2748,6 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12992546" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.4978701" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2987,7 +2860,7 @@
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>266</line>
+          <line>319</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
@@ -3035,43 +2908,37 @@
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>71</line>
-          <properties />
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>215</line>
+          <line>249</line>
           <properties />
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>216</line>
+          <line>250</line>
           <properties />
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>217</line>
+          <line>251</line>
           <properties />
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>160</line>
+          <line>194</line>
           <properties />
           <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>172</line>
+          <line>206</line>
           <properties />
           <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>168</line>
+          <line>202</line>
           <properties />
           <option name="timeStamp" value="176" />
         </line-breakpoint>
@@ -3244,10 +3111,28 @@
           <option name="timeStamp" value="223" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
-          <line>278</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt</url>
+          <line>57</line>
           <properties />
-          <option name="timeStamp" value="224" />
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
+          <line>169</line>
+          <properties />
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/first/basket/db/ProductDao.java</url>
@@ -3319,81 +3204,11 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="229" />
+      <option name="time" value="233" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/SPUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-719">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/SettingActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="35" column="69" lean-forward="false" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_et_search.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/PoiBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="42" lean-forward="false" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-26/android.jar!/android/widget/AdapterView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="216" column="21" lean-forward="false" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/PoiSearchAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-          <folding>
-            <element signature="e#848#849#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/StreetSelectActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -3614,23 +3429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="932">
-          <caret line="267" column="21" lean-forward="false" selection-start-line="267" selection-start-column="21" selection-end-line="267" selection-end-column="21" />
-          <folding>
-            <element signature="e#35#1422#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="56" column="48" lean-forward="false" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/HomeFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -3755,13 +3553,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="110" column="22" lean-forward="false" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
+          <folding>
+            <element signature="e#5640#5641#0" expanded="false" />
+            <element signature="e#5674#5675#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_order.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        <state relative-caret-position="90">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -3777,32 +3594,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/OrderListBean.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_detail.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="110" column="22" lean-forward="false" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
-          <folding>
-            <element signature="e#5640#5641#0" expanded="true" />
-            <element signature="e#5674#5675#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/activity/OrderDetailActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="150">
+          <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/OrderFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="44" column="82" lean-forward="false" selection-start-line="44" selection-start-column="82" selection-end-line="44" selection-end-column="82" />
+        <state relative-caret-position="236">
+          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
           <folding>
-            <element signature="e#35#831#0" expanded="true" />
-            <element signature="e#1646#1709#0" expanded="true" />
+            <element signature="e#35#965#0" expanded="true" />
+            <element signature="e#1780#1839#0" expanded="true" />
+            <element signature="e#1871#1933#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_shop.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_widget_title.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="53" column="40" lean-forward="false" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/view/TitleView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/adapter/ShopAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="95" column="13" lean-forward="false" selection-start-line="91" selection-start-column="10" selection-end-line="95" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/bean/AddressBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/fragment/ShopFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+          <folding>
+            <element signature="e#35#1394#0" expanded="true" />
+            <element signature="e#6255#6287#1" expanded="true" />
+            <element signature="e#6633#6673#1" expanded="true" />
           </folding>
         </state>
       </provider>

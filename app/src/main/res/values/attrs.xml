@@ -3,6 +3,7 @@
     <!--标题栏-->
     <declare-styleable name="TitleView">
         <attr name="titleText" format="string" />
+        <attr name="titleMoreText" format="string" />
         <attr name="titleColor" format="color" />
         <attr name="showBack" format="boolean" />
         <attr name="titleBackground" format="color" />

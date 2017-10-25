@@ -45,13 +45,13 @@
         <item name="android:ellipsize">end</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:gravity">center</item>
-        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textStyle">bold</item>
 
     </style>
 
 
     <style name="titleViewRightImageText">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">10dp</item>

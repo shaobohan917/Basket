@@ -17,13 +17,15 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 /**
  * Created by hanshaobo on 02/09/2017.
  */
-class TitleView : FrameLayout, View.OnClickListener {
+class TitleView : FrameLayout {
 
-    private lateinit var mTitleText: String
+    private var mTitleText: String = ""
+    private var mTitleMoreText: String = ""
     private var mTitleColor: Int = 0
     private var mTitleBackgroundColor = 0
 
     private lateinit var tvTitle: TextView
+    private lateinit var tvMore: TextView
     private lateinit var rlyt_title: RelativeLayout
     private lateinit var ivBack: ImageView
 
@@ -40,6 +42,8 @@ class TitleView : FrameLayout, View.OnClickListener {
             when (attr) {
                 R.styleable.TitleView_titleText ->
                     mTitleText = typedArray.getString(attr)
+                R.styleable.TitleView_titleMoreText ->
+                    mTitleMoreText = typedArray.getString(attr)
                 R.styleable.TitleView_titleBackground ->
                     mTitleBackgroundColor = typedArray.getColor(attr, context.resources.getColor(R.color.white))
                 R.styleable.TitleView_titleColor ->
@@ -57,21 +61,28 @@ class TitleView : FrameLayout, View.OnClickListener {
 
     private fun initView() {
         tvTitle = findViewById(R.id.tvTitle)
+        tvMore = findViewById(R.id.tvMore)
         ivBack = findViewById(R.id.ivBack)
         rlyt_title = findViewById(R.id.rlyt_title)
         tvTitle.text = mTitleText
         tvTitle.setTextColor(mTitleColor)
         rlyt_title.setBackgroundColor(mTitleBackgroundColor)
-
         ivBack.visibility = if (mIsShowBack) View.VISIBLE else View.GONE
         ivBack.onClick {
             (getContext() as BaseActivity).myFinish()
         }
+        if (!TextUtils.isEmpty(mTitleMoreText)) {
+            tvMore.visibility = View.VISIBLE
+            tvMore.text = mTitleMoreText
+        }
     }
 
-    override fun onClick(p0: View?) {
+    fun setOnMoreClickListener(listener: OnClickListener) {
+        tvMore.setOnClickListener(listener)
+    }
 
-
+    fun setMoreText(text: String) {
+        tvMore.text = text
     }
 
     fun setTitle(string: String) {

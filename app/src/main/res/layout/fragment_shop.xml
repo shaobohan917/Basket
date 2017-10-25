@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         app:showBack="false"
         app:titleColor="@color/gray33"
+        app:titleMoreText="编辑"
         app:titleText="购物车" />
 
     <TextView

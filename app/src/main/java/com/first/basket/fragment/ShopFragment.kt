@@ -26,7 +26,6 @@ import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
@@ -44,6 +43,8 @@ class ShopFragment : BaseFragment() {
     private var mGoodsList = ArrayList<ProductBean>()
     private lateinit var mAdapter: MenuAdapter
     private var isFirst: Boolean = true
+    private var isModifyMode: Boolean = false
+    private var addressInfo = AddressBean()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -60,6 +61,31 @@ class ShopFragment : BaseFragment() {
     private fun initView() {
         smRecyclerView.layoutManager = LinearLayoutManager(activity)
         smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
+
+        titleView.setOnMoreClickListener(
+                View.OnClickListener {
+                    isModifyMode = !isModifyMode
+                    if (isModifyMode) {
+                        titleView.setMoreText("完成")
+                    } else {
+                        titleView.setMoreText("编辑")
+                    }
+                    setStatus(isModifyMode)
+                })
+    }
+
+    private fun setStatus(modifyMode: Boolean) {
+        if (modifyMode) {
+            //编辑模式
+            btBuy.text = "删除"
+            llTotalPrice.visibility = View.GONE
+            mAdapter.setIsModifyMode(true)
+        } else {
+            btBuy.text = "去结算"
+            llTotalPrice.visibility = View.VISIBLE
+            mAdapter.setIsModifyMode(false)
+        }
+
     }
 
     private fun initData() {
@@ -69,22 +95,26 @@ class ShopFragment : BaseFragment() {
 
         }, object : MenuAdapter.OnItemCheckedListener {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
-                mGoodsList[index].isCheck = b
-
-                getPrice(mGoodsList)
+                if (!isModifyMode) {
+                    mGoodsList[index].isCheck = b
+                    getPrice(mGoodsList)
+                }
             }
         }, object : MenuAdapter.OnItemAmountChangedListener {
             override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
-                if (amount == 0) {
-                    (activity as MainActivity).showDialog("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
-                        override fun onClick(p0: DialogInterface?, p1: Int) {
-                            mGoodsList.removeAt(index)
-                            refresh()
-                        }
-                    })
-                } else {
-                    mGoodsList[index].amount = amount
-                    getPrice(mGoodsList)
+                if (!isModifyMode) {
+                    if (amount == 0) {
+                        mGoodsList.removeAt(index)
+                        refresh()
+//                        (activity as MainActivity).showDialog("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
+//                            override fun onClick(p0: DialogInterface?, p1: Int) {
+//
+//                            }
+//                        })
+                    } else {
+                        mGoodsList[index].amount = amount
+                        getPrice(mGoodsList)
+                    }
                 }
             }
         })
@@ -92,6 +122,7 @@ class ShopFragment : BaseFragment() {
         smRecyclerView.adapter = mAdapter
         getHotRecommend()
     }
+
 
     private fun setDefaultAddress() {
         if (!CommonMethod.isLogin()) {
@@ -104,7 +135,7 @@ class ShopFragment : BaseFragment() {
         var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
         if (!TextUtils.isEmpty(str)) {
             val gson = GsonBuilder().create()
-            val addressInfo = gson.fromJson(str, AddressBean::class.java)
+            addressInfo = gson.fromJson(str, AddressBean::class.java)
             tvAddress.text = addressInfo.street.replace("&", " ")
         } else {
             tvAddress.text = activity.getString(R.string.add_address)
@@ -136,25 +167,28 @@ class ShopFragment : BaseFragment() {
             startActivityForResult(intent, 0)
         }
         btBuy.onClick {
-            if (mGoodsList.size == 0) {
-                ToastUtil.showToast(activity.getString(R.string.buy))
-                return@onClick
+            if (isModifyMode) {
+                mGoodsList
+                        .filter { it.isCheck }
+                        .forEach { mGoodsList.remove(it) }
+                mAdapter.notifyDataSetChanged()
+            } else {
+                if (mGoodsList.size == 0) {
+                    ToastUtil.showToast(activity.getString(R.string.buy))
+                    return@onClick
+                }
+                if (!CommonMethod.isLogin()) {
+                    (activity as MainActivity).showLogin()
+                    return@onClick
+                }
+                if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
+                    ToastUtil.showToast(activity.getString(R.string.add_address))
+                    return@onClick
+                }
+                var intent = Intent(activity, PlaceOrderActivity::class.java)
+                intent.putExtra("price", tvTotalPrice.text)
+                startActivity(intent)
             }
-            if (!CommonMethod.isLogin()) {
-                (activity as MainActivity).showLogin()
-                return@onClick
-            }
-            if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
-                ToastUtil.showToast(activity.getString(R.string.add_address))
-                return@onClick
-            }
-//            if (!cbSelectAll.isChecked) {
-//                ToastUtil.showToast("请选择全部商品")
-//                return@onClick
-//            }
-            var intent = Intent(activity, PlaceOrderActivity::class.java)
-            intent.putExtra("price", tvTotalPrice.text)
-            startActivity(intent)
         }
 
         cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
@@ -215,10 +249,10 @@ class ShopFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 101) {
+            if (requestCode == 101 && data != null) {
                 //设置地址
-                var addressInfo = data?.getSerializableExtra("addressInfo") as AddressBean?
-                tvAddress.text = addressInfo?.street?.replace("&", " ") ?: ""
+                addressInfo = data.getSerializableExtra("addressInfo") as AddressBean
+                tvAddress.text = addressInfo!!.street?.replace("&", " ") ?: ""
                 mAdapter.notifyDataSetChanged()
             }
         }
@@ -226,20 +260,37 @@ class ShopFragment : BaseFragment() {
 
 
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
+        if (isModifyMode) return
         if (mDatas.size > 0) {
-
             //选择所有isCheck=true的
-            var mSelectProductsList = ArrayList<ProductBean>()
+            var selectProductsList = ArrayList<ProductBean>()
             (0 until mDatas.size)
                     .filter { mDatas[it].isCheck }
-                    .mapTo(mSelectProductsList) { mDatas[it] }
+                    .mapTo(selectProductsList) { mDatas[it] }
+            //再选择所有菜市配送范围内的
+            var iterator = selectProductsList.iterator()
+            while (iterator.hasNext()) {
+                var productBean = iterator.next()
+                if (productBean.channelid == "1" && !CommonMethod.isTrue(addressInfo!!.issqcs)) {
+//                    //社区菜市不支持
+                    iterator.remove()
+                }
+                if (productBean.channelid == "2" && !CommonMethod.isTrue(addressInfo!!.isshcs)) {
+                    //上海菜市不支持
+                    iterator.remove()
+                }
+                if (productBean.channelid == "3" && !CommonMethod.isTrue(addressInfo!!.isqgcs)) {
+                    //全国菜市不支持
+                    iterator.remove()
+                }
+            }
 
             var productidString = StringBuilder()
             var numString = StringBuilder()
 
-            for (i in 0 until mSelectProductsList.size) {
-                productidString.append(mSelectProductsList[i].productid).append("|")
-                numString.append(mSelectProductsList[i].amount).append("|")
+            for (i in 0 until selectProductsList.size) {
+                productidString.append(selectProductsList[i].productid).append("|")
+                numString.append(selectProductsList[i].amount).append("|")
             }
             if (!TextUtils.isEmpty(productidString) && !TextUtils.isEmpty(numString)) {
                 val ps: String = productidString.toString().substring(0, productidString.length - 1)
@@ -266,6 +317,7 @@ class ShopFragment : BaseFragment() {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             //回到购物车页面
+            setDefaultAddress()
             if (isFirst) {
                 cbSelectAll.isChecked = true
                 setShopData()
@@ -276,11 +328,11 @@ class ShopFragment : BaseFragment() {
                 getPrice(mGoodsList)
                 isFirst = false
             }
-            LogUtils.d("onHiddenChanged:" + hidden)
-            setDefaultAddress()
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
+            isModifyMode = false
+            mAdapter.notifyDataSetChanged()
         }
     }
 
