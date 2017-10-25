@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:id="@+id/llRoot"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,32 +13,37 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvStatus"
+            android:id="@+id/tvNO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/gray66"
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            tool:text="待支付" />
+            android:textColor="@color/gray33"
+            android:textSize="12sp"
+            tool:text="订单编号" />
 
         <TextView
             android:id="@+id/tvLimitTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:textSize="12sp"
             tool:text="" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llImg"
+    <include layout="@layout/layout_line" />
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:scrollbars="none">
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+
+    <include layout="@layout/layout_line" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -48,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textColor="@color/text"
+            android:textColor="@color/gray33"
             android:textSize="14sp"
             tool:text="@string/order_price" />
 
@@ -59,6 +65,4 @@
             android:text="再次购买"
             android:visibility="invisible" />
     </RelativeLayout>
-
-
 </LinearLayout>

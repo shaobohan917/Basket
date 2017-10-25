@@ -109,7 +109,7 @@ class HomeFragment : BaseFragment() {
                 R.id.qgcs, R.id.ivQGCS -> goClassify(3)
                 R.id.hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData?.hltg?.url)
+//                    intent.putExtra("url", recommendData?.hltg?.url)
                     intent.putExtra("title", "欢乐团购")
                     startActivity(intent)
                 }

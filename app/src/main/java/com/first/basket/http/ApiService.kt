@@ -39,7 +39,7 @@ interface ApiService {
     //获取订单列表
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getOrderList(@Field("action") action: String, @Field("userid") userid: String): Observable<OrderListBean>
+    fun getOrderList(@Field("action") action: String, @Field("userid") userid: String): Observable<HttpResult<OrderListBean>>
 
     //首页
     @FormUrlEncoded

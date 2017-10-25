@@ -33,8 +33,6 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
     private var cbListener = cbListener
     private var amountListener = amountListener
 
-    private var preId: String = ""
-
     override fun getItemCount(): Int {
         return mDatas.size
     }
@@ -66,12 +64,13 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         holder.amoutView.setOnAmountChangeListener { view, amount ->
             amountListener.onItemAmountChanged(view, amount, position)
         }
+        holder.itemView.onClick { holder.cbSelect.performClick() }
 
         if (position == 0) {
             holder.tvTitle.visibility = View.VISIBLE
             setTitle(holder.tvTitle, mDatas[0].channelid)
         } else {
-            if (preId.equals(mDatas[position].channelid)) {
+            if (mDatas.get(position - 1).channelid == mDatas[position].channelid) {
                 //相同，不展示
                 holder.tvTitle.visibility = View.GONE
             } else {
@@ -79,26 +78,20 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
                 setTitle(holder.tvTitle, mDatas[position].channelid)
             }
         }
-        LogUtils.d("pre:" + mDatas[position].channelid)
-        preId = mDatas[position].channelid
+
 
         //判断菜市是否可选
-//        var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
-//        if (!TextUtils.isEmpty(str)) {
-//            val gson = GsonBuilder().create()
-//            val addressInfo = gson.fromJson(str, AddressBean::class.java)
-//
-//            if (!CommonMethod.isTrue(addressInfo.issqcs) || !CommonMethod.isTrue(addressInfo.isshcs) || !CommonMethod.isTrue(addressInfo.isqgcs)) {
-//                holder.llShadow.visibility = View.VISIBLE
-//            } else {
-//                holder.llShadow.visibility = View.GONE
-//            }
-//        }
-//        if (mDatas[position].channelid.equals("1")) {
-//            holder.llShadow.visibility = View.VISIBLE
-//        } else {
-//            holder.llShadow.visibility = View.GONE
-//        }
+        val str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
+        if (!TextUtils.isEmpty(str)) {
+            val gson = GsonBuilder().create()
+            val addressInfo = gson.fromJson(str, AddressBean::class.java)
+
+            when {
+                mDatas[position].channelid == "1" -> holder.llShadow.visibility = if (CommonMethod.isTrue(addressInfo.issqcs)) (View.GONE) else (View.VISIBLE)
+                mDatas[position].channelid == "2" -> holder.llShadow.visibility = if (CommonMethod.isTrue(addressInfo.isshcs)) (View.GONE) else (View.VISIBLE)
+                mDatas[position].channelid == "3" -> holder.llShadow.visibility = if (CommonMethod.isTrue(addressInfo.isqgcs)) (View.GONE) else (View.VISIBLE)
+            }
+        }
     }
 
     fun setTitle(tv: TextView, str: String) {
@@ -134,6 +127,17 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
 
     interface OnItemAmountChangedListener {
         fun onItemAmountChanged(view: View, amount: Int, index: Int)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        var product = mDatas[position]
+        checkChannel(product.channelid)
+        return super.getItemViewType(position)
+    }
+
+    private fun checkChannel(channelid: String?) {
+
+
     }
 
 

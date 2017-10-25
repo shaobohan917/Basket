@@ -1,8 +1,12 @@
 package com.first.basket.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -42,6 +46,7 @@ import com.first.basket.adapter.PoiSearchAdapter;
 import com.first.basket.base.BaseActivity;
 import com.first.basket.bean.PoiBean;
 import com.first.basket.common.CommonMethod;
+import com.first.basket.fragment.OrderFragment;
 import com.first.basket.utils.LogUtils;
 import com.first.basket.utils.ToastUtil;
 
@@ -68,7 +73,7 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     private LatLng latlng;
     private String city;
     private AMap aMap;
-    private String deepType = "";// poi搜索类型 商务住宅
+    private String deepType = "商务住宅";// poi搜索类型 商务住宅
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;
     private PoiResult poiResult; // poi返回的结果
@@ -291,6 +296,29 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     protected void onDestroy() {
         mLocationClient.onDestroy();
         super.onDestroy();
+    }
+
+    public class MyFragment extends FragmentPagerAdapter {
+        public ArrayList<String> fragments = new ArrayList<>();
+
+        private final Context context;
+
+        public MyFragment(FragmentManager fm, Context context) {
+            super(fm);
+            this.context = context;
+
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            return Fragment.instantiate(context, fragments.get(position));
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
     }
 }
 

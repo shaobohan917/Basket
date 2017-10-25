@@ -183,7 +183,9 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
                 mCount++
 //                mCountTv.setText(String.valueOf(mCount))
                 // 把移动的图片imageview从父布局里移除
-                rlRoot.removeView(view)
+                if (rlRoot != null && view != null) {
+                    rlRoot.removeView(view)
+                }
 
                 //shopImg 开始一个放大动画
                 val scaleAnim = AnimationUtils.loadAnimation(activity, R.anim.shop_car_scale)

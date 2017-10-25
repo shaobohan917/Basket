@@ -10,10 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.first.basket.R
-import com.first.basket.activity.AddressListActivity
-import com.first.basket.activity.GoodsDetailActivity
-import com.first.basket.activity.MainActivity
-import com.first.basket.activity.PlaceOrderActivity
+import com.first.basket.activity.*
 import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.HttpResult
@@ -46,6 +43,7 @@ import kotlin.collections.ArrayList
 class ShopFragment : BaseFragment() {
     private var mGoodsList = ArrayList<ProductBean>()
     private lateinit var mAdapter: MenuAdapter
+    private var isFirst: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -98,6 +96,9 @@ class ShopFragment : BaseFragment() {
     private fun setDefaultAddress() {
         if (!CommonMethod.isLogin()) {
             tvAddress.text = "请登录"
+            tvAddress.onClick {
+                startActivity(Intent(activity, LoginActivity::class.java))
+            }
             return
         }
         var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
@@ -111,6 +112,7 @@ class ShopFragment : BaseFragment() {
         tvAddress.onClick {
             startActivityForResult(Intent(activity, AddressListActivity::class.java), 101)
         }
+
     }
 
     private fun refresh() {
@@ -217,6 +219,7 @@ class ShopFragment : BaseFragment() {
                 //设置地址
                 var addressInfo = data?.getSerializableExtra("addressInfo") as AddressBean?
                 tvAddress.text = addressInfo?.street?.replace("&", " ") ?: ""
+                mAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -259,20 +262,22 @@ class ShopFragment : BaseFragment() {
         tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
     }
 
-
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
             //回到购物车页面
-            setDefaultAddress()
-            cbSelectAll.isChecked = (mGoodsList.size > 0)
-            setShopData()
-            llTotalPrice.visibility = if (mGoodsList.size > 0) (View.VISIBLE) else (View.GONE)
-            for (i in 0 until mGoodsList.size) {
-                mGoodsList[i].isCheck = true
+            if (isFirst) {
+                cbSelectAll.isChecked = true
+                setShopData()
+                llTotalPrice.visibility = if (mGoodsList.size > 0) (View.VISIBLE) else (View.GONE)
+                for (i in 0 until mGoodsList.size) {
+                    mGoodsList[i].isCheck = true
+                }
+                getPrice(mGoodsList)
+                isFirst = false
             }
-            getPrice(mGoodsList)
-
+            LogUtils.d("onHiddenChanged:" + hidden)
+            setDefaultAddress()
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
@@ -282,10 +287,11 @@ class ShopFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         LogUtils.d("onResume")
+        setDefaultAddress()
     }
 
     private fun setShopData() {
-        var oldList = BaseApplication.getInstance().getProductsList()
+        var oldList = BaseApplication.getInstance().productsList
         if (oldList != null && oldList.size > 0) {
             Collections.reverse(oldList)
             var list = ArrayList<ProductBean>()

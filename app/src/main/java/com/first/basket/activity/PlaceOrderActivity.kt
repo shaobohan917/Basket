@@ -1,5 +1,6 @@
 package com.first.basket.activity
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -86,7 +87,7 @@ class PlaceOrderActivity : BaseActivity() {
 
     private fun initListener() {
         btBuy.onClick {
-            doPlaceOrder()
+            showDialog("确认下单？", "", "确定", DialogInterface.OnClickListener { p0, p1 -> doPlaceOrder() })
         }
     }
 

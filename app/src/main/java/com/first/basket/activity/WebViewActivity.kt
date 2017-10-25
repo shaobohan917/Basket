@@ -6,6 +6,7 @@ import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_webview.*
 import android.net.http.SslError
+import android.text.TextUtils
 import android.view.View
 import android.webkit.*
 
@@ -14,7 +15,7 @@ import android.webkit.*
  * Created by hanshaobo on 10/10/2017.
  */
 class WebViewActivity : BaseActivity() {
-    private lateinit var url: String
+    private var url: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class WebViewActivity : BaseActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun initData() {
         url = intent.getStringExtra("url")
+        if (TextUtils.isEmpty(url)) myFinish()
         titleView.setTitle(intent.getStringExtra("title"))
 
         var webSettings = webview.settings
