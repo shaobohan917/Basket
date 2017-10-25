@@ -43,7 +43,7 @@ class AddressAddActivity : BaseActivity() {
     private lateinit var address: AddressBean
 
     private var poiItem: PoiItem? = null
-    private var districtid: String? = ""
+    private var subdistrict: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,7 +146,7 @@ class AddressAddActivity : BaseActivity() {
                     }
                 }
                 REQUEST_THREE -> {
-                    districtid = data?.getStringExtra("subdistrict")
+                    subdistrict = data?.getStringExtra("subdistrict")
                 }
             }
         }
@@ -287,8 +287,8 @@ class AddressAddActivity : BaseActivity() {
                         (0 until list.size)
                                 .filter { township.equals(list[it].subdistrict) }
                                 .forEach {
-                                    districtid = list[it].districtid
-                                    LogUtils.d("匹配到街道：" + township + ",districtid" + list[it].districtid)
+                                    subdistrict = list[it].subdistrictid
+                                    LogUtils.d("匹配到街道：" + township + ",subdistrictid" + list[it].subdistrictid)
                                     isMatch = true
                                 }
                         if (!isMatch) {
@@ -310,7 +310,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", districtid)
+        hashmap.put("subdistrict", subdistrict)
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -337,7 +337,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("address", etAddress.text.toString())
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
-        hashmap.put("subdistrict", districtid)
+        hashmap.put("subdistrict", subdistrict)
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())

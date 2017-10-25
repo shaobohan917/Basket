@@ -48,7 +48,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <!--android:theme="@style/LauncherAppTheme"-->
         <activity android:name=".a.AddressMapActivity" />
         <activity android:name=".activity.AddressAddActivity" />
@@ -64,7 +66,7 @@
         <activity android:name=".activity.OrderDetailActivity" />
         <activity
             android:name=".activity.ClassifyActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
@@ -91,7 +93,7 @@
         <activity android:name=".activity.StreetSelectActivity" />
         <activity
             android:name=".activity.AddressMapsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

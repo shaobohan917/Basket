@@ -56,6 +56,7 @@ public class StaticValue {
     public static final String GOODS_LIST = "goods_list";
 
     public static final String PROM_HUN = "prom_hun";
+    public static final String PROM_SU = "prom_su";
 
     public static final String DEFAULT_ADDRESS = "default_address";
 

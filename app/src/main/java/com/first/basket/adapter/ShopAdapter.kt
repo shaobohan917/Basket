@@ -1,17 +1,26 @@
 package com.first.basket.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
+import com.first.basket.bean.AddressBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
+import com.first.basket.common.StaticValue
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
+import com.first.basket.utils.UIUtils
 import com.first.basket.view.AmountView
+import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
+import kotlinx.android.synthetic.main.fragment_shop.*
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -40,14 +49,13 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
 
     override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
         holder.itemView.tag = mDatas[position]
-//        LogUtils.d("bind:" + position + "," + mDatas[position].productname)
 
         val product = mDatas[position]
 
         holder.tvName1.text = product.productname
 
         holder.tvUnit1.text = product.weight + "/" + product.unit
-        holder.tvPrice1.text = product.price
+        holder.tvPrice1.text = product.cost
         holder.amoutView.amount = product.amount
         ImageUtils.showImg(BaseApplication.getInstance(), product.img, holder.ivGoods)
         holder.cbSelect.isChecked = product.isCheck
@@ -59,7 +67,6 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
             amountListener.onItemAmountChanged(view, amount, position)
         }
 
-//        var data= holder.itemView.getTag(position) as ProductBean
         if (position == 0) {
             holder.tvTitle.visibility = View.VISIBLE
             setTitle(holder.tvTitle, mDatas[0].channelid)
@@ -74,6 +81,24 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         }
         LogUtils.d("pre:" + mDatas[position].channelid)
         preId = mDatas[position].channelid
+
+        //判断菜市是否可选
+//        var str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
+//        if (!TextUtils.isEmpty(str)) {
+//            val gson = GsonBuilder().create()
+//            val addressInfo = gson.fromJson(str, AddressBean::class.java)
+//
+//            if (!CommonMethod.isTrue(addressInfo.issqcs) || !CommonMethod.isTrue(addressInfo.isshcs) || !CommonMethod.isTrue(addressInfo.isqgcs)) {
+//                holder.llShadow.visibility = View.VISIBLE
+//            } else {
+//                holder.llShadow.visibility = View.GONE
+//            }
+//        }
+//        if (mDatas[position].channelid.equals("1")) {
+//            holder.llShadow.visibility = View.VISIBLE
+//        } else {
+//            holder.llShadow.visibility = View.GONE
+//        }
     }
 
     fun setTitle(tv: TextView, str: String) {
@@ -82,7 +107,6 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
             "2" -> tv.text = "上海菜市"
             "3" -> tv.text = "全国菜市"
         }
-
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -93,6 +117,7 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         var amoutView = itemView.findViewById<AmountView>(R.id.amoutView)!!
         var ivGoods = itemView.findViewById<ImageView>(R.id.ivGoods)
         var cbSelect = itemView.findViewById<CheckBox>(R.id.cbSelect)
+        var llShadow = itemView.findViewById<LinearLayout>(R.id.llShadow)
 
         init {
             itemView.onClick { listener.onItemClick(itemView) }

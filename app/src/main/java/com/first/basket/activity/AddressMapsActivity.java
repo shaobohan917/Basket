@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -37,9 +40,12 @@ import com.first.basket.R;
 import com.first.basket.adapter.LocationBean;
 import com.first.basket.adapter.PoiSearchAdapter;
 import com.first.basket.base.BaseActivity;
+import com.first.basket.bean.PoiBean;
+import com.first.basket.common.CommonMethod;
 import com.first.basket.utils.LogUtils;
 import com.first.basket.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -66,10 +72,11 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;
     private PoiResult poiResult; // poi返回的结果
-    public List<PoiItem> poiItems;// poi数据
+    private PoiOverlay poiOverlay; //
 
     private PoiSearchAdapter adapter;
     private PoiItem poiItem;
+    private int preIndex;
 
 
     @Override
@@ -92,6 +99,17 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
                 finish();
             }
         });
+        final EditText et = findViewById(R.id.et2);
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                //搜索
+                CommonMethod.hideKeyboard(et);
+                doSearchQuery(et.getText().toString());
+                return false;
+            }
+        });
+
     }
 
     private void init() {
@@ -134,10 +152,10 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     /**
      * 开始进行poi搜索
      */
-    protected void doSearchQuery() {
+    protected void doSearchQuery(String string) {
         aMap.setOnMapClickListener(null);// 进行poi搜索时清除掉地图点击事件
         int currentPage = 0;
-        query = new PoiSearch.Query("", deepType, city);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        query = new PoiSearch.Query(string, deepType, city);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query.setPageSize(20);// 设置每页最多返回多少条poiitem
         query.setPageNum(currentPage);// 设置查第一页
         LatLonPoint lp = new LatLonPoint(latlng.latitude, latlng.longitude);
@@ -160,7 +178,7 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
                 latlng = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
                 aMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 14), 1000, null);
                 city = aMapLocation.getProvince();
-                doSearchQuery();
+                doSearchQuery("");
             } else {
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
                 Log.e("AmapErr", errText);
@@ -193,7 +211,7 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
         latlng = cameraPosition.target;
         aMap.clear();
         aMap.addMarker(new MarkerOptions().position(latlng));
-        doSearchQuery();
+        doSearchQuery("");
     }
 
     @Override
@@ -202,18 +220,40 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
             if (result != null && result.getQuery() != null) {// 搜索poi的结果
                 if (result.getQuery().equals(query)) {// 是否是同一条
                     poiResult = result;
-                    poiItems = poiResult.getPois();// 取得第一页的poiitem数据，页数从数字0开始
-
+                    List<PoiItem> poiItems = poiResult.getPois();// 取得第一页的poiitem数据，页数从数字0开始
 
                     if (poiItems != null && poiItems.size() > 0) {
-                        adapter = new PoiSearchAdapter(this, poiItems);
+                        final ArrayList<PoiBean> poiBeans = new ArrayList<>();
+                        for (int i = 0; i < poiItems.size(); i++) {
+                            PoiBean poiBean = new PoiBean();
+                            poiBean.setPoiItem(poiItems.get(i));
+                            poiBeans.add(poiBean);
+                        }
+                        adapter = new PoiSearchAdapter(this, poiBeans);
                         listView.setAdapter(adapter);
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                poiItem = poiItems.get(i);
-                                CheckBox checkBox = view.findViewById(R.id.cbSelect);
-                                checkBox.setChecked(true);
+                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                poiBeans.get(preIndex).setCheck(false);
+
+                                CheckBox cbSelect = view.findViewById(R.id.cbSelect);
+                                cbSelect.setChecked(!cbSelect.isChecked());
+                                poiBeans.get(position).setCheck(cbSelect.isChecked());
+                                adapter.notifyDataSetChanged();
+
+                                poiItem = poiBeans.get(position).getPoiItem();
+                                preIndex = position;
+
+                                ArrayList<PoiItem> list = new ArrayList<>();
+                                list.add(poiItem);
+                                if (poiOverlay != null) {
+                                    poiOverlay.removeFromMap();
+                                } else {
+                                    poiOverlay = new PoiOverlay(aMap, list);
+                                }
+
+                                poiOverlay.addToMap();
+
                             }
                         });
                     }

@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="38dp"
-                android:text="联系人" />
+                android:text="联系人 " />
 
             <EditText
                 android:id="@+id/etName"
@@ -39,7 +39,10 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tvContact"
                 android:background="@null"
-                android:hint="联系人" />
+                android:hint="联系人"
+                android:maxLines="1"
+                android:textColor="@color/gray33"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/ivContactSelect"
@@ -65,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="38dp"
-                android:text="手机号" />
+                android:text="手机号 " />
 
             <EditText
                 android:id="@+id/etPhone"
@@ -74,7 +77,10 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/tvPhone"
                 android:background="@null"
-                android:hint="手机号" />
+                android:hint="手机号"
+                android:maxLines="1"
+                android:textColor="@color/gray33"
+                android:textSize="14sp" />
 
             <include layout="@layout/layout_line" />
         </RelativeLayout>
@@ -133,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="38dp"
-                android:text="门牌号" />
+                android:text="门牌号 " />
 
             <EditText
                 android:id="@+id/etNumber"
@@ -155,7 +161,8 @@
             android:layout_height="66dp"
             android:layout_gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/tvTag"

@@ -104,14 +104,17 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
         }
 
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
-
             if (CommonMethod.isTrue(data.promboolean)) {
-                if (!SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
+                if ("荤".equals(data.promdata.promproducttype) && !SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
                     addGoodToCar(view.findViewById(R.id.ivGoods))
                     addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_HUN, true)
+                } else if ("素".equals(data.promdata.promproducttype) && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
+                    addGoodToCar(view.findViewById(R.id.ivGoods))
+                    addData(data)
+                    SPUtil.setBoolean(StaticValue.PROM_SU, true)
                 } else {
-                    ToastUtil.showToast("特惠商品只可添加一件")
+                    ToastUtil.showToast("特惠商品荤素各只可添加一件")
                 }
             } else {
                 addGoodToCar(view.findViewById(R.id.ivGoods))

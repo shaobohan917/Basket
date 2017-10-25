@@ -54,19 +54,25 @@ class AddressListActivity : BaseActivity() {
 
         mAdapter = AddressMenuAdapter(mDatas, object : AddressMenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                showChoose(mDatas[position].street.replace("&", " "), position)
+                if (mDatas.size > 0) {
+                    showChoose(mDatas[position].street.replace("&", " "), position)
+                }
             }
 
         }, object : AddressMenuAdapter.OnItemCheckedListener {
             override fun onItemDelete(position: Int) {
-                showDelete(mDatas[position].street.replace("&", " "), position)
+                if (mDatas.size > 0) {
+                    showDelete(mDatas[position].street.replace("&", " "), position)
+                }
             }
 
             override fun onItemModify(position: Int) {
-                var intent = Intent(this@AddressListActivity, AddressAddActivity::class.java)
-                intent.putExtra("from", 1)
-                intent.putExtra("address", mDatas[position])
-                myStartActivityForResult(intent, REQUEST_ONE)
+                if (mDatas.size > 0) {
+                    var intent = Intent(this@AddressListActivity, AddressAddActivity::class.java)
+                    intent.putExtra("from", 1)
+                    intent.putExtra("address", mDatas[position])
+                    myStartActivityForResult(intent, REQUEST_ONE)
+                }
             }
 
             override fun onItemChecked(addressid: String) {
@@ -78,6 +84,7 @@ class AddressListActivity : BaseActivity() {
     fun showChoose(str: String, position: Int) {
         showDialog("提示", "本次配送地址为：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
             var addressInfo = mDatas[position]
+            addressInfo.street = addressInfo.street.replace("&", " ")
             SPUtil.setString(StaticValue.DEFAULT_ADDRESS, Gson().toJson(addressInfo))
             intent.putExtra("addressInfo", addressInfo)
             setResult(Activity.RESULT_OK, intent)
@@ -98,7 +105,13 @@ class AddressListActivity : BaseActivity() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<AddressListBean>>() {
                     override fun onNext(t: HttpResult<AddressListBean>) {
                         super.onNext(t)
-                        setAddressList(t.result)
+                        if (t.status == 0) {
+                            setAddressList(t.result)
+                        } else if (t.status == 1) {
+                            mDatas.clear()
+                            mAdapter.notifyDataSetChanged()
+                            SPUtil.setString(StaticValue.DEFAULT_ADDRESS, "")
+                        }
                     }
                 })
     }

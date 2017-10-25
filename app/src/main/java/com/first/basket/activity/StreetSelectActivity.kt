@@ -34,7 +34,7 @@ class StreetSelectActivity : BaseActivity() {
         var adapter = BaseRecyclerAdapter(R.layout.item_recycler_district, mDatas) { view: View, item: DistrictBean.DataBean ->
             view.tvDistrict.text = item.subdistrict
             view.tvDistrict.onClick {
-                intent.putExtra("subdistrict", item.districtid)
+                intent.putExtra("subdistrict", item.subdistrict)
                 setResult(Activity.RESULT_OK, intent)
                 myFinish()
             }

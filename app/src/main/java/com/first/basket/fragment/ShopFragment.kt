@@ -272,6 +272,7 @@ class ShopFragment : BaseFragment() {
                 mGoodsList[i].isCheck = true
             }
             getPrice(mGoodsList)
+
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()

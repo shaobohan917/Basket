@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.amap.api.services.core.PoiItem;
 import com.first.basket.R;
 import com.first.basket.activity.AddressMapsActivity;
+import com.first.basket.bean.PoiBean;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ import java.util.List;
 
 public class PoiSearchAdapter extends BaseAdapter {
     private Context ctx;
-    private List<PoiItem> list;
+    private List<PoiBean> list;
 
-    public PoiSearchAdapter(AddressMapsActivity context, List<PoiItem> poiItems) {
+    public PoiSearchAdapter(AddressMapsActivity context, List<PoiBean> poiBeans) {
         this.ctx = context;
-        this.list = poiItems;
+        this.list = poiBeans;
     }
 
     @Override
@@ -54,9 +55,10 @@ public class PoiSearchAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        PoiItem item = (PoiItem) getItem(position);
-        holder.poititle.setText(item.getTitle());
-        holder.poititle2.setText(item.getSnippet()+"");
+        PoiBean poiBean = (PoiBean) getItem(position);
+        holder.poititle.setText(poiBean.getPoiItem().getTitle());
+        holder.poititle2.setText(poiBean.getPoiItem().getSnippet() + "");
+        holder.cbSelect.setChecked(poiBean.isCheck());
         return convertView;
     }
 
