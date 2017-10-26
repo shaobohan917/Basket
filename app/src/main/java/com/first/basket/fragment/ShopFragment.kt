@@ -357,8 +357,8 @@ class ShopFragment : BaseFragment() {
                 getPrice(mGoodsList)
                 isFirst = false
             }
-            tvShopEmpty.visibility = if (mGoodsList.size == 0) (View.VISIBLE) else ((View.GONE))
             mAdapter.notifyDataSetChanged()
+            tvShopEmpty.visibility = if (mGoodsList.size == 0) (View.VISIBLE) else ((View.GONE))
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()

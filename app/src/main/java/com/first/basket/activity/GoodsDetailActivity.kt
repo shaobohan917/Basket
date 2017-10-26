@@ -31,6 +31,7 @@ import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import q.rorbin.badgeview.QBadgeView
+import java.util.*
 
 /**
  * Created by hanshaobo on 02/09/2017.
