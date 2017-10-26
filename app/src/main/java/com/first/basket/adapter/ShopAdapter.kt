@@ -1,12 +1,16 @@
 package com.first.basket.adapter
 
+import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.*
 import com.first.basket.R
+import com.first.basket.R.id.etAmount
+import com.first.basket.activity.MainActivity
 import com.first.basket.app.BaseApplication
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.ProductBean
@@ -14,16 +18,19 @@ import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import com.first.basket.view.AmountView
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
+import kotlinx.android.synthetic.main.view_amount.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
 /**
  * Created by hanshaobo on 14/09/2017.
  */
-class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: OnItemCheckedListener, amountListener: OnItemAmountChangedListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
+class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: OnItemCheckedListener, amountListener: OnItemAmountClickListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
+    private var context = context
     private var mDatas: ArrayList<ProductBean> = list
     private var listener = listener
     private var cbListener = cbListener
@@ -58,9 +65,17 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
             product.isCheck = b
             cbListener.onItemCheck(compoundButton, b, position)
         }
-        holder.amoutView.setOnAmountChangeListener { view, amount ->
-            amountListener.onItemAmountChanged(view, amount, position)
-        }
+        holder.amoutView.setOnAmountClickListener(object : AmountView.OnAmountClickListener {
+            override fun onAmountAddClick(view: View, amount: Int) {
+                amountListener.OnItemAmountAddClick(holder.amoutView, amount, position)
+
+            }
+
+            override fun onAmountSubClick(view: View, amount: Int) {
+                amountListener.OnItemAmountSubClick(holder.amoutView, amount, position)
+            }
+
+        })
         holder.itemView.onClick { holder.cbSelect.performClick() }
 
         if (position == 0) {
@@ -129,8 +144,9 @@ class MenuAdapter(list: ArrayList<ProductBean>, listener: OnItemClickListener, c
         fun onItemCheck(view: View, b: Boolean, index: Int)
     }
 
-    interface OnItemAmountChangedListener {
-        fun onItemAmountChanged(view: View, amount: Int, index: Int)
+    interface OnItemAmountClickListener {
+        fun OnItemAmountAddClick(view: View, amount: Int, position: Int)
+        fun OnItemAmountSubClick(view: View, amount: Int, position: Int)
     }
 
     fun setIsModifyMode(b: Boolean) {

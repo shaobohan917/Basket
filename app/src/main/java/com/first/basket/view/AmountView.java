@@ -28,7 +28,7 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
     private int amount = 0; //购买数量
     private int goods_storage = 999; //商品库存
 
-    private OnAmountChangeListener mListener;
+    private OnAmountClickListener mListener;
 
     private EditText etAmount;
     private ImageView btnDecrease;
@@ -71,8 +71,8 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
         }
     }
 
-    public void setOnAmountChangeListener(OnAmountChangeListener onAmountChangeListener) {
-        this.mListener = onAmountChangeListener;
+    public void setOnAmountClickListener(OnAmountClickListener onAmountClickListener) {
+        this.mListener = onAmountClickListener;
     }
 
     public void setGoods_storage(int goods_storage) {
@@ -83,30 +83,32 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btnDecrease) {
-            if (amount > 1) {
-                amount--;
-                etAmount.setText(amount + "");
-            } else {
-                amount--;
-                btnDecrease.setVisibility(GONE);
-                etAmount.setVisibility(GONE);
-            }
+            mListener.onAmountSubClick(this,amount);
+//            if (amount > 1) {
+//                amount--;
+//                etAmount.setText(amount + "");
+//            } else {
+//                amount--;
+//                btnDecrease.setVisibility(GONE);
+//                etAmount.setVisibility(GONE);
+//            }
         } else if (i == R.id.btnIncrease) {
-            if (amount < goods_storage) {
-                amount++;
-                etAmount.setText(amount + "");
-            }
-            if (amount >= 1) {
-                btnDecrease.setVisibility(VISIBLE);
-                etAmount.setVisibility(VISIBLE);
-            }
+            mListener.onAmountAddClick(this,amount);
+//            if (amount < goods_storage) {
+//                amount++;
+//                etAmount.setText(amount + "");
+//            }
+//            if (amount >= 1) {
+//                btnDecrease.setVisibility(VISIBLE);
+//                etAmount.setVisibility(VISIBLE);
+//            }
         }
 
         etAmount.clearFocus();
-
-        if (mListener != null) {
-            mListener.onAmountChange(this, amount);
-        }
+//
+//        if (mListener != null) {
+//            mListener.onAmountChange(this, amount);
+//        }
     }
 
     @Override
@@ -128,15 +130,12 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
             etAmount.setText(goods_storage + "");
             return;
         }
-
-//        if (mListener != null) {
-//            mListener.onAmountChange(this, amount);
-//        }
     }
 
 
-    public interface OnAmountChangeListener {
-        void onAmountChange(View view, int amount);
+    public interface OnAmountClickListener {
+        void onAmountAddClick(View view, int amount);
+        void onAmountSubClick(View view, int amount);
     }
 
     public int getAmount() {

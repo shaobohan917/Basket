@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.adapter.MenuAdapter
 import com.first.basket.app.BaseApplication
+import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HotRecommendBean
@@ -23,6 +25,7 @@ import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
@@ -31,6 +34,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.fragment_shop.*
+import kotlinx.android.synthetic.main.layout_view_goods.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 import kotlin.collections.ArrayList
@@ -56,11 +60,12 @@ class ShopFragment : BaseFragment() {
         initData()
         onHiddenChanged(false)
         initListener()
+        tvAddress.onClick { }
     }
 
     private fun initView() {
         smRecyclerView.layoutManager = LinearLayoutManager(activity)
-        smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
+//        smRecyclerView.setSwipeMenuCreator(swipeMenuCreator)
 
         titleView.setOnMoreClickListener(
                 View.OnClickListener {
@@ -89,7 +94,7 @@ class ShopFragment : BaseFragment() {
     }
 
     private fun initData() {
-        mAdapter = MenuAdapter(mGoodsList, object : MenuAdapter.OnItemClickListener {
+        mAdapter = MenuAdapter((activity as MainActivity), mGoodsList, object : MenuAdapter.OnItemClickListener {
             override fun onItemClick(view: View) {
             }
 
@@ -100,20 +105,36 @@ class ShopFragment : BaseFragment() {
                     getPrice(mGoodsList)
                 }
             }
-        }, object : MenuAdapter.OnItemAmountChangedListener {
-            override fun onItemAmountChanged(view: View, amount: Int, index: Int) {
-                if (!isModifyMode) {
-                    if (amount == 0) {
-                        mGoodsList.removeAt(index)
-                        refresh()
-//                        (activity as MainActivity).showDialog("确定删除该件商品吗？", "", "删除", object : DialogInterface.OnClickListener {
-//                            override fun onClick(p0: DialogInterface?, p1: Int) {
-//
-//                            }
-//                        })
+        }, object : MenuAdapter.OnItemAmountClickListener {
+            override fun OnItemAmountAddClick(view: View, amount: Int, position: Int) {
+                if (isModifyMode) {
+                    ToastUtil.showToast("编辑模式不可加")
+                } else {
+                    var count = amount
+                    count++
+                    mGoodsList[position].isCheck = true
+                    mGoodsList[position].amount = count
+                    mAdapter.notifyDataSetChanged()
+                    getPrice(mGoodsList)
+                }
+            }
+
+            override fun OnItemAmountSubClick(view: View, amount: Int, position: Int) {
+                if (isModifyMode) {
+                    ToastUtil.showToast("编辑模式不可减")
+                } else {
+                    var count = amount
+                    if (count > 1) {
+                        count--
+                        mGoodsList[position].isCheck = true
+                        mGoodsList[position].amount = count
+                        mAdapter.notifyDataSetChanged()
                     } else {
-                        mGoodsList[index].amount = amount
-                        getPrice(mGoodsList)
+                        (activity as MainActivity).showDialog("确定删除该商品吗？", "", "确定", DialogInterface.OnClickListener { p0, p1 ->
+                            mGoodsList.removeAt(position)
+                            mAdapter.notifyDataSetChanged()
+                        })
+
                     }
                 }
             }
@@ -162,10 +183,6 @@ class ShopFragment : BaseFragment() {
             }
         }
 
-        gvGoods.onClick {
-            var intent = Intent(activity, GoodsDetailActivity::class.java)
-            startActivityForResult(intent, 0)
-        }
         btBuy.onClick {
             if (isModifyMode) {
                 mGoodsList
@@ -218,13 +235,25 @@ class ShopFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
                     override fun onNext(t: HotRecommendBean) {
                         super.onNext(t)
-                        setRecommendData(t.result.data)
+//                        setRecommendData(t.result.data)
                     }
                 })
     }
 
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
-        val recommendList = data.products
+        recommendRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        val recommedDatas = data.products
+        recommendRecyclerView.adapter = BaseRecyclerAdapter(R.layout.layout_view_goods, recommedDatas) { view: View, item: ProductBean ->
+            view.tvName.text = item.productname
+            view.tvPrice.text = item.cost
+            view.tvUnit.text = item.unit
+            ImageUtils.showImg(activity, item.img, view.ivGoods)
+            view.onClick {
+                var intent = Intent(activity, GoodsDetailActivity::class.java)
+                intent.putExtra("id", item.productid)
+                startActivity(intent)
+            }
+        }
     }
 
     /**
@@ -319,7 +348,7 @@ class ShopFragment : BaseFragment() {
             //回到购物车页面
             setDefaultAddress()
             if (isFirst) {
-                cbSelectAll.isChecked = true
+                cbSelectAll.isChecked = mGoodsList.size > 0
                 setShopData()
                 llTotalPrice.visibility = if (mGoodsList.size > 0) (View.VISIBLE) else (View.GONE)
                 for (i in 0 until mGoodsList.size) {
@@ -328,6 +357,8 @@ class ShopFragment : BaseFragment() {
                 getPrice(mGoodsList)
                 isFirst = false
             }
+            tvShopEmpty.visibility = if (mGoodsList.size == 0) (View.VISIBLE) else ((View.GONE))
+            mAdapter.notifyDataSetChanged()
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
