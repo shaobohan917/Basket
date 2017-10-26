@@ -89,7 +89,9 @@
         <activity android:name=".activity.AddressListActivity" />
         <activity android:name=".activity.OrderResultActivity" />
         <activity android:name=".activity.DecoderActivity" />
-        <activity android:name=".activity.SearchListActivity" />
+        <activity
+            android:name=".activity.SearchListActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity android:name=".activity.StreetSelectActivity" />
         <activity
             android:name=".activity.AddressMapsActivity"

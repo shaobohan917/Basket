@@ -36,9 +36,21 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
     private var cbListener = cbListener
     private var amountListener = amountListener
     var isModifyMode = false
+    private var mFooterView: View? = null
+    private val TYPE_NORMAL = 0
+    private val TYPE_FOOTER = 2
+
+    fun addFooterView(footer: View?) {
+        mFooterView = footer
+        notifyItemInserted(itemCount - 1)
+    }
 
     override fun getItemCount(): Int {
-        return mDatas.size
+        if (mFooterView == null) {
+            return mDatas.size
+        } else {
+            return mDatas.size + 1
+        }
     }
 
     override fun onCreateContentView(parent: ViewGroup, viewType: Int): View? {
@@ -50,6 +62,12 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
     }
 
     override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
+        if (getItemViewType(position) == TYPE_NORMAL) {
+
+        } else if (getItemViewType(position) == TYPE_FOOTER) {
+
+        }
+
         holder.itemView.tag = mDatas[position]
 
         val product = mDatas[position]
@@ -97,6 +115,10 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
     private fun checkStatus(holder: ViewHolder, position: Int) {
         //判断菜市是否可选
         val str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
@@ -121,7 +143,13 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         }
     }
 
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.onClick { listener.onItemClick(itemView) }
+        }
+
+
         var tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
         var tvName1 = itemView.findViewById<TextView>(R.id.tvName1)
         var tvUnit1 = itemView.findViewById<TextView>(R.id.tvUnit1)
@@ -131,9 +159,7 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         var cbSelect = itemView.findViewById<CheckBox>(R.id.cbSelect)
         var llShadow = itemView.findViewById<LinearLayout>(R.id.llShadow)
 
-        init {
-            itemView.onClick { listener.onItemClick(itemView) }
-        }
+
     }
 
     interface OnItemClickListener {

@@ -93,8 +93,6 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
         } else {
             return;
         }
-
-
     }
 
     @Override

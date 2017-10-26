@@ -21,10 +21,10 @@ import com.first.basket.bean.ProductBean
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_search_list.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import q.rorbin.badgeview.QBadgeView
 import java.util.*
 
 /**
@@ -38,6 +38,9 @@ class SearchListActivity : BaseActivity() {
     private lateinit var mPathMeasure: PathMeasure
     private val mCurrentPosition = FloatArray(2)
     private var mCount = 0
+    private lateinit var mProductsList: ArrayList<ProductBean>
+
+    private lateinit var badgeView: QBadgeView
 
     private lateinit var mContentAdapter: ContentAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +51,24 @@ class SearchListActivity : BaseActivity() {
         initListener()
     }
 
+    private fun initView() {
+        contentRecyclerView.layoutManager = LinearLayoutManager(this@SearchListActivity)
+        mContentAdapter = ContentAdapter(this@SearchListActivity, mContentDatas)
+        contentRecyclerView.adapter = mContentAdapter
+
+        badgeView = QBadgeView(this@SearchListActivity)
+    }
+
+    private fun initData() {
+        var search = intent.getStringExtra("search")
+        getProduct(search)
+
+        mProductsList = BaseApplication.getInstance().productsList
+        mCount = BaseApplication.getInstance().productsCount
+        badgeView.bindTarget(tvCount).badgeNumber = mCount
+    }
+
+
     private fun initListener() {
         mContentAdapter.setOnItemClickListener { view, data, position ->
             var intent = Intent(this@SearchListActivity, GoodsDetailActivity::class.java)
@@ -55,35 +76,21 @@ class SearchListActivity : BaseActivity() {
             startActivity(intent)
         }
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
-//            addGoodToCar(view.findViewById(R.id.ivGoods))
-//            data.isCheck = true
-//            data.amount++
-//            var goodsMap = BaseApplication.getInstance().mGoodsMap
-//            if (goodsMap.containsKey(data)) {
-//                goodsMap.put(data, goodsMap.getValue(data) + 1)
-//            } else {
-//                goodsMap.put(data, 1)
-//            }
-//            BaseApplication.getInstance().mGoodsMap = goodsMap
+            addGoodToCar(view.findViewById(R.id.ivGoods))
+            BaseApplication.getInstance().addProduct(data)
+            MainActivity.getInstance1().setCountAdd()
         }
 
         ivCar.onClick {
-
+            startActivity(Intent(this@SearchListActivity, MainActivity::class.java))
+            myFinish()
         }
 
-    }
+        ivBack.onClick {
+            myFinish()
+        }
 
-    private fun initView() {
-        contentRecyclerView.layoutManager = LinearLayoutManager(this@SearchListActivity)
-        mContentAdapter = ContentAdapter(this@SearchListActivity, mContentDatas)
-        contentRecyclerView.adapter = mContentAdapter
 
-    }
-
-    private fun initData() {
-        var search = intent.getStringExtra("search")
-        LogUtils.d("search:" + search)
-        getProduct(search)
     }
 
 
@@ -162,7 +169,8 @@ class SearchListActivity : BaseActivity() {
             override fun onAnimationEnd(p0: Animator?) {
                 // 购物车的数量加1
                 mCount++
-//                mCountTv.setText(String.valueOf(mCount))
+                tvCount.text = mCount.toString()
+                badgeView.bindTarget(tvCount).badgeNumber = mCount
                 // 把移动的图片imageview从父布局里移除
                 rlRoot.removeView(view)
 

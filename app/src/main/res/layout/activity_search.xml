@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,55 +12,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="最近搜索"
-            android:textColor="@color/gray99"
-            android:textSize="12sp" />
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="20dp">
 
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp">
-
-            <com.coding.tag_layouter.AutoLayoutContainer
-                android:id="@+id/alc_vertical_recent"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:dist_horizontal="12dp"
-                app:dist_vertical="12dp"
-                app:orientation="vertical" />
+                android:text="最近搜索"
+                android:textColor="@color/gray99"
+                android:textSize="12sp" />
 
-        </ScrollView>
+            <ImageView
+                android:id="@+id/ivEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_delete_search" />
+        </RelativeLayout>
+
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/flowLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="15dp"
+            zhy:max_select="-1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="20dp"
             android:text="猜你想要"
             android:textColor="@color/gray99"
             android:textSize="12sp" />
 
-        <ScrollView
-            android:layout_width="wrap_content"
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/flowLayout1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp">
-
-            <com.coding.tag_layouter.AutoLayoutContainer
-                android:id="@+id/alc_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:dist_horizontal="12dp"
-                app:dist_vertical="12dp"
-                app:orientation="vertical" />
-
-        </ScrollView>
+            android:paddingTop="15dp"
+            zhy:max_select="-1" />
     </LinearLayout>
 
 

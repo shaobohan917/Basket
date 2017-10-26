@@ -53,6 +53,7 @@ public class StaticValue {
     public static final String USER_ID = "user_id";
 
     public static final String SEARCH = "search";
+    public static final String SEARCH_COUNT = "search_count";
     public static final String GOODS_LIST = "goods_list";
 
     public static final String PROM_HUN = "prom_hun";

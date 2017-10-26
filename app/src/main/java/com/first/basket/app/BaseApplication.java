@@ -1,18 +1,14 @@
 package com.first.basket.app;
 
-import android.content.Context;
 import android.os.Handler;
 import android.support.multidex.MultiDexApplication;
 
 import com.first.basket.R;
 import com.first.basket.bean.ProductBean;
-import com.first.basket.bean.ProductsListBean;
 import com.first.basket.utils.SPUtil;
 import com.tencent.bugly.Bugly;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
  * Created by hanshaobo on 15/10/2017.

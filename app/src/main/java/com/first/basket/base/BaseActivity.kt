@@ -44,11 +44,6 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-//    fun myStartActivity(className: Class) {
-//        var intent = Intent(this, className)
-//        startActivity(intent)
-//    }
-
 
     fun showProgressDialog(message: String) {
         RxjavaUtil.doInUIThread(object : UITask<Any>() {
@@ -109,13 +104,12 @@ open class BaseActivity : AppCompatActivity() {
         dialog.setTitle(title)
         dialog.setMessage(content)
         dialog.setPositiveButton(positive, listener)
-        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                p0?.dismiss()
-            }
-
-        })
+        dialog.setNegativeButton("取消") { p0, p1 -> p0?.dismiss() }
         dialog.show()
+    }
+
+    fun showDialog(title: String, listener: DialogInterface.OnClickListener) {
+        showDialog(title, "", "确定", listener)
     }
 
 }
