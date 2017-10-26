@@ -26,7 +26,6 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.GsonBuilder
@@ -104,6 +103,13 @@ class ShopFragment : BaseFragment() {
                     mGoodsList[index].isCheck = b
                     getPrice(mGoodsList)
                 }
+                llTotalPrice.visibility = if (mGoodsList.any { it.isCheck }) (View.VISIBLE) else (View.GONE)
+                if (mGoodsList.all { it.isCheck }) {
+                    cbSelectAll.isChecked = true
+                }
+                if (mGoodsList.all { !it.isCheck }) {
+                    cbSelectAll.isChecked = false
+                }
             }
         }, object : MenuAdapter.OnItemAmountClickListener {
             override fun OnItemAmountAddClick(view: View, amount: Int, position: Int) {
@@ -129,10 +135,12 @@ class ShopFragment : BaseFragment() {
                         mGoodsList[position].isCheck = true
                         mGoodsList[position].amount = count
                         mAdapter.notifyDataSetChanged()
+                        getPrice(mGoodsList)
                     } else {
                         (activity as MainActivity).showDialog("确定删除该商品吗？", "", "确定", DialogInterface.OnClickListener { p0, p1 ->
                             mGoodsList.removeAt(position)
                             mAdapter.notifyDataSetChanged()
+                            getPrice(mGoodsList)
                         })
 
                     }
@@ -167,13 +175,8 @@ class ShopFragment : BaseFragment() {
 
     }
 
-    private fun refresh() {
-        mAdapter.notifyDataSetChanged()
-    }
-
     fun initListener() {
         smRecyclerView.setSwipeMenuItemClickListener { closeable, adapterPosition, menuPosition, direction ->
-            LogUtils.d("onItemClick:" + adapterPosition)
             closeable.smoothCloseMenu()
 
             if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
@@ -190,39 +193,33 @@ class ShopFragment : BaseFragment() {
                         .forEach { mGoodsList.remove(it) }
                 mAdapter.notifyDataSetChanged()
             } else {
-                if (mGoodsList.size == 0) {
+                if (mGoodsList.any { it.isCheck }) {
+                    if (!CommonMethod.isLogin()) {
+                        (activity as MainActivity).showLogin()
+                        return@onClick
+                    }
+                    if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
+                        ToastUtil.showToast(activity.getString(R.string.add_address))
+                        return@onClick
+                    }
+                    var intent = Intent(activity, PlaceOrderActivity::class.java)
+                    intent.putExtra("price", tvTotalPrice.text)
+                    startActivity(intent)
+                } else {
                     ToastUtil.showToast(activity.getString(R.string.buy))
-                    return@onClick
                 }
-                if (!CommonMethod.isLogin()) {
-                    (activity as MainActivity).showLogin()
-                    return@onClick
-                }
-                if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
-                    ToastUtil.showToast(activity.getString(R.string.add_address))
-                    return@onClick
-                }
-                var intent = Intent(activity, PlaceOrderActivity::class.java)
-                intent.putExtra("price", tvTotalPrice.text)
-                startActivity(intent)
             }
         }
 
-        cbSelectAll.setOnCheckedChangeListener { compoundButton, b ->
-            LogUtils.d("b:" + b)
+        cbSelectAll.setOnCheckedChangeListener { _, b ->
+            for (productBean in mGoodsList) {
+                productBean.isCheck = b
+            }
+            mAdapter.notifyDataSetChanged()
             if (b) {
-                for (i in 0 until mGoodsList.size) {
-                    mGoodsList[i].isCheck = true
-                }
-                mAdapter.notifyDataSetChanged()
                 getPrice(mGoodsList)
             } else {
-                for (i in 0 until mGoodsList.size) {
-                    mGoodsList[i].isCheck = false
-                }
-                mAdapter.notifyDataSetChanged()
                 llTotalPrice.visibility = View.GONE
-
             }
         }
 
@@ -329,7 +326,6 @@ class ShopFragment : BaseFragment() {
                         .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                             override fun onNext(t: HttpResult<PriceBean>) {
                                 super.onNext(t)
-                                LogUtils.d("jiage:" + t.result.data.totalcost)
                                 setPrice(t.result.data.totalcost)
                             }
                         })
@@ -348,8 +344,8 @@ class ShopFragment : BaseFragment() {
             //回到购物车页面
             setDefaultAddress()
             if (isFirst) {
-                cbSelectAll.isChecked = mGoodsList.size > 0
                 setShopData()
+                cbSelectAll.isChecked = mGoodsList.size > 0
                 llTotalPrice.visibility = if (mGoodsList.size > 0) (View.VISIBLE) else (View.GONE)
                 for (i in 0 until mGoodsList.size) {
                     mGoodsList[i].isCheck = true
@@ -369,8 +365,7 @@ class ShopFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        LogUtils.d("onResume")
-        setDefaultAddress()
+        onHiddenChanged(false)
     }
 
     private fun setShopData() {
