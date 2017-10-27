@@ -10,6 +10,7 @@
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:backBlack="false"
         app:titleBackground="@color/colorMain"
         app:titleColor="@color/white"
         app:titleText="注册" />

@@ -16,12 +16,14 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
     }
 
     override fun onError(e: Throwable) {
-//        ToastUtil.showToast(e.message)
-        LogUtils.d("ERROR:" + e.message.toString())
+        ToastUtil.showToast(e.message)
+//        LogUtils.d("ERROR:" + e.message.toString())
+        this.onCompleted()
     }
 
     override fun onNext(t: T) {
         this.t = t
+        this.onCompleted()
     }
 
 //    override fun onNext(tHttpResult: HttpResult<T>) {
@@ -31,13 +33,6 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
 //            this.t = tHttpResult.result
 //            _onError(tHttpResult.status, Throwable(tHttpResult.info), tHttpResult.result)
 //        }
-//    }
-
-//    fun onSuccess(){
-//        if(t.){
-//
-//        }
-//
 //    }
 }
 

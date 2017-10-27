@@ -11,6 +11,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
+import com.first.basket.utils.ImageUtils
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -23,13 +24,14 @@ class TitleView : FrameLayout {
     private var mTitleMoreText: String = ""
     private var mTitleColor: Int = 0
     private var mTitleBackgroundColor = 0
+    private var mIsShowBack: Boolean = true
+    private var mBackBlack = true
 
     private lateinit var tvTitle: TextView
     private lateinit var tvMore: TextView
     private lateinit var rlyt_title: RelativeLayout
     private lateinit var ivBack: ImageView
 
-    private var mIsShowBack: Boolean = true
 
     constructor(context: Context?) : this(context, null)
 
@@ -50,6 +52,8 @@ class TitleView : FrameLayout {
                     mTitleColor = typedArray.getColor(attr, context.resources.getColor(R.color.gray33))
                 R.styleable.TitleView_showBack ->
                     mIsShowBack = typedArray.getBoolean(attr, false)
+                R.styleable.TitleView_backBlack ->
+                    mBackBlack = typedArray.getBoolean(attr, false)
             }
         }
         typedArray.recycle()
@@ -68,6 +72,11 @@ class TitleView : FrameLayout {
         tvTitle.setTextColor(mTitleColor)
         rlyt_title.setBackgroundColor(mTitleBackgroundColor)
         ivBack.visibility = if (mIsShowBack) View.VISIBLE else View.GONE
+        ivBack.setImageResource(if (mBackBlack) {
+            R.mipmap.ic_back
+        } else {
+            R.mipmap.ic_back_white
+        })
         ivBack.onClick {
             (getContext() as BaseActivity).myFinish()
         }

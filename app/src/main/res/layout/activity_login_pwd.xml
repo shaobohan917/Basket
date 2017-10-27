@@ -1,72 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rlCodeView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <com.first.basket.view.TitleView
-        android:id="@+id/titleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleBackground="@color/colorMain"
-        app:titleColor="@color/white"
-        app:titleText="密码登录" />
-
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/llView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="手机号" />
-
-        <RelativeLayout
+        <com.first.basket.view.TitleView
+            app:backBlack="false"
+            android:id="@+id/titleView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:titleBackground="@color/colorMain"
+            app:titleColor="@color/white"
+            app:titleText="密码登录" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    style="@style/LoginInputStyle"
+                    android:background="@null"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="密码" />
 
             <EditText
-                android:id="@+id/etPhone"
+                android:id="@+id/etPassword"
                 style="@style/LoginInputStyle"
                 android:background="@null"
-                android:inputType="numberDecimal"
-                android:maxLength="11" />
-        </RelativeLayout>
+                android:inputType="textPassword"
+                android:maxLength="16" />
 
-        <include layout="@layout/layout_line" />
+            <include layout="@layout/layout_line" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="密码" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp" />
 
-        <EditText
-            android:id="@+id/etPassword"
-            style="@style/LoginInputStyle"
-            android:background="@null"
-            android:inputType="textPassword"
-            android:maxLength="16" />
-
-        <include layout="@layout/layout_line" />
-
-        <TextView
-            android:layout_marginBottom="60dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btLogin"
-            style="@style/ButtonStyle"
-            android:text="登录" />
+            <Button
+                android:id="@+id/btLogin"
+                style="@style/ButtonStyle"
+                android:text="登录" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadingView"
+        style="@style/SpinKitView.Large.CubeGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/green" />
+</RelativeLayout>

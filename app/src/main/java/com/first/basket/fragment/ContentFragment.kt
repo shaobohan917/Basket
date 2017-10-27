@@ -95,18 +95,18 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             if (CommonMethod.isTrue(data.promboolean)) {
                 if ("荤".equals(data.promdata.promproducttype) && !SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
-                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods),rlRoot,ivCar,null)
+                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
                     addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_HUN, true)
                 } else if ("素".equals(data.promdata.promproducttype) && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
-                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods),rlRoot,ivCar,null)
+                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
                     addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_SU, true)
                 } else {
                     ToastUtil.showToast("特惠商品荤素各只可添加一件")
                 }
             } else {
-                CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods),rlRoot,ivCar,null)
+                CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
                 addData(data)
             }
         }
@@ -118,11 +118,11 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
     }
 
 
-
     /**
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
+        activity.showLoading()
         HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId, "", "")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyContentBean>>() {
@@ -135,7 +135,11 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
                             mContentDatas.add(dataBean[i])
                         }
                         mContentAdapter.notifyDataSetChanged()
-                        activity.hideProgress()
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        activity.hideLoading()
                     }
                 })
     }
@@ -185,7 +189,11 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
                     override fun onNext(t: HotRecommendBean) {
                         super.onNext(t)
                         setRecommendData(t.result.data)
-                        activity.hideProgress()
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        activity.hideLoading()
                     }
                 })
     }

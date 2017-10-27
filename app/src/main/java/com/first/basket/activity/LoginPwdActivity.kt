@@ -16,30 +16,30 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.*
 import com.first.basket.view.TitleView
+import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.android.synthetic.main.activity_login_pwd.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
  * Created by hanshaobo on 15/10/2017.
  */
-class LoginPwdActivity : BaseActivity(), View.OnClickListener {
-    override fun onClick(p0: View?) {
-
-
-    }
+class LoginPwdActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_pwd)
         initData()
         initListener()
-
     }
 
     private fun initListener() {
-
         btLogin.onClick {
-            doLogin(etPhone.text.toString(), "", Md5Util.getMd5Value(etPassword.text.toString()))
+            CommonMethod.hideKeyboard(etPassword)
+            loadingView.visibility = View.VISIBLE
+            loadingView.setIndeterminateDrawable(DoubleBounce())
+            Handler().postDelayed({
+                doLogin(etPhone.text.toString(), "", Md5Util.getMd5Value(etPassword.text.toString()))
+            }, 2000)
         }
     }
 
@@ -55,7 +55,7 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        if(t.status==0){
+                        if (t.status == 0) {
                             LogUtils.d(t.result.data.phone)
                             ToastUtil.showToast(this@LoginPwdActivity, "登录成功")
                             SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
@@ -65,7 +65,7 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                             setResult(Activity.RESULT_OK)
                             CommonMethod.hideKeyboard(etPassword)
                             Handler().postDelayed({ finish() }, 1000)
-                        }else{
+                        } else {
                             ToastUtil.showToast(this@LoginPwdActivity, t.info)
                         }
                     }
@@ -73,6 +73,11 @@ class LoginPwdActivity : BaseActivity(), View.OnClickListener {
                     override fun onError(e: Throwable) {
                         super.onError(e)
                         ToastUtil.showToast(this@LoginPwdActivity, e.message.toString())
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        loadingView.visibility = View.GONE
                     }
                 })
     }

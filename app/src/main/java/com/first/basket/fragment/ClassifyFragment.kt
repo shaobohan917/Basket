@@ -73,6 +73,7 @@ class ClassifyFragment : BaseFragment() {
     }
 
     private fun getClassify(channel: Int, needRefresh: Boolean) {
+        (activity as MainActivity).showLoading()
         //获取商品分类
         HttpMethods.createService().getClassify("get_productclassification", channel.toString())
                 .compose(TransformUtils.defaultSchedulers())

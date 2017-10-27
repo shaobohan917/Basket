@@ -6,6 +6,7 @@
         <attr name="titleMoreText" format="string" />
         <attr name="titleColor" format="color" />
         <attr name="showBack" format="boolean" />
+        <attr name="backBlack" format="boolean" />
         <attr name="titleBackground" format="color" />
     </declare-styleable>
 
