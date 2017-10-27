@@ -1,6 +1,7 @@
 package com.first.basket.http
 
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.ToastUtil
 import rx.Subscriber
 
 /**
@@ -15,6 +16,7 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
     }
 
     override fun onError(e: Throwable) {
+//        ToastUtil.showToast(e.message)
         LogUtils.d("ERROR:" + e.message.toString())
     }
 

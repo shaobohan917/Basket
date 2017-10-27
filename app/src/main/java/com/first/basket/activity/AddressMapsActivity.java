@@ -73,7 +73,7 @@ public class AddressMapsActivity extends BaseActivity implements LocationSource,
     private LatLng latlng;
     private String city;
     private AMap aMap;
-    private String deepType = "商务住宅";// poi搜索类型 商务住宅
+    private String deepType = "";// poi搜索类型 商务住宅
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;
     private PoiResult poiResult; // poi返回的结果

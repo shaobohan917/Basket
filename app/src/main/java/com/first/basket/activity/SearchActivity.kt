@@ -1,5 +1,6 @@
 package com.first.basket.activity
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -99,8 +100,15 @@ class SearchActivity : BaseActivity() {
     private fun goSearchList(str: String) {
         var intent = Intent(this@SearchActivity, SearchListActivity::class.java)
         intent.putExtra("search", str)
-        myStartActivity(intent)
+        myStartActivityForResult(intent, REQUEST_SPE)
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (Activity.RESULT_OK == resultCode) {
+            myFinish()
+        }
     }
 
 

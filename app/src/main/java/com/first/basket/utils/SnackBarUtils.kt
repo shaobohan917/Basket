@@ -2,7 +2,6 @@ package com.first.basket.utils
 
 import android.content.Context
 import android.widget.Toast
-import com.first.basket.base.BaseActivity
 
 /**
  * Toast工具类
@@ -42,7 +41,7 @@ object ToastUtil {
         }
     }
 
-    fun showToast(text: String) {
+    fun showToast(text: String?) {
         if (mToast != null) {
             mToast!!.cancel()
         }

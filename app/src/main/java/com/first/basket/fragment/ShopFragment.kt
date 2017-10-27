@@ -73,6 +73,7 @@ class ShopFragment : BaseFragment() {
                         titleView.setMoreText("完成")
                     } else {
                         titleView.setMoreText("编辑")
+                        getPrice(mGoodsList)
                     }
                     setStatus(isModifyMode)
                 })
@@ -192,6 +193,7 @@ class ShopFragment : BaseFragment() {
                         .filter { it.isCheck }
                         .forEach { mGoodsList.remove(it) }
                 mAdapter.notifyDataSetChanged()
+
             } else {
                 if (mGoodsList.any { it.isCheck }) {
                     if (!CommonMethod.isLogin()) {
@@ -287,7 +289,9 @@ class ShopFragment : BaseFragment() {
 
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
         if (isModifyMode) return
-        if (mDatas.size > 0) {
+        if (mDatas.size == 0) {
+            setPrice(0f)
+        } else {
             //选择所有isCheck=true的
             var selectProductsList = ArrayList<ProductBean>()
             (0 until mDatas.size)
@@ -334,8 +338,15 @@ class ShopFragment : BaseFragment() {
     }
 
     private fun setPrice(totalcost: Float) {
-        llTotalPrice.visibility = View.VISIBLE
-        tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
+        if (totalcost == 0f) {
+            tvTotalPrice.text = ""
+            tvPostage.text = ""
+            llTotalPrice.visibility = View.GONE
+        } else {
+            tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
+            tvPostage.text = "免邮费"
+            llTotalPrice.visibility = View.VISIBLE
+        }
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

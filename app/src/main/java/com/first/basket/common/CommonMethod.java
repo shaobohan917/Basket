@@ -31,6 +31,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -622,6 +625,7 @@ public class CommonMethod {
     }
 
     public static boolean isTrue(String str) {
+        if (TextUtils.isEmpty(str)) return false;
         return str.toLowerCase().equals("y");
     }
 
@@ -630,7 +634,49 @@ public class CommonMethod {
         ToastUtil.INSTANCE.showToast("请登录");
     }
 
-    public static void replaceStreet(String street){
+    public static void replaceStreet(String street) {
 
     }
+
+    /*
+     * 判断给定字符串时间是否为今日
+     * @param sdate
+     * @return boolean
+     */
+    public static boolean isToday(String sdate) {
+        boolean b = false;
+        Date time = toDate(sdate);
+        Date today = new Date();
+        if (time != null) {
+            String nowDate = dateFormater2.get().format(today);
+            String timeDate = dateFormater2.get().format(time);
+            if (nowDate.equals(timeDate)) {
+                b = true;
+            }
+        }
+        return b;
+    }
+
+    public static Date toDate(String sdate) {
+        try {
+            return dateFormater.get().parse(sdate);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    private final static ThreadLocal<SimpleDateFormat> dateFormater = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
+
+    private final static ThreadLocal<SimpleDateFormat> dateFormater2 = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
+
 }

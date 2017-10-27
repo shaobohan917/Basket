@@ -21,8 +21,8 @@ android {
         applicationId "com.first.basket"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 11
-        versionName "0.1.1"
+        versionCode 12
+        versionName "0.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -129,10 +129,13 @@ dependencies {
 //    compile 'com.amap.api:3dmap:latest.integration'
     compile 'com.amap.api:location:3.6.1'
     compile 'com.amap.api:search:5.3.1'
-
+    //qrcode
     compile 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.2'
-
+    //tag
     compile 'com.hyman:flowlayout-lib:1.1.2'
+    //permission
+    compile 'com.yanzhenjie:permission:1.1.2'
+
 }
 
 repositories {

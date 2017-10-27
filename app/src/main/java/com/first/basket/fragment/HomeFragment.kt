@@ -1,9 +1,13 @@
 package com.first.basket.fragment
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -24,12 +28,19 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.ToastUtil
+import com.yanzhenjie.permission.AndPermission
+import com.yanzhenjie.permission.Permission
+import com.yanzhenjie.permission.PermissionListener
+import com.yanzhenjie.permission.PermissionYes
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.lang.Exception
+import java.lang.System.out
 
 
 /**
@@ -52,6 +63,7 @@ class HomeFragment : BaseFragment() {
         initView()
         initData()
         initListener()
+
     }
 
     private fun initView() {

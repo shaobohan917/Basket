@@ -1,10 +1,15 @@
 package com.first.basket.activity
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
+import android.os.SystemClock
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import android.view.KeyEvent
 import com.amap.api.location.AMapLocation
@@ -15,8 +20,10 @@ import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
@@ -24,6 +31,8 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
+import java.lang.Exception
+import java.util.*
 
 
 class MainActivity : BaseActivity(), AMapLocationListener {
@@ -56,6 +65,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         instance = this
         initView()
         initData()
+        LogUtils.d("today:" + CommonMethod.isToday(System.currentTimeMillis().toString()))
     }
 
     fun setCountAdd() {

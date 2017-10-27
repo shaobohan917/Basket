@@ -52,7 +52,7 @@
                     android:id="@+id/tvShopEmpty"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="@color/gray99"
+                    android:background="@color/grayF4"
                     android:gravity="center"
                     android:text="购物车空空的，什么也没有" />
             </RelativeLayout>
@@ -110,6 +110,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tvPostage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTotalPrice"

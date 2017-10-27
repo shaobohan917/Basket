@@ -1,16 +1,10 @@
 package com.first.basket.activity
 
-import android.animation.Animator
-import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.Intent
-import android.graphics.Path
-import android.graphics.PathMeasure
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import com.first.basket.R
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.app.BaseApplication
@@ -18,6 +12,7 @@ import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod1
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
@@ -33,12 +28,7 @@ import java.util.*
 class SearchListActivity : BaseActivity() {
 
     private var mContentDatas = ArrayList<ProductBean>()
-
-    //购物车
-    private lateinit var mPathMeasure: PathMeasure
-    private val mCurrentPosition = FloatArray(2)
     private var mCount = 0
-    private lateinit var mProductsList: ArrayList<ProductBean>
 
     private lateinit var badgeView: QBadgeView
 
@@ -57,13 +47,12 @@ class SearchListActivity : BaseActivity() {
         contentRecyclerView.adapter = mContentAdapter
 
         badgeView = QBadgeView(this@SearchListActivity)
+        showProgressDialog()
     }
 
     private fun initData() {
         var search = intent.getStringExtra("search")
         getProduct(search)
-
-        mProductsList = BaseApplication.getInstance().productsList
         mCount = BaseApplication.getInstance().productsCount
         badgeView.bindTarget(tvCount).badgeNumber = mCount
     }
@@ -76,13 +65,21 @@ class SearchListActivity : BaseActivity() {
             startActivity(intent)
         }
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
-            addGoodToCar(view.findViewById(R.id.ivGoods))
+            var ivGoods = view.findViewById<ImageView>(R.id.ivGoods)
+            CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                override fun onAdd() {
+                    mCount++
+                    tvCount.text = mCount.toString()
+                    badgeView.bindTarget(tvCount).badgeNumber = mCount
+                }
+            })
             BaseApplication.getInstance().addProduct(data)
             MainActivity.getInstance1().setCountAdd()
         }
 
         ivCar.onClick {
-            startActivity(Intent(this@SearchListActivity, MainActivity::class.java))
+            setResult(Activity.RESULT_OK)
+            MainActivity.getInstance1().setCurrentPage(3)
             myFinish()
         }
 
@@ -114,82 +111,11 @@ class SearchListActivity : BaseActivity() {
                             ToastUtil.showToast("暂无搜索结果")
                         }
                     }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        hideProgress()
+                    }
                 })
-    }
-
-    /**
-     * 将商品添加到购物车
-     */
-    private fun addGoodToCar(imageView: ImageView) {
-
-        var view = ImageView(this@SearchListActivity)
-        view.setImageDrawable(imageView.drawable)
-        var layoutParams = RelativeLayout.LayoutParams(100, 100)
-
-        rlRoot.addView(view, layoutParams)
-
-        val parentLoc = IntArray(2)
-        rlRoot.getLocationInWindow(parentLoc)
-
-        var startLoc = IntArray(2)
-        imageView.getLocationInWindow(startLoc)
-
-        var endLoc = IntArray(2)
-        ivCar.getLocationInWindow(endLoc)
-
-
-        val startX = startLoc[0] - parentLoc[0] + imageView.width / 2
-        val startY = startLoc[1] - parentLoc[1] + imageView.height / 2
-
-        //商品掉落后的终点坐标：购物车起始点-父布局起始点+购物车图片的1/5
-        val toX = endLoc[0] - parentLoc[0] + ivCar.getWidth() / 5
-        val toY = endLoc[1] - parentLoc[1]
-
-        //开始绘制贝塞尔曲线
-        val path = Path()
-        path.moveTo(startX.toFloat(), startY.toFloat())
-        //使用二次萨贝尔曲线：注意第一个起始坐标越大，贝塞尔曲线的横向距离就会越大，一般按照下面的式子取即可
-        path.quadTo(((startX + toX) / 2).toFloat(), startY.toFloat(), toX.toFloat(), toY.toFloat())
-        mPathMeasure = PathMeasure(path, false)
-
-        //属性动画
-        val valueAnimator = ValueAnimator.ofFloat(0F, mPathMeasure.getLength())
-        valueAnimator.duration = 1000
-        valueAnimator.interpolator = LinearInterpolator()
-
-        valueAnimator.addUpdateListener { animation ->
-            val value = animation.getAnimatedValue() as Float
-            mPathMeasure.getPosTan(value, mCurrentPosition, null)
-            view.translationX = mCurrentPosition[0]
-            view.translationY = mCurrentPosition[1]
-        }
-
-        valueAnimator.addListener(object : Animator.AnimatorListener {
-
-            override fun onAnimationEnd(p0: Animator?) {
-                // 购物车的数量加1
-                mCount++
-                tvCount.text = mCount.toString()
-                badgeView.bindTarget(tvCount).badgeNumber = mCount
-                // 把移动的图片imageview从父布局里移除
-                rlRoot.removeView(view)
-
-                //shopImg 开始一个放大动画
-                val scaleAnim = AnimationUtils.loadAnimation(this@SearchListActivity, R.anim.shop_car_scale)
-                ivCar.startAnimation(scaleAnim)
-
-            }
-
-            override fun onAnimationRepeat(p0: Animator?) {
-            }
-
-            override fun onAnimationCancel(p0: Animator?) {
-            }
-
-            override fun onAnimationStart(p0: Animator?) {
-            }
-        })
-
-        valueAnimator.start()
     }
 }
