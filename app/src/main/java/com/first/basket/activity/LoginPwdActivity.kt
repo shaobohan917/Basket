@@ -37,7 +37,7 @@ class LoginPwdActivity : BaseActivity() {
     private fun initListener() {
         btLogin.onClick {
             CommonMethod.hideKeyboard(etPassword)
-            CommonMethod1.showLoading(loadingView)
+            showLoading(loadingView)
             Handler().postDelayed({
                 doLogin(etPhone.text.toString(), "", Md5Util.getMd5Value(etPassword.text.toString()))
             }, 2000)
@@ -72,7 +72,7 @@ class LoginPwdActivity : BaseActivity() {
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        CommonMethod1.showLoading(loadingView)
+                        showLoading(loadingView)
                     }
                 })
     }

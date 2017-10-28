@@ -11,7 +11,6 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
-import com.first.basket.utils.ImageUtils
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
@@ -84,6 +83,7 @@ class TitleView : FrameLayout {
             tvMore.visibility = View.VISIBLE
             tvMore.text = mTitleMoreText
         }
+        postInvalidate()
     }
 
     fun setOnMoreClickListener(listener: OnClickListener) {
@@ -94,9 +94,10 @@ class TitleView : FrameLayout {
         tvMore.text = text
     }
 
-    fun setTitle(string: String) {
-        if (!TextUtils.isEmpty(string)) {
-            tvTitle.text = string
+    fun setTitle(text: String) {
+        if (!TextUtils.isEmpty(text)) {
+            tvTitle.text = text
+            postInvalidate()
         }
     }
 }

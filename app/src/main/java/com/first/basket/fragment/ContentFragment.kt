@@ -124,8 +124,8 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
-        loadingView.visibility = View.VISIBLE
-        loadingView.setIndeterminateDrawable(DoubleBounce())
+//        loadingView.visibility = View.VISIBLE
+//        loadingView.setIndeterminateDrawable(DoubleBounce())
         HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId, "", "")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyContentBean>>() {
@@ -142,7 +142,7 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        loadingView.visibility = View.GONE
+//                        loadingView.visibility = View.GONE
                     }
                 })
     }
@@ -185,6 +185,8 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
 
     fun getHotRecommend(activity: MainActivity) {
+//        loadingView.visibility = View.VISIBLE
+//        loadingView.setIndeterminateDrawable(DoubleBounce())
         HttpMethods.createService()
                 .getHotRecommend("get_hotrecommend", activity.mChannel.toString())
                 .compose(TransformUtils.defaultSchedulers())
@@ -196,7 +198,6 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        loadingView.visibility = View.GONE
                     }
                 })
     }

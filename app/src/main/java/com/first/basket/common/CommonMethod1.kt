@@ -99,28 +99,5 @@ class CommonMethod1 {
         interface OnAddListener {
             fun onAdd()
         }
-
-
-        fun showLoading(loadingView: SpinKitView) {
-            loadingView.visibility = View.VISIBLE
-            loadingView.setIndeterminateDrawable(DoubleBounce())
-        }
-
-        fun hideLoading(loadingView: SpinKitView) {
-            loadingView.setIndeterminateDrawable(null)
-            loadingView.visibility = View.GONE
-        }
-
-        fun showLoading(activity: BaseActivity, loadingView: SpinKitView) {
-            activity.loadingView.visibility = View.VISIBLE
-            activity.loadingView.setIndeterminateDrawable(DoubleBounce())
-        }
-
-        fun hideLoading(activity: BaseActivity, loadingView: SpinKitView) {
-            activity.loadingView.setIndeterminateDrawable(null)
-            activity.loadingView.visibility = View.GONE
-        }
     }
-
-
 }

@@ -8,10 +8,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.first.basket.rxjava.RxjavaUtil
 import com.first.basket.rxjava.UITask
+import com.github.ybq.android.spinkit.SpinKitView
+import com.github.ybq.android.spinkit.style.DoubleBounce
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -118,4 +121,12 @@ open class BaseActivity : AppCompatActivity() {
         showDialog(title, "", "确定", listener)
     }
 
+    fun showLoading(loadingView: SpinKitView) {
+        loadingView.visibility = View.VISIBLE
+        loadingView.setIndeterminateDrawable(DoubleBounce())
+    }
+
+    fun hideLoading(loadingView: SpinKitView) {
+        loadingView.visibility = View.GONE
+    }
 }

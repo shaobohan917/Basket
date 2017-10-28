@@ -3,6 +3,7 @@ package com.first.basket.fragment
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,10 @@ import com.first.basket.bean.ClassifyBean
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_classify.*
 import kotlinx.android.synthetic.main.item_et_search.*
+import java.lang.Exception
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -73,7 +76,6 @@ class ClassifyFragment : BaseFragment() {
     }
 
     private fun getClassify(channel: Int, needRefresh: Boolean) {
-//        (activity as MainActivity).showLoading()
         //获取商品分类
         HttpMethods.createService().getClassify("get_productclassification", channel.toString())
                 .compose(TransformUtils.defaultSchedulers())
@@ -86,8 +88,15 @@ class ClassifyFragment : BaseFragment() {
                             refreshContent(0)
 
                             classifyRecyclerView.smoothScrollToPosition(0)
-                            var holder = classifyRecyclerView.getChildViewHolder(classifyRecyclerView.getChildAt(0)) as ClassifyAdapter.MyViewHolder
-                            holder.itemView.performClick()
+                            Handler().postDelayed({
+                                try {
+                                    var holder = classifyRecyclerView.getChildViewHolder(classifyRecyclerView.getChildAt(0)) as ClassifyAdapter.MyViewHolder
+                                    holder.itemView.performClick()
+                                } catch (e: Exception) {
+                                    LogUtils.d("捕获：" + e.message)
+                                }
+                            }, 300)
+
                         }
                     }
                 })
@@ -149,7 +158,6 @@ class ClassifyFragment : BaseFragment() {
 
             if (preType != type) {
                 //切换菜市，重新加载
-//                (activity as MainActivity).showLoading()
 
                 Handler().postDelayed({
                     getClassify(type, true)

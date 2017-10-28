@@ -65,16 +65,16 @@
 
                 <TextView
                     android:id="@+id/tvProm"
-                    android:visibility="gone"
-                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:background="#FF6C6C"
                     android:padding="4dp"
                     android:text="每周特惠"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -126,4 +126,7 @@
             style="@style/ButtonStyle"
             android:text="加入购物车" />
     </LinearLayout>
+
+    <include
+        layout="@layout/layout_loading" />
 </RelativeLayout>

@@ -3,14 +3,12 @@ package com.first.basket.activity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.view.animation.AnimationUtils
 import butterknife.ButterKnife
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
-import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.CommonMethod1
 import com.first.basket.constants.Constants
@@ -19,9 +17,11 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.github.ybq.android.spinkit.SpinKitView
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.layout_loading.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import q.rorbin.badgeview.QBadgeView
 import java.util.*
@@ -82,6 +82,7 @@ class GoodsDetailActivity : BaseActivity() {
     }
 
     private fun getProductDetail(id: String?, ocr: String?) {
+        showLoading(loadingView)
         HttpMethods.createService().getDetail("get_productdetailpage", id, ocr)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<GoodsDetailBean>>() {
@@ -90,6 +91,11 @@ class GoodsDetailActivity : BaseActivity() {
                         if (t.status == 0) {
                             setData(t.result.data)
                         }
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        hideLoading(loadingView)
                     }
                 })
     }

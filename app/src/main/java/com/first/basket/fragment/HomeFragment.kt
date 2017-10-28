@@ -3,6 +3,7 @@ package com.first.basket.fragment
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.GlideApp
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -100,10 +102,10 @@ class HomeFragment : BaseFragment() {
         }
 
         sqcs.setOnClickListener(myClickListener)
-        qgcs.setOnClickListener(myClickListener)
+        axwx.setOnClickListener(myClickListener)
         shcs.setOnClickListener(myClickListener)
         hltg.setOnClickListener(myClickListener)
-        jkss.setOnClickListener(myClickListener)
+        ybbl.setOnClickListener(myClickListener)
     }
 
     inner class MyClickListener : View.OnClickListener {
@@ -113,18 +115,23 @@ class HomeFragment : BaseFragment() {
                     goClassify(1)
                 }
                 R.id.shcs, R.id.ivSHCS -> goClassify(2)
-                R.id.qgcs, R.id.ivQGCS -> goClassify(3)
                 R.id.hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
-//                    intent.putExtra("url", recommendData?.hltg?.url)
                     intent.putExtra("title", "欢乐团购")
+                    intent.putExtra("url", recommendData?.hltg?.url)
                     startActivity(intent)
                 }
-                R.id.jkss, R.id.ivJKSS -> {
-                    val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData?.jkss?.url)
-                    intent.putExtra("title", "健康膳食")
-                    startActivity(intent)
+                R.id.axwx, R.id.ivJKSS -> {
+//                    val intent = Intent(activity, WebViewActivity::class.java)
+//                    intent.putExtra("url", recommendData?.jkss?.url)
+//                    intent.putExtra("title", "爱心无限")
+//                    startActivity(intent)
+                }
+                R.id.ybbl->{
+//                    val intent = Intent(activity, WebViewActivity::class.java)
+//                    intent.putExtra("url", recommendData?.jkss?.url)
+//                    intent.putExtra("title", "医保伴侣")
+//                    startActivity(intent)
                 }
             }
         }
@@ -147,7 +154,7 @@ class HomeFragment : BaseFragment() {
 
     class GlideImageLoader : ImageLoader() {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-            Glide.with(context).load(path).into(imageView)
+            ImageUtils.showImg(context, path.toString(),imageView)
         }
     }
 

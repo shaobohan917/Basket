@@ -27,7 +27,8 @@ class WebViewActivity : BaseActivity() {
     private fun initData() {
         url = intent.getStringExtra("url")
         if (TextUtils.isEmpty(url)) myFinish()
-        titleView.setTitle(intent.getStringExtra("title"))
+        val title = intent.getStringExtra("title")
+        titleView.setTitle(title+"test")
 
         var webSettings = webview.settings
 
@@ -39,7 +40,7 @@ class WebViewActivity : BaseActivity() {
                 if (newProgress == 100) {
                     pb.visibility = View.INVISIBLE;
                 } else {
-                    if (View.INVISIBLE == pb.getVisibility()) {
+                    if (View.INVISIBLE == pb.visibility) {
                         pb.visibility = View.VISIBLE;
                     }
                     pb.progress = newProgress;

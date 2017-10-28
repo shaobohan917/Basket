@@ -19,9 +19,9 @@ public class ImageUtils {
         if (!url.startsWith(Constants.Companion.getBASE_IMG_URL())) {
             url = Constants.Companion.getBASE_IMG_URL() + url;
         }
-//        LogUtils.Companion.d("url:" + url);
         GlideApp.with(context)
                 .load(url)
+                .fitCenter()
                 .placeholder(R.mipmap.ic_placeholder)
                 .error(R.mipmap.ic_placeholder)
                 .into(ivImg);

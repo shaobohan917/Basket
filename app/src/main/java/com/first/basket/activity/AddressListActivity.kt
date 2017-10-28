@@ -93,7 +93,7 @@ class AddressListActivity : BaseActivity() {
     }
 
     private fun getAddressList() {
-        CommonMethod1.showLoading(loadingView)
+        showLoading(loadingView)
         HttpMethods.createService()
                 .getAddressList("get_useraddress", SPUtil.getString(StaticValue.USER_ID, ""))
                 .compose(TransformUtils.defaultSchedulers())
@@ -111,7 +111,7 @@ class AddressListActivity : BaseActivity() {
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        CommonMethod1.hideLoading(loadingView)
+                        hideLoading(loadingView)
                     }
                 })
     }

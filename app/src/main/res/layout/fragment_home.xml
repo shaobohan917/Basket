@@ -114,6 +114,52 @@
                         android:text="社区菜市" />
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:id="@+id/axwx"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_axwx" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="爱心无限" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ybbl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_ybbl" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="医保伴侣" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/shcs"
                     android:layout_width="0dp"
@@ -133,29 +179,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
-                        android:text="上海菜市" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/qgcs"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_home_qgcs" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="全国菜市" />
+                        android:text="1号菜市" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -178,28 +202,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:text="欢乐团购" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/jkss"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_home_jkss" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="健康膳食" />
                 </LinearLayout>
             </LinearLayout>
 
