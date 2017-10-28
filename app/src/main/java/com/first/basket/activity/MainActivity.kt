@@ -1,15 +1,9 @@
 package com.first.basket.activity
 
-import android.Manifest
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
-import android.os.SystemClock
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
@@ -33,8 +27,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
+import kotlinx.android.synthetic.main.layout_loading.*
 import java.util.*
 
 
@@ -56,11 +49,10 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     private var shopFragment = ShopFragment()
     private var mineFragment = MineFragment()
 
-    lateinit var nearby: BottomBarTab
-
+    private lateinit var nearby: BottomBarTab
+    private lateinit var mLocationClient: AMapLocationClient
     var mChannel: Int = 1   //菜市，默认为社区菜市
-
-    var mCount = 0
+    private var mCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,7 +160,6 @@ class MainActivity : BaseActivity(), AMapLocationListener {
                 SPUtil.setString(StaticValue.GOODS_LIST, str)
             } else {
                 //保存购物车数据
-//                ProductDao.getInstance(this@MainActivity).insertOrUpdateItem()
                 finish()
             }
             return true
@@ -177,8 +168,6 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
     }
 
-
-    lateinit var mLocationClient: AMapLocationClient
     private fun location() {
         mLocationClient = AMapLocationClient(applicationContext)
         mLocationClient.setLocationListener(this)
@@ -233,25 +222,10 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
     fun showLogin() {
-        var dialog = AlertDialog.Builder(this@MainActivity)
-        dialog.setTitle("提示")
-        dialog.setMessage("您尚未登录，请先登录")
-        dialog.setPositiveButton("去登录", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                myStartActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            }
-
-        })
-        dialog.setNegativeButton("取消", object : DialogInterface.OnClickListener {
-            override fun onClick(p0: DialogInterface?, p1: Int) {
-                p0?.dismiss()
-            }
-
-        })
-        dialog.show()
+        showDialog("提示", "您尚未登录，请先登录", "去登录", DialogInterface.OnClickListener { p0, p1 -> myStartActivity(Intent(this@MainActivity, LoginActivity::class.java)) })
     }
 
-    fun showLoading() {106
+    fun showLoading() {
         loadingView.visibility = View.VISIBLE
         loadingView.setIndeterminateDrawable(DoubleBounce())
     }

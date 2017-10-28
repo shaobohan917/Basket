@@ -73,7 +73,7 @@ class ClassifyFragment : BaseFragment() {
     }
 
     private fun getClassify(channel: Int, needRefresh: Boolean) {
-        (activity as MainActivity).showLoading()
+//        (activity as MainActivity).showLoading()
         //获取商品分类
         HttpMethods.createService().getClassify("get_productclassification", channel.toString())
                 .compose(TransformUtils.defaultSchedulers())
@@ -149,7 +149,7 @@ class ClassifyFragment : BaseFragment() {
 
             if (preType != type) {
                 //切换菜市，重新加载
-                (activity as MainActivity).showProgressDialog()
+//                (activity as MainActivity).showLoading()
 
                 Handler().postDelayed({
                     getClassify(type, true)

@@ -62,20 +62,20 @@ open class BaseActivity : AppCompatActivity() {
         })
     }
 
-    fun showProgressDialog() {
-        showProgressDialog("加载中...")
-    }
-
-
-    fun hideProgress() {
-        RxjavaUtil.doInUIThread(object : UITask<Any>() {
-            override fun doInUIThread() {
-                if (mProgressDialog.isShowing) {
-                    mProgressDialog.hide()
-                }
-            }
-        })
-    }
+//    fun showProgressDialog() {
+//        showProgressDialog("加载中...")
+//    }
+//
+//
+//    fun hideProgress() {
+//        RxjavaUtil.doInUIThread(object : UITask<Any>() {
+//            override fun doInUIThread() {
+//                if (mProgressDialog.isShowing) {
+//                    mProgressDialog.hide()
+//                }
+//            }
+//        })
+//    }
 
     fun myStartActivity(cls: Class<*>, needFinish: Boolean) {
         val intent = Intent(this, cls)

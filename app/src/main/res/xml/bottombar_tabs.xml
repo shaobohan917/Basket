@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
+        barSizeWhenelected="50sp"
         icon="@drawable/tab_icon_home"
         id="@+id/tab_home"
         title="首页" />

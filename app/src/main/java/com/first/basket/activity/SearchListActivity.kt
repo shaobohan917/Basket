@@ -47,7 +47,6 @@ class SearchListActivity : BaseActivity() {
         contentRecyclerView.adapter = mContentAdapter
 
         badgeView = QBadgeView(this@SearchListActivity)
-        showProgressDialog()
     }
 
     private fun initData() {
@@ -110,11 +109,6 @@ class SearchListActivity : BaseActivity() {
                         } else {
                             ToastUtil.showToast("暂无搜索结果")
                         }
-                    }
-
-                    override fun onCompleted() {
-                        super.onCompleted()
-                        hideProgress()
                     }
                 })
     }

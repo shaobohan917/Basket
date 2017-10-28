@@ -106,4 +106,14 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="BB_BottomBarItem_TitleStyle1">
+        <!-- Material spec: "Avoid long text labels as these labels do not truncate or wrap." -->
+        <!--<item name="android:textSize">10sp</item>-->
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
 </resources>

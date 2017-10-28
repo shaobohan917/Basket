@@ -17,21 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:id="@+id/loadingView"
-            style="@style/SpinKitView.Large.CubeGrid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            app:SpinKit_Color="@color/green" />
+        <include layout="@layout/layout_loading" />
     </RelativeLayout>
 
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="60dp"
         android:layout_weight="0"
-        app:bb_tabXmlResource="@xml/bottombar_tabs" />
+        android:gravity="bottom"
+        app:bb_badgesHideWhenActive="false"
+        app:bb_showShadow="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:bb_titleTextAppearance="@style/BB_BottomBarItem_TitleStyle1" />
 </LinearLayout>

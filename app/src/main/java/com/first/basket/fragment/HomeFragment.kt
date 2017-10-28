@@ -11,7 +11,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.first.basket.R
-import com.first.basket.activity.*
+import com.first.basket.activity.AddressListActivity
+import com.first.basket.activity.MainActivity
+import com.first.basket.activity.SearchActivity
+import com.first.basket.activity.WebViewActivity
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
@@ -93,7 +96,7 @@ class HomeFragment : BaseFragment() {
         }
 
         ivScan.onClick {
-            startActivity(Intent(activity, DecoderActivity::class.java))
+            //            startActivity(Intent(activity, DecoderActivity::class.java))
         }
 
         sqcs.setOnClickListener(myClickListener)

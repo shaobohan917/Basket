@@ -29,7 +29,9 @@ import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
+import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.android.synthetic.main.fragment_content.*
+import kotlinx.android.synthetic.main.layout_loading.*
 import java.util.*
 
 @SuppressLint("ValidFragment")
@@ -122,7 +124,8 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
-        activity.showLoading()
+        loadingView.visibility = View.VISIBLE
+        loadingView.setIndeterminateDrawable(DoubleBounce())
         HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId, "", "")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyContentBean>>() {
@@ -139,7 +142,7 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        activity.hideLoading()
+                        loadingView.visibility = View.GONE
                     }
                 })
     }
@@ -193,7 +196,7 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        activity.hideLoading()
+                        loadingView.visibility = View.GONE
                     }
                 })
     }

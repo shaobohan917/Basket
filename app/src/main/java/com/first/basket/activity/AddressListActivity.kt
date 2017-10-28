@@ -1,7 +1,6 @@
 package com.first.basket.activity
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +14,7 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.AddressListBean
 import com.first.basket.bean.CodeBean
+import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -24,6 +24,7 @@ import com.google.gson.Gson
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
 import kotlinx.android.synthetic.main.activity_address_list.*
+import kotlinx.android.synthetic.main.layout_loading.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 
@@ -40,13 +41,6 @@ class AddressListActivity : BaseActivity() {
         initData()
         initView()
         initListener()
-    }
-
-    private fun initListener() {
-
-        btAdd.onClick {
-            myStartActivityForResult(Intent(this@AddressListActivity, AddressAddActivity::class.java), REQUEST_ONE)
-        }
     }
 
     private fun initData() {
@@ -99,6 +93,7 @@ class AddressListActivity : BaseActivity() {
     }
 
     private fun getAddressList() {
+        CommonMethod1.showLoading(loadingView)
         HttpMethods.createService()
                 .getAddressList("get_useraddress", SPUtil.getString(StaticValue.USER_ID, ""))
                 .compose(TransformUtils.defaultSchedulers())
@@ -112,6 +107,11 @@ class AddressListActivity : BaseActivity() {
                             mAdapter.notifyDataSetChanged()
                             SPUtil.setString(StaticValue.DEFAULT_ADDRESS, "")
                         }
+                    }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        CommonMethod1.hideLoading(loadingView)
                     }
                 })
     }
@@ -129,6 +129,13 @@ class AddressListActivity : BaseActivity() {
         smRecyclerView.isItemViewSwipeEnabled = false
 
         smRecyclerView.adapter = mAdapter
+    }
+
+    private fun initListener() {
+
+        btAdd.onClick {
+            myStartActivityForResult(Intent(this@AddressListActivity, AddressAddActivity::class.java), REQUEST_ONE)
+        }
     }
 
     private fun deleteAddress(position: Int) {

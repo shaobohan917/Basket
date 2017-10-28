@@ -11,10 +11,10 @@
         android:orientation="vertical">
 
         <com.first.basket.view.TitleView
-            app:backBlack="false"
             android:id="@+id/titleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:backBlack="false"
             app:titleBackground="@color/colorMain"
             app:titleColor="@color/white"
             app:titleText="密码登录" />
@@ -76,12 +76,5 @@
     </LinearLayout>
 
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/loadingView"
-        style="@style/SpinKitView.Large.CubeGrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        app:SpinKit_Color="@color/green" />
+    <include layout="@layout/layout_loading" />
 </RelativeLayout>

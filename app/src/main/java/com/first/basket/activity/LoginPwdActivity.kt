@@ -10,6 +10,7 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.CodeBean
 import com.first.basket.bean.LoginBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -18,6 +19,7 @@ import com.first.basket.utils.*
 import com.first.basket.view.TitleView
 import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.android.synthetic.main.activity_login_pwd.*
+import kotlinx.android.synthetic.main.layout_loading.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
@@ -35,8 +37,7 @@ class LoginPwdActivity : BaseActivity() {
     private fun initListener() {
         btLogin.onClick {
             CommonMethod.hideKeyboard(etPassword)
-            loadingView.visibility = View.VISIBLE
-            loadingView.setIndeterminateDrawable(DoubleBounce())
+            CommonMethod1.showLoading(loadingView)
             Handler().postDelayed({
                 doLogin(etPhone.text.toString(), "", Md5Util.getMd5Value(etPassword.text.toString()))
             }, 2000)
@@ -64,20 +65,14 @@ class LoginPwdActivity : BaseActivity() {
                             SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
                             setResult(Activity.RESULT_OK)
                             CommonMethod.hideKeyboard(etPassword)
-                            Handler().postDelayed({ finish() }, 1000)
                         } else {
                             ToastUtil.showToast(this@LoginPwdActivity, t.info)
                         }
                     }
 
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                        ToastUtil.showToast(this@LoginPwdActivity, e.message.toString())
-                    }
-
                     override fun onCompleted() {
                         super.onCompleted()
-                        loadingView.visibility = View.GONE
+                        CommonMethod1.showLoading(loadingView)
                     }
                 })
     }

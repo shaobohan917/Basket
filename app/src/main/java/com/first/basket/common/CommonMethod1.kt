@@ -4,13 +4,18 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.graphics.Path
 import android.graphics.PathMeasure
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.first.basket.R
+import com.first.basket.base.BaseActivity
 import com.first.basket.utils.UIUtils
+import com.github.ybq.android.spinkit.SpinKitView
+import com.github.ybq.android.spinkit.style.DoubleBounce
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.layout_loading.*
 
 /**
  * Created by hanshaobo on 26/10/2017.
@@ -94,5 +99,28 @@ class CommonMethod1 {
         interface OnAddListener {
             fun onAdd()
         }
+
+
+        fun showLoading(loadingView: SpinKitView) {
+            loadingView.visibility = View.VISIBLE
+            loadingView.setIndeterminateDrawable(DoubleBounce())
+        }
+
+        fun hideLoading(loadingView: SpinKitView) {
+            loadingView.setIndeterminateDrawable(null)
+            loadingView.visibility = View.GONE
+        }
+
+        fun showLoading(activity: BaseActivity, loadingView: SpinKitView) {
+            activity.loadingView.visibility = View.VISIBLE
+            activity.loadingView.setIndeterminateDrawable(DoubleBounce())
+        }
+
+        fun hideLoading(activity: BaseActivity, loadingView: SpinKitView) {
+            activity.loadingView.setIndeterminateDrawable(null)
+            activity.loadingView.visibility = View.GONE
+        }
     }
+
+
 }
