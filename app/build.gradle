@@ -112,11 +112,6 @@ dependencies {
     /* net end */
     compile 'com.github.bumptech.glide:glide:4.1.1'
     kapt 'com.github.bumptech.glide:compiler:4.1.1'
-    compile 'cn.ymex:banner:1.2.0'
-
-    //    compile 'com.github.Rowandjj:VerticalBannerView:1.0'
-
-    //    compile 'me.kaelaela:verticalviewpager:1.0.0@aar'
 
     //微信支付
     implementation files('libs/libammsdk.jar')
@@ -130,7 +125,6 @@ dependencies {
 
     //3D地图so及jar
     compile 'com.amap.api:map2d:5.2.0'
-//    compile 'com.amap.api:3dmap:latest.integration'
     compile 'com.amap.api:location:3.6.1'
     compile 'com.amap.api:search:5.3.1'
     //qrcode

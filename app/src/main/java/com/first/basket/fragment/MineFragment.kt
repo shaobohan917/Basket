@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.GlideOptions
 import com.first.basket.common.StaticValue
+import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -34,6 +36,7 @@ class MineFragment : BaseFragment() {
     private fun initView() {
         setLoginStatus()
 
+        ImageUtils.showImg(activity, R.mipmap.ic_placeholder, ivAva, GlideOptions().circleCrop())
         rlOrder.onClick {
             if (CommonMethod.isLogin()) {
                 startActivity(Intent(activity, OrderListActivity::class.java))

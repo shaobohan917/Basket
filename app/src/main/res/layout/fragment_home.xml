@@ -214,6 +214,7 @@
                 android:orientation="horizontal">
 
                 <com.youth.banner.Banner
+                    android:padding="10dp"
                     android:id="@+id/vBanner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

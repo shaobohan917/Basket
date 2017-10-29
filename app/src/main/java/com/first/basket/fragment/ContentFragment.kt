@@ -192,10 +192,6 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
                         super.onNext(t)
                         setRecommendData(t.result.data)
                     }
-
-                    override fun onCompleted() {
-                        super.onCompleted()
-                    }
                 })
     }
 

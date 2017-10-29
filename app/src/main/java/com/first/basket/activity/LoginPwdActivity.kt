@@ -72,7 +72,7 @@ class LoginPwdActivity : BaseActivity() {
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        showLoading(loadingView)
+                        hideLoading(loadingView)
                     }
                 })
     }

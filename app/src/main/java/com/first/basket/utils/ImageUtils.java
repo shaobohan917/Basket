@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.first.basket.R;
 import com.first.basket.common.GlideApp;
+import com.first.basket.common.GlideOptions;
 import com.first.basket.constants.Constants;
 
 /**
@@ -21,15 +22,29 @@ public class ImageUtils {
         }
         GlideApp.with(context)
                 .load(url)
-                .fitCenter()
+                .apply(GlideOptions.centerInsideTransform())
                 .placeholder(R.mipmap.ic_placeholder)
                 .error(R.mipmap.ic_placeholder)
                 .into(ivImg);
-
     }
 
+    public static void showImg(Context context, int resourceId, ImageView ivImg, GlideOptions options) {
+        GlideOptions opt = options;
+        if (opt == null) {
+            GlideOptions.fitCenterTransform();
+        }
+        GlideApp.with(context)
+                .load(resourceId)
+                .apply(options)
+                .placeholder(R.mipmap.ic_placeholder)
+                .error(R.mipmap.ic_placeholder)
+                .into(ivImg);
+    }
+
+
     public static void showImg(Context context, int resourceId, ImageView ivImg) {
-        Glide.with(context).load(resourceId).into(ivImg);
+        showImg(context, resourceId, ivImg, null);
+
     }
 
     public static void showImg(Context context, Uri uri, ImageView ivImg) {

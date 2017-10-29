@@ -127,7 +127,7 @@ class HomeFragment : BaseFragment() {
 //                    intent.putExtra("title", "爱心无限")
 //                    startActivity(intent)
                 }
-                R.id.ybbl->{
+                R.id.ybbl -> {
 //                    val intent = Intent(activity, WebViewActivity::class.java)
 //                    intent.putExtra("url", recommendData?.jkss?.url)
 //                    intent.putExtra("title", "医保伴侣")
@@ -154,7 +154,7 @@ class HomeFragment : BaseFragment() {
 
     class GlideImageLoader : ImageLoader() {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-            ImageUtils.showImg(context, path.toString(),imageView)
+            ImageUtils.showImg(context, path.toString(), imageView)
         }
     }
 
@@ -184,22 +184,13 @@ class HomeFragment : BaseFragment() {
         }
         vBanner.setImages(images1)
                 .setImageLoader(GlideImageLoader())
-                .setBannerAnimation(Transformer.ScaleInOut)
+                .setBannerAnimation(Transformer.Default)
                 .setDelayTime(5000)
+                .setBannerStyle(BannerConfig.NOT_INDICATOR)
                 .start()
-
-//        vBanner.bindView(object : cn.ymex.banner.Banner.BindViewCallBack<AppCompatImageView, String> {
-//            override fun bindView(view: AppCompatImageView, data: String, position: Int) {
-//                view.scaleType = ImageView.ScaleType.FIT_CENTER
-//                //图片加载
-//                Glide.with(view.context)
-//                        .load(data)
-//                        .into(view)
-//                view.onClick {
-//                    goClassify(1)
-//                }
-//            }
-//        }).setOrientation(cn.ymex.banner.Banner.VERTICAL).execute(images1)
+        vBanner.setOnBannerListener {
+            goClassify(1)
+        }
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)
