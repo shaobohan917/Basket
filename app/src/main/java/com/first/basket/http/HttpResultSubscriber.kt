@@ -17,7 +17,7 @@ open abstract class HttpResultSubscriber<T> : Subscriber<T>() {
 
     override fun onError(e: Throwable) {
         ToastUtil.showToast(e.message)
-//        LogUtils.d("ERROR:" + e.message.toString())
+        LogUtils.d("ERROR:" + e.message.toString())
         this.onCompleted()
     }
 

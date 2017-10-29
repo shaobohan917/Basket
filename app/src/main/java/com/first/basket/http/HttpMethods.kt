@@ -1,6 +1,7 @@
 package com.first.basket.http
 
 import com.first.basket.constants.Constants
+import com.google.gson.GsonBuilder
 import com.grapesnberries.curllogger.CurlLoggerInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -15,10 +16,15 @@ class HttpMethods//私有化构造方法
 private constructor() {
 
     private val retrofit: Retrofit
+    private val wechatRetrofit: Retrofit
     private val apiService: ApiService
+    private val wechatService: WechatService
     private val builder: OkHttpClient.Builder
 
     init {
+
+        var gson = GsonBuilder().setLenient().create()
+
         //手动创建一个OkHttpCicent并设置超时时间
         builder = OkHttpClient.Builder()
                 //添加token过期处理
@@ -30,11 +36,19 @@ private constructor() {
 
         retrofit = Retrofit.Builder()
                 .client(builder.build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()
         apiService = retrofit.create(ApiService::class.java)
+
+        wechatRetrofit = Retrofit.Builder()
+                .client(builder.build())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .baseUrl(BASE_WECHAT_URL)
+                .build()
+        wechatService = wechatRetrofit.create(WechatService::class.java)
     }
 
     //在访问HttpMethods时创建单例
@@ -43,8 +57,8 @@ private constructor() {
     }
 
     companion object {
-        //    public static final String BASE_URL = Constant.BASE_URL_ONLINE;
         val BASE_URL = Constants.BASE_API
+        val BASE_WECHAT_URL = Constants.BASE_WECHAT_API
 
         private val DEFAULT_TIMEOUT = 10
 
@@ -54,6 +68,10 @@ private constructor() {
 
         fun createService(): ApiService {
             return singletonHolder.INSTANCE.apiService
+        }
+
+        fun creatWechatService(): WechatService {
+            return singletonHolder.INSTANCE.wechatService
         }
     }
 }

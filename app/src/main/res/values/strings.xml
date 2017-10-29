@@ -19,4 +19,5 @@
     <string name="add_address">请先添加收货地址</string>
     <string name="buy">请选购商品</string>
     <string name="service_phone">4000877021</string>
+    <string name="not_install">请先安装 %s</string>
 </resources>

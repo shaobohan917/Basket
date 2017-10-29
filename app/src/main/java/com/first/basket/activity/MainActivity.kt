@@ -60,7 +60,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         instance = this
         initView()
         initData()
-        LogUtils.d("today:" + CommonMethod.isToday(System.currentTimeMillis().toString()))
+//        LogUtils.d("today:" + CommonMethod.isToday(System.currentTimeMillis().toString()))
     }
 
     fun setCountAdd() {

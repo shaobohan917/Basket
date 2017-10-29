@@ -34,7 +34,7 @@ interface ApiService {
     //热门推荐
     @FormUrlEncoded
     @POST("ClintAPI.php")
-    fun getHotRecommend(@Field("action") action: String,@Field("channel") channel: String): Observable<HotRecommendBean>
+    fun getHotRecommend(@Field("action") action: String, @Field("channel") channel: String): Observable<HotRecommendBean>
 
     //获取订单列表
     @FormUrlEncoded
@@ -104,6 +104,5 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClintAPI.php")
     fun doDeleteAddress(@Field("action") action: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
-
 
 }

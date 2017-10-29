@@ -1,6 +1,5 @@
 package com.first.basket.activity
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -14,7 +13,10 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.CodeBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.bean.WechatBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
+import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
@@ -22,9 +24,14 @@ import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.GsonBuilder
+import com.tencent.mm.sdk.modelpay.PayReq
+import com.tencent.mm.sdk.openapi.WXAPIFactory
 import kotlinx.android.synthetic.main.activity_place_order.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
+import kotlin.collections.HashMap
 
 
 /**
@@ -74,21 +81,96 @@ class PlaceOrderActivity : BaseActivity() {
     }
 
 
+    private var mPrice: String = ""
+
     private fun setFooter() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
-        var price = intent.getStringExtra("price")
-        footer.findViewById<TextView>(R.id.tvPrice).text = price
+        mPrice = intent.getStringExtra("price")
+        footer.findViewById<TextView>(R.id.tvPrice).text = mPrice
         footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, BaseApplication.getInstance().productsCount.toString())
         mAdapter.addFooterView(footer)
 
-        tvTotalPrice.text = price
+        tvTotalPrice.text = mPrice
     }
 
 
     private fun initListener() {
         btBuy.onClick {
-            showDialog("确认下单？", "", "确定", DialogInterface.OnClickListener { p0, p1 -> doPlaceOrder() })
+            doPlaceOrderByWechat()
         }
+    }
+
+    private fun wechatPay(dataBean: WechatBean.ResultBean.DataBean) {
+        val appid = dataBean?.appid
+        val mchid = dataBean?.mchid
+        val noncestr = dataBean?.noncestr
+        val sign = dataBean?.sign
+        val prepayid = dataBean?.prepayid
+
+        val api = WXAPIFactory.createWXAPI(this, Constants.WECHAT_APP_ID)
+        api.registerApp(Constants.WECHAT_APP_ID)
+        if (api != null) {
+            if (CommonMethod.isPkgInstalled(this, Constants.WECHAT_PACKAGE)) {
+                val payReq = PayReq()
+                payReq.appId = appid
+                payReq.nonceStr = noncestr
+                payReq.packageValue = "Sign=WXPay"
+                payReq.partnerId = mchid
+                payReq.prepayId = prepayid
+                payReq.timeStamp = (System.currentTimeMillis() / 1000).toString() + ""
+
+                val map = LinkedHashMap<String, String>()
+                map.put("appid", payReq.appId)
+                map.put("noncestr", payReq.nonceStr)
+                map.put("package", payReq.packageValue)
+                map.put("partnerid", payReq.partnerId)
+                map.put("prepayid", payReq.prepayId)
+                map.put("timestamp", payReq.timeStamp)
+                payReq.sign = sign
+
+//                order = data.out_trade_no
+
+                api.sendReq(payReq)
+            } else {
+                ToastUtil.showToast(getString(R.string.not_install, "微信"))
+            }
+        }
+    }
+
+    private fun doPlaceOrderByWechat() {
+        var productidString = StringBuilder()
+        var numString = StringBuilder()
+
+        for (i in 0 until mGoodsList.size) {
+            productidString.append(mGoodsList[i].productid).append("|")
+            numString.append(mGoodsList[i].amount).append("|")
+        }
+        val ps: String = productidString.toString().substring(0, productidString.length - 1)
+        val ns: String = numString.toString().substring(0, numString.length - 1)
+
+        var map = HashMap<String, String?>()
+        map.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
+        map.put("paytype", "APP")
+        map.put("productname", getString(R.string.app_name))
+        map.put("totalfee", "1")
+        map.put("productid", ps)
+        map.put("productsNumber", ns)
+        map.put("addressid", addressInfo.addressid)
+
+        HttpMethods.creatWechatService().doPayforwechat("do_payforwechat", map)
+                .compose(TransformUtils.defaultSchedulers())
+                .subscribe(object : HttpResultSubscriber<WechatBean>() {
+                    override fun onNext(t: WechatBean) {
+                        super.onNext(t)
+                        if (t.status == 0) {
+                            //支付成功
+                            LogUtils.d("t:" + t.result.data[0].appid)
+                            wechatPay(t.result.data[0])
+                        } else {
+                            ToastUtil.showToast(t.info+":"+t.status)
+                        }
+                    }
+                })
     }
 
     private fun doPlaceOrder() {
