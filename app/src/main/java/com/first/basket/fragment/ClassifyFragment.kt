@@ -99,6 +99,11 @@ class ClassifyFragment : BaseFragment() {
 
                         }
                     }
+
+                    override fun onCompleted() {
+                        super.onCompleted()
+                        (activity as MainActivity).hideLoading()
+                    }
                 })
     }
 
@@ -158,7 +163,7 @@ class ClassifyFragment : BaseFragment() {
 
             if (preType != type) {
                 //切换菜市，重新加载
-
+                (activity as MainActivity).showLoading()
                 Handler().postDelayed({
                     getClassify(type, true)
                     isGetedRecommend = false

@@ -63,7 +63,6 @@ class RegisterActivity : BaseActivity(){
             if (TextUtils.isEmpty(title)) {
                 doRegister(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
             } else {
-
                 changePassword(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
             }
         }
@@ -79,10 +78,6 @@ class RegisterActivity : BaseActivity(){
                     override fun onNext(t: HttpResult<CodeBean>) {
                         super.onNext(t)
                         countDown()
-                    }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
                     }
                 })
     }
@@ -108,11 +103,6 @@ class RegisterActivity : BaseActivity(){
                             ToastUtil.showToast(this@RegisterActivity, t.info)
                         }
                     }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                        ToastUtil.showToast(this@RegisterActivity, e.message.toString())
-                    }
                 })
     }
 
@@ -131,11 +121,6 @@ class RegisterActivity : BaseActivity(){
                         } else {
                             ToastUtil.showToast(this@RegisterActivity, t.info)
                         }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
-                        ToastUtil.showToast(this@RegisterActivity, e.message.toString())
                     }
                 })
     }
