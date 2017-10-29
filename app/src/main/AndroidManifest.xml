@@ -119,6 +119,15 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <!--微信支付回调 -->
+        <activity
+            android:name="com.first.basket.wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
     </application>
 
 </manifest>

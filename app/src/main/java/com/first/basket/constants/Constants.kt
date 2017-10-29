@@ -9,18 +9,19 @@ class Constants {
     companion object {
         val PIC_URL: String = "https://img1.tking.cn/assets/img/2jrRKbfyDn.jpg"
 
-        val BASE_API: String = "https://www.yhclzgc.com/yhclz/API/"
+        val BASE_API: String = "http://api.yhclzgc.com/API/"
         val BASE_WECHAT_API: String = "http://api.yhclzgc.com/API/"
 
         val BASE_IMG_URL: String = "https://www.yhclzgc.com/yhclz/img"
 
 
         var WECHAT_APP_ID = "wx7b4dcaf398daa066"
+        var WECHAT_PACKAGE = "com.tencent.mm"
+        var WECHAT_KEY = "af70ff5445cfc00c2a18d4aeed663ef5"
 
         var WECHAT_APP_SECRET = "36e7a8a63b53cfe92aed075097ae2982"
         var WECHAT_PARTNER_ID = "1428507002"
-        var WECHAT_PACKAGE = "com.tencent.mm"
-        var WECHAT_KEY = "A7A58ED0D3AC91842B544ED958CA81ED"
+
     }
 
     /**

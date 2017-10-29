@@ -21,16 +21,16 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.Md5Util
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.GsonBuilder
 import com.tencent.mm.sdk.modelpay.PayReq
 import com.tencent.mm.sdk.openapi.WXAPIFactory
 import kotlinx.android.synthetic.main.activity_place_order.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
+import java.util.Map
 import kotlin.collections.HashMap
 
 
@@ -104,7 +104,6 @@ class PlaceOrderActivity : BaseActivity() {
         val appid = dataBean?.appid
         val mchid = dataBean?.mchid
         val noncestr = dataBean?.noncestr
-        val sign = dataBean?.sign
         val prepayid = dataBean?.prepayid
 
         val api = WXAPIFactory.createWXAPI(this, Constants.WECHAT_APP_ID)
@@ -113,7 +112,7 @@ class PlaceOrderActivity : BaseActivity() {
             if (CommonMethod.isPkgInstalled(this, Constants.WECHAT_PACKAGE)) {
                 val payReq = PayReq()
                 payReq.appId = appid
-                payReq.nonceStr = noncestr
+                payReq.nonceStr = Md5Util.getMd5Value(noncestr)
                 payReq.packageValue = "Sign=WXPay"
                 payReq.partnerId = mchid
                 payReq.prepayId = prepayid
@@ -126,7 +125,11 @@ class PlaceOrderActivity : BaseActivity() {
                 map.put("partnerid", payReq.partnerId)
                 map.put("prepayid", payReq.prepayId)
                 map.put("timestamp", payReq.timeStamp)
-                payReq.sign = sign
+                //生成sign
+                payReq.sign = genAppSign(map)
+
+                LogUtils.d("length:" + payReq.sign)
+
 
 //                order = data.out_trade_no
 
@@ -135,6 +138,20 @@ class PlaceOrderActivity : BaseActivity() {
                 ToastUtil.showToast(getString(R.string.not_install, "微信"))
             }
         }
+    }
+
+    private fun genAppSign(map: LinkedHashMap<String, String>): String {
+        val sb = StringBuilder()
+        val iterator = map.entries.iterator()
+        while (iterator.hasNext()) {
+            val entry = iterator.next() as Map.Entry<*, *>
+            val key = entry.key
+            val value = entry.value
+            sb.append(key).append("=").append(value).append("&")
+        }
+        sb.append("key=")
+        sb.append(Constants.WECHAT_KEY)
+        return Md5Util.getMd5Value(sb.toString()).toUpperCase()
     }
 
     private fun doPlaceOrderByWechat() {
@@ -157,17 +174,17 @@ class PlaceOrderActivity : BaseActivity() {
         map.put("productsNumber", ns)
         map.put("addressid", addressInfo.addressid)
 
-        HttpMethods.creatWechatService().doPayforwechat("do_payforwechat", map)
+        HttpMethods.createService().doPayforwechat("do_payforwechat", map)
                 .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<WechatBean>() {
-                    override fun onNext(t: WechatBean) {
+                .subscribe(object : HttpResultSubscriber<HttpResult<WechatBean>>() {
+                    override fun onNext(t: HttpResult<WechatBean>) {
                         super.onNext(t)
                         if (t.status == 0) {
                             //支付成功
-                            LogUtils.d("t:" + t.result.data[0].appid)
-                            wechatPay(t.result.data[0])
+                            LogUtils.d("t:" + t.result.result.data[0].appid)
+                            wechatPay(t.result.result.data[0])
                         } else {
-                            ToastUtil.showToast(t.info+":"+t.status)
+                            ToastUtil.showToast(t.info + ":" + t.status)
                         }
                     }
                 })

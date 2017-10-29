@@ -16,9 +16,7 @@ class HttpMethods//私有化构造方法
 private constructor() {
 
     private val retrofit: Retrofit
-    private val wechatRetrofit: Retrofit
     private val apiService: ApiService
-    private val wechatService: WechatService
     private val builder: OkHttpClient.Builder
 
     init {
@@ -41,14 +39,6 @@ private constructor() {
                 .baseUrl(BASE_URL)
                 .build()
         apiService = retrofit.create(ApiService::class.java)
-
-        wechatRetrofit = Retrofit.Builder()
-                .client(builder.build())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_WECHAT_URL)
-                .build()
-        wechatService = wechatRetrofit.create(WechatService::class.java)
     }
 
     //在访问HttpMethods时创建单例
@@ -58,7 +48,6 @@ private constructor() {
 
     companion object {
         val BASE_URL = Constants.BASE_API
-        val BASE_WECHAT_URL = Constants.BASE_WECHAT_API
 
         private val DEFAULT_TIMEOUT = 10
 
@@ -68,10 +57,6 @@ private constructor() {
 
         fun createService(): ApiService {
             return singletonHolder.INSTANCE.apiService
-        }
-
-        fun creatWechatService(): WechatService {
-            return singletonHolder.INSTANCE.wechatService
         }
     }
 }

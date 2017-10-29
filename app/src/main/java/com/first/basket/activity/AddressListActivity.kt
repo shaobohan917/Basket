@@ -20,6 +20,7 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import com.google.gson.Gson
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
@@ -102,10 +103,13 @@ class AddressListActivity : BaseActivity() {
                         super.onNext(t)
                         if (t.status == 0) {
                             setAddressList(t.result)
-                        } else if (t.status == 1) {
-                            mDatas.clear()
-                            mAdapter.notifyDataSetChanged()
-                            SPUtil.setString(StaticValue.DEFAULT_ADDRESS, "")
+                        } else {
+                            ToastUtil.showToast(t.info)
+                            if (t.status == 1) {
+                                mDatas.clear()
+                                mAdapter.notifyDataSetChanged()
+                                SPUtil.setString(StaticValue.DEFAULT_ADDRESS, "")
+                            }
                         }
                     }
 
