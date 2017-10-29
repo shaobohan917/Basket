@@ -52,6 +52,6 @@ class SettingActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        tvVersion.text = CommonMethod.getVersionName()
+        tvVersion.text = "v" + CommonMethod.getVersionName()
     }
 }

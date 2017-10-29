@@ -28,7 +28,7 @@ class WebViewActivity : BaseActivity() {
         url = intent.getStringExtra("url")
         if (TextUtils.isEmpty(url)) myFinish()
         val title = intent.getStringExtra("title")
-        titleView.setTitle(title+"test")
+        titleView.setTitle(title)
 
         var webSettings = webview.settings
 

@@ -21,8 +21,8 @@ class TitleView : FrameLayout {
 
     private var mTitleText: String = ""
     private var mTitleMoreText: String = ""
-    private var mTitleColor: Int = 0
-    private var mTitleBackgroundColor = 0
+    private var mTitleColor: Int = context.resources.getColor(R.color.black)
+    private var mTitleBackgroundColor = context.resources.getColor(R.color.white)
     private var mIsShowBack: Boolean = true
     private var mBackBlack = true
 
@@ -38,23 +38,24 @@ class TitleView : FrameLayout {
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         var typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.TitleView)
-        for (i in 0..typedArray.indexCount) {
-            var attr = typedArray.getIndex(i)
-            when (attr) {
-                R.styleable.TitleView_titleText ->
-                    mTitleText = typedArray.getString(attr)
-                R.styleable.TitleView_titleMoreText ->
-                    mTitleMoreText = typedArray.getString(attr)
-                R.styleable.TitleView_titleBackground ->
-                    mTitleBackgroundColor = typedArray.getColor(attr, context.resources.getColor(R.color.white))
-                R.styleable.TitleView_titleColor ->
-                    mTitleColor = typedArray.getColor(attr, context.resources.getColor(R.color.gray33))
-                R.styleable.TitleView_showBack ->
-                    mIsShowBack = typedArray.getBoolean(attr, false)
-                R.styleable.TitleView_backBlack ->
-                    mBackBlack = typedArray.getBoolean(attr, false)
-            }
-        }
+        (0..typedArray.indexCount)
+                .map { typedArray.getIndex(it) }
+                .forEach {
+                    when (it) {
+                        R.styleable.TitleView_titleText ->
+                            mTitleText = typedArray.getString(it)
+                        R.styleable.TitleView_titleMoreText ->
+                            mTitleMoreText = typedArray.getString(it)
+                        R.styleable.TitleView_titleBackground ->
+                            mTitleBackgroundColor = typedArray.getColor(it, context.resources.getColor(R.color.white))
+                        R.styleable.TitleView_titleColor ->
+                            mTitleColor = typedArray.getColor(it, context.resources.getColor(R.color.gray33))
+                        R.styleable.TitleView_showBack ->
+                            mIsShowBack = typedArray.getBoolean(it, false)
+                        R.styleable.TitleView_backBlack ->
+                            mBackBlack = typedArray.getBoolean(it, false)
+                    }
+                }
         typedArray.recycle()
 
         LayoutInflater.from(context).inflate(R.layout.layout_widget_title, this)
