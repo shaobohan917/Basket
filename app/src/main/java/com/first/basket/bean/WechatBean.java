@@ -3,105 +3,69 @@ package com.first.basket.bean;
 import java.util.List;
 
 public class WechatBean {
-    /**
-     * status : 0
-     * info : 成功
-     * result : {"data":[{"appid":"wx7b4dcaf398daa066","mchid":"1490509832","noncestr":"g3L2IAcTXT2H9UxE","sign":"E07581E2722D177368F2925D9C68C6ED","prepayid":"wx20171029142232c29c15dd5a0586659549"}]}
-     */
+    private List<DataBean> data;
 
-    private int status;
-    private String info;
-    private ResultBean result;
-
-    public int getStatus() {
-        return status;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public String getInfo() {
-        return info;
-    }
+    public static class DataBean {
+        /**
+         * appid : wx7b4dcaf398daa066
+         * mchid : 1490509832
+         * noncestr : g3L2IAcTXT2H9UxE
+         * sign : E07581E2722D177368F2925D9C68C6ED
+         * prepayid : wx20171029142232c29c15dd5a0586659549
+         */
 
-    public void setInfo(String info) {
-        this.info = info;
-    }
+        private String appid;
+        private String mchid;
+        private String noncestr;
+        private String sign;
+        private String prepayid;
 
-    public ResultBean getResult() {
-        return result;
-    }
-
-    public void setResult(ResultBean result) {
-        this.result = result;
-    }
-
-    public static class ResultBean {
-        private List<DataBean> data;
-
-        public List<DataBean> getData() {
-            return data;
+        public String getAppid() {
+            return appid;
         }
 
-        public void setData(List<DataBean> data) {
-            this.data = data;
+        public void setAppid(String appid) {
+            this.appid = appid;
         }
 
-        public static class DataBean {
-            /**
-             * appid : wx7b4dcaf398daa066
-             * mchid : 1490509832
-             * noncestr : g3L2IAcTXT2H9UxE
-             * sign : E07581E2722D177368F2925D9C68C6ED
-             * prepayid : wx20171029142232c29c15dd5a0586659549
-             */
+        public String getMchid() {
+            return mchid;
+        }
 
-            private String appid;
-            private String mchid;
-            private String noncestr;
-            private String sign;
-            private String prepayid;
+        public void setMchid(String mchid) {
+            this.mchid = mchid;
+        }
 
-            public String getAppid() {
-                return appid;
-            }
+        public String getNoncestr() {
+            return noncestr;
+        }
 
-            public void setAppid(String appid) {
-                this.appid = appid;
-            }
+        public void setNoncestr(String noncestr) {
+            this.noncestr = noncestr;
+        }
 
-            public String getMchid() {
-                return mchid;
-            }
+        public String getSign() {
+            return sign;
+        }
 
-            public void setMchid(String mchid) {
-                this.mchid = mchid;
-            }
+        public void setSign(String sign) {
+            this.sign = sign;
+        }
 
-            public String getNoncestr() {
-                return noncestr;
-            }
+        public String getPrepayid() {
+            return prepayid;
+        }
 
-            public void setNoncestr(String noncestr) {
-                this.noncestr = noncestr;
-            }
-
-            public String getSign() {
-                return sign;
-            }
-
-            public void setSign(String sign) {
-                this.sign = sign;
-            }
-
-            public String getPrepayid() {
-                return prepayid;
-            }
-
-            public void setPrepayid(String prepayid) {
-                this.prepayid = prepayid;
-            }
+        public void setPrepayid(String prepayid) {
+            this.prepayid = prepayid;
         }
     }
 }

@@ -19,6 +19,7 @@ import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.item_recycler_order.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -37,32 +38,32 @@ class OrderFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        recyclerView.layoutManager = LinearLayoutManager(activity)
         initData()
-
     }
 
     private fun initData() {
         mAdapter = BaseRecyclerAdapter(R.layout.item_recycler_order, mDatas) { view: View, item: OrderListBean.DataBean ->
             view.tvNO.text = resources.getString(R.string.order_number, item.strorderid)
             view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.cost)
-            for (i in 0 until item.orderdetail.size) {
-                if (i > 3) break
-                var iv = ImageView(activity)
-                var params = ViewGroup.MarginLayoutParams(CommonMethod.dip2px(activity, 60f), CommonMethod.dip2px(activity, 60f))
-                params.setMargins(8, 8, 8, 8)
-                iv.layoutParams = params
-                ImageUtils.showImg(activity, item.orderdetail[i].img, iv)
-                view.llImg.addView(iv)
+            if (item.orderdetail != null) {
+                for (i in 0 until item.orderdetail.size) {
+                    if (i > 3) break
+                    var iv = ImageView(activity)
+                    var params = ViewGroup.MarginLayoutParams(CommonMethod.dip2px(activity, 60f), CommonMethod.dip2px(activity, 60f))
+                    params.setMargins(8, 8, 8, 8)
+                    iv.layoutParams = params
+                    ImageUtils.showImg(activity, item.orderdetail[i].img, iv)
+                    view.llImg.addView(iv)
+                }
             }
             view.llRoot.onClick {
                 startActivity(Intent(activity, OrderDetailActivity::class.java))
             }
         }
         recyclerView.adapter = mAdapter
-        getOrderList()
 
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        getOrderList()
     }
 
 
@@ -73,7 +74,11 @@ class OrderFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<OrderListBean>>() {
                     override fun onNext(t: HttpResult<OrderListBean>) {
                         super.onNext(t)
-                        setData(t.result.data)
+                        if (t.status == 0) {
+                            setData(t.result.data)
+                        } else {
+                            ToastUtil.showToast(t.info)
+                        }
                     }
                 })
     }

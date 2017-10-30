@@ -95,7 +95,11 @@ class AddressAddActivity : BaseActivity() {
                 return@onClick
             }
             if (TextUtils.isEmpty(etAddress.text)) {
-                ToastUtil.showToast("请填写地址")
+                ToastUtil.showToast("请填写收货地址")
+                return@onClick
+            }
+            if (TextUtils.isEmpty(etNumber.text)) {
+                ToastUtil.showToast("请填写门牌号")
                 return@onClick
             }
 
@@ -344,12 +348,11 @@ class AddressAddActivity : BaseActivity() {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        ToastUtil.showToast(this@AddressAddActivity, t.info)
                         if (t.status == 0) {
                             setResult(Activity.RESULT_OK)
                             myFinish()
                         } else {
-                            ToastUtil.showToast(this@AddressAddActivity, "fail")
+                            ToastUtil.showToast(this@AddressAddActivity, t.info)
                         }
                     }
                 })

@@ -24,8 +24,6 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.app.ProgressDialog
 
 
-
-
 /**
  * Created by hanshaobo on 15/10/2017.
  */
@@ -60,11 +58,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
 
         tvRegister.onClick {
-            startActivityForResult(Intent(this@LoginActivity, RegisterActivity::class.java),101)
+            var intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            intent.putExtra("title", "注册")
+            startActivityForResult(intent, 101)
         }
 
         tvLoginPwd.onClick {
-            startActivityForResult(Intent(this@LoginActivity, LoginPwdActivity::class.java),102)
+            startActivityForResult(Intent(this@LoginActivity, LoginPwdActivity::class.java), 102)
         }
     }
 
@@ -102,7 +102,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
                         super.onNext(t)
-                        if(t.status==0){
+                        if (t.status == 0) {
                             LogUtils.d(t.result.data.phone)
                             ToastUtil.showToast(this@LoginActivity, "登录成功")
                             SPUtil.setBoolean(StaticValue.SP_LOGIN_STATUS, true)
@@ -112,7 +112,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                             setResult(Activity.RESULT_OK)
                             CommonMethod.hideKeyboard(etCode)
                             Handler().postDelayed({ finish() }, 1000)
-                        }else{
+                        } else {
                             ToastUtil.showToast(this@LoginActivity, t.info)
                         }
                     }
@@ -163,7 +163,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode==Activity.RESULT_OK&&(requestCode==101||requestCode==102)){
+        if (resultCode == Activity.RESULT_OK && (requestCode == 101 || requestCode == 102)) {
             setResult(Activity.RESULT_OK)
             finish()
         }

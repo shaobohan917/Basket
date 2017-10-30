@@ -100,7 +100,7 @@ class PlaceOrderActivity : BaseActivity() {
         }
     }
 
-    private fun wechatPay(dataBean: WechatBean.ResultBean.DataBean) {
+    private fun wechatPay(dataBean: WechatBean.DataBean) {
         val appid = dataBean?.appid
         val mchid = dataBean?.mchid
         val noncestr = dataBean?.noncestr
@@ -170,7 +170,7 @@ class PlaceOrderActivity : BaseActivity() {
         map.put("paytype", "APP")
         map.put("productname", getString(R.string.app_name))
         map.put("totalfee", "1")
-        map.put("productid", ps)
+        map.put("productsid", ps)
         map.put("productsNumber", ns)
         map.put("addressid", addressInfo.addressid)
 
@@ -180,9 +180,9 @@ class PlaceOrderActivity : BaseActivity() {
                     override fun onNext(t: HttpResult<WechatBean>) {
                         super.onNext(t)
                         if (t.status == 0) {
-                            //支付成功
-                            LogUtils.d("t:" + t.result.result.data[0].appid)
-                            wechatPay(t.result.result.data[0])
+                            //去支付
+                            LogUtils.d("t:" + t.result.data[0].appid)
+                            wechatPay(t.result.data[0])
                         } else {
                             ToastUtil.showToast(t.info + ":" + t.status)
                         }

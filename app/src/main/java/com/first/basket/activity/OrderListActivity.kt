@@ -31,7 +31,6 @@ class OrderListActivity : BaseActivity() {
     }
 
     private fun initData() {
-
         var fragmentList = ArrayList<OrderFragment>()
         var fragments = ArrayList<String>()
         for (i in 0 until 1) {

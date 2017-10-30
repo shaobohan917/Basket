@@ -22,9 +22,11 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 /**
  * Created by hanshaobo on 15/10/2017.
  */
-class RegisterActivity : BaseActivity(){
+class RegisterActivity : BaseActivity() {
 
+    private var title = ""
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         initView()
@@ -35,12 +37,11 @@ class RegisterActivity : BaseActivity(){
 
     private fun initView() {
         var titleView = findViewById<TitleView>(R.id.titleView)
-        var title = intent.getStringExtra("title")
-        if (TextUtils.isEmpty(title)) {
-            titleView.setTitle("注册")
+        title = intent.getStringExtra("title")
+        titleView.setTitle(title)
+        if ("注册" == title) {
             btLogin.text = "注册"
-        } else {
-            titleView.setTitle("修改密码")
+        } else if ("修改密码" == title) {
             btLogin.text = "修改密码"
         }
     }
@@ -60,9 +61,9 @@ class RegisterActivity : BaseActivity(){
         }
 
         btLogin.onClick {
-            if (TextUtils.isEmpty(title)) {
+            if ("注册" == title) {
                 doRegister(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
-            } else {
+            } else if ("修改密码" == title) {
                 changePassword(etPhone.text.toString(), etCode.text.toString(), Md5Util.getMd5Value(etPassword.text.toString()))
             }
         }
