@@ -3,14 +3,12 @@ package com.first.basket.fragment
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.base.BaseActivity
@@ -18,7 +16,6 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
-import com.first.basket.common.GlideApp
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -98,37 +95,43 @@ class HomeFragment : BaseFragment() {
             startActivity(Intent(activity, DecoderActivity::class.java))
         }
 
-        sqcs.setOnClickListener(myClickListener)
-        axwx.setOnClickListener(myClickListener)
-        shcs.setOnClickListener(myClickListener)
-        hltg.setOnClickListener(myClickListener)
-        ybbl.setOnClickListener(myClickListener)
+        llTab_sqcs.setOnClickListener(myClickListener)
+        llTab_axwx.setOnClickListener(myClickListener)
+        llTab_yhcs.setOnClickListener(myClickListener)
+        llTab_hltg.setOnClickListener(myClickListener)
+        llTab_ybbl.setOnClickListener(myClickListener)
     }
 
     inner class MyClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             when (view.id) {
-                R.id.sqcs -> {
+                R.id.llTab_sqcs -> {
                     goClassify(1)
                 }
-                R.id.shcs, R.id.ivSHCS -> goClassify(2)
-                R.id.hltg, R.id.ivHLTG -> {
+                R.id.llTab_yhcs, R.id.ivSHCS, R.id.ivQGCS -> goClassify(3)
+                R.id.llTab_hltg, R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("title", "欢乐团购")
                     intent.putExtra("url", recommendData?.hltg?.url)
                     startActivity(intent)
                 }
-                R.id.axwx, R.id.ivJKSS -> {
-//                    val intent = Intent(activity, WebViewActivity::class.java)
-//                    intent.putExtra("url", recommendData?.jkss?.url)
-//                    intent.putExtra("title", "爱心无限")
-//                    startActivity(intent)
+                R.id.llTab_axwx -> {
+                    val intent = Intent(activity, WebViewActivity::class.java)
+                    intent.putExtra("url", recommendData?.axwx?.url)
+                    intent.putExtra("title", "爱心无限")
+                    startActivity(intent)
                 }
-                R.id.ybbl -> {
-//                    val intent = Intent(activity, WebViewActivity::class.java)
-//                    intent.putExtra("url", recommendData?.jkss?.url)
-//                    intent.putExtra("title", "医保伴侣")
-//                    startActivity(intent)
+                R.id.llTab_ybbl -> {
+                    val intent = Intent(activity, WebViewActivity::class.java)
+                    intent.putExtra("url", recommendData?.ybbl?.url)
+                    intent.putExtra("title", "医保伴侣")
+                    startActivity(intent)
+                }
+                R.id.ivJKSS -> {
+                    val intent = Intent(activity, WebViewActivity::class.java)
+                    intent.putExtra("url", recommendData?.jkss?.url)
+                    intent.putExtra("title", "健康膳食")
+                    startActivity(intent)
                 }
             }
         }

@@ -36,6 +36,8 @@ public class HomeBean {
         private HLTGBean HLTG;
         private QGCSBean QGCS;
         private JKSSBean JKSS;
+        private JKSSBean AXWX;
+        private JKSSBean YBBL;
         private List<CarouselfigureBeanX> Carouselfigure;
 
         public SQCSBean getSQCS() {
@@ -76,6 +78,23 @@ public class HomeBean {
 
         public void setJKSS(JKSSBean JKSS) {
             this.JKSS = JKSS;
+        }
+
+
+        public JKSSBean getAXWX() {
+            return AXWX;
+        }
+
+        public void setAXWX(JKSSBean AXWX) {
+            this.AXWX = AXWX;
+        }
+
+        public JKSSBean getYBBL() {
+            return YBBL;
+        }
+
+        public void setYBBL(JKSSBean YBBL) {
+            this.YBBL = YBBL;
         }
 
         public List<CarouselfigureBeanX> getCarouselfigure() {

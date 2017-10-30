@@ -139,7 +139,7 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         when (str) {
             "1" -> tv.text = "社区菜市"
             "2" -> tv.text = "上海菜市"
-            "3" -> tv.text = "全国菜市"
+            "3" -> tv.text = "1号菜市"
         }
     }
 

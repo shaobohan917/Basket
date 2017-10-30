@@ -48,6 +48,7 @@ class ShopFragment : BaseFragment() {
     private var isFirst: Boolean = true
     private var isModifyMode: Boolean = false
     private var addressInfo = AddressBean()
+    private var mTotalcost: Float = 0f
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -205,7 +206,7 @@ class ShopFragment : BaseFragment() {
                         return@onClick
                     }
                     var intent = Intent(activity, PlaceOrderActivity::class.java)
-                    intent.putExtra("price", tvTotalPrice.text)
+                    intent.putExtra("price", mTotalcost)
                     startActivity(intent)
                 } else {
                     ToastUtil.showToast(activity.getString(R.string.buy))
@@ -286,7 +287,6 @@ class ShopFragment : BaseFragment() {
         }
     }
 
-
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
         if (isModifyMode) return
         if (mDatas.size == 0) {
@@ -330,7 +330,12 @@ class ShopFragment : BaseFragment() {
                         .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                             override fun onNext(t: HttpResult<PriceBean>) {
                                 super.onNext(t)
-                                setPrice(t.result.data.totalcost)
+                                if(t.status==0){
+                                    mTotalcost = t.result.data.totalcost
+                                    setPrice(t.result.data.totalcost)
+                                }else{
+                                    ToastUtil.showToast(t.info)
+                                }
                             }
                         })
             }

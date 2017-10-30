@@ -38,7 +38,7 @@ import kotlin.collections.HashMap
  * Created by hanshaobo on 15/10/2017.
  */
 class PlaceOrderActivity : BaseActivity() {
-
+    private var mPrice: Float = 0f
     private var mGoodsList = ArrayList<ProductBean>()
 
     private lateinit var header: View
@@ -80,17 +80,14 @@ class PlaceOrderActivity : BaseActivity() {
         mAdapter.addHeaderView(header)
     }
 
-
-    private var mPrice: String = ""
-
     private fun setFooter() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
-        mPrice = intent.getStringExtra("price")
-        footer.findViewById<TextView>(R.id.tvPrice).text = mPrice
+        mPrice = intent.getFloatExtra("price", 0f)
+        footer.findViewById<TextView>(R.id.tvPrice).text = mPrice.toString()
         footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, BaseApplication.getInstance().productsCount.toString())
         mAdapter.addFooterView(footer)
 
-        tvTotalPrice.text = mPrice
+        tvTotalPrice.text = mPrice.toString()
     }
 
 
@@ -169,7 +166,8 @@ class PlaceOrderActivity : BaseActivity() {
         map.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
         map.put("paytype", "APP")
         map.put("productname", getString(R.string.app_name))
-        map.put("totalfee", "1")
+//        map.put("totalfee", "1")
+        map.put("totalfee", (mPrice * 100).toInt().toString())
         map.put("productsid", ps)
         map.put("productsNumber", ns)
         map.put("addressid", addressInfo.addressid)

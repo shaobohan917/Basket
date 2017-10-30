@@ -93,7 +93,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/sqcs"
+                    android:id="@+id/llTab_sqcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -116,7 +116,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/axwx"
+                    android:id="@+id/llTab_axwx"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -139,7 +139,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/ybbl"
+                    android:id="@+id/llTab_ybbl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -161,7 +161,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/shcs"
+                    android:id="@+id/llTab_yhcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -183,7 +183,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/hltg"
+                    android:id="@+id/llTab_hltg"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -214,7 +214,6 @@
                 android:orientation="horizontal">
 
                 <com.youth.banner.Banner
-                    android:padding="10dp"
                     android:id="@+id/vBanner"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -357,7 +356,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="全国菜市"
+                    android:text="1号菜市"
                     android:textColor="@color/gray33"
                     android:textSize="14sp"
                     android:textStyle="bold" />
