@@ -17,6 +17,7 @@
         android:visibility="gone">
 
         <RelativeLayout
+            android:id="@+id/rlAll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -29,13 +30,35 @@
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:src="@color/black" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rlPaied"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="已支付" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@color/black" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlPayNeed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -48,13 +71,15 @@
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:src="@color/black" />
 
         </RelativeLayout>
     </LinearLayout>
+
+    <include layout="@layout/layout_line" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"

@@ -678,5 +678,4 @@ public class CommonMethod {
             return new SimpleDateFormat("yyyy-MM-dd");
         }
     };
-
 }

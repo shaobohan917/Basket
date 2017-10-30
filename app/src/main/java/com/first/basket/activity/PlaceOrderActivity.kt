@@ -47,9 +47,12 @@ class PlaceOrderActivity : BaseActivity() {
 
     private lateinit var mAdapter: PlaceOrderAdapter
 
+    private var isWechatRepeat: Boolean = false     //微信支付失败，重新支付
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_place_order)
+        SPUtil.setInt(StaticValue.ERROR_CODE_WECHAT, -3)       //进入支付页面时，即给微信错误码设置一个初始值
         initView()
         initData()
         initListener()
@@ -60,14 +63,22 @@ class PlaceOrderActivity : BaseActivity() {
     }
 
     private fun initData() {
-
-        mGoodsList.addAll(BaseApplication.getInstance().isCheckProducts)
+        setHeader()
+        var mAllCheckProducts = BaseApplication.getInstance().isCheckProducts
+        if (!CommonMethod.isTrue(addressInfo.issqcs)) {
+            mAllCheckProducts.filter { (it.channelid == "1") }.forEach {
+                mAllCheckProducts.remove(it)
+            }
+        }
+        mGoodsList.addAll(mAllCheckProducts)
         mAdapter = PlaceOrderAdapter(this@PlaceOrderActivity, mGoodsList)
         recyclerView.adapter = mAdapter
 
-        setHeader()
-        setFooter()
+        mAdapter.addHeaderView(header)
+
         mAdapter.notifyDataSetChanged()
+
+        setFooter()
     }
 
     private fun setHeader() {
@@ -77,17 +88,16 @@ class PlaceOrderActivity : BaseActivity() {
         header.findViewById<TextView>(R.id.tvName).text = addressInfo.receiver
         header.findViewById<TextView>(R.id.tvPhone).text = addressInfo.recvphone
         header.findViewById<TextView>(R.id.tvAddress).text = addressInfo.street
-        mAdapter.addHeaderView(header)
     }
 
     private fun setFooter() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         mPrice = intent.getFloatExtra("price", 0f)
-        footer.findViewById<TextView>(R.id.tvPrice).text = mPrice.toString()
+        footer.findViewById<TextView>(R.id.tvPrice).text = getString(R.string.total_price, mPrice.toString())
         footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, BaseApplication.getInstance().productsCount.toString())
         mAdapter.addFooterView(footer)
 
-        tvTotalPrice.text = mPrice.toString()
+        tvTotalPrice.text = getString(R.string.total_price, mPrice.toString())
     }
 
 
@@ -124,8 +134,6 @@ class PlaceOrderActivity : BaseActivity() {
                 map.put("timestamp", payReq.timeStamp)
                 //生成sign
                 payReq.sign = genAppSign(map)
-
-                LogUtils.d("length:" + payReq.sign)
 
 
 //                order = data.out_trade_no
@@ -166,8 +174,8 @@ class PlaceOrderActivity : BaseActivity() {
         map.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
         map.put("paytype", "APP")
         map.put("productname", getString(R.string.app_name))
-//        map.put("totalfee", "1")
-        map.put("totalfee", (mPrice * 100).toInt().toString())
+        map.put("totalfee", "1")
+//        map.put("totalfee", (mPrice * 100).toInt().toString())
         map.put("productsid", ps)
         map.put("productsNumber", ns)
         map.put("addressid", addressInfo.addressid)
@@ -179,7 +187,6 @@ class PlaceOrderActivity : BaseActivity() {
                         super.onNext(t)
                         if (t.status == 0) {
                             //去支付
-                            LogUtils.d("t:" + t.result.data[0].appid)
                             wechatPay(t.result.data[0])
                         } else {
                             ToastUtil.showToast(t.info + ":" + t.status)
@@ -217,10 +224,23 @@ class PlaceOrderActivity : BaseActivity() {
 
     private fun deleteProducts() {
         for (i in 0 until mGoodsList.size) {
-            var product = BaseApplication.getInstance().getProductsList().remove(mGoodsList[i])
-            LogUtils.d("delete:" + product)
+            var product = BaseApplication.getInstance().productsList.remove(mGoodsList[i])
+            LogUtils.d("删除：" + product)
         }
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val code = SPUtil.getInt(StaticValue.ERROR_CODE_WECHAT, -2)
+        if (!isWechatRepeat) {
+            if (code == 0) {
+                deleteProducts()
+                myStartActivity(OrderResultActivity::class.java, true)
+            } else {
+//                ToastUtil.showToast("支付失败")
+            }
+        }
+
+    }
 }

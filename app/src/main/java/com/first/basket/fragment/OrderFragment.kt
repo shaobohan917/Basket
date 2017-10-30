@@ -18,22 +18,29 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.item_recycler_order.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import java.util.*
 
 /**
  * Created by hanshaobo on 25/10/2017.
  */
 class OrderFragment : BaseFragment() {
+    private var status = "0" //0全部   1已支付    2待支付
+    //3未支付  4已支付
     private var mDatas = ArrayList<OrderListBean.DataBean>()
     private lateinit var mAdapter: BaseRecyclerAdapter<OrderListBean.DataBean, BaseRecyclerAdapter.ViewHolder<OrderListBean.DataBean>>
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_order, container, false)!!
+        var view = inflater?.inflate(R.layout.fragment_order, container, false)!!
+        var bundle = arguments
+        if (bundle != null) {
+            status = bundle.getString("position")
+        }
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -85,8 +92,27 @@ class OrderFragment : BaseFragment() {
 
 
     private fun setData(data: List<OrderListBean.DataBean>) {
-        Collections.reverse(data)
-        mDatas.addAll(data)
+        var finalData = ArrayList<OrderListBean.DataBean>()
+        when (status) {
+            "0" ->
+                finalData.addAll(data)
+            "1" ->
+                data.filter { it.statusid == "4" }.forEach {
+                    finalData.add(it)
+                }
+            "2" ->
+                data.filter { it.statusid == "3" }.forEach {
+                    finalData.add(it)
+                }
+        }
+        mDatas.clear()
+        mDatas.addAll(finalData)
         mAdapter.notifyDataSetChanged()
+    }
+
+    fun setValue(status: String) {
+        this.status = status
+        LogUtils.d("status:" + status)
+        initData()
     }
 }

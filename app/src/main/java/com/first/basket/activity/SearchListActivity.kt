@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import com.first.basket.R
 import com.first.basket.adapter.ContentAdapter
@@ -12,10 +13,13 @@ import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyContentBean
 import com.first.basket.bean.ProductBean
+import com.first.basket.common.CommonMethod
 import com.first.basket.common.CommonMethod1
+import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_search_list.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -86,6 +90,15 @@ class SearchListActivity : BaseActivity() {
             myFinish()
         }
 
+        etSearch
+
+        etSearch.setOnEditorActionListener { p0, p1, p2 ->
+            if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                CommonMethod.hideKeyboard(etSearch)
+                getProduct(p0.text.toString())
+            }
+            false
+        }
 
     }
 

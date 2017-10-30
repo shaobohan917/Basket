@@ -16,6 +16,7 @@ import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
 import com.first.basket.utils.LogUtils
@@ -153,11 +154,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             if (System.currentTimeMillis() - exitTime > 1000) {
                 ToastUtil.showToast("双击退出应用")
                 exitTime = System.currentTimeMillis()
-
-                var products = BaseApplication.getInstance().getProductsList()
-                var gson = Gson()
-                var str = gson.toJson(products)
-                SPUtil.setString(StaticValue.GOODS_LIST, str)
+                CommonMethod1.saveProduct()
             } else {
                 //保存购物车数据
                 finish()

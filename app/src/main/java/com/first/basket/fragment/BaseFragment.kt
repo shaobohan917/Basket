@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction
  */
 open class BaseFragment : Fragment() {
 
+
     fun replaceContent(fragment: Fragment, fragmentResId: Int) {
         val transaction = activity.supportFragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)

@@ -194,7 +194,6 @@ class ShopFragment : BaseFragment() {
                         .filter { it.isCheck }
                         .forEach { mGoodsList.remove(it) }
                 mAdapter.notifyDataSetChanged()
-
             } else {
                 if (mGoodsList.any { it.isCheck }) {
                     if (!CommonMethod.isLogin()) {
@@ -330,21 +329,23 @@ class ShopFragment : BaseFragment() {
                         .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                             override fun onNext(t: HttpResult<PriceBean>) {
                                 super.onNext(t)
-                                if(t.status==0){
+                                if (t.status == 0) {
                                     mTotalcost = t.result.data.totalcost
                                     setPrice(t.result.data.totalcost)
-                                }else{
+                                } else {
                                     ToastUtil.showToast(t.info)
                                 }
                             }
                         })
+            } else {
+                mTotalcost = 0f
             }
         }
     }
 
     private fun setPrice(totalcost: Float) {
         if (totalcost == 0f) {
-            tvTotalPrice.text = ""
+            tvTotalPrice.text = "0"
             tvPostage.text = ""
             llTotalPrice.visibility = View.GONE
         } else {
@@ -368,9 +369,24 @@ class ShopFragment : BaseFragment() {
                 }
                 getPrice(mGoodsList)
                 isFirst = false
+            } else {
+                var list = ArrayList<ProductBean>()
+                BaseApplication.getInstance().productsList = mGoodsList
+                mGoodsList.filter { it.channelid == "1" }.forEach {
+                    list.add(it)
+                }
+                mGoodsList.filter { it.channelid == "3" }.forEach {
+                    list.add(it)
+                }
+                mGoodsList.clear()
+                mGoodsList.addAll(list)
+                getPrice(mGoodsList)
             }
             mAdapter.notifyDataSetChanged()
             tvShopEmpty.visibility = if (mGoodsList.size == 0) (View.VISIBLE) else ((View.GONE))
+            if (mGoodsList.size == 0) {
+                mTotalcost = 0f
+            }
         } else {
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()

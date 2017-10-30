@@ -51,20 +51,20 @@
     </RelativeLayout>
 
     <com.first.basket.view.AccountItemManagerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:accountManagerRight="尽快送达"
-        app:accountManagerTitle="送达时间"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        app:accountManagerTitle="送达时间" />
 
     <com.first.basket.view.AccountItemManagerView
-        app:accountManagerRight="货到付款"
-        app:accountManagerTitle="支付方式"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:accountManagerRight="微信支付"
+        app:accountManagerTitle="支付方式" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:accountManagerRight="免运费"
-        app:accountManagerTitle="运费"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        app:accountManagerTitle="运费" />
 </LinearLayout>

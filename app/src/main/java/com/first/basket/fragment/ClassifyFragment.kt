@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
@@ -7,15 +8,20 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import com.first.basket.R
 import com.first.basket.activity.MainActivity
+import com.first.basket.activity.SearchListActivity
 import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
+import com.first.basket.common.CommonMethod
+import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_classify.*
 import kotlinx.android.synthetic.main.item_et_search.*
 import java.lang.Exception
@@ -54,7 +60,6 @@ class ClassifyFragment : BaseFragment() {
         val drawable = activity.resources.getDrawable(R.mipmap.ic_category_search)
         drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
         etSearch.setCompoundDrawables(drawable, null, null, null)
-        etSearch.isClickable = false
 
         classifyRecyclerView.layoutManager = LinearLayoutManager(activity)
     }
@@ -70,9 +75,23 @@ class ClassifyFragment : BaseFragment() {
     }
 
     private fun initListener() {
+        etSearch.setOnEditorActionListener { p0, p1, p2 ->
+            if (p1 == EditorInfo.IME_ACTION_SEARCH) {
+                CommonMethod.hideKeyboard(etSearch)
+                goSearchList(p0.text.toString())
+            }
+            false
+        }
+
         mClassifyAdapter.setOnItemClickListener { view, data, position ->
             refreshContent(position)
         }
+    }
+
+    private fun goSearchList(str: String) {
+        var intent = Intent(activity, SearchListActivity::class.java)
+        intent.putExtra("search", str)
+        startActivity(intent)
     }
 
     private fun getClassify(channel: Int, needRefresh: Boolean) {

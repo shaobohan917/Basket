@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.first.basket.R;
 import com.first.basket.bean.ProductBean;
+import com.first.basket.common.CommonMethod;
 import com.first.basket.utils.ImageUtils;
 
 import org.jetbrains.annotations.Nullable;
@@ -65,6 +67,9 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
         }
 
         View itemView = View.inflate(context, R.layout.item_recycler_shop, null);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(CommonMethod.dip2px(context,10), 0, CommonMethod.dip2px(context,10), 0);
+        itemView.setLayoutParams(params);
         holder = new MyViewHolder(itemView);
         return holder;
     }
@@ -77,7 +82,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
                 //这里加载数据的时候要注意，是从position-1开始，因为position==0已经被header占用了
                 ProductBean bean = mDatas.get(position - 1);
                 holder.tvName.setText(bean.getProductname());
-                holder.tvUnit.setText(bean.getUnit());
+                holder.tvUnit.setText(bean.getWeight() + "/" + bean.getUnit());
                 holder.tvPrice.setText(bean.getPrice());
                 holder.tvOrderCount.setVisibility(View.VISIBLE);
                 holder.tvOrderCount.setText("x " + bean.getAmount());

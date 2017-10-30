@@ -100,12 +100,14 @@ class HomeFragment : BaseFragment() {
         llTab_yhcs.setOnClickListener(myClickListener)
         llTab_hltg.setOnClickListener(myClickListener)
         llTab_ybbl.setOnClickListener(myClickListener)
+        vegetables.setOnClickListener(myClickListener)
+        meat.setOnClickListener(myClickListener)
     }
 
     inner class MyClickListener : View.OnClickListener {
         override fun onClick(view: View) {
             when (view.id) {
-                R.id.llTab_sqcs -> {
+                R.id.llTab_sqcs, R.id.vegetables, R.id.meat -> {
                     goClassify(1)
                 }
                 R.id.llTab_yhcs, R.id.ivSHCS, R.id.ivQGCS -> goClassify(3)
