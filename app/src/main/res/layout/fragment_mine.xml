@@ -5,182 +5,194 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/colorPrimary">
-
-        <ImageView
-            android:id="@+id/ivAva"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_placeholder" />
-
-        <TextView
-            android:id="@+id/tvLoginStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:gravity="center_vertical"
-            android:layout_alignTop="@id/ivAva"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/ivAva"
-            android:text="登录/注册"
-            android:textColor="@color/white" />
-    </RelativeLayout>
-
-    <include layout="@layout/layout_gap" />
-
-    <RelativeLayout
-        android:id="@+id/rlOrder"
-        android:layout_width="match_parent"
-        android:layout_height="48dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="我的订单"
-            android:textColor="@color/gray33"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/ivMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="22dp"
-            android:src="@mipmap/ic_mine_arrow" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/ivMore"
-            android:text="我的订单"
-            android:textColor="@color/gray66"
-            android:textSize="14sp" />
-
-        <include layout="@layout/layout_line" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:layout_width="76dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_mine_pay" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/colorPrimary">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/ivAva"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/ic_placeholder" />
+
+                <TextView
+                    android:id="@+id/tvLoginStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:layout_alignTop="@id/ivAva"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/ivAva"
+                    android:gravity="center_vertical"
+                    android:text="登录/注册"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_gap" />
+
+            <RelativeLayout
+                android:id="@+id/rlOrder"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="我的订单"
+                    android:textColor="@color/gray33"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ivMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:src="@mipmap/ic_mine_arrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/ivMore"
+                    android:text="我的订单"
+                    android:textColor="@color/gray66"
+                    android:textSize="14sp" />
+
+                <include layout="@layout/layout_line" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_mine_pay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:text="待支付" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_mine_send" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:text="待发货" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_mine_receive" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:text="待收货" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <include layout="@layout/layout_gap" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="待支付" />
+                app:accountManagerImg="@mipmap/ic_mine_address"
+                app:accountManagerTitle="收货地址" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:accountManagerImg="@mipmap/ic_mine_range"
+                app:accountManagerTitle="配送范围" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:accountManagerImg="@mipmap/ic_mine_setting"
+                app:accountManagerTitle="设置中心" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:accountManagerImg="@mipmap/ic_mine_contact"
+                app:accountManagerTitle="联系客服" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:accountManagerImg="@mipmap/ic_mine_about"
+                app:accountManagerTitle="关于我们" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:accountManagerImg="@mipmap/ic_mine_help"
+                app:accountManagerTitle="帮助中心" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="76dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_mine_send" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="待发货" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="76dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_mine_receive" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="待收货" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <include layout="@layout/layout_gap" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:id="@+id/aimvAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:accountManagerImg="@mipmap/ic_mine_address"
-        app:accountManagerTitle="收货地址" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:id="@+id/aimvRange"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:accountManagerImg="@mipmap/ic_mine_range"
-        app:accountManagerTitle="配送范围" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:id="@+id/aimvSetting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:accountManagerImg="@mipmap/ic_mine_setting"
-        app:accountManagerTitle="设置中心" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:id="@+id/aimvHelp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:accountManagerImg="@mipmap/ic_mine_contact"
-        app:accountManagerTitle="联系客服" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:id="@+id/aimvAbout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:accountManagerImg="@mipmap/ic_mine_about"
-        app:accountManagerTitle="关于我们" />
-
-    <com.first.basket.view.AccountItemManagerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:accountManagerImg="@mipmap/ic_mine_help"
-        app:accountManagerTitle="帮助中心" />
+    </ScrollView>
 </LinearLayout>
