@@ -2,7 +2,6 @@ package com.first.basket.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -40,9 +39,7 @@ class OrderListActivity : BaseActivity() {
     }
 
     private fun initData() {
-        var mAdapter = MyApater(supportFragmentManager, this@OrderListActivity)
-        viewPager.adapter = mAdapter
-        for (i in 0 until 1) {
+        for (i in 0 until 3) {
             var fragment = OrderFragment()
 
             var bundle = Bundle()
@@ -52,10 +49,15 @@ class OrderListActivity : BaseActivity() {
             fragmentList.add(fragment)
             fragments.add(fragment::class.java.name)
         }
+
+        var mAdapter = ViewPagerAdapter(supportFragmentManager, this@OrderListActivity, fragmentList)
+        viewPager.adapter = mAdapter
+
         mAdapter.notifyDataSetChanged()
     }
 
-    inner class MyApater(fm: FragmentManager, private val context: Context) : FragmentPagerAdapter(fm) {
+    inner class ViewPagerAdapter(fm: FragmentManager, private val context: Context, fragments: List<Fragment>) : FragmentPagerAdapter(fm) {
+
         override fun getItem(position: Int): Fragment {
             return Fragment.instantiate(context, fragments[position])
         }

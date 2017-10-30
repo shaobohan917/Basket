@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -25,11 +26,13 @@ import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.item_recycler_order.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
+@SuppressLint("ValidFragment")
 /**
  * Created by hanshaobo on 25/10/2017.
  */
-class OrderFragment : BaseFragment() {
-    private var status = "0" //0全部   1已支付    2待支付
+class OrderFragment() : BaseFragment() {
+//    private var status = i.toString() //0全部   1已支付    2待支付
+    private var status = "0"
     //3未支付  4已支付
     private var mDatas = ArrayList<OrderListBean.DataBean>()
     private lateinit var mAdapter: BaseRecyclerAdapter<OrderListBean.DataBean, BaseRecyclerAdapter.ViewHolder<OrderListBean.DataBean>>
@@ -39,6 +42,7 @@ class OrderFragment : BaseFragment() {
         var bundle = arguments
         if (bundle != null) {
             status = bundle.getString("position")
+            LogUtils.d("status:" + status)
         }
         return view
     }
@@ -108,11 +112,5 @@ class OrderFragment : BaseFragment() {
         mDatas.clear()
         mDatas.addAll(finalData)
         mAdapter.notifyDataSetChanged()
-    }
-
-    fun setValue(status: String) {
-        this.status = status
-        LogUtils.d("status:" + status)
-        initData()
     }
 }
