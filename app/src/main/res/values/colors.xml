@@ -28,4 +28,6 @@
     <color name="red56">#FF5656</color>
     <color name="colorMain">#263646</color>
     <color name="green">#4AC678</color>
+    <color name="web_green">#4ac678</color>
+    <color name="web_pink">#F64B88</color>
 </resources>

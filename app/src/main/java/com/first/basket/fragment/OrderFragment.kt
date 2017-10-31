@@ -1,6 +1,5 @@
 package com.first.basket.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -26,23 +25,18 @@ import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.item_recycler_order.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-@SuppressLint("ValidFragment")
-/**
- * Created by hanshaobo on 25/10/2017.
- */
-class OrderFragment() : BaseFragment() {
-//    private var status = i.toString() //0全部   1已支付    2待支付
-    private var status = "0"
-    //3未支付  4已支付
+class OrderFragment : BaseFragment() {
+    private var mPosition = "0"
+    //3待支付；4待发货；5待收货；6已完成；7订单超时未支付
     private var mDatas = ArrayList<OrderListBean.DataBean>()
     private lateinit var mAdapter: BaseRecyclerAdapter<OrderListBean.DataBean, BaseRecyclerAdapter.ViewHolder<OrderListBean.DataBean>>
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater?.inflate(R.layout.fragment_order, container, false)!!
+        val view = inflater?.inflate(R.layout.fragment_order, container, false)!!
         var bundle = arguments
         if (bundle != null) {
-            status = bundle.getString("position")
-            LogUtils.d("status:" + status)
+            mPosition = bundle.getString("position")
+            LogUtils.d("mPosition:" + mPosition)
         }
         return view
     }
@@ -57,15 +51,26 @@ class OrderFragment() : BaseFragment() {
         mAdapter = BaseRecyclerAdapter(R.layout.item_recycler_order, mDatas) { view: View, item: OrderListBean.DataBean ->
             view.tvNO.text = resources.getString(R.string.order_number, item.strorderid)
             view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.cost)
+            when (item.statusid) {
+                "3" -> {
+                    view.tvStatus.text = "立即支付"
+                    view.tvStatus.onClick { ToastUtil.showToast("立即支付") }
+                }
+                "4" -> {
+                    view.tvStatus.text = "已支付"
+                }
+            }
             if (item.orderdetail != null) {
+                view.llImg.removeAllViews()
                 for (i in 0 until item.orderdetail.size) {
-                    if (i > 3) break
-                    var iv = ImageView(activity)
-                    var params = ViewGroup.MarginLayoutParams(CommonMethod.dip2px(activity, 60f), CommonMethod.dip2px(activity, 60f))
-                    params.setMargins(8, 8, 8, 8)
-                    iv.layoutParams = params
-                    ImageUtils.showImg(activity, item.orderdetail[i].img, iv)
-                    view.llImg.addView(iv)
+                    if (i < 4) {
+                        var iv = ImageView(activity)
+                        var params = ViewGroup.MarginLayoutParams(CommonMethod.dip2px(activity, 60f), CommonMethod.dip2px(activity, 60f))
+                        params.setMargins(8, 8, 8, 8)
+                        iv.layoutParams = params
+                        ImageUtils.showImg(activity, item.orderdetail[i].img, iv)
+                        view.llImg.addView(iv)
+                    }
                 }
             }
             view.llRoot.onClick {
@@ -97,7 +102,7 @@ class OrderFragment() : BaseFragment() {
 
     private fun setData(data: List<OrderListBean.DataBean>) {
         var finalData = ArrayList<OrderListBean.DataBean>()
-        when (status) {
+        when (mPosition) {
             "0" ->
                 finalData.addAll(data)
             "1" ->

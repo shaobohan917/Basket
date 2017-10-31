@@ -13,8 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/rlAll"
@@ -29,32 +28,12 @@
                 android:text="全部" />
 
             <ImageView
+                android:id="@+id/ivAll"
                 android:layout_width="20dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:src="@color/black" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rlPaied"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="已支付" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:src="@color/black" />
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -70,13 +49,62 @@
                 android:text="待支付" />
 
             <ImageView
+                android:id="@+id/ivPayNeed"
                 android:layout_width="20dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:src="@color/black" />
+                android:src="@color/black"
+                android:visibility="gone" />
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="待发货" />
+
+            <ImageView
+                android:id="@+id/ivSend"
+                android:layout_width="20dp"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@color/black"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlReceive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="待收货" />
+
+            <ImageView
+                android:id="@+id/ivReceive"
+                android:layout_width="20dp"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@color/black"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
     <include layout="@layout/layout_line" />

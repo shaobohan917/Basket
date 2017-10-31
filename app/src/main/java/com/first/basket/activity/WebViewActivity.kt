@@ -1,14 +1,15 @@
 package com.first.basket.activity
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import com.first.basket.R
-import com.first.basket.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_webview.*
 import android.net.http.SslError
+import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.webkit.*
+import com.first.basket.R
+import com.first.basket.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_webview.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
 /**
@@ -29,6 +30,20 @@ class WebViewActivity : BaseActivity() {
         if (TextUtils.isEmpty(url)) myFinish()
         val title = intent.getStringExtra("title")
         titleView.setTitle(title)
+
+        if ("医保伴侣" == title) {
+            bt_go.visibility = View.VISIBLE
+            bt_go.text = getString(R.string.agreenYibao)
+            bt_go.background = resources.getDrawable(R.drawable.corner_green)
+        } else if ("爱心无限" == title) {
+            bt_go.visibility = View.VISIBLE
+            bt_go.text = getString(R.string.aggeenLove)
+            bt_go.background = resources.getDrawable(R.drawable.corner_pink)
+        }
+        bt_go.onClick {
+            MainActivity.getInstance1().goClassify(3)
+            myFinish()
+        }
 
         var webSettings = webview.settings
 

@@ -28,6 +28,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.roughike.bottombar.BottomBar
 import com.roughike.bottombar.BottomBarTab
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_loading.*
 import java.util.*
 
@@ -229,5 +230,11 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 
     fun hideLoading() {
         loadingView.visibility = View.GONE
+    }
+
+
+    public fun goClassify(channel: Int) {
+        mChannel = channel
+        bottombar.selectTabAtPosition(1)
     }
 }

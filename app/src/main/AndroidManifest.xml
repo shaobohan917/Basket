@@ -96,6 +96,7 @@
         <activity android:name=".activity.AddressListActivity" />
         <activity android:name=".activity.OrderResultActivity" />
         <activity android:name=".activity.DecoderActivity" />
+        <activity android:name=".activity.PayChooseActivity" />
         <activity
             android:name=".activity.SearchListActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />

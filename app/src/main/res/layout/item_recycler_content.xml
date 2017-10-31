@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
+                android:maxLines="1"
                 android:textColor="@color/gray33"
                 android:textSize="14sp"
                 tools:text="果果" />
@@ -41,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:maxLines="1"
                 tools:text="3只" />
 
             <RelativeLayout
@@ -64,6 +66,7 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:maxLines="1"
                     android:layout_toRightOf="@id/tvP"
                     android:gravity="bottom"
                     android:textColor="@color/gray33"

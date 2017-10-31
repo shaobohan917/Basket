@@ -1,5 +1,6 @@
 package com.first.basket.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -104,6 +105,9 @@ class PlaceOrderActivity : BaseActivity() {
     private fun initListener() {
         btBuy.onClick {
             doPlaceOrderByWechat()
+//            var intent = Intent(this@PlaceOrderActivity,PayChooseActivity::class.java)
+//            intent.putExtra("price",mPrice)
+//            myStartActivityForResult(intent,REQUEST_ONE)
         }
     }
 
