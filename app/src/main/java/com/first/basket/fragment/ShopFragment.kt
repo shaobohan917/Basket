@@ -26,6 +26,7 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.google.gson.GsonBuilder
@@ -195,7 +196,11 @@ class ShopFragment : BaseFragment() {
                         .forEach { mGoodsList.remove(it) }
                 mAdapter.notifyDataSetChanged()
             } else {
-                if (mGoodsList.any { it.isCheck }) {
+                //符合菜市的商品
+                var list = ArrayList<ProductBean>()
+                list.addAll(mGoodsList)
+                list = (filterCaishi(list))
+                if (list.any { it.isCheck }) {
                     if (!CommonMethod.isLogin()) {
                         (activity as MainActivity).showLogin()
                         return@onClick
@@ -217,7 +222,12 @@ class ShopFragment : BaseFragment() {
             for (productBean in mGoodsList) {
                 productBean.isCheck = b
             }
-            mAdapter.notifyDataSetChanged()
+            try {
+                mAdapter.notifyDataSetChanged()
+            } catch (e: Exception) {
+                LogUtils.d("exception:" + e.message)
+            }
+
             if (b) {
                 getPrice(mGoodsList)
             } else {
@@ -288,32 +298,18 @@ class ShopFragment : BaseFragment() {
 
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
         if (isModifyMode) return
-        if (mDatas.size == 0) {
+
+        var selectProductsList = ArrayList<ProductBean>()
+        //选择所有isCheck=true的
+        (0 until mDatas.size)
+                .filter { mDatas[it].isCheck }
+                .mapTo(selectProductsList) { mDatas[it] }
+        //再选择所有菜市配送范围内的
+        selectProductsList = filterCaishi(selectProductsList)
+
+        if (selectProductsList.size == 0) {
             setPrice(0f)
         } else {
-            //选择所有isCheck=true的
-            var selectProductsList = ArrayList<ProductBean>()
-            (0 until mDatas.size)
-                    .filter { mDatas[it].isCheck }
-                    .mapTo(selectProductsList) { mDatas[it] }
-            //再选择所有菜市配送范围内的
-            var iterator = selectProductsList.iterator()
-            while (iterator.hasNext()) {
-                var productBean = iterator.next()
-                if (productBean.channelid == "1" && !CommonMethod.isTrue(addressInfo!!.issqcs)) {
-//                    //社区菜市不支持
-                    iterator.remove()
-                }
-                if (productBean.channelid == "2" && !CommonMethod.isTrue(addressInfo!!.isshcs)) {
-                    //上海菜市不支持
-                    iterator.remove()
-                }
-                if (productBean.channelid == "3" && !CommonMethod.isTrue(addressInfo!!.isqgcs)) {
-                    //全国菜市不支持
-                    iterator.remove()
-                }
-            }
-
             var productidString = StringBuilder()
             var numString = StringBuilder()
 
@@ -341,6 +337,26 @@ class ShopFragment : BaseFragment() {
                 mTotalcost = 0f
             }
         }
+    }
+
+    private fun filterCaishi(selectProductsList: ArrayList<ProductBean>): ArrayList<ProductBean> {
+        var iterator = selectProductsList.iterator()
+        while (iterator.hasNext()) {
+            var productBean = iterator.next()
+            if (productBean.channelid == "1" && !CommonMethod.isTrue(addressInfo!!.issqcs)) {
+                //社区菜市不支持
+                iterator.remove()
+            }
+            if (productBean.channelid == "2" && !CommonMethod.isTrue(addressInfo!!.isshcs)) {
+                //上海菜市不支持
+                iterator.remove()
+            }
+            if (productBean.channelid == "3" && !CommonMethod.isTrue(addressInfo!!.isqgcs)) {
+                //全国菜市不支持
+                iterator.remove()
+            }
+        }
+        return selectProductsList
     }
 
     private fun setPrice(totalcost: Float) {
