@@ -40,6 +40,7 @@ import kotlin.collections.HashMap
  */
 class PlaceOrderActivity : BaseActivity() {
     private var mPrice: Float = 0f
+    private var mCount: Int = 0
     private var mGoodsList = ArrayList<ProductBean>()
 
     private lateinit var header: View
@@ -63,6 +64,7 @@ class PlaceOrderActivity : BaseActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
+
     private fun initData() {
         setHeader()
         var mAllCheckProducts = BaseApplication.getInstance().isCheckProducts
@@ -72,6 +74,10 @@ class PlaceOrderActivity : BaseActivity() {
             }
         }
         mGoodsList.addAll(mAllCheckProducts)
+
+        for (productBean in mGoodsList) {
+            mCount += productBean.amount
+        }
         mAdapter = PlaceOrderAdapter(this@PlaceOrderActivity, mGoodsList)
         recyclerView.adapter = mAdapter
 
@@ -95,7 +101,7 @@ class PlaceOrderActivity : BaseActivity() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         mPrice = intent.getFloatExtra("price", 0f)
         footer.findViewById<TextView>(R.id.tvPrice).text = getString(R.string.total_price, mPrice.toString())
-        footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, BaseApplication.getInstance().productsCount.toString())
+        footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, mCount)
         mAdapter.addFooterView(footer)
 
         tvTotalPrice.text = getString(R.string.total_price, mPrice.toString())

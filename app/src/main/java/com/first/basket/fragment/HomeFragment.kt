@@ -208,6 +208,10 @@ class HomeFragment : BaseFragment() {
         vBanner.setOnBannerListener {
             goClassify(1)
         }
+        vBanner.visibility = View.GONE
+        ivTest.visibility = View.VISIBLE
+        ivTest.onClick { goClassify(1) }
+        ImageUtils.showImg(activity,Constants.BASE_IMG_URL + data.sqcs.carouselfigure[0].image,ivTest)
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)

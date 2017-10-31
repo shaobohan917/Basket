@@ -95,7 +95,7 @@ class TitleView : FrameLayout {
         tvMore.text = text
     }
 
-    fun setTitle(text: String) {
+    fun setTitle(text: String?) {
         if (!TextUtils.isEmpty(text)) {
             tvTitle.text = text
             postInvalidate()

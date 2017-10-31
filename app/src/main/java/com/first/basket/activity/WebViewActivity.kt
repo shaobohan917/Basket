@@ -17,6 +17,7 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
  */
 class WebViewActivity : BaseActivity() {
     private var url: String? = ""
+    private var mTitle: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +29,9 @@ class WebViewActivity : BaseActivity() {
     private fun initData() {
         url = intent.getStringExtra("url")
         if (TextUtils.isEmpty(url)) myFinish()
-        val title = intent.getStringExtra("title")
-        titleView.setTitle(title)
+        mTitle = intent.getStringExtra("title")
 
-        if ("医保伴侣" == title) {
-            bt_go.visibility = View.VISIBLE
-            bt_go.text = getString(R.string.agreenYibao)
-            bt_go.background = resources.getDrawable(R.drawable.corner_green)
-        } else if ("爱心无限" == title) {
-            bt_go.visibility = View.VISIBLE
-            bt_go.text = getString(R.string.aggeenLove)
-            bt_go.background = resources.getDrawable(R.drawable.corner_pink)
-        }
-        bt_go.onClick {
-            MainActivity.getInstance1().goClassify(3)
-            myFinish()
-        }
+        titleView.setTitle(mTitle)
 
         var webSettings = webview.settings
 
@@ -53,10 +41,12 @@ class WebViewActivity : BaseActivity() {
         webview.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
                 if (newProgress == 100) {
-                    pb.visibility = View.INVISIBLE;
+                    pb.visibility = View.INVISIBLE
+                    showBtGo()
+
                 } else {
                     if (View.INVISIBLE == pb.visibility) {
-                        pb.visibility = View.VISIBLE;
+                        pb.visibility = View.VISIBLE
                     }
                     pb.progress = newProgress;
                 }
@@ -74,6 +64,22 @@ class WebViewActivity : BaseActivity() {
         webSettings.cacheMode = WebSettings.LOAD_NO_CACHE;
 
         webview.loadUrl(url)
+    }
+
+    private fun showBtGo() {
+        if ("医保伴侣" == mTitle) {
+            bt_go.visibility = View.VISIBLE
+            bt_go.text = getString(R.string.agreenYibao)
+            bt_go.background = resources.getDrawable(R.drawable.corner_green)
+        } else if ("爱心无限" == mTitle) {
+            bt_go.visibility = View.VISIBLE
+            bt_go.text = getString(R.string.aggeenLove)
+            bt_go.background = resources.getDrawable(R.drawable.corner_pink)
+        }
+        bt_go.onClick {
+            MainActivity.getInstance1().goClassify(3)
+            myFinish()
+        }
     }
 
 }

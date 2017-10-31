@@ -58,6 +58,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:padding="10dp"
+                android:text="  "
                 android:textColor="@color/black" />
         </RelativeLayout>
 

@@ -388,6 +388,10 @@ class ShopFragment : BaseFragment() {
                 mTotalcost = 0f
             }
         } else {
+            isModifyMode = false
+            titleView.setMoreText("编辑")
+            setStatus(isModifyMode)
+
             BaseApplication.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
             isModifyMode = false
