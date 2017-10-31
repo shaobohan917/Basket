@@ -58,6 +58,7 @@ public class StaticValue {
 
     public static final String PROM_HUN = "prom_hun";
     public static final String PROM_SU = "prom_su";
+    public static final String GET_TIME = "get_time";
 
     public static final String DEFAULT_ADDRESS = "default_address";
 

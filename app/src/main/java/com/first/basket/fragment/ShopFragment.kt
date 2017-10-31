@@ -193,22 +193,29 @@ class ShopFragment : BaseFragment() {
             if (isModifyMode) {
                 mGoodsList
                         .filter { it.isCheck }
-                        .forEach { mGoodsList.remove(it) }
+                        .forEach {
+                            mGoodsList.remove(it)
+                            if ("荤" == it.promdata.promproducttype) {
+                                SPUtil.setBoolean(StaticValue.PROM_HUN, false)
+                            } else if ("素" == it.promdata.promproducttype) {
+                                SPUtil.setBoolean(StaticValue.PROM_SU, false)
+                            }
+                        }
                 mAdapter.notifyDataSetChanged()
             } else {
+                if (!CommonMethod.isLogin()) {
+                    (activity as MainActivity).showLogin()
+                    return@onClick
+                }
+                if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
+                    ToastUtil.showToast(activity.getString(R.string.add_address))
+                    return@onClick
+                }
                 //符合菜市的商品
                 var list = ArrayList<ProductBean>()
                 list.addAll(mGoodsList)
                 list = (filterCaishi(list))
                 if (list.any { it.isCheck }) {
-                    if (!CommonMethod.isLogin()) {
-                        (activity as MainActivity).showLogin()
-                        return@onClick
-                    }
-                    if (TextUtils.isEmpty(SPUtil.getString(StaticValue.DEFAULT_ADDRESS, ""))) {
-                        ToastUtil.showToast(activity.getString(R.string.add_address))
-                        return@onClick
-                    }
                     var intent = Intent(activity, PlaceOrderActivity::class.java)
                     intent.putExtra("price", mTotalcost)
                     startActivity(intent)

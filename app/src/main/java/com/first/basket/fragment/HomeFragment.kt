@@ -17,11 +17,14 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.LogUtils
+import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.youth.banner.BannerConfig
@@ -60,7 +63,6 @@ class HomeFragment : BaseFragment() {
                 .subscribe({ granted ->
                     isGrantedCamera = granted
                 })
-
     }
 
     private fun initView() {
@@ -211,7 +213,7 @@ class HomeFragment : BaseFragment() {
         vBanner.visibility = View.GONE
         ivTest.visibility = View.VISIBLE
         ivTest.onClick { goClassify(1) }
-        ImageUtils.showImg(activity,Constants.BASE_IMG_URL + data.sqcs.carouselfigure[0].image,ivTest)
+        ImageUtils.showImg(activity, Constants.BASE_IMG_URL + data.sqcs.carouselfigure[0].image, ivTest)
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)
