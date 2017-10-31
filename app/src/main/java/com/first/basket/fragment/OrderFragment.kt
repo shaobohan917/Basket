@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.animation.FloatEvaluator
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.first.basket.R
 import com.first.basket.activity.OrderDetailActivity
+import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.OrderListBean
@@ -53,11 +55,15 @@ class OrderFragment : BaseFragment() {
             view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.price)
             when (item.statusid) {
                 "3" -> {
-                    view.tvStatus.text = "立即支付"
-                    view.tvStatus.onClick { ToastUtil.showToast("立即支付") }
+//                    view.btStatus.text = "立即支付"
+//                    view.btStatus.onClick {
+//                        var intent = Intent(activity,PlaceOrderActivity::class.java)
+//                        startActivity(intent) }
+                    view.btStatus.visibility = View.GONE
                 }
                 "4" -> {
-                    view.tvStatus.text = "已支付"
+                    view.btStatus.text = "已支付"
+                    view.btStatus.background = null
                 }
             }
             if (item.orderdetail != null) {
@@ -101,17 +107,21 @@ class OrderFragment : BaseFragment() {
 
 
     private fun setData(data: List<OrderListBean.DataBean>) {
-        data.any { it.orderdetail == null }.apply { return }
+//        data.any { it.orderdetail == null }.apply { return }
         var finalData = ArrayList<OrderListBean.DataBean>()
         when (mPosition) {
             "0" ->
                 finalData.addAll(data)
             "1" ->
-                data.filter { it.statusid == "4" }.forEach {
+                data.filter { it.statusid == "3" }.forEach {
                     finalData.add(it)
                 }
             "2" ->
-                data.filter { it.statusid == "3" }.forEach {
+                data.filter { it.statusid == "4" }.forEach {
+                    finalData.add(it)
+                }
+            "3" ->
+                data.filter { it.statusid == "5" }.forEach {
                     finalData.add(it)
                 }
         }

@@ -4,12 +4,14 @@
     android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
     android:orientation="vertical">
+
+    <include layout="@layout/layout_gap" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -34,6 +36,7 @@
         android:id="@+id/llImg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal" />
 
 
@@ -41,7 +44,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="45dp"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/tvCost"
@@ -54,6 +58,15 @@
 
         <TextView
             android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="再次购买"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
