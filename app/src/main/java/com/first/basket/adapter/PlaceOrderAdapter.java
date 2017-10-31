@@ -83,7 +83,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
                 ProductBean bean = mDatas.get(position - 1);
                 holder.tvName.setText(bean.getProductname());
                 holder.tvUnit.setText(bean.getWeight() + "/" + bean.getUnit());
-                holder.tvPrice.setText(bean.getCost());
+                holder.tvPrice.setText(bean.getPrice());
                 holder.tvOrderCount.setVisibility(View.VISIBLE);
                 holder.tvOrderCount.setText("x " + bean.getAmount());
 

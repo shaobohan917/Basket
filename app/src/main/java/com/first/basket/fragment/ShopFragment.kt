@@ -10,6 +10,8 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.adapter.MenuAdapter
@@ -25,10 +27,8 @@ import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
-import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
-import com.first.basket.utils.SPUtil
-import com.first.basket.utils.ToastUtil
+import com.first.basket.utils.*
+import com.first.basket.view.FullyLinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem
@@ -251,25 +251,38 @@ class ShopFragment : BaseFragment() {
                 .subscribe(object : HttpResultSubscriber<HotRecommendBean>() {
                     override fun onNext(t: HotRecommendBean) {
                         super.onNext(t)
-//                        setRecommendData(t.result.data)
+                        setRecommendData(t.result.data)
                     }
                 })
     }
 
     private fun setRecommendData(data: HotRecommendBean.ResultBean.DataBean) {
-        recommendRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        ImageUtils.showImg(activity, data.hotimage, ivRecommend)
+//        recommendRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        var linearLayoutManager = FullyLinearLayoutManager(activity, 2)
+        recommendRecyclerView.isNestedScrollingEnabled = false
+        //设置布局管理器
+        recommendRecyclerView.layoutManager = linearLayoutManager
+
         val recommedDatas = data.products
-        recommendRecyclerView.adapter = BaseRecyclerAdapter(R.layout.layout_view_goods, recommedDatas) { view: View, item: ProductBean ->
+
+        var mAdapter = BaseRecyclerAdapter(R.layout.layout_view_goods, recommedDatas) { view: View, item: ProductBean ->
             view.tvName.text = item.productname
-            view.tvPrice.text = item.cost
-            view.tvUnit.text = item.unit
+            view.tvPrice.text = "¥ " + item.price
+            view.tvUnit.text = item.weight + "/" + item.unit
             ImageUtils.showImg(activity, item.img, view.ivGoods)
-            view.onClick {
+            view.llRoot.onClick {
                 var intent = Intent(activity, GoodsDetailActivity::class.java)
                 intent.putExtra("id", item.productid)
                 startActivity(intent)
             }
+
+            var width = ScreenUtils.getScreenWidth(activity)
+            var params = LinearLayout.LayoutParams(width / 2, width / 2)
+            view.ivGoods.layoutParams = params
         }
+
+        recommendRecyclerView.adapter = mAdapter
     }
 
     /**
@@ -333,8 +346,8 @@ class ShopFragment : BaseFragment() {
                             override fun onNext(t: HttpResult<PriceBean>) {
                                 super.onNext(t)
                                 if (t.status == 0) {
-                                    mTotalcost = t.result.data.totalcost
-                                    setPrice(t.result.data.totalcost)
+                                    mTotalcost = t.result.data.totalprice
+                                    setPrice(t.result.data.totalprice)
                                 } else {
                                     ToastUtil.showToast(t.info)
                                 }

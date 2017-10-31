@@ -50,7 +50,7 @@ class OrderFragment : BaseFragment() {
     private fun initData() {
         mAdapter = BaseRecyclerAdapter(R.layout.item_recycler_order, mDatas) { view: View, item: OrderListBean.DataBean ->
             view.tvNO.text = resources.getString(R.string.order_number, item.strorderid)
-            view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.cost)
+            view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.price)
             when (item.statusid) {
                 "3" -> {
                     view.tvStatus.text = "立即支付"

@@ -75,7 +75,7 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         holder.tvName1.text = product.productname
 
         holder.tvUnit1.text = product.weight + "/" + product.unit
-        holder.tvPrice1.text = product.cost
+        holder.tvPrice1.text = product.price
         holder.amoutView.amount = product.amount
         ImageUtils.showImg(BaseApplication.getInstance(), product.img, holder.ivGoods)
         holder.cbSelect.isChecked = product.isCheck

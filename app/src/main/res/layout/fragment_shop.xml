@@ -57,10 +57,27 @@
                     android:text="购物车空空的，什么也没有" />
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="热门推荐" />
+
+            <ImageView
+                android:id="@+id/ivRecommend"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitXY" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recommendRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
 

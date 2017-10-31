@@ -102,6 +102,7 @@ class PlaceOrderActivity : BaseActivity() {
         mPrice = intent.getFloatExtra("price", 0f)
         footer.findViewById<TextView>(R.id.tvPrice).text = getString(R.string.total_price, mPrice.toString())
         footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, mCount)
+        footer.findViewById<TextView>(R.id.tvTotal).text = "¥ " + mPrice
         mAdapter.addFooterView(footer)
 
         tvTotalPrice.text = getString(R.string.total_price, mPrice.toString())
