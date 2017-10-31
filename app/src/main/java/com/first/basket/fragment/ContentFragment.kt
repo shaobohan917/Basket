@@ -123,8 +123,11 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
      * 获取商品列表
      */
     private fun getProduct(leveltwoId: String) {
-        loadingView.visibility = View.VISIBLE
-        loadingView.setIndeterminateDrawable(DoubleBounce())
+        if (loadingView != null) {
+            loadingView.visibility = View.VISIBLE
+            loadingView.setIndeterminateDrawable(DoubleBounce())
+        }
+
         HttpMethods.createService().getProducts("get_products", activity.mChannel.toString(), leveltwoId, "", "")
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<ClassifyContentBean>>() {
@@ -141,7 +144,9 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        loadingView.visibility = View.GONE
+                        if (loadingView != null) {
+                            loadingView.visibility = View.GONE
+                        }
                     }
                 })
     }
@@ -170,15 +175,17 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
     }
 
     fun showHotImg(b: Boolean) {
-        if (b) {
-            if (hotData != null) {
-                ImageUtils.showImg(activity, hotData?.hotimage, ivHot)
-                ivHot.visibility = View.VISIBLE
-                secondRecyclerView.visibility = View.GONE
+        if (ivHot != null) {
+            if (b) {
+                if (hotData != null) {
+                    ImageUtils.showImg(activity, hotData?.hotimage, ivHot)
+                    ivHot.visibility = View.VISIBLE
+                    secondRecyclerView.visibility = View.GONE
+                }
+            } else {
+                ivHot.visibility = View.GONE
+                secondRecyclerView.visibility = View.VISIBLE
             }
-        } else {
-            ivHot.visibility = View.GONE
-            secondRecyclerView.visibility = View.VISIBLE
         }
     }
 

@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.PointF
+import android.hardware.Camera
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -11,6 +12,7 @@ import com.dlazaro66.qrcodereaderview.QRCodeReaderView
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView.OnQRCodeReadListener
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
+import com.first.basket.utils.LogUtils
 import com.first.basket.utils.ToastUtil
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
@@ -22,14 +24,44 @@ import java.lang.Exception
  */
 class DecoderActivity : BaseActivity(), OnQRCodeReadListener {
 
-    private lateinit var qrCodeReaderView: QRCodeReaderView
+    private var qrCodeReaderView: QRCodeReaderView? = null
     private val MY_PERMISSIONS_REQUEST_CAMERA = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_decoder)
-//        test123()
         initView()
+    }
+
+    fun isCameraUseable(): Boolean {
+
+        var canUse = true
+
+        var mCamera: Camera? = null
+
+        try {
+
+            mCamera = Camera.open()
+
+            // setParameters 是针对魅族MX5。MX5通过Camera.open()拿到的Camera对象不为null
+
+            val mParameters = mCamera!!.getParameters()
+
+            mCamera!!.setParameters(mParameters)
+
+        } catch (e: Exception) {
+
+            canUse = false
+
+        }
+
+        if (mCamera != null) {
+
+            mCamera!!.release()
+
+        }
+        return canUse
+
     }
 
     private fun test123() {
@@ -52,7 +84,9 @@ class DecoderActivity : BaseActivity(), OnQRCodeReadListener {
             try {
                 qrCodeReaderView!!.startCamera()
             } catch (e: Exception) {
+                LogUtils.d("e:" + e.message)
                 ToastUtil.showToast("请在系统设置中打开相机权限")
+                myFinish()
             }
         }
     }
@@ -72,22 +106,25 @@ class DecoderActivity : BaseActivity(), OnQRCodeReadListener {
 
     private fun initView() {
         qrCodeReaderView = findViewById(R.id.qrdecoderview)
-        qrCodeReaderView.setOnQRCodeReadListener(this)
+        if (qrCodeReaderView != null) {
 
-        // Use this function to enable/disable decoding
-        qrCodeReaderView.setQRDecodingEnabled(true)
+            qrCodeReaderView!!.setOnQRCodeReadListener(this)
 
-        // Use this function to change the autofocus interval (default is 5 secs)
-        qrCodeReaderView.setAutofocusInterval(2000L)
+            // Use this function to enable/disable decoding
+            qrCodeReaderView!!.setQRDecodingEnabled(true)
 
-        // Use this function to enable/disable Torch
-        qrCodeReaderView.setTorchEnabled(true)
+            // Use this function to change the autofocus interval (default is 5 secs)
+            qrCodeReaderView!!.setAutofocusInterval(2000L)
 
-        // Use this function to set front camera preview
-        qrCodeReaderView.setFrontCamera()
+            // Use this function to enable/disable Torch
+            qrCodeReaderView!!.setTorchEnabled(true)
 
-        // Use this function to set back camera preview
-        qrCodeReaderView.setBackCamera()
+            // Use this function to set front camera preview
+            qrCodeReaderView!!.setFrontCamera()
+
+            // Use this function to set back camera preview
+            qrCodeReaderView!!.setBackCamera()
+        }
     }
 
     override fun onQRCodeRead(text: String, points: Array<PointF>) {
@@ -103,7 +140,9 @@ class DecoderActivity : BaseActivity(), OnQRCodeReadListener {
 
     override fun onPause() {
         super.onPause()
-        qrCodeReaderView!!.stopCamera()
+        if (qrCodeReaderView != null) {
+            qrCodeReaderView?.stopCamera()
+        }
     }
 
 }

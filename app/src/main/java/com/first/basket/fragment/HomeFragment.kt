@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -21,6 +22,8 @@ import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
+import com.first.basket.utils.ToastUtil
+import com.tbruyelle.rxpermissions.RxPermissions
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
@@ -44,11 +47,19 @@ class HomeFragment : BaseFragment() {
         return inflater?.inflate(R.layout.fragment_home, container, false)!!
     }
 
+    private var isGrantedCamera = false
+
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initData()
         initListener()
+        RxPermissions(activity)
+                .request(Manifest.permission.CAMERA)
+                .subscribe({ granted ->
+                    isGrantedCamera = granted
+                })
 
     }
 
@@ -92,7 +103,11 @@ class HomeFragment : BaseFragment() {
         }
 
         ivScan.onClick {
-            startActivity(Intent(activity, DecoderActivity::class.java))
+            if (isGrantedCamera) {
+                startActivity(Intent(activity, DecoderActivity::class.java))
+            } else {
+                ToastUtil.showToast("请在设置中开启相机权限")
+            }
         }
 
         llTab_sqcs.setOnClickListener(myClickListener)

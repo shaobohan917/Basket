@@ -101,6 +101,7 @@ class OrderFragment : BaseFragment() {
 
 
     private fun setData(data: List<OrderListBean.DataBean>) {
+        data.any { it.orderdetail == null }.apply { return }
         var finalData = ArrayList<OrderListBean.DataBean>()
         when (mPosition) {
             "0" ->

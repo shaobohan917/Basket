@@ -345,7 +345,7 @@ class ShopFragment : BaseFragment() {
 
     private fun setPrice(totalcost: Float) {
         if (totalcost == 0f) {
-            tvTotalPrice.text = "0"
+            tvTotalPrice.text = ""
             tvPostage.text = ""
             llTotalPrice.visibility = View.GONE
         } else {

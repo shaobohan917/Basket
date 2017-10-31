@@ -21,8 +21,8 @@ android {
         applicationId "com.first.basket"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 15
-        versionName "0.1.5"
+        versionCode 16
+        versionName "0.1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -135,6 +135,8 @@ dependencies {
     compile 'com.yanzhenjie:permission:1.1.2'
 
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
+
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
 
 }
 

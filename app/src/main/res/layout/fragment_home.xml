@@ -65,7 +65,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
             android:layout_toLeftOf="@id/ivSearch"
-            android:src="@mipmap/ic_scan" />
+            android:src="@mipmap/ic_scan"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <ScrollView
