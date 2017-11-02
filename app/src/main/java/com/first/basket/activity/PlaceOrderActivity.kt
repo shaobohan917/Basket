@@ -1,20 +1,19 @@
 package com.first.basket.activity
 
-import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import com.alipay.sdk.app.PayTask
 import com.first.basket.R
 import com.first.basket.adapter.PlaceOrderAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
-import com.first.basket.bean.AddressBean
-import com.first.basket.bean.CodeBean
-import com.first.basket.bean.ProductBean
-import com.first.basket.bean.WechatBean
+import com.first.basket.bean.*
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
@@ -25,13 +24,13 @@ import com.first.basket.utils.LogUtils
 import com.first.basket.utils.Md5Util
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
+import com.first.basket.utils.alipay.PayResult
 import com.google.gson.GsonBuilder
 import com.tencent.mm.sdk.modelpay.PayReq
 import com.tencent.mm.sdk.openapi.WXAPIFactory
 import kotlinx.android.synthetic.main.activity_place_order.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
-import java.util.Map
 import kotlin.collections.HashMap
 
 
@@ -42,6 +41,7 @@ class PlaceOrderActivity : BaseActivity() {
     private var mPrice: Float = 0f
     private var mCount: Int = 0
     private var mGoodsList = ArrayList<ProductBean>()
+    private val SDK_PAY_FLAG: Int = 1
 
     private lateinit var header: View
     private lateinit var footer: View
@@ -101,7 +101,7 @@ class PlaceOrderActivity : BaseActivity() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         mPrice = intent.getFloatExtra("price", 0f)
         footer.findViewById<TextView>(R.id.tvPrice).text = getString(R.string.total_price, mPrice.toString())
-        footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, mCount)
+        footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, mCount.toString())
         footer.findViewById<TextView>(R.id.tvTotal).text = "¥ " + mPrice
         mAdapter.addFooterView(footer)
 
@@ -111,7 +111,7 @@ class PlaceOrderActivity : BaseActivity() {
 
     private fun initListener() {
         btBuy.onClick {
-            doPlaceOrderByWechat()
+            doPlaceOrderByThird(1)
 //            var intent = Intent(this@PlaceOrderActivity,PayChooseActivity::class.java)
 //            intent.putExtra("price",mPrice)
 //            myStartActivityForResult(intent,REQUEST_ONE)
@@ -170,7 +170,10 @@ class PlaceOrderActivity : BaseActivity() {
         return Md5Util.getMd5Value(sb.toString()).toUpperCase()
     }
 
-    private fun doPlaceOrderByWechat() {
+    /**
+     * 0微信 1支付宝
+     */
+    private fun doPlaceOrderByThird(type: Int) {
         var productidString = StringBuilder()
         var numString = StringBuilder()
 
@@ -185,26 +188,78 @@ class PlaceOrderActivity : BaseActivity() {
         map.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
         map.put("paytype", "APP")
         map.put("productname", getString(R.string.app_name))
-//        map.put("totalfee", "1")
-        map.put("totalfee", (mPrice * 100).toInt().toString())
+        if (type == 0) {
+            //微信
+            map.put("totalfee", (mPrice * 100).toInt().toString())
+        } else {
+//            map.put("totalfee", mPrice.toString())
+            map.put("totalfee", "0.01")
+        }
+
         map.put("productsid", ps)
         map.put("productsNumber", ns)
         map.put("addressid", addressInfo.addressid)
 
-        HttpMethods.createService().doPayforwechat("do_payforwechat", map)
-                .compose(TransformUtils.defaultSchedulers())
-                .subscribe(object : HttpResultSubscriber<HttpResult<WechatBean>>() {
-                    override fun onNext(t: HttpResult<WechatBean>) {
-                        super.onNext(t)
-                        if (t.status == 0) {
-                            //去支付
-                            wechatPay(t.result.data[0])
-                        } else {
-                            ToastUtil.showToast(t.info + ":" + t.status)
+        if (type == 0) {
+            HttpMethods.createService().doPayforwechat("do_payforwechat", map)
+                    .compose(TransformUtils.defaultSchedulers())
+                    .subscribe(object : HttpResultSubscriber<HttpResult<WechatBean>>() {
+                        override fun onNext(t: HttpResult<WechatBean>) {
+                            super.onNext(t)
+                            if (t.status == 0) {
+                                //去支付
+                                wechatPay(t.result.data[0])
+                            } else {
+                                ToastUtil.showToast(t.info + ":" + t.status)
+                            }
                         }
-                    }
-                })
+                    })
+        } else {
+            HttpMethods.createService().doPayforAli("do_payforalipay", map)
+                    .compose(TransformUtils.defaultSchedulers())
+                    .subscribe(object : HttpResultSubscriber<HttpResult<AliBean>>() {
+                        override fun onNext(t: HttpResult<AliBean>) {
+                            super.onNext(t)
+                            if (t.status == 0) {
+                                //去支付
+                                aliPay(t.result.data)
+                            } else {
+                                ToastUtil.showToast(t.info + ":" + t.status)
+                            }
+                        }
+                    })
+        }
     }
+
+    private var mHandler = Handler(Handler.Callback { msg ->
+        var payResult = PayResult(msg.obj as Map<String, String>)
+        if ("9000" == payResult.resultStatus) {
+            deleteProducts()
+            myStartActivity(OrderResultActivity::class.java, true)
+        } else {
+            ToastUtil.showToast(payResult.resultStatus + "," + payResult.result)
+        }
+        false
+    })
+
+    private fun aliPay(data: AliBean.DataBean) {
+        val orderInfo = data.preorder_result   // 订单信息
+
+        val payRunnable = Runnable {
+            val alipay = PayTask(this@PlaceOrderActivity)
+            val result = alipay.payV2(orderInfo, true)
+
+            val msg = Message()
+            msg.what = SDK_PAY_FLAG
+            msg.obj = result
+            mHandler.sendMessage(msg)
+        }
+        // 必须异步调用
+        val payThread = Thread(payRunnable)
+        payThread.start()
+
+    }
+
 
     private fun doPlaceOrder() {
         var productidString = StringBuilder()

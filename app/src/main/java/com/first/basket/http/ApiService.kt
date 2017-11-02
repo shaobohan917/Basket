@@ -108,4 +108,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun doPayforwechat(@Field("action") action: String, @FieldMap map: HashMap<String, String?>): Observable<HttpResult<WechatBean>>
+
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun doPayforAli(@Field("action") action: String, @FieldMap map: HashMap<String, String?>): Observable<HttpResult<AliBean>>
 }
