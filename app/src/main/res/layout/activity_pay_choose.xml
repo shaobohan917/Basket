@@ -29,22 +29,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
             android:layout_toRightOf="@id/ivPayNeed"
-            android:orientation="vertical"
-            android:paddingTop="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                android:textColor="@color/gray33"
+                android:textColor="#FF6C6C"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/gray33"
                 android:textSize="12sp" />
 
@@ -98,6 +99,8 @@
             android:src="@mipmap/ic_mine_arrow" />
     </RelativeLayout>
 
+    <include layout="@layout/layout_line" />
+
     <RelativeLayout
         android:id="@+id/rlAli"
         android:layout_width="match_parent"
@@ -127,4 +130,6 @@
             android:layout_marginRight="20dp"
             android:src="@mipmap/ic_mine_arrow" />
     </RelativeLayout>
+
+    <include layout="@layout/layout_line" />
 </LinearLayout>

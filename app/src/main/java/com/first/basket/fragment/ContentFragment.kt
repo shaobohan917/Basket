@@ -99,12 +99,12 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
                     CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
                     addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_HUN, true)
-                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime())
+                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime(false))
                 } else if ("素".equals(data.promdata.promproducttype) && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
                     CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
                     addData(data)
                     SPUtil.setBoolean(StaticValue.PROM_SU, true)
-                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime())
+                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime(false))
                 } else {
                     ToastUtil.showToast("特惠商品荤素每天各只可添加一件")
                 }

@@ -2,6 +2,7 @@ package com.first.basket.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
@@ -53,5 +54,13 @@ public class ImageUtils {
 
     public static void showImg(Context context, Bitmap bitmap, ImageView ivImg) {
         Glide.with(context).load(bitmap).into(ivImg);
+    }
+
+    public static void showImg(Context context, Drawable drawable, ImageView ivImg) {
+        GlideApp.with(context)
+                .load(drawable)
+                .placeholder(R.mipmap.ic_placeholder)
+                .error(R.mipmap.ic_placeholder)
+                .into(ivImg);
     }
 }

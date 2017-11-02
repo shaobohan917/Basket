@@ -26,6 +26,8 @@ open class BaseActivity : AppCompatActivity() {
     val REQUEST_THREE = 103
     val REQUEST_SPE = 100
 
+    val RESULT_FAIL = 1001
+
     private lateinit var mProgressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {

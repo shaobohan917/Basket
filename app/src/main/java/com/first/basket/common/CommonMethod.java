@@ -719,8 +719,9 @@ public class CommonMethod {
     private static ThreadLocal<SimpleDateFormat> DateLocal = new ThreadLocal<SimpleDateFormat>();
 
 
-    public static String getTime() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");//得到当前的时间
+    public static String getTime(boolean hasTime) {
+        String format = hasTime ? "yyyy-MM-dd HH:mm:ss" : "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(format);//得到当前的时间
         Date curDate = new Date(System.currentTimeMillis());
         return formatter.format(curDate);
     }

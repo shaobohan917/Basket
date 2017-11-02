@@ -59,7 +59,7 @@
     <com.first.basket.view.AccountItemManagerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:accountManagerRight="微信支付"
+        app:accountManagerRight="在线支付"
         app:accountManagerTitle="支付方式" />
 
     <com.first.basket.view.AccountItemManagerView

@@ -4,14 +4,12 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.adapter.MenuAdapter
@@ -216,7 +214,7 @@ class ShopFragment : BaseFragment() {
                 list.addAll(mGoodsList)
                 list = (filterCaishi(list))
                 if (list.any { it.isCheck }) {
-                    var intent = Intent(activity, PlaceOrderActivity::class.java)
+                    var intent = Intent(activity, PayOrderActivity::class.java)
                     intent.putExtra("price", mTotalcost)
                     startActivity(intent)
                 } else {

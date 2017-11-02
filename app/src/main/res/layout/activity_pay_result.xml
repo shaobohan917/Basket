@@ -9,7 +9,7 @@
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="下单成功" />
+        app:titleText="支付成功" />
 
     <ImageView
         android:id="@+id/ivStatus"
@@ -21,12 +21,13 @@
         android:src="@mipmap/icon_order_success" />
 
     <TextView
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivStatus"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="下单成功"
+        android:text="支付成功"
         android:textColor="@color/gray33"
         android:textSize="28sp"
         android:textStyle="bold" />

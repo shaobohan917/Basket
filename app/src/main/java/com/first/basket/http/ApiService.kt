@@ -52,10 +52,10 @@ interface ApiService {
     fun getPrice(@Field("action") action: String, @Field("productids") productids: String, @Field("productnum") productnum: String): Observable<HttpResult<PriceBean>>
 
 
-    //立即下单
-    @FormUrlEncoded
-    @POST("ClientAPI.php")
-    fun doPlaceOrder(@Field("action") action: String, @Field("productsid") productsid: String, @Field("productsNumber") productsNumber: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
+//    //立即下单
+//    @FormUrlEncoded
+//    @POST("ClientAPI.php")
+//    fun doPlaceOrder(@Field("action") action: String, @Field("productsid") productsid: String, @Field("productsNumber") productsNumber: String, @Field("userid") userid: String, @Field("addressid") addressid: String): Observable<HttpResult<CodeBean>>
 
 
     //发送验证码
@@ -107,9 +107,9 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("ClientAPI.php")
-    fun doPayforwechat(@Field("action") action: String, @FieldMap map: HashMap<String, String?>): Observable<HttpResult<WechatBean>>
+    fun doPayforwechat(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<WechatBean>>
 
     @FormUrlEncoded
     @POST("ClientAPI.php")
-    fun doPayforAli(@Field("action") action: String, @FieldMap map: HashMap<String, String?>): Observable<HttpResult<AliBean>>
+    fun doPayforAli(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<AliBean>>
 }

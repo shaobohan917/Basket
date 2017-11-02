@@ -90,11 +90,11 @@
                     android:scheme="com.first.basket" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PlaceOrderActivity" />
+        <activity android:name=".activity.PayOrderActivity" />
         <activity android:name=".activity.RangeActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.AddressListActivity" />
-        <activity android:name=".activity.OrderResultActivity" />
+        <activity android:name=".activity.PayResultActivity" />
         <activity android:name=".activity.DecoderActivity" />
         <activity android:name=".activity.PayChooseActivity" />
         <activity

@@ -1,6 +1,5 @@
 package com.first.basket.fragment
 
-import android.animation.FloatEvaluator
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.first.basket.R
 import com.first.basket.activity.OrderDetailActivity
-import com.first.basket.activity.PlaceOrderActivity
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.OrderListBean
