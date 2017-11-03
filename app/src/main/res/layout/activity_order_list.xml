@@ -25,11 +25,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="全部" />
+                android:text="全部"
+                android:textColor="@color/gray33"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/ivAll"
-                android:layout_width="20dp"
+                android:layout_width="32dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
@@ -46,11 +48,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="待支付" />
+                android:text="待支付"
+                android:textColor="@color/gray33"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/ivPayNeed"
-                android:layout_width="20dp"
+                android:layout_width="32dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
@@ -69,11 +73,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="待发货" />
+                android:text="待发货"
+                android:textColor="@color/gray33"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/ivSend"
-                android:layout_width="20dp"
+                android:layout_width="32dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
@@ -92,11 +98,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="待收货" />
+                android:text="待收货"
+                android:textColor="@color/gray33"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/ivReceive"
-                android:layout_width="20dp"
+                android:layout_width="32dp"
                 android:layout_height="2dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"

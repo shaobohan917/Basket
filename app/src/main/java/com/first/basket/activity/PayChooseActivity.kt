@@ -4,10 +4,12 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.text.TextUtils
 import com.alipay.sdk.app.PayTask
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
+import com.first.basket.bean.AddressBean
 import com.first.basket.bean.AliBean
 import com.first.basket.bean.WechatBean
 import com.first.basket.common.CommonMethod
@@ -20,6 +22,7 @@ import com.first.basket.utils.Md5Util
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.first.basket.utils.alipay.PayResult
+import com.google.gson.GsonBuilder
 import com.tencent.mm.sdk.modelpay.PayReq
 import com.tencent.mm.sdk.openapi.WXAPIFactory
 import kotlinx.android.synthetic.main.activity_pay_choose.*
@@ -32,7 +35,7 @@ import java.util.LinkedHashMap
 class PayChooseActivity : BaseActivity() {
     private val SDK_PAY_FLAG: Int = 1
     private var mPrice: Float = 0f
-    private var mMap = HashMap<String, String>()
+    private lateinit var mMap: HashMap<String, String>
     private var isFirst = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +46,23 @@ class PayChooseActivity : BaseActivity() {
     }
 
     private fun initData() {
-        mPrice = intent.getFloatExtra("price", 0f)
-        mMap = intent.getSerializableExtra("map") as HashMap<String, String>
+        mMap = HashMap()
+        if (intent.getSerializableExtra("map") != null) {
+            //购物车来的
+            mMap = intent.getSerializableExtra("map") as HashMap<String, String>
+            mPrice = intent.getFloatExtra("price", 0f)
+        } else {
+            //订单列表来的
+            mMap.put("strorderid", intent.getStringExtra("strorderid"))
+            mPrice = intent.getFloatExtra("price", 0f)
+        }
+
+        val str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")
+        val addressid = GsonBuilder().create().fromJson(str, AddressBean::class.java).addressid
+        mMap.put("addressid", addressid)
+        mMap.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
+        mMap.put("paytype", "APP")
+        mMap.put("productname", getString(R.string.app_name))
 
         tvPrice.text = "¥ " + mPrice.toString()
         tvStatus.text = "待支付"

@@ -1,5 +1,6 @@
 package com.first.basket.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.first.basket.R
 import com.first.basket.activity.OrderDetailActivity
+import com.first.basket.activity.PayChooseActivity
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.OrderListBean
@@ -23,6 +25,7 @@ import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_order.*
 import kotlinx.android.synthetic.main.item_recycler_order.view.*
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class OrderFragment : BaseFragment() {
@@ -53,15 +56,19 @@ class OrderFragment : BaseFragment() {
             view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.price)
             when (item.statusid) {
                 "3" -> {
-//                    view.btStatus.text = "立即支付"
-//                    view.btStatus.onClick {
-//                        var intent = Intent(activity,PlaceOrderActivity::class.java)
-//                        startActivity(intent) }
-                    view.btStatus.visibility = View.GONE
+                    view.btStatus.text = "立即支付"
+                    view.btStatus.backgroundColor = activity.resources.getColor(R.color.colorMain)
+                    view.btStatus.onClick {
+                        var intent = Intent(activity, PayChooseActivity::class.java)
+                        intent.putExtra("strorderid", item.strorderid)
+                        intent.putExtra("price", java.lang.Float.valueOf(item.price))
+                        startActivity(intent)
+                    }
                 }
                 "4" -> {
                     view.btStatus.text = "已支付"
-                    view.btStatus.background = null
+                    view.btStatus.backgroundColor = activity.resources.getColor(R.color.gray99)
+                    view.btStatus.onClick { }
                 }
             }
             if (item.orderdetail != null) {
@@ -105,7 +112,6 @@ class OrderFragment : BaseFragment() {
 
 
     private fun setData(data: List<OrderListBean.DataBean>) {
-//        data.any { it.orderdetail == null }.apply { return }
         var finalData = ArrayList<OrderListBean.DataBean>()
         when (mPosition) {
             "0" ->
@@ -126,5 +132,13 @@ class OrderFragment : BaseFragment() {
         mDatas.clear()
         mDatas.addAll(finalData)
         mAdapter.notifyDataSetChanged()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (Activity.RESULT_OK == resultCode) {
+            //刷新
+            getOrderList()
+        }
     }
 }

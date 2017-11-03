@@ -120,12 +120,8 @@ class PayOrderActivity : BaseActivity() {
         val ns: String = numString.toString().substring(0, numString.length - 1)
 
         var map = HashMap<String, String>()
-        map.put("userid", SPUtil.getString(StaticValue.USER_ID, ""))
-        map.put("paytype", "APP")
-        map.put("productname", getString(R.string.app_name))
         map.put("productsid", ps)
         map.put("productsNumber", ns)
-        map.put("addressid", addressInfo.addressid)
         return map
     }
 

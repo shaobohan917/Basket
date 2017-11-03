@@ -9,7 +9,7 @@ import android.view.View
 import com.first.basket.R
 import com.first.basket.base.BaseActivity
 import com.first.basket.fragment.OrderFragment
-import kotlinx.android.synthetic.main.activity_orderlist.*
+import kotlinx.android.synthetic.main.activity_order_list.*
 
 /**
  * Created by hanshaobo on 12/09/2017.
@@ -19,7 +19,7 @@ class OrderListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_orderlist)
+        setContentView(R.layout.activity_order_list)
         initView()
         initData()
         initListener()

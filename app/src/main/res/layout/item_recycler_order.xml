@@ -67,10 +67,13 @@
 
         <Button
             android:id="@+id/btStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="再次购买" />
+            android:background="@color/colorMain"
+            android:text="立即支付"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
     </RelativeLayout>
 </LinearLayout>
