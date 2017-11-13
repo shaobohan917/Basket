@@ -16,6 +16,7 @@ import com.first.basket.fragment.HomeFragment
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.utils.ImageUtils
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -112,14 +113,14 @@ class GoodsDetailActivity : BaseActivity() {
             for (i in 0 until images.size) {
                 imgs.add(Constants.BASE_IMG_URL + images[i].image)
             }
-            banner.setImages(imgs)
-                    .setImageLoader(HomeFragment.GlideImageLoader())
-                    .setBannerAnimation(Transformer.DepthPage)
-                    .setDelayTime(3000)
-                    .setIndicatorGravity(BannerConfig.RIGHT)
-                    .start()
+//            banner.setImages(imgs)
+//                    .setImageLoader(HomeFragment.GlideImageLoader())
+//                    .setBannerAnimation(Transformer.DepthPage)
+//                    .setDelayTime(3000)
+//                    .setIndicatorGravity(BannerConfig.RIGHT)
+//                    .start()
 
-//            ImageUtils.showImg(this@GoodsDetailActivity, data.images[0].image, ivGoods)
+            ImageUtils.showImg(this@GoodsDetailActivity, data.images[0].image, ivGoods)
             if (CommonMethod.isTrue(data.product.promboolean)) {
                 tvProm.visibility = View.VISIBLE
             }
