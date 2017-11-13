@@ -5,5 +5,5 @@ package com.first.basket.utils;
  */
 
 public class TestDev {
-    public static final String ADD = "add on dev";
+    public static final String ADD = "add on master";
 }

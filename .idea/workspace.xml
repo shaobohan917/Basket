@@ -18,7 +18,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4aead0c-132b-4489-ba39-75de042c7f06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/TestDev.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/TestDev.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -98,10 +97,10 @@
             <state relative-caret-position="555">
               <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
               <folding>
-                <marker date="1510566363726" expanded="true" signature="268105:268147" ph="..." />
-                <marker date="1510566363726" expanded="true" signature="268105:268165" ph="..." />
-                <marker date="1510566363726" expanded="true" signature="268105:268178" ph="..." />
-                <marker date="1510566363726" expanded="true" signature="268105:268193" ph="..." />
+                <marker date="1510566652976" expanded="true" signature="268105:268147" ph="..." />
+                <marker date="1510566652976" expanded="true" signature="268105:268165" ph="..." />
+                <marker date="1510566652976" expanded="true" signature="268105:268178" ph="..." />
+                <marker date="1510566652976" expanded="true" signature="268105:268193" ph="..." />
               </folding>
             </state>
           </provider>
@@ -121,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/TestDev.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+              <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -2589,7 +2588,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566409698" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566675768" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2637,7 +2636,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566409698" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566675768" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2799,7 +2798,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566409699" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510566675768" />
       </method>
     </configuration>
     <list size="2">
@@ -3641,10 +3640,10 @@
         <state relative-caret-position="555">
           <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
           <folding>
-            <marker date="1510566363726" expanded="true" signature="268105:268147" ph="..." />
-            <marker date="1510566363726" expanded="true" signature="268105:268165" ph="..." />
-            <marker date="1510566363726" expanded="true" signature="268105:268178" ph="..." />
-            <marker date="1510566363726" expanded="true" signature="268105:268193" ph="..." />
+            <marker date="1510566652976" expanded="true" signature="268105:268147" ph="..." />
+            <marker date="1510566652976" expanded="true" signature="268105:268165" ph="..." />
+            <marker date="1510566652976" expanded="true" signature="268105:268178" ph="..." />
+            <marker date="1510566652976" expanded="true" signature="268105:268193" ph="..." />
           </folding>
         </state>
       </provider>
@@ -4110,7 +4109,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/first/basket/utils/TestDev.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
           <folding />
         </state>
       </provider>
