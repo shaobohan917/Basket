@@ -62,14 +62,11 @@ class MainActivity : BaseActivity(), AMapLocationListener {
         instance = this
         initView()
         initData()
-//        LogUtils.d("today:" + CommonMethod.isToday(System.currentTimeMillis().toString()))
     }
 
     fun setCountAdd() {
-        Handler().postDelayed({
-            mCount++
-            nearby.setBadgeCount(mCount)
-        }, 500)
+        mCount++
+        nearby.setBadgeCount(mCount)
     }
 
     fun setCount() {

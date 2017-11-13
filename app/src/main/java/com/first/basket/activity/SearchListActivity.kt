@@ -69,15 +69,49 @@ class SearchListActivity : BaseActivity() {
         }
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             var ivGoods = view.findViewById<ImageView>(R.id.ivGoods)
-            CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
-                override fun onAdd() {
-                    mCount++
-                    tvCount.text = mCount.toString()
-                    badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+            if (CommonMethod.isTrue(data.promboolean)) {
+                if ("荤" == data.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
+                    CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                        override fun onAdd() {
+                            mCount++
+                            tvCount.text = mCount.toString()
+                            badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+                            BaseApplication.getInstance().addProduct(data)
+                            MainActivity.getInstance1().setCountAdd()
+                            SPUtil.setBoolean(StaticValue.PROM_HUN, true)
+                            SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                        }
+                    })
+                } else if ("素" == data.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
+                    CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                        override fun onAdd() {
+                            mCount++
+                            tvCount.text = mCount.toString()
+                            badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+                            BaseApplication.getInstance().addProduct(data)
+                            MainActivity.getInstance1().setCountAdd()
+                            SPUtil.setBoolean(StaticValue.PROM_SU, true)
+                            SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                        }
+                    })
+                } else {
+                    ToastUtil.showToast(getString(R.string.one_oneday))
                 }
-            })
-            BaseApplication.getInstance().addProduct(data)
-            MainActivity.getInstance1().setCountAdd()
+            } else {
+                CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                    override fun onAdd() {
+                        mCount++
+                        tvCount.text = mCount.toString()
+                        badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+                        BaseApplication.getInstance().addProduct(data)
+                        MainActivity.getInstance1().setCountAdd()
+                    }
+                })
+            }
         }
 
         ivCar.onClick {
@@ -89,8 +123,6 @@ class SearchListActivity : BaseActivity() {
         ivBack.onClick {
             myFinish()
         }
-
-        etSearch
 
         etSearch.setOnEditorActionListener { p0, p1, p2 ->
             if (p1 == EditorInfo.IME_ACTION_SEARCH) {

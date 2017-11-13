@@ -16,6 +16,7 @@ import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import com.first.basket.view.AmountView
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
@@ -81,8 +82,11 @@ class ShopAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         }
         holder.amoutView.setOnAmountClickListener(object : AmountView.OnAmountClickListener {
             override fun onAmountAddClick(view: View, amount: Int) {
-                amountListener.OnItemAmountAddClick(holder.amoutView, amount, position)
-
+                if(!CommonMethod.isTrue(product.promboolean)){
+                    amountListener.OnItemAmountAddClick(holder.amoutView, amount, position)
+                }else{
+                    ToastUtil.showToast(context.getString(R.string.one_oneday))
+                }
             }
 
             override fun onAmountSubClick(view: View, amount: Int) {

@@ -140,6 +140,9 @@ class ShopFragment : BaseFragment() {
                         getPrice(mGoodsList)
                     } else {
                         (activity as MainActivity).showDialog("确定删除该商品吗？", "", "确定", DialogInterface.OnClickListener { p0, p1 ->
+                            if(CommonMethod.isTrue(mGoodsList[position].promboolean)){
+
+                            }
                             mGoodsList.removeAt(position)
                             mAdapter.notifyDataSetChanged()
                             getPrice(mGoodsList)

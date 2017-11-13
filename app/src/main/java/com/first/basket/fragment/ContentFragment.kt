@@ -96,21 +96,31 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
         mContentAdapter.setOnAddItemClickListener { view, data, position ->
             if (CommonMethod.isTrue(data.promboolean)) {
                 if ("荤" == data.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
-                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
-                    addData(data)
-                    SPUtil.setBoolean(StaticValue.PROM_HUN, true)
-                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime(false))
+                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                        override fun onAdd() {
+                            addData(data)
+                            SPUtil.setBoolean(StaticValue.PROM_HUN, true)
+                            SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                        }
+                    })
                 } else if ("素" == data.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
-                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
-                    addData(data)
-                    SPUtil.setBoolean(StaticValue.PROM_SU, true)
-                    SPUtil.setString(StaticValue.GET_TIME,CommonMethod.getTime(false))
+                    CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                        override fun onAdd() {
+                            addData(data)
+                            SPUtil.setBoolean(StaticValue.PROM_SU, true)
+                            SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                        }
+                    })
                 } else {
                     ToastUtil.showToast(getString(R.string.one_oneday))
                 }
             } else {
-                CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, null)
-                addData(data)
+                CommonMethod1.addGoodToCar(view.findViewById(R.id.ivGoods), rlRoot, ivCar, object :CommonMethod1.Companion.OnAddListener{
+                    override fun onAdd() {
+                        addData(data)
+                    }
+                })
+
             }
         }
     }

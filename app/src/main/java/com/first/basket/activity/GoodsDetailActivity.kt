@@ -11,14 +11,14 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.CommonMethod1
+import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
-import com.first.basket.fragment.HomeFragment
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.youth.banner.BannerConfig
-import com.youth.banner.Transformer
+import com.first.basket.utils.SPUtil
+import com.first.basket.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.layout_loading.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -63,15 +63,48 @@ class GoodsDetailActivity : BaseActivity() {
     private fun initListener() {
         btAdd.onClick {
             if (data != null) {
-                CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
-                    override fun onAdd() {
-                        mCount++
-                        tvCount.text = mCount.toString()
-                        badgeView.bindTarget(tvCount).badgeNumber = mCount
+                var product = data!!.product
+                if (CommonMethod.isTrue(product.promboolean)) {
+                    if ("荤" == product.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_HUN, false)) {
+                        CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                            override fun onAdd() {
+                                mCount++
+                                tvCount.text = mCount.toString()
+                                badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+                                BaseApplication.getInstance().addProduct(product)
+                                MainActivity.getInstance1().setCountAdd()
+                                SPUtil.setBoolean(StaticValue.PROM_HUN, true)
+                                SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                            }
+                        })
+                    } else if ("素" == product.promdata.promproducttype && !SPUtil.getBoolean(StaticValue.PROM_SU, false)) {
+                        CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                            override fun onAdd() {
+                                mCount++
+                                tvCount.text = mCount.toString()
+                                badgeView.bindTarget(tvCount).badgeNumber = mCount
+
+                                BaseApplication.getInstance().addProduct(product)
+                                MainActivity.getInstance1().setCountAdd()
+                                SPUtil.setBoolean(StaticValue.PROM_SU, true)
+                                SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
+                            }
+                        })
+                    } else {
+                        ToastUtil.showToast(getString(R.string.one_oneday))
                     }
-                })
-                BaseApplication.getInstance().addProduct(data!!.product)
-                MainActivity.getInstance1().setCountAdd()
+                } else {
+                    CommonMethod1.addGoodToCar(ivGoods, rlRoot, ivCar, object : CommonMethod1.Companion.OnAddListener {
+                        override fun onAdd() {
+                            mCount++
+                            tvCount.text = mCount.toString()
+                            badgeView.bindTarget(tvCount).badgeNumber = mCount
+                            BaseApplication.getInstance().addProduct(data!!.product)
+                            MainActivity.getInstance1().setCountAdd()
+                        }
+                    })
+                }
             }
         }
         ivCar.onClick {
