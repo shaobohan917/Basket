@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.first.basket.R;
 import com.first.basket.bean.ProductBean;
 import com.first.basket.common.CommonMethod;
+import com.first.basket.common.CommonMethod1;
 import com.first.basket.utils.ImageUtils;
 
 import java.util.List;
@@ -69,7 +70,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         ProductBean product = mDatas.get(position);
         holder.tvName.setText(product.getProductname());
         holder.tvUnit.setText(product.getWeight() + "/" + product.getUnit());
-        holder.tvPrice.setText(product.getPrice());
+        holder.tvPrice.setText(CommonMethod1.Companion.showPrice(product));
 
         ImageUtils.showImg(context, product.getImg(), holder.ivGoods);
 

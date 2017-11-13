@@ -4,21 +4,16 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.graphics.Path
 import android.graphics.PathMeasure
-import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.first.basket.R
 import com.first.basket.app.BaseApplication
-import com.first.basket.base.BaseActivity
+import com.first.basket.bean.ProductBean
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.UIUtils
-import com.github.ybq.android.spinkit.SpinKitView
-import com.github.ybq.android.spinkit.style.DoubleBounce
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.layout_loading.*
 
 /**
  * Created by hanshaobo on 26/10/2017.
@@ -108,6 +103,14 @@ class CommonMethod1 {
             val gson = Gson()
             val str = gson.toJson(products)
             SPUtil.setString(StaticValue.GOODS_LIST, str)
+        }
+
+        fun showPrice(product: ProductBean): String {
+            return if (CommonMethod.isTrue(product.promboolean)) {
+                product.promdata.promprice
+            } else {
+                product.price
+            }
         }
     }
 }

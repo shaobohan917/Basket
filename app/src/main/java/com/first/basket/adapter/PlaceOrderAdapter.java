@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.first.basket.R;
 import com.first.basket.bean.ProductBean;
 import com.first.basket.common.CommonMethod;
+import com.first.basket.common.CommonMethod1;
 import com.first.basket.utils.ImageUtils;
 
 import org.jetbrains.annotations.Nullable;
@@ -83,7 +84,7 @@ public class PlaceOrderAdapter extends RecyclerView.Adapter<PlaceOrderAdapter.My
                 ProductBean bean = mDatas.get(position - 1);
                 holder.tvName.setText(bean.getProductname());
                 holder.tvUnit.setText(bean.getWeight() + "/" + bean.getUnit());
-                holder.tvPrice.setText(bean.getPrice());
+                holder.tvPrice.setText(CommonMethod1.Companion.showPrice(bean));
                 holder.tvOrderCount.setVisibility(View.VISIBLE);
                 holder.tvOrderCount.setText("x " + bean.getAmount());
 

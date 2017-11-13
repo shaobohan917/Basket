@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.first.basket.R
 import com.first.basket.activity.*
-import com.first.basket.adapter.MenuAdapter
+import com.first.basket.adapter.ShopAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
@@ -21,6 +21,7 @@ import com.first.basket.bean.HotRecommendBean
 import com.first.basket.bean.PriceBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
@@ -43,7 +44,7 @@ import kotlin.collections.ArrayList
  */
 class ShopFragment : BaseFragment() {
     private var mGoodsList = ArrayList<ProductBean>()
-    private lateinit var mAdapter: MenuAdapter
+    private lateinit var mAdapter: ShopAdapter
     private var isFirst: Boolean = true
     private var isModifyMode: Boolean = false
     private var addressInfo = AddressBean()
@@ -94,11 +95,11 @@ class ShopFragment : BaseFragment() {
     }
 
     private fun initData() {
-        mAdapter = MenuAdapter((activity as MainActivity), mGoodsList, object : MenuAdapter.OnItemClickListener {
+        mAdapter = ShopAdapter((activity as MainActivity), mGoodsList, object : ShopAdapter.OnItemClickListener {
             override fun onItemClick(view: View) {
             }
 
-        }, object : MenuAdapter.OnItemCheckedListener {
+        }, object : ShopAdapter.OnItemCheckedListener {
             override fun onItemCheck(view: View, b: Boolean, index: Int) {
                 if (!isModifyMode) {
                     mGoodsList[index].isCheck = b
@@ -112,7 +113,7 @@ class ShopFragment : BaseFragment() {
                     cbSelectAll.isChecked = false
                 }
             }
-        }, object : MenuAdapter.OnItemAmountClickListener {
+        }, object : ShopAdapter.OnItemAmountClickListener {
             override fun OnItemAmountAddClick(view: View, amount: Int, position: Int) {
                 if (isModifyMode) {
                     ToastUtil.showToast("编辑模式不可加")
@@ -266,7 +267,7 @@ class ShopFragment : BaseFragment() {
 
         var mAdapter = BaseRecyclerAdapter(R.layout.layout_view_goods, recommedDatas) { view: View, item: ProductBean ->
             view.tvName.text = item.productname
-            view.tvPrice.text = "¥ " + item.price
+            view.tvPrice.text = "¥ " + CommonMethod1.showPrice(item)
             view.tvUnit.text = item.weight + "/" + item.unit
             ImageUtils.showImg(activity, item.img, view.ivGoods)
             view.llRoot.onClick {

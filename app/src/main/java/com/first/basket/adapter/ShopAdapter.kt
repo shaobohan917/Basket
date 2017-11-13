@@ -1,35 +1,31 @@
 package com.first.basket.adapter
 
-import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.*
 import com.first.basket.R
-import com.first.basket.R.id.etAmount
 import com.first.basket.activity.MainActivity
 import com.first.basket.app.BaseApplication
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
+import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.ImageUtils
 import com.first.basket.utils.SPUtil
-import com.first.basket.utils.ToastUtil
 import com.first.basket.view.AmountView
 import com.google.gson.GsonBuilder
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuAdapter
-import kotlinx.android.synthetic.main.view_amount.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
 /**
  * Created by hanshaobo on 14/09/2017.
  */
-class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: OnItemCheckedListener, amountListener: OnItemAmountClickListener) : SwipeMenuAdapter<MenuAdapter.ViewHolder>() {
+class ShopAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener: OnItemClickListener, cbListener: OnItemCheckedListener, amountListener: OnItemAmountClickListener) : SwipeMenuAdapter<ShopAdapter.ViewHolder>() {
     private var context = context
     private var mDatas: ArrayList<ProductBean> = list
     private var listener = listener
@@ -54,14 +50,14 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
     }
 
     override fun onCreateContentView(parent: ViewGroup, viewType: Int): View? {
-        return LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_shop, parent, false);
+        return LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_shop, parent, false);
     }
 
     override fun onCompatCreateViewHolder(realContentView: View, viewType: Int): ViewHolder? {
         return ViewHolder(realContentView)
     }
 
-    override fun onBindViewHolder(holder: MenuAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShopAdapter.ViewHolder, position: Int) {
         if (getItemViewType(position) == TYPE_NORMAL) {
 
         } else if (getItemViewType(position) == TYPE_FOOTER) {
@@ -75,7 +71,7 @@ class MenuAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         holder.tvName1.text = product.productname
 
         holder.tvUnit1.text = product.weight + "/" + product.unit
-        holder.tvPrice1.text = product.price
+        holder.tvPrice1.text = CommonMethod1.showPrice(product)
         holder.amoutView.amount = product.amount
         ImageUtils.showImg(BaseApplication.getInstance(), product.img, holder.ivGoods)
         holder.cbSelect.isChecked = product.isCheck

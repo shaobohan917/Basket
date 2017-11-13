@@ -120,10 +120,10 @@ class PayChooseActivity : BaseActivity() {
 
 
     private fun wechatPay(dataBean: WechatBean.DataBean) {
-        val appid = dataBean?.appid
-        val mchid = dataBean?.mchid
-        val noncestr = dataBean?.noncestr
-        val prepayid = dataBean?.prepayid
+        val appid = dataBean.appid
+        val mchid = dataBean.mchid
+        val noncestr = dataBean.noncestr
+        val prepayid = dataBean.prepayid
 
         val api = WXAPIFactory.createWXAPI(this, Constants.WECHAT_APP_ID)
         api.registerApp(Constants.WECHAT_APP_ID)
