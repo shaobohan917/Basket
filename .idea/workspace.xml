@@ -93,10 +93,10 @@
             <state relative-caret-position="300">
               <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
-                <marker date="1510626248192" expanded="true" signature="262042:262059" ph="..." />
-                <marker date="1510626248192" expanded="true" signature="262042:262077" ph="..." />
-                <marker date="1510626248192" expanded="true" signature="262042:262090" ph="..." />
-                <marker date="1510626248192" expanded="true" signature="262042:262105" ph="..." />
+                <marker date="1510626889189" expanded="true" signature="262041:262058" ph="..." />
+                <marker date="1510626889189" expanded="true" signature="262041:262076" ph="..." />
+                <marker date="1510626889189" expanded="true" signature="262041:262089" ph="..." />
+                <marker date="1510626889189" expanded="true" signature="262041:262104" ph="..." />
               </folding>
             </state>
           </provider>
@@ -2582,7 +2582,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889168" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510627032303" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2630,7 +2630,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889168" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510627032303" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2813,7 +2813,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889169" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510627032304" />
       </method>
     </configuration>
     <list size="2">
@@ -4023,10 +4023,10 @@
         <state relative-caret-position="300">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
-            <marker date="1510626248192" expanded="true" signature="262042:262059" ph="..." />
-            <marker date="1510626248192" expanded="true" signature="262042:262077" ph="..." />
-            <marker date="1510626248192" expanded="true" signature="262042:262090" ph="..." />
-            <marker date="1510626248192" expanded="true" signature="262042:262105" ph="..." />
+            <marker date="1510626889189" expanded="true" signature="262041:262058" ph="..." />
+            <marker date="1510626889189" expanded="true" signature="262041:262076" ph="..." />
+            <marker date="1510626889189" expanded="true" signature="262041:262089" ph="..." />
+            <marker date="1510626889189" expanded="true" signature="262041:262104" ph="..." />
           </folding>
         </state>
       </provider>
