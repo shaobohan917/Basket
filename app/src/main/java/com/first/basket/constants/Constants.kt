@@ -19,10 +19,6 @@ class Constants {
         var WECHAT_PACKAGE = "com.tencent.mm"
         var WECHAT_KEY = "af70ff5445cfc00c2a18d4aeed663ef5"
 
-        var WECHAT_APP_SECRET = "36e7a8a63b53cfe92aed075097ae2982"
-        var WECHAT_PARTNER_ID = "1428507002"
-
-
         var ALI_APP_ID = "2017090408554941"
         var ALI_PID = "1428507002"
         var ALI_TARGET_ID = "1428507002"
