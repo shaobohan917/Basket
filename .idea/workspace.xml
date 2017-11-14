@@ -93,10 +93,10 @@
             <state relative-caret-position="300">
               <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
-                <marker date="1510626107620" expanded="true" signature="261489:261506" ph="..." />
-                <marker date="1510626107620" expanded="true" signature="261489:261524" ph="..." />
-                <marker date="1510626107620" expanded="true" signature="261489:261537" ph="..." />
-                <marker date="1510626107620" expanded="true" signature="261489:261552" ph="..." />
+                <marker date="1510626248192" expanded="true" signature="262042:262059" ph="..." />
+                <marker date="1510626248192" expanded="true" signature="262042:262077" ph="..." />
+                <marker date="1510626248192" expanded="true" signature="262042:262090" ph="..." />
+                <marker date="1510626248192" expanded="true" signature="262042:262105" ph="..." />
               </folding>
             </state>
           </provider>
@@ -2582,7 +2582,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626248161" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889168" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2630,7 +2630,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626248161" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889168" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2813,7 +2813,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626248162" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510626889169" />
       </method>
     </configuration>
     <list size="2">
@@ -2893,7 +2893,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1920" height="1057" extended-state="1" />
+    <frame x="1280" y="23" width="1920" height="1057" extended-state="0" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2904,8 +2904,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3050672" sideWeight="0.58146966" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10341261" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20889348" sideWeight="0.46042004" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4539814" sideWeight="0.49361023" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20889348" sideWeight="0.46042004" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4539814" sideWeight="0.49361023" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27921405" sideWeight="0.4116081" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -4023,10 +4023,10 @@
         <state relative-caret-position="300">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
-            <marker date="1510626107620" expanded="true" signature="261489:261506" ph="..." />
-            <marker date="1510626107620" expanded="true" signature="261489:261524" ph="..." />
-            <marker date="1510626107620" expanded="true" signature="261489:261537" ph="..." />
-            <marker date="1510626107620" expanded="true" signature="261489:261552" ph="..." />
+            <marker date="1510626248192" expanded="true" signature="262042:262059" ph="..." />
+            <marker date="1510626248192" expanded="true" signature="262042:262077" ph="..." />
+            <marker date="1510626248192" expanded="true" signature="262042:262090" ph="..." />
+            <marker date="1510626248192" expanded="true" signature="262042:262105" ph="..." />
           </folding>
         </state>
       </provider>
