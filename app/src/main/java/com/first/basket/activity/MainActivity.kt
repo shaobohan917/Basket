@@ -147,20 +147,22 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     private var exitTime: Long = 0
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            if (System.currentTimeMillis() - exitTime > 1000) {
-                ToastUtil.showToast("双击退出应用")
-                exitTime = System.currentTimeMillis()
-                CommonMethod1.saveProduct()
-            } else {
-                //保存购物车数据
-                finish()
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getCurrentPage() == 2 && (fragmentList[2] as ActiveFragment).setBack()) {
+                return true
+            } else if (event.action == KeyEvent.ACTION_DOWN) {
+                if (System.currentTimeMillis() - exitTime > 1000) {
+                    ToastUtil.showToast("双击退出应用")
+                    exitTime = System.currentTimeMillis()
+                    CommonMethod1.saveProduct()
+                } else {
+                    //保存购物车数据
+                    finish()
+                }
+                return true
             }
-            return true
         }
         return super.onKeyDown(keyCode, event)
-
     }
 
     private fun location() {
@@ -230,8 +232,12 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
 
-    public fun goClassify(channel: Int) {
+    fun goClassify(channel: Int) {
         mChannel = channel
         bottombar.selectTabAtPosition(1)
+    }
+
+    private fun getCurrentPage(): Int {
+        return bottomBar.currentTabPosition
     }
 }

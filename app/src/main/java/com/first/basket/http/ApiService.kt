@@ -118,4 +118,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun getDonateList(@Field("action") action: String): Observable<DonateBean>
+
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun getActivePage(@Field("action") action: String): Observable<HttpResult<ActiveBean>>
 }

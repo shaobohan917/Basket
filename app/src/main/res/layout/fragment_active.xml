@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <com.first.basket.view.TitleView
+        app:showBack="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleText="活动" />
