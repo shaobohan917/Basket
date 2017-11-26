@@ -34,7 +34,7 @@ import java.util.LinkedHashMap
  */
 class PayChooseActivity : BaseActivity() {
     private val SDK_PAY_FLAG: Int = 1
-    private var mPrice: Float = 0f
+    private var mPrice: Double = 0.0
     private lateinit var mMap: HashMap<String, String>
     private var isFirst = true
 
@@ -50,11 +50,11 @@ class PayChooseActivity : BaseActivity() {
         if (intent.getSerializableExtra("map") != null) {
             //购物车来的
             mMap = intent.getSerializableExtra("map") as HashMap<String, String>
-            mPrice = intent.getFloatExtra("price", 0f)
+            mPrice = intent.getDoubleExtra("price", 0.0)
         } else {
             //订单列表来的
             mMap.put("strorderid", intent.getStringExtra("strorderid"))
-            mPrice = intent.getFloatExtra("price", 0f)
+            mPrice = intent.getDoubleExtra("price", 0.0)
         }
 
         val str = SPUtil.getString(StaticValue.DEFAULT_ADDRESS, "")

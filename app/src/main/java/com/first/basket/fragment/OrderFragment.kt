@@ -53,7 +53,7 @@ class OrderFragment : BaseFragment() {
     private fun initData() {
         mAdapter = BaseRecyclerAdapter(R.layout.item_recycler_order, mDatas) { view: View, item: OrderListBean.DataBean ->
             view.tvNO.text = resources.getString(R.string.order_number, item.strorderid)
-            view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.price)
+            view.tvCost.text = resources.getString(R.string.order_price, item.qty, item.pay)
             when (item.statusid) {
                 "3" -> {
                     view.btStatus.text = "立即支付"
@@ -61,7 +61,7 @@ class OrderFragment : BaseFragment() {
                     view.btStatus.onClick {
                         var intent = Intent(activity, PayChooseActivity::class.java)
                         intent.putExtra("strorderid", item.strorderid)
-                        intent.putExtra("price", java.lang.Float.valueOf(item.price))
+                        intent.putExtra("price", java.lang.Float.valueOf(item.pay))
                         startActivity(intent)
                     }
                 }
@@ -85,7 +85,9 @@ class OrderFragment : BaseFragment() {
                 }
             }
             view.llRoot.onClick {
-                startActivity(Intent(activity, OrderDetailActivity::class.java))
+//                var intent = Intent(activity, OrderDetailActivity::class.java)
+//                intent.putExtra("orderBean",item)
+//                startActivity(intent)
             }
         }
         recyclerView.adapter = mAdapter

@@ -48,7 +48,8 @@ class ShopFragment : BaseFragment() {
     private var isFirst: Boolean = true
     private var isModifyMode: Boolean = false
     private var addressInfo = AddressBean()
-    private var mTotalcost: Float = 0f
+    private var mTotalcost: Double = 0.0
+    private lateinit var mPriceBean: PriceBean.DataBean
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_shop, container, false)!!
@@ -220,6 +221,7 @@ class ShopFragment : BaseFragment() {
                 if (list.any { it.isCheck }) {
                     var intent = Intent(activity, PayOrderActivity::class.java)
                     intent.putExtra("price", mTotalcost)
+                    intent.putExtra("priceBean", mPriceBean)
                     startActivity(intent)
                 } else {
                     ToastUtil.showToast(activity.getString(R.string.buy))
@@ -318,6 +320,7 @@ class ShopFragment : BaseFragment() {
         }
     }
 
+
     private fun getPrice(mDatas: ArrayList<ProductBean>) {
         if (isModifyMode) return
 
@@ -330,7 +333,7 @@ class ShopFragment : BaseFragment() {
         selectProductsList = filterCaishi(selectProductsList)
 
         if (selectProductsList.size == 0) {
-            setPrice(0f)
+            setPrice(0.0,0.0)
         } else {
             var productidString = StringBuilder()
             var numString = StringBuilder()
@@ -348,15 +351,16 @@ class ShopFragment : BaseFragment() {
                             override fun onNext(t: HttpResult<PriceBean>) {
                                 super.onNext(t)
                                 if (t.status == 0) {
-                                    mTotalcost = t.result.data.totalprice
-                                    setPrice(t.result.data.totalprice)
+                                    mTotalcost = t.result.data.allprice
+                                    mPriceBean = t.result.data
+                                    setPrice(t.result.data.allprice,t.result.data.fare)
                                 } else {
                                     ToastUtil.showToast(t.info)
                                 }
                             }
                         })
             } else {
-                mTotalcost = 0f
+                mTotalcost = 0.0
             }
         }
     }
@@ -381,14 +385,15 @@ class ShopFragment : BaseFragment() {
         return selectProductsList
     }
 
-    private fun setPrice(totalcost: Float) {
-        if (totalcost == 0f) {
+    private fun setPrice(totalcost: Double, fare: Double) {
+        if (totalcost == 0.0) {
             tvTotalPrice.text = ""
             tvPostage.text = ""
             llTotalPrice.visibility = View.GONE
         } else {
             tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
-            tvPostage.text = "免邮费"
+
+            tvPostage.text = if(0.00== fare){"免运费"}else{"含运费:"+fare}
             llTotalPrice.visibility = View.VISIBLE
         }
     }
@@ -423,7 +428,7 @@ class ShopFragment : BaseFragment() {
             mAdapter.notifyDataSetChanged()
             tvShopEmpty.visibility = if (mGoodsList.size == 0) (View.VISIBLE) else ((View.GONE))
             if (mGoodsList.size == 0) {
-                mTotalcost = 0f
+                mTotalcost = 0.0
             }
         } else {
             isModifyMode = false

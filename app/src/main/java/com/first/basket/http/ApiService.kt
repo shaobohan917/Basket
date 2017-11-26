@@ -112,4 +112,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun doPayforAli(@Field("action") action: String, @FieldMap map: HashMap<String, String>): Observable<HttpResult<AliBean>>
+
+
+    //捐赠
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun getDonateList(@Field("action") action: String): Observable<DonateBean>
 }

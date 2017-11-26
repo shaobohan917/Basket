@@ -3,9 +3,9 @@
     <string name="bugly">b0437cb805</string>
 
     <string name="price">¥ %s</string>
-    <string name="order_price">共%1s件商品 合计：¥ %2s</string>
+    <string name="order_price">共%1s件商品 总计：¥ %2s</string>
     <string name="order_limit_time">请在 %s 内完成交易</string>
-    <string name="total_price">合计 ¥ %s</string>
+    <string name="total_price">总计 ¥ %s</string>
     <string name="product_count">共%s件商品</string>
     <string name="order_number">订单号：%s</string>
     <string name="no_granted">未授予权限</string>

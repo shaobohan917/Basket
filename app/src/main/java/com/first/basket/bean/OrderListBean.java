@@ -1,12 +1,15 @@
 package com.first.basket.bean;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by hanshaobo on 12/09/2017.
+ * Created by hanshaobo on 26/11/2017.
  */
 
-public class OrderListBean {
+public class OrderListBean implements Serializable{
+
     private List<DataBean> data;
 
     public List<DataBean> getData() {
@@ -17,23 +20,29 @@ public class OrderListBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
-         * orderid : 8000366
-         * userid : 6002561
-         * strorderid : 170530001509367510
-         * addressid : 7002556
-         * delievedt : 2017-10-31
+         * orderid : 8000302
+         * userid : 6003001
+         * strorderid : 170350371511674379
+         * addressid : 7002731
+         * delievedt : 2017-11-27
          * delievetime : 上午
          * delieveweekday :
          * qty : 1
-         * cost : 59.90
-         * price : 59.90
-         * orderdt : 2017-10-30 20:45:10
-         * paymentid : 3
-         * statusid : 4
-         * updatedt : 2017-10-30 20:45:10
-         * orderdetail : [{"ordersid":"8000366","productid":"10001177","number":"1","cost":"59.90","price":"59.90","productname":"天润 冰激凌化了酸奶","weight":"180g*12","unit":"箱","img":"/prod_pic/107/10001177.png"}]
+         * cost : 0.00
+         * price : 19.50
+         * fare : 30.00
+         * donateAXWX : 0.19
+         * donateYBBL : 0.09
+         * pay : 49.50
+         * customizedonatename :
+         * customizedonatefee : 0.00
+         * orderdt : 2017-11-26 13:32:59
+         * paymentid : 4
+         * statusid : 3
+         * updatedt : 2017-11-26 13:32:59
+         * orderdetail : [{"ordersid":"8000302","productid":"10001023","number":"1","cost":"0.00","price":"19.50","productname":"中粮艾谷 有机白芸豆","weight":"330g","unit":"袋","img":"/prod_pic/105/10001023.png"}]
          */
 
         private String orderid;
@@ -46,11 +55,17 @@ public class OrderListBean {
         private String qty;
         private String cost;
         private String price;
+        private String fare;
+        private String donateAXWX;
+        private String donateYBBL;
+        private String pay;
+        private String customizedonatename;
+        private String customizedonatefee;
         private String orderdt;
         private String paymentid;
         private String statusid;
         private String updatedt;
-        private List<OrderdetailBean> orderdetail;
+        private ArrayList<ProductBean> orderdetail;
 
         public String getOrderid() {
             return orderid;
@@ -132,6 +147,54 @@ public class OrderListBean {
             this.price = price;
         }
 
+        public String getFare() {
+            return fare;
+        }
+
+        public void setFare(String fare) {
+            this.fare = fare;
+        }
+
+        public String getDonateAXWX() {
+            return donateAXWX;
+        }
+
+        public void setDonateAXWX(String donateAXWX) {
+            this.donateAXWX = donateAXWX;
+        }
+
+        public String getDonateYBBL() {
+            return donateYBBL;
+        }
+
+        public void setDonateYBBL(String donateYBBL) {
+            this.donateYBBL = donateYBBL;
+        }
+
+        public String getPay() {
+            return pay;
+        }
+
+        public void setPay(String pay) {
+            this.pay = pay;
+        }
+
+        public String getCustomizedonatename() {
+            return customizedonatename;
+        }
+
+        public void setCustomizedonatename(String customizedonatename) {
+            this.customizedonatename = customizedonatename;
+        }
+
+        public String getCustomizedonatefee() {
+            return customizedonatefee;
+        }
+
+        public void setCustomizedonatefee(String customizedonatefee) {
+            this.customizedonatefee = customizedonatefee;
+        }
+
         public String getOrderdt() {
             return orderdt;
         }
@@ -164,108 +227,12 @@ public class OrderListBean {
             this.updatedt = updatedt;
         }
 
-        public List<OrderdetailBean> getOrderdetail() {
+        public ArrayList<ProductBean> getOrderdetail() {
             return orderdetail;
         }
 
-        public void setOrderdetail(List<OrderdetailBean> orderdetail) {
+        public void setOrderdetail(ArrayList<ProductBean> orderdetail) {
             this.orderdetail = orderdetail;
-        }
-
-        public static class OrderdetailBean {
-            /**
-             * ordersid : 8000366
-             * productid : 10001177
-             * number : 1
-             * cost : 59.90
-             * price : 59.90
-             * productname : 天润 冰激凌化了酸奶
-             * weight : 180g*12
-             * unit : 箱
-             * img : /prod_pic/107/10001177.png
-             */
-
-            private String ordersid;
-            private String productid;
-            private String number;
-            private String cost;
-            private String price;
-            private String productname;
-            private String weight;
-            private String unit;
-            private String img;
-
-            public String getOrdersid() {
-                return ordersid;
-            }
-
-            public void setOrdersid(String ordersid) {
-                this.ordersid = ordersid;
-            }
-
-            public String getProductid() {
-                return productid;
-            }
-
-            public void setProductid(String productid) {
-                this.productid = productid;
-            }
-
-            public String getNumber() {
-                return number;
-            }
-
-            public void setNumber(String number) {
-                this.number = number;
-            }
-
-            public String getCost() {
-                return cost;
-            }
-
-            public void setCost(String cost) {
-                this.cost = cost;
-            }
-
-            public String getPrice() {
-                return price;
-            }
-
-            public void setPrice(String price) {
-                this.price = price;
-            }
-
-            public String getProductname() {
-                return productname;
-            }
-
-            public void setProductname(String productname) {
-                this.productname = productname;
-            }
-
-            public String getWeight() {
-                return weight;
-            }
-
-            public void setWeight(String weight) {
-                this.weight = weight;
-            }
-
-            public String getUnit() {
-                return unit;
-            }
-
-            public void setUnit(String unit) {
-                this.unit = unit;
-            }
-
-            public String getImg() {
-                return img;
-            }
-
-            public void setImg(String img) {
-                this.img = img;
-            }
         }
     }
 }

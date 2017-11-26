@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.first.basket.R
+import kotlinx.android.synthetic.main.layout_widget_account_manager.view.*
 
 /**
  * Created by hanshaobo on 16/9/12.
@@ -45,6 +46,9 @@ class AccountItemManagerView @JvmOverloads constructor(context: Context, attrs: 
         tvTitle.text = mTitle
         ivImg.setImageResource(mImgId)
         tvRight.text = mRight
+    }
 
+    fun setRightText(str: String) {
+        tvRight.text = str
     }
 }

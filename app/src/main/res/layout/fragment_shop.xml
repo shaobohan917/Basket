@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTotalPrice"
-                android:text="免邮费"
+                android:text="免运费"
                 android:textColor="@color/orange"
                 android:textSize="12sp" />
         </LinearLayout>

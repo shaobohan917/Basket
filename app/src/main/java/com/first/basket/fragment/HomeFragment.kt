@@ -114,7 +114,7 @@ class HomeFragment : BaseFragment() {
         llTab_sqcs.setOnClickListener(myClickListener)
         llTab_axwx.setOnClickListener(myClickListener)
         llTab_yhcs.setOnClickListener(myClickListener)
-//        llTab_hltg.setOnClickListener(myClickListener)
+        llTab_hltg.setOnClickListener(myClickListener)
         llTab_ybbl.setOnClickListener(myClickListener)
         vegetables.setOnClickListener(myClickListener)
         meat.setOnClickListener(myClickListener)
@@ -127,7 +127,7 @@ class HomeFragment : BaseFragment() {
                     goClassify(1)
                 }
                 R.id.llTab_yhcs, R.id.ivSHCS, R.id.ivQGCS -> goClassify(3)
-                R.id.llTab_hltg, R.id.ivHLTG -> {
+                R.id.ivHLTG -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("title", "欢乐团购")
                     intent.putExtra("url", recommendData?.hltg?.url)
@@ -145,7 +145,7 @@ class HomeFragment : BaseFragment() {
                     intent.putExtra("title", "医保伴侣")
                     startActivity(intent)
                 }
-                R.id.ivJKSS -> {
+                R.id.llTab_hltg,R.id.ivJKSS -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.jkss?.url)
                     intent.putExtra("title", "健康特膳")

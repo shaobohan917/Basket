@@ -12,14 +12,17 @@ import com.first.basket.adapter.PlaceOrderAdapter
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.AddressBean
+import com.first.basket.bean.PriceBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
 import com.first.basket.common.StaticValue
 import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
+import com.first.basket.view.AccountItemManagerView
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_pay_order.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -31,6 +34,7 @@ class PayOrderActivity : BaseActivity() {
     private var mPrice: Float = 0f
     private var mCount: Int = 0
     private var mGoodsList = ArrayList<ProductBean>()
+    private lateinit var mPriceBean: PriceBean.DataBean
 
     private lateinit var header: View
     private lateinit var footer: View
@@ -87,19 +91,26 @@ class PayOrderActivity : BaseActivity() {
     private fun setFooter() {
         footer = LayoutInflater.from(this).inflate(R.layout.layout_order_footer, recyclerView, false)
         mPrice = intent.getFloatExtra("price", 0f)
-        footer.findViewById<TextView>(R.id.tvPrice).text = getString(R.string.total_price, mPrice.toString())
+        mPriceBean = intent.getSerializableExtra("priceBean") as PriceBean.DataBean
+        footer.findViewById<TextView>(R.id.tvPrice).text = "¥ " + mPriceBean.totalprice.toString()
         footer.findViewById<TextView>(R.id.tvCount).text = getString(R.string.product_count, mCount.toString())
-        footer.findViewById<TextView>(R.id.tvTotal).text = "¥ " + mPrice
+        footer.findViewById<TextView>(R.id.tvTotal).text = "¥ " + mPriceBean.allprice
+        footer.findViewById<TextView>(R.id.tvRoad).text = "¥ " + mPriceBean.fare
         mAdapter.addFooterView(footer)
 
-        tvTotalPrice.text = getString(R.string.total_price, mPrice.toString())
+        tvTotalPrice.text = getString(R.string.total_price, mPriceBean.allprice.toString())
+        if(0.00== mPriceBean.fare){
+            header.findViewById<AccountItemManagerView>(R.id.aimvRoad).setRightText("免运费")
+        }else{
+            header.findViewById<AccountItemManagerView>(R.id.aimvRoad).setRightText("¥ "+mPriceBean.fare)
+        }
     }
 
 
     private fun initListener() {
         btBuy.onClick {
             var intent = Intent(this@PayOrderActivity, PayChooseActivity::class.java)
-            intent.putExtra("price", mPrice)
+            intent.putExtra("price", mPriceBean.allprice)
             intent.putExtra("map", generateParams())
             myStartActivityForResult(intent, REQUEST_ONE)
         }

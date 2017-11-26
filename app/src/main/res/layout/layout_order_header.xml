@@ -63,6 +63,7 @@
         app:accountManagerTitle="支付方式" />
 
     <com.first.basket.view.AccountItemManagerView
+        android:id="@+id/aimvRoad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:accountManagerRight="免运费"
