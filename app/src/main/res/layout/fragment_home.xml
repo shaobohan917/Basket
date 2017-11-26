@@ -267,14 +267,207 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="26dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ivSQCS"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tvSQCS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="社区菜市"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/ivJKSS"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tvJKSS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="健康特膳"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="36dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ivSHCS"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tvSHCS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="上海菜市"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="26dp">
+
+                <ImageView
+                    android:id="@+id/ivYBBL"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tvYBBL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="医保伴侣"
+                    android:textColor="@color/gray33"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="点击查看"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="26dp">
+
+            <ImageView
+                android:id="@+id/ivAXWX"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/tvAXWX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="爱心无限"
+                android:textColor="@color/gray33"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:background="@color/green"
+                android:gravity="center"
+                android:text="点击查看"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="26dp">
 
                 <ImageView
                     android:id="@+id/ivHLTG"
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
@@ -304,52 +497,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="36dp">
-
-                <ImageView
-                    android:id="@+id/ivSHCS"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="4dp"
-                    android:scaleType="fitCenter" />
-
-                <TextView
-                    android:id="@+id/tvSHCS"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="上海菜市"
-                    android:textColor="@color/gray33"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="64dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/green"
-                    android:gravity="center"
-                    android:text="点击查看"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginBottom="36dp"
                 android:layout_marginTop="36dp">
 
                 <ImageView
                     android:id="@+id/ivQGCS"
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="6dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
@@ -374,43 +530,6 @@
                     android:textSize="10sp" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="36dp">
-
-                <ImageView
-                    android:id="@+id/ivJKSS"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="4dp"
-                    android:scaleType="fitCenter" />
-
-                <TextView
-                    android:id="@+id/tvJKSS"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="健康膳食"
-                    android:textColor="@color/gray33"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="64dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/green"
-                    android:gravity="center"
-                    android:text="点击查看"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

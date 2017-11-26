@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HomeBean {
     /**
-     * data : {"Carouselfigure":[{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"},"SHCS":{"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""},"HLTG":{"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"QGCS":{"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""},"JKSS":{"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}}
+     * data : {"Carouselfigure":[{"image":"/AppImage/Banner_0_20171124.png","url":""},{"image":"/AppImage/Banner_1_20171124.png","url":""},{"image":"/AppImage/Banner_2_20171124.png","url":""},{"image":"/AppImage/Banner_3_20171124.png","url":""},{"image":"/AppImage/Banner_4_20171124.png","url":""}],"SQCS":{"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171125.png","url":""},{"image":"/AppImage/SQCS_1_20171125.png","url":""},{"image":"/AppImage/SQCS_2_20171125.png","url":""},{"image":"/AppImage/SQCS_3_20171125.png","url":""},{"image":"/AppImage/SQCS_4_20171125.png","url":""},{"image":"/AppImage/SQCS_5_20171125.png","url":""},{"image":"/AppImage/SQCS_6_20171125.png","url":""}],"Vegetables":"/AppImage/TJvegetables_0_20171125.png","Meat":"/AppImage/TJmeat_0_20171125.png"},"SHCS":{"Image":"/AppImage/SHCS_20171125.png","Title":"","URL":""},"HLTG":{"Image":"/AppImage/HLTG_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/HLTG.html"},"QGCS":{"Image":"/AppImage/QGCS_20171125.png","Title":"","URL":""},"JKSS":{"Image":"/AppImage/JKTS_20171125.png","Title":"","URL":"https://www.yhclzgc.com/yhclz/H5/jkss.html"},"AXWX":{"Image":"/AppImage/AXWX_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/love.html"},"YBBL":{"Image":"/AppImage/YBBL_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/Medicare.html"}}
      */
 
     private DataBean data;
@@ -23,12 +23,14 @@ public class HomeBean {
 
     public static class DataBean {
         /**
-         * Carouselfigure : [{"image":"/AppImage/Banner_0_20171007.png","url":""},{"image":"/AppImage/Banner_1_20171007.png","url":""},{"image":"/AppImage/Banner_2_20171007.png","url":""},{"image":"/AppImage/Banner_3_20171007.png","url":""},{"image":"/AppImage/Banner_4_20171007.png","url":""}]
-         * SQCS : {"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171007.png","url":""}],"Vegetables":"/AppImage/TJvegetables_20171007.png","Meat":"/AppImage/TJmeat_20171007.png"}
-         * SHCS : {"Image":"/AppImage/SHCS.png","Title":"【安全食品、吃的放心】","URL":""}
-         * HLTG : {"Image":"/AppImage/HLTG.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
-         * QGCS : {"Image":"/AppImage/QGCS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
-         * JKSS : {"Image":"/AppImage/JKSS.png","Title":"迎中秋，庆国庆，口福享不停","URL":""}
+         * Carouselfigure : [{"image":"/AppImage/Banner_0_20171124.png","url":""},{"image":"/AppImage/Banner_1_20171124.png","url":""},{"image":"/AppImage/Banner_2_20171124.png","url":""},{"image":"/AppImage/Banner_3_20171124.png","url":""},{"image":"/AppImage/Banner_4_20171124.png","url":""}]
+         * SQCS : {"Carouselfigure":[{"image":"/AppImage/SQCS_0_20171125.png","url":""},{"image":"/AppImage/SQCS_1_20171125.png","url":""},{"image":"/AppImage/SQCS_2_20171125.png","url":""},{"image":"/AppImage/SQCS_3_20171125.png","url":""},{"image":"/AppImage/SQCS_4_20171125.png","url":""},{"image":"/AppImage/SQCS_5_20171125.png","url":""},{"image":"/AppImage/SQCS_6_20171125.png","url":""}],"Vegetables":"/AppImage/TJvegetables_0_20171125.png","Meat":"/AppImage/TJmeat_0_20171125.png"}
+         * SHCS : {"Image":"/AppImage/SHCS_20171125.png","Title":"","URL":""}
+         * HLTG : {"Image":"/AppImage/HLTG_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/HLTG.html"}
+         * QGCS : {"Image":"/AppImage/QGCS_20171125.png","Title":"","URL":""}
+         * JKSS : {"Image":"/AppImage/JKTS_20171125.png","Title":"","URL":"https://www.yhclzgc.com/yhclz/H5/jkss.html"}
+         * AXWX : {"Image":"/AppImage/AXWX_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/love.html"}
+         * YBBL : {"Image":"/AppImage/YBBL_20171125.png","Title":"","URL":"http://h5.yhclzgc.com/activity/app/Medicare.html"}
          */
 
         private SQCSBean SQCS;
@@ -36,8 +38,8 @@ public class HomeBean {
         private HLTGBean HLTG;
         private QGCSBean QGCS;
         private JKSSBean JKSS;
-        private JKSSBean AXWX;
-        private JKSSBean YBBL;
+        private AXWXBean AXWX;
+        private YBBLBean YBBL;
         private List<CarouselfigureBeanX> Carouselfigure;
 
         public SQCSBean getSQCS() {
@@ -80,20 +82,19 @@ public class HomeBean {
             this.JKSS = JKSS;
         }
 
-
-        public JKSSBean getAXWX() {
+        public AXWXBean getAXWX() {
             return AXWX;
         }
 
-        public void setAXWX(JKSSBean AXWX) {
+        public void setAXWX(AXWXBean AXWX) {
             this.AXWX = AXWX;
         }
 
-        public JKSSBean getYBBL() {
+        public YBBLBean getYBBL() {
             return YBBL;
         }
 
-        public void setYBBL(JKSSBean YBBL) {
+        public void setYBBL(YBBLBean YBBL) {
             this.YBBL = YBBL;
         }
 
@@ -107,9 +108,9 @@ public class HomeBean {
 
         public static class SQCSBean {
             /**
-             * Carouselfigure : [{"image":"/AppImage/SQCS_0_20171007.png","url":""}]
-             * Vegetables : /AppImage/TJvegetables_20171007.png
-             * Meat : /AppImage/TJmeat_20171007.png
+             * Carouselfigure : [{"image":"/AppImage/SQCS_0_20171125.png","url":""},{"image":"/AppImage/SQCS_1_20171125.png","url":""},{"image":"/AppImage/SQCS_2_20171125.png","url":""},{"image":"/AppImage/SQCS_3_20171125.png","url":""},{"image":"/AppImage/SQCS_4_20171125.png","url":""},{"image":"/AppImage/SQCS_5_20171125.png","url":""},{"image":"/AppImage/SQCS_6_20171125.png","url":""}]
+             * Vegetables : /AppImage/TJvegetables_0_20171125.png
+             * Meat : /AppImage/TJmeat_0_20171125.png
              */
 
             private String Vegetables;
@@ -142,7 +143,7 @@ public class HomeBean {
 
             public static class CarouselfigureBean {
                 /**
-                 * image : /AppImage/SQCS_0_20171007.png
+                 * image : /AppImage/SQCS_0_20171125.png
                  * url :
                  */
 
@@ -169,8 +170,8 @@ public class HomeBean {
 
         public static class SHCSBean {
             /**
-             * Image : /AppImage/SHCS.png
-             * Title : 【安全食品、吃的放心】
+             * Image : /AppImage/SHCS_20171125.png
+             * Title :
              * URL :
              */
 
@@ -205,9 +206,9 @@ public class HomeBean {
 
         public static class HLTGBean {
             /**
-             * Image : /AppImage/HLTG.png
-             * Title : 迎中秋，庆国庆，口福享不停
-             * URL :
+             * Image : /AppImage/HLTG_20171125.png
+             * Title :
+             * URL : http://h5.yhclzgc.com/activity/app/HLTG.html
              */
 
             private String Image;
@@ -241,8 +242,8 @@ public class HomeBean {
 
         public static class QGCSBean {
             /**
-             * Image : /AppImage/QGCS.png
-             * Title : 迎中秋，庆国庆，口福享不停
+             * Image : /AppImage/QGCS_20171125.png
+             * Title :
              * URL :
              */
 
@@ -277,9 +278,81 @@ public class HomeBean {
 
         public static class JKSSBean {
             /**
-             * Image : /AppImage/JKSS.png
-             * Title : 迎中秋，庆国庆，口福享不停
-             * URL :
+             * Image : /AppImage/JKTS_20171125.png
+             * Title :
+             * URL : https://www.yhclzgc.com/yhclz/H5/jkss.html
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class AXWXBean {
+            /**
+             * Image : /AppImage/AXWX_20171125.png
+             * Title :
+             * URL : http://h5.yhclzgc.com/activity/app/love.html
+             */
+
+            private String Image;
+            private String Title;
+            private String URL;
+
+            public String getImage() {
+                return Image;
+            }
+
+            public void setImage(String Image) {
+                this.Image = Image;
+            }
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getURL() {
+                return URL;
+            }
+
+            public void setURL(String URL) {
+                this.URL = URL;
+            }
+        }
+
+        public static class YBBLBean {
+            /**
+             * Image : /AppImage/YBBL_20171125.png
+             * Title :
+             * URL : http://h5.yhclzgc.com/activity/app/Medicare.html
              */
 
             private String Image;
@@ -313,7 +386,7 @@ public class HomeBean {
 
         public static class CarouselfigureBeanX {
             /**
-             * image : /AppImage/Banner_0_20171007.png
+             * image : /AppImage/Banner_0_20171124.png
              * url :
              */
 

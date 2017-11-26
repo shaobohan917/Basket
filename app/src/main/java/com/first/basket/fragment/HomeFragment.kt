@@ -19,14 +19,11 @@ import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.HomeBean
 import com.first.basket.common.CommonMethod
-import com.first.basket.common.StaticValue
 import com.first.basket.constants.Constants
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
 import com.first.basket.utils.ImageUtils
-import com.first.basket.utils.LogUtils
-import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.youth.banner.BannerConfig
@@ -136,13 +133,13 @@ class HomeFragment : BaseFragment() {
                     intent.putExtra("url", recommendData?.hltg?.url)
                     startActivity(intent)
                 }
-                R.id.llTab_axwx -> {
+                R.id.llTab_axwx,R.id.ivAXWX -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.axwx?.url)
                     intent.putExtra("title", "爱心无限")
                     startActivity(intent)
                 }
-                R.id.llTab_ybbl -> {
+                R.id.llTab_ybbl,R.id.ivYBBL -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.ybbl?.url)
                     intent.putExtra("title", "医保伴侣")
@@ -151,7 +148,7 @@ class HomeFragment : BaseFragment() {
                 R.id.ivJKSS -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.jkss?.url)
-                    intent.putExtra("title", "健康膳食")
+                    intent.putExtra("title", "健康特膳")
                     startActivity(intent)
                 }
             }
@@ -231,10 +228,16 @@ class HomeFragment : BaseFragment() {
         ImageUtils.showImg(activity, data?.qgcs?.image, ivQGCS)
         ImageUtils.showImg(activity, data?.jkss?.image, ivJKSS)
 
+        ImageUtils.showImg(activity, data?.ybbl?.image, ivYBBL)
+        ImageUtils.showImg(activity, data?.axwx?.image, ivAXWX)
+
         ivSHCS.setOnClickListener(myClickListener)
-        ivHLTG.setOnClickListener(myClickListener)
+        ivSQCS.setOnClickListener(myClickListener)
         ivQGCS.setOnClickListener(myClickListener)
         ivJKSS.setOnClickListener(myClickListener)
+        ivHLTG.setOnClickListener(myClickListener)
+        ivYBBL.setOnClickListener(myClickListener)
+        ivAXWX.setOnClickListener(myClickListener)
 
     }
 
