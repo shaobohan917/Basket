@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment() {
         llTab_sqcs.setOnClickListener(myClickListener)
         llTab_axwx.setOnClickListener(myClickListener)
         llTab_yhcs.setOnClickListener(myClickListener)
-        llTab_hltg.setOnClickListener(myClickListener)
+//        llTab_hltg.setOnClickListener(myClickListener)
         llTab_ybbl.setOnClickListener(myClickListener)
         vegetables.setOnClickListener(myClickListener)
         meat.setOnClickListener(myClickListener)

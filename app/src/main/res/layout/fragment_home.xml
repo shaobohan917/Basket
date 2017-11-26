@@ -128,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_ybbl" />
+                        android:src="@mipmap/ic_axwx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_axwx" />
+                        android:src="@mipmap/ic_ybbl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -159,6 +159,28 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:text="医保伴侣" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTab_hltg"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_home_jkts" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="健康特膳" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,28 +203,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:text="1号菜市" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llTab_hltg"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_home_hltg" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="欢乐团购" />
                 </LinearLayout>
             </LinearLayout>
 

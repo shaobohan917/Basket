@@ -21,8 +21,8 @@ android {
         applicationId "com.first.basket"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 20
-        versionName "1.0.1"
+        versionCode 21
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
