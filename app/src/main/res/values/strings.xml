@@ -20,7 +20,7 @@
     <string name="buy">请选购商品</string>
     <string name="service_phone">4000877021</string>
     <string name="not_install">请先安装 %s</string>
-    <string name="agreenYibao">同意医保办理购物</string>
-    <string name="aggeenLove">同意购物献爱心</string>
+    <string name="agreenYibao">开始购物</string>
+    <string name="aggeenLove">开始购物</string>
     <string name="one_oneday">特惠商品荤素每天各只可添加一件</string>
 </resources>

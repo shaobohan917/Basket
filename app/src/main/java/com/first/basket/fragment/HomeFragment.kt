@@ -5,11 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.AppCompatImageView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.base.BaseActivity
@@ -201,19 +203,18 @@ class HomeFragment : BaseFragment() {
         for (i in 0 until data.sqcs.carouselfigure.size) {
             images1.add(Constants.BASE_IMG_URL + data.sqcs.carouselfigure[i].image)
         }
-        vBanner.setImages(images1)
-                .setImageLoader(GlideImageLoader())
-                .setBannerAnimation(Transformer.Default)
-                .setDelayTime(5000)
-                .setBannerStyle(BannerConfig.NOT_INDICATOR)
-                .start()
-        vBanner.setOnBannerListener {
-            goClassify(1)
-        }
-        vBanner.visibility = View.GONE
-        ivTest.visibility = View.VISIBLE
-        ivTest.onClick { goClassify(1) }
-        ImageUtils.showImg(activity, Constants.BASE_IMG_URL + data.sqcs.carouselfigure[0].image, ivTest)
+        vBanner.bindView(object : cn.ymex.banner.Banner.BindViewCallBack<AppCompatImageView, String> {
+            override fun bindView(view: AppCompatImageView, data: String, position: Int) {
+                view.scaleType = ImageView.ScaleType.FIT_CENTER
+                //图片加载
+                Glide.with(view.context)
+                        .load(data)
+                        .into(view)
+                view.onClick {
+                    goClassify(1)
+                }
+            }
+        }).setOrientation(cn.ymex.banner.Banner.VERTICAL).execute(images1)
 
         ImageUtils.showImg(activity, data.sqcs.vegetables, vegetables)
         ImageUtils.showImg(activity, data.sqcs.meat, meat)
