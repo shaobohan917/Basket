@@ -146,10 +146,11 @@ class HomeFragment : BaseFragment() {
                     startActivity(intent)
                 }
                 R.id.llTab_hltg,R.id.ivJKSS -> {
-                    val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData?.jkss?.url)
-                    intent.putExtra("title", "健康特膳")
-                    startActivity(intent)
+//                    val intent = Intent(activity, WebViewActivity::class.java)
+//                    intent.putExtra("url", recommendData?.jkss?.url)
+//                    intent.putExtra("title", "健康特膳")
+//                    startActivity(intent)
+                    (activity as MainActivity).setTSPF()
                 }
             }
         }

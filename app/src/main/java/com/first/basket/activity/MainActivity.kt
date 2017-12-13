@@ -216,6 +216,16 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             switchFragment(index)
             bottomBar.selectTabAtPosition(index)
         }
+//        else{
+//            fragmentList.add(1,classifyFragment)
+//            switchFragment(index)
+//            bottomBar.selectTabAtPosition(index)
+//        }
+    }
+
+    fun setTSPF(){
+        setCurrentPage(1)
+        classifyFragment.setClassifyIndex()
     }
 
     fun showLogin() {

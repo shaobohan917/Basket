@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +15,16 @@ import com.first.basket.adapter.ClassifyAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.common.CommonMethod
-import com.first.basket.common.StaticValue
 import com.first.basket.http.HttpMethods
 import com.first.basket.http.HttpResultSubscriber
 import com.first.basket.http.TransformUtils
+import com.first.basket.rxjava.RxjavaUtil
+import com.first.basket.rxjava.UITask
 import com.first.basket.utils.LogUtils
-import com.first.basket.utils.SPUtil
 import kotlinx.android.synthetic.main.fragment_classify.*
 import kotlinx.android.synthetic.main.item_et_search.*
 import java.lang.Exception
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by hanshaobo on 30/08/2017.
@@ -190,5 +190,16 @@ class ClassifyFragment : BaseFragment() {
                 }, 1000)
             }
         }
+    }
+
+    /**
+     * 健康特膳点过来时，跳转到第二个tab
+     */
+    fun setClassifyIndex() {
+        RxjavaUtil.doInUIThreadDelay(object : UITask<Any>() {
+            override fun doInUIThread() {
+                classifyRecyclerView.getChildViewHolder(classifyRecyclerView.getChildAt(1)).itemView.performClick()
+            }
+        },300,TimeUnit.MILLISECONDS)
     }
 }
