@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity {
     @BindView(R.id.vPoint)
     View vPoint;
 
-    private int[] images = {R.mipmap.guideimage_0, R.mipmap.guideimage_1,R.mipmap.guideimage_2};
+    private int[] images = {R.mipmap.guideimage_1,R.mipmap.guideimage_2};
 
     private ArrayList<View> imageviews;      //存放imageview的集合
     private int distance;

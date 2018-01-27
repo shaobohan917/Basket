@@ -145,6 +145,7 @@ class HomeFragment : BaseFragment() {
         llTab_hltg.setOnClickListener(myClickListener)
         llTab_ybbl.setOnClickListener(myClickListener)
         vegetables.setOnClickListener(myClickListener)
+        llTab_hltg_real.setOnClickListener(myClickListener)
         meat.setOnClickListener(myClickListener)
     }
 
@@ -155,7 +156,7 @@ class HomeFragment : BaseFragment() {
                     goClassify(1)
                 }
                 R.id.llTab_yhcs, R.id.ivSHCS, R.id.ivQGCS -> goClassify(3)
-                R.id.ivHLTG -> {
+                R.id.ivHLTG,R.id.llTab_hltg_real -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("title", "欢乐团购")
                     intent.putExtra("url", recommendData?.hltg?.url)
