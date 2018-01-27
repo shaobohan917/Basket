@@ -23,4 +23,10 @@
     <string name="agreenYibao">开始购物</string>
     <string name="aggeenLove">开始购物</string>
     <string name="one_oneday">特惠商品荤素每天各只可添加一件</string>
+
+    <string name="pop_thanks">感谢%1s爱心捐赠%2s元</string>
+    <string name="pop_thanks_to">到上海有人公益基金会</string>
+    <string name="pop_thanks_love">本基金爱心捐款</string>
+    <string name="pop_thanks_description">有人基金会帮助残障社群和困难群体\n平等、有尊严地生活</string>
+    <string name="pop_learnmore">（长按了解更多）</string>
 </resources>

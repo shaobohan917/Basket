@@ -4,13 +4,16 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
 import android.text.TextUtils
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupWindow
 import com.bumptech.glide.Glide
 import com.first.basket.R
 import com.first.basket.activity.*
@@ -54,7 +57,6 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initData()
         initListener()
         RxPermissions(activity)
@@ -62,10 +64,36 @@ class HomeFragment : BaseFragment() {
                 .subscribe({ granted ->
                     isGrantedCamera = granted
                 })
+        showPop()
     }
 
-    private fun initView() {
+    private fun showPop() {
+//        rlTop.onClick {
+//            initPopWindow()
+//        }
+    }
 
+    /**
+     * 初始化popWindow
+     * */
+    private fun initPopWindow() {
+        var popView = LayoutInflater.from(activity).inflate(R.layout.layout_pop,null)
+        var popupWindow = PopupWindow(popView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(ColorDrawable(0));
+        //设置popwindow出现和消失动画
+//        popupWindow.setAnimationStyle(R.style.PopMenuAnimation);
+//        btn_pop_close = (ImageView) popView.findViewById(R.id.btn_pop_close);
+//        ll_pop_speech=(LinearLayout) popView.findViewById(R.id.ll_pop_speech);
+//        ll_pop_favor=(LinearLayout) popView.findViewById(R.id.ll_pop_favor);
+//        ll_pop_dislike=(LinearLayout) popView.findViewById(R.id.ll_pop_dislike);
+//
+//        btn_pop_close.setOnClickListener(new popItemOnClickListener());
+//        ll_pop_speech.setOnClickListener(new popItemOnClickListener());
+//        ll_pop_favor.setOnClickListener(new popItemOnClickListener());
+//        ll_pop_dislike.setOnClickListener(new popItemOnClickListener());
+
+
+        popupWindow.showAtLocation(rlTop,Gravity.CENTER,0,0)
     }
 
     private fun initData() {

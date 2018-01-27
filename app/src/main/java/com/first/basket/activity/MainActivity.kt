@@ -3,7 +3,6 @@ package com.first.basket.activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
@@ -15,15 +14,12 @@ import com.first.basket.R
 import com.first.basket.app.BaseApplication
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
-import com.first.basket.common.CommonMethod
 import com.first.basket.common.CommonMethod1
 import com.first.basket.common.StaticValue
 import com.first.basket.fragment.*
-import com.first.basket.utils.LogUtils
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.github.ybq.android.spinkit.style.DoubleBounce
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.roughike.bottombar.BottomBar
@@ -223,13 +219,13 @@ class MainActivity : BaseActivity(), AMapLocationListener {
 //        }
     }
 
+    fun showLogin() {
+        showDialog("提示", "您尚未登录，请先登录", "去登录", DialogInterface.OnClickListener { p0, p1 -> myStartActivity(Intent(this@MainActivity, LoginActivity::class.java)) })
+    }
+
     fun setTSPF(){
         setCurrentPage(1)
         classifyFragment.setClassifyIndex()
-    }
-
-    fun showLogin() {
-        showDialog("提示", "您尚未登录，请先登录", "去登录", DialogInterface.OnClickListener { p0, p1 -> myStartActivity(Intent(this@MainActivity, LoginActivity::class.java)) })
     }
 
     fun showLoading() {
