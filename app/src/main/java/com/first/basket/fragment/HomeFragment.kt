@@ -159,6 +159,7 @@ class HomeFragment : BaseFragment() {
                 R.id.ivHLTG,R.id.llTab_hltg_real -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("title", "欢乐团购")
+
                     intent.putExtra("url", recommendData?.hltg?.url)
                     startActivity(intent)
                 }

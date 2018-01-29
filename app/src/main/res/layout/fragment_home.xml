@@ -145,7 +145,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <ImageView
@@ -207,6 +206,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/llTab_hltg_real"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -442,7 +442,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:visibility="gone"
                 android:layout_marginTop="26dp">
 
                 <ImageView
