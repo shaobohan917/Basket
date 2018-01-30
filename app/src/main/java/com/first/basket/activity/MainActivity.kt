@@ -66,11 +66,8 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
     fun setCount() {
-        var productListBean = BaseApplication.getInstance().getProductsList()
-        var count = 0
-        for (i in 0 until productListBean.size) {
-            count += productListBean[i].amount
-        }
+        var productListBean = BaseApplication.getInstance().productsList
+        val count = (0 until productListBean.size).sumBy { productListBean[it].amount }
         nearby.setBadgeCount(count)
         mCount = count
     }

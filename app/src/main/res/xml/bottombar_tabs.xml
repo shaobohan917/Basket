@@ -16,7 +16,7 @@
     <tab
         icon="@drawable/tab_icon_shop"
         id="@+id/tab_shop"
-        title="购物车" />
+        title="购物篮" />
     <tab
         icon="@drawable/tab_icon_mine"
         id="@+id/tab_mine"
