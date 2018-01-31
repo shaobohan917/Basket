@@ -37,7 +37,7 @@ class MineFragment : BaseFragment() {
         setLoginStatus()
 
         ImageUtils.showImg(activity, R.mipmap.ic_placeholder, ivAva, GlideOptions().circleCrop())
-        rlOrder.onClick {
+        ivMore.onClick {
             if (CommonMethod.isLogin()) {
                 startActivity(Intent(activity, OrderListActivity::class.java))
             } else {
@@ -86,6 +86,10 @@ class MineFragment : BaseFragment() {
                 intent.data = data
                 startActivity(intent)
             })
+        }
+
+        tvRealName.onClick {
+
         }
     }
 

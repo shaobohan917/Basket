@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.first.basket.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:showBack="false"
+        app:titleText="我的" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,13 +24,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@color/colorPrimary">
+                android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/ivAva"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:src="@mipmap/ic_placeholder" />
@@ -32,64 +39,110 @@
                 <TextView
                     android:id="@+id/tvLoginStatus"
                     android:layout_width="wrap_content"
-                    android:layout_height="75dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignTop="@id/ivAva"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@id/ivAva"
                     android:gravity="center_vertical"
                     android:text="登录/注册"
-                    android:textColor="@color/white" />
-            </RelativeLayout>
-
-            <include layout="@layout/layout_gap" />
-
-            <RelativeLayout
-                android:id="@+id/rlOrder"
-                android:layout_width="match_parent"
-                android:layout_height="48dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:text="我的订单"
                     android:textColor="@color/gray33"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/ivMore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginRight="22dp"
-                    android:src="@mipmap/ic_mine_arrow" />
+                    android:textSize="24sp" />
 
                 <TextView
+                    android:id="@+id/tvRegion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/ivMore"
-                    android:text="我的订单"
+                    android:layout_alignStart="@id/tvLoginStatus"
+                    android:layout_below="@id/tvLoginStatus"
+                    android:layout_marginTop="24dp"
+                    android:text="上海"
                     android:textColor="@color/gray66"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
-                <include layout="@layout/layout_line" />
+                <TextView
+                    android:id="@+id/tvRealName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvLoginStatus"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_toRightOf="@id/tvRegion"
+                    android:text="未实名"
+                    android:textColor="@color/red56"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="76dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥ 121"
+                        android:textColor="@color/gray33"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="医保伴侣"
+                        android:textColor="@color/gray66"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="¥ 69"
+                        android:textColor="@color/gray33"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="爱心基金"
+                        android:textColor="@color/gray66"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorLump" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageView
@@ -102,14 +155,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
-                        android:text="待支付" />
+                        android:layout_marginTop="10dp"
+                        android:text="待付款" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="76dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageView
@@ -122,14 +176,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:text="待发货" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="76dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageView
@@ -142,13 +197,50 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:text="待收货" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_mine_line" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_mine_all" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:text="全部订单" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <include layout="@layout/layout_gap" />
+
+            <com.first.basket.view.AccountItemManagerView
+                android:id="@+id/aimvSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:accountManagerImg="@mipmap/ic_mine_setting"
+                app:accountManagerTitle="设置中心" />
 
             <com.first.basket.view.AccountItemManagerView
                 android:id="@+id/aimvAddress"
@@ -164,14 +256,6 @@
                 app:accountManagerImg="@mipmap/ic_mine_range"
                 app:accountManagerTitle="配送范围" />
 
-            <com.first.basket.view.AccountItemManagerView
-                android:id="@+id/aimvSetting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                app:accountManagerImg="@mipmap/ic_mine_setting"
-                app:accountManagerTitle="设置中心" />
 
             <com.first.basket.view.AccountItemManagerView
                 android:id="@+id/aimvHelp"
