@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.first.basket.view.TitleView
+        app:titleText="修改昵称"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/etNickname"
+        style="@style/LoginInputStyle"
+        android:background="@null"
+        android:maxLength="10" />
+
+    <include layout="@layout/layout_line" />
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btModify"
+        style="@style/ButtonStyle"
+        android:background="@color/colorMain"
+        android:text="确认" />
+</LinearLayout>

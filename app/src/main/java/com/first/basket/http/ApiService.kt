@@ -122,4 +122,15 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun getActivePage(@Field("action") action: String): Observable<HttpResult<ActiveBean>>
+
+
+    //修改昵称
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun doModifyUsername(@Field("action") action: String,@Field("userid") userid: String,@Field("username") username: String): Observable<HttpResult<LoginBean>>
+
+    //修改头像/实名认证
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun doCheckrealname(@Field("action") action: String,@Field("userid") userid: String,@Field("realname") realname: String,@Field("cardid") cardid: String): Observable<HttpResult<LoginBean>>
 }

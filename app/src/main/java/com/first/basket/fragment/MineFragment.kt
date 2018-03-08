@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +47,9 @@ class MineFragment : BaseFragment() {
         }
 
         ivAva.onClick {
-            tvLoginStatus.performClick()
+            if(CommonMethod.isLogin()){
+
+            }
         }
 
         tvLoginStatus.onClick {
@@ -54,7 +57,7 @@ class MineFragment : BaseFragment() {
                 var intent = Intent(activity, LoginActivity::class.java)
                 startActivityForResult(intent, 102)
             } else {
-                LogUtils.d("已登录")
+                startActivityForResult(Intent(activity,ModifyNicknameActivity::class.java),104)
             }
         }
 
@@ -95,17 +98,41 @@ class MineFragment : BaseFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && (requestCode == 102 || requestCode == 103)) {
+        if (resultCode == Activity.RESULT_OK && (requestCode == 102 || requestCode == 103)|| requestCode == 104) {
             setLoginStatus()
         }
     }
 
-    fun setLoginStatus() {
+    private fun setLoginStatus() {
         if (SPUtil.getBoolean(StaticValue.SP_LOGIN_STATUS, false)) {
             val phone = SPUtil.getString(StaticValue.SP_LOGIN_PHONE, "")
-            tvLoginStatus.setText(phone)
+            val username = SPUtil.getString(StaticValue.SP_LOGIN_USERNAME, "")
+
+            if(TextUtils.isEmpty(username)){
+                tvLoginStatus.text = phone
+            }else{
+                tvLoginStatus.text = username
+            }
+
+            tvYBBL.text = "¥ "+SPUtil.getString(StaticValue.SP_INTEGRAL_YBBL, "")
+            tvAXJJ.text = "¥ "+SPUtil.getString(StaticValue.SP_INTEGRAL_AXJJ, "")
+            if(SPUtil.getInt(StaticValue.SP_ISREAL,0)==1){
+                tvRealName.text = SPUtil.getString(StaticValue.SP_REALNAME, "")
+            }else{
+                tvRealName.text = "未实名"
+            }
+
+            tvRegion.visibility = View.VISIBLE
+            tvRealName.visibility = View.VISIBLE
+            llYBBL.visibility = View.VISIBLE
+            ivAva.visibility = View.VISIBLE
         } else {
-            tvLoginStatus.setText("登录/注册")
+            tvLoginStatus.text = "登录/注册"
+
+            tvRegion.visibility = View.GONE
+            tvRealName.visibility = View.GONE
+            llYBBL.visibility = View.GONE
+            ivAva.visibility = View.INVISIBLE
         }
     }
 }

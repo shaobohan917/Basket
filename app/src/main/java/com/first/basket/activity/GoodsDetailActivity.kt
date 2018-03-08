@@ -139,19 +139,13 @@ class GoodsDetailActivity : BaseActivity() {
             tvName.text = data.title
             tvDes.text = data.product.weight + "/" + data.product.unit
             tvPrice.text = getString(R.string.price, CommonMethod1.showPrice(data.product))
-            tvDetail.text = data.productdetail ?: ""
+            tvDetail.text = data.productdetail
             //设置banner
             images.addAll(data.images)
             var imgs = ArrayList<String>()
             for (i in 0 until images.size) {
                 imgs.add(Constants.BASE_IMG_URL + images[i].image)
             }
-//            banner.setImages(imgs)
-//                    .setImageLoader(HomeFragment.GlideImageLoader())
-//                    .setBannerAnimation(Transformer.DepthPage)
-//                    .setDelayTime(3000)
-//                    .setIndicatorGravity(BannerConfig.RIGHT)
-//                    .start()
 
             ImageUtils.showImg(this@GoodsDetailActivity, data.images[0].image, ivGoods)
             if (CommonMethod.isTrue(data.product.promboolean)) {

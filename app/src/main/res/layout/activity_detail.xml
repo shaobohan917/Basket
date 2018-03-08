@@ -85,7 +85,6 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/gray66"
                 android:textSize="16sp"
-                android:visibility="gone"
                 tools:text="商品详情" />
 
         </LinearLayout>

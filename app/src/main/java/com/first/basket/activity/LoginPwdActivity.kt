@@ -63,6 +63,14 @@ class LoginPwdActivity : BaseActivity() {
 
                             SPUtil.setString(StaticValue.SP_LOGIN_PHONE, t.result.data.phone)
                             SPUtil.setString(StaticValue.USER_ID, t.result.data.userid)
+
+                            //20180306新增
+                            SPUtil.setString(StaticValue.SP_LOGIN_USERNAME, t.result.data.username)
+                            SPUtil.setString(StaticValue.SP_INTEGRAL_YBBL, t.result.data.ybbLintegral)
+                            SPUtil.setString(StaticValue.SP_INTEGRAL_AXJJ, t.result.data.axjJintegral)
+                            SPUtil.setString(StaticValue.SP_REALNAME, t.result.data.realname)
+                            SPUtil.setInt(StaticValue.SP_ISREAL, t.result.data.isreal)
+
                             CommonMethod.hideKeyboard(etPassword)
                             setResult(Activity.RESULT_OK)
                             myFinish()

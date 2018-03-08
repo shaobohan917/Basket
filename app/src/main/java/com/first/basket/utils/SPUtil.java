@@ -161,6 +161,10 @@ public class SPUtil {
         SPUtil.setString(StaticValue.ACCESS_TOKEN_WECHAT, "");
         SPUtil.setString(StaticValue.REFRESH_TOKEN_WECHAT, "");
         SPUtil.setString(StaticValue.OPEN_ID_WECHAT, "");
+
+        SPUtil.setString(StaticValue.SP_NICKNAME, "");
+        SPUtil.setBoolean(StaticValue.REPORT_ISLOAD, false);
+        SPUtil.setString(StaticValue.ACCESS_TOKEN, "");
     }
 
 

@@ -62,6 +62,9 @@ public class StaticValue {
 
     public static final String DEFAULT_ADDRESS = "default_address";
 
-//    public static final String CHANNEL = "channel";
+    public static final String SP_INTEGRAL_YBBL = "sp_integral_ybbl";
+    public static final String SP_INTEGRAL_AXJJ = "sp_integral_axjj";
+    public static final String SP_REALNAME = "sp_realname";
+    public static final String SP_ISREAL = "sp_isreal";
 }
 

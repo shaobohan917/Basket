@@ -64,6 +64,7 @@
         <activity android:name=".activity.GoodsDetailActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.OrderListActivity" />
+        <activity android:name=".activity.ModifyNicknameActivity" />
 
         <service android:name="com.amap.api.location.APSService" />
         <meta-data
