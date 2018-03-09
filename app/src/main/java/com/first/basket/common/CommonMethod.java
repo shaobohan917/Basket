@@ -160,12 +160,17 @@ public class CommonMethod {
         return c;
     }
 
-    public static String getChemingDir() {
+    public static String getBasketDir() {
         String path = Environment.getExternalStorageDirectory().getPath();
         if (!path.endsWith("/"))
             path += "/";
 
-        return path + "cheming/";
+        String realPath = path + "basket/";
+        File file = new File(realPath);
+        if(!file.exists()){
+            file.mkdirs();
+        }
+        return path + "basket/";
     }
 
 

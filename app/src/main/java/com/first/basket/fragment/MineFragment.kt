@@ -48,7 +48,7 @@ class MineFragment : BaseFragment() {
 
         ivAva.onClick {
             if(CommonMethod.isLogin()){
-
+                startActivity(Intent(activity, ModifyAvatarActivity::class.java))
             }
         }
 

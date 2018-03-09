@@ -8,6 +8,7 @@ import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import rx.Observable
+import java.io.File
 
 /**
  * Created by hanshaobo on 05/09/2017.
@@ -129,8 +130,21 @@ interface ApiService {
     @POST("ClientAPI.php")
     fun doModifyUsername(@Field("action") action: String,@Field("userid") userid: String,@Field("username") username: String): Observable<HttpResult<LoginBean>>
 
-    //修改头像/实名认证
+    //上传头像、身份证
+    /**
+     * type
+     * photo  头像
+     * poscard  身份证正面
+     * oppcard  身份证反面
+     */
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun doUploadimage(@Field("action") action: String, @Field("userid") userid: String, @Field("type") type: String, @Field("upload") file: File): Observable<HttpResult<LoginBean>>
+
+    //实名认证
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun doCheckrealname(@Field("action") action: String,@Field("userid") userid: String,@Field("realname") realname: String,@Field("cardid") cardid: String): Observable<HttpResult<LoginBean>>
+
+
 }

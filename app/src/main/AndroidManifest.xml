@@ -98,6 +98,8 @@
         <activity android:name=".activity.PayResultActivity" />
         <activity android:name=".activity.DecoderActivity" />
         <activity android:name=".activity.PayChooseActivity" />
+        <activity android:name=".activity.ModifyAvatarActivity" />
+        <activity android:name=".view.clicppictrue.ClipPictureActivity" />
         <activity
             android:name=".activity.SearchListActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />
