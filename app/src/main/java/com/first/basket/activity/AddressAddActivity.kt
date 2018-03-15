@@ -291,8 +291,8 @@ class AddressAddActivity : BaseActivity() {
                         (0 until list.size)
                                 .filter { township.equals(list[it].subdistrict) }
                                 .forEach {
-                                    subdistrict = list[it].subdistrictid
-                                    LogUtils.d("匹配到街道：" + township + ",subdistrictid" + list[it].subdistrictid)
+                                    subdistrict = list[it].subdistrict
+                                    LogUtils.d("匹配到街道：" + township + ",subdistrict" + list[it].subdistrict)
                                     isMatch = true
                                 }
                         if (!isMatch) {
