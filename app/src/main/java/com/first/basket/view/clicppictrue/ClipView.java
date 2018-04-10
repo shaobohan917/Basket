@@ -22,7 +22,8 @@ public class ClipView extends View {
     /**
      * 裁剪框长宽比，默认4：3
      */
-    private double clipRatio = 0.125;
+//    private double clipRatio = 0.125;
+    private double clipRatio = 1;
     /**
      * 裁剪框宽度
      */

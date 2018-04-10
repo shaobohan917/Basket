@@ -65,7 +65,35 @@ public class OrderListBean implements Serializable{
         private String paymentid;
         private String statusid;
         private String updatedt;
+
+        private String recvperson;
+        private String recvphone;
+        private String recvaddress;
         private ArrayList<ProductBean> orderdetail;
+
+        public String getRecvperson() {
+            return recvperson;
+        }
+
+        public void setRecvperson(String recvperson) {
+            this.recvperson = recvperson;
+        }
+
+        public String getRecvphone() {
+            return recvphone;
+        }
+
+        public void setRecvphone(String recvphone) {
+            this.recvphone = recvphone;
+        }
+
+        public String getRecvaddress() {
+            return recvaddress;
+        }
+
+        public void setRecvaddress(String recvaddress) {
+            this.recvaddress = recvaddress;
+        }
 
         public String getOrderid() {
             return orderid;

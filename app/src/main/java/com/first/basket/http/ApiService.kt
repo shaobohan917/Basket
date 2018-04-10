@@ -2,11 +2,9 @@ package com.first.basket.http
 
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.*
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 import rx.Observable
 import java.io.File
 
@@ -137,9 +135,10 @@ interface ApiService {
      * poscard  身份证正面
      * oppcard  身份证反面
      */
+    @Multipart
     @FormUrlEncoded
     @POST("ClientAPI.php")
-    fun doUploadimage(@Field("action") action: String, @Field("userid") userid: String, @Field("type") type: String, @Field("upload") file: File): Observable<HttpResult<LoginBean>>
+    fun doUploadimage(@Field("action") action: String, @Field("userid") userid: String, @Field("type") type: String, @Part("upload") file: RequestBody): Observable<HttpResult<LoginBean>>
 
     //实名认证
     @FormUrlEncoded
@@ -147,4 +146,8 @@ interface ApiService {
     fun doCheckrealname(@Field("action") action: String,@Field("userid") userid: String,@Field("realname") realname: String,@Field("cardid") cardid: String): Observable<HttpResult<LoginBean>>
 
 
+    //获取用户信息
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun getUserInfo(@Field("action") action: String,@Field("userid") userid: String): Observable<HttpResult<LoginBean>>
 }

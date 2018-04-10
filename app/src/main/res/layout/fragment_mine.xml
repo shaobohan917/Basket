@@ -56,7 +56,8 @@
                     android:layout_marginTop="24dp"
                     android:text="上海"
                     android:textColor="@color/gray66"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvRealName"
@@ -87,7 +88,7 @@
                         android:id="@+id/tvYBBL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥ 121"
+                        android:text="121"
                         android:textColor="@color/gray33"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -96,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="医保伴侣"
+                        android:text="医保伴侣积分："
                         android:textColor="@color/gray66"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -111,7 +112,7 @@
                         android:id="@+id/tvAXJJ"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="¥ 69"
+                        android:text="69"
                         android:textColor="@color/gray33"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -120,7 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="爱心基金"
+                        android:text="爱心基金积分："
                         android:textColor="@color/gray66"
                         android:textSize="12sp" />
                 </LinearLayout>

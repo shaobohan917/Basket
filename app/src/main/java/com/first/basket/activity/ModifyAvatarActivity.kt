@@ -17,6 +17,9 @@ import com.first.basket.utils.SPUtil
 import com.first.basket.utils.ToastUtil
 import com.first.basket.view.clicppictrue.ClipPictureActivity
 import kotlinx.android.synthetic.main.activity_modify_nickname.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.io.File
 
@@ -24,8 +27,9 @@ import java.io.File
  * Created by hanshaobo on 15/10/2017.
  */
 class ModifyAvatarActivity : BaseActivity() {
-    private val CAPTURED_IMAGE_DIRECTORY = CommonMethod.getBasketDir() + "ocr/"
+    private val CAPTURED_IMAGE_DIRECTORY = CommonMethod.getBasketDir()
     private val FILE_NAME = "temp_cropped.jpg"
+    private var fromCard :Int = 0
 
     //请求相机
     private val REQUEST_CAPTURE = 0x11
@@ -37,6 +41,7 @@ class ModifyAvatarActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_modify_nickname)
+        fromCard = intent.getIntExtra("fromCard",0)
 
         goGallery()
     }
@@ -68,8 +73,9 @@ class ModifyAvatarActivity : BaseActivity() {
             val uri = data.data
             val path = CommonMethod.getRealFilePath(this, uri)
             //压缩
-//            CommonMethod.compressPicture(path, CAPTURED_IMAGE_DIRECTORY + FILE_NAME)
+            CommonMethod.compressPicture(path, CAPTURED_IMAGE_DIRECTORY + FILE_NAME)
             goClicp(CAPTURED_IMAGE_DIRECTORY + FILE_NAME)
+//            goClicp(path)
         } else if (requestCode == REQUEST_CROP_PHOTO) {
             //裁剪，获取bitmap
 //            tvOcr.setText("正在识别中...")
@@ -78,12 +84,21 @@ class ModifyAvatarActivity : BaseActivity() {
 //            if (dialog != null) {
 //                dialog.show()
 //            }
-            uploadAvatar()
+
+            if(fromCard==1){
+                setResult(Activity.RESULT_OK)
+                finish()
+            }else{
+                uploadAvatar()
+            }
         }
     }
 
     private fun uploadAvatar() {
-        HttpMethods.createService().doUploadimage("do_uploadimage", SPUtil.getString(StaticValue.USER_ID, ""), "photo", File(""))
+
+        var file = File(CommonMethod.getBasketDir()+ "temp_cropped.jpg")
+        var requestbody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+        HttpMethods.createService().doUploadimage("do_uploadimage", SPUtil.getString(StaticValue.USER_ID, ""), "photo", requestbody)
                 .compose(TransformUtils.defaultSchedulers())
                 .subscribe(object : HttpResultSubscriber<HttpResult<LoginBean>>() {
                     override fun onNext(t: HttpResult<LoginBean>) {
@@ -99,7 +114,6 @@ class ModifyAvatarActivity : BaseActivity() {
 
                     override fun onCompleted() {
                         super.onCompleted()
-                        CommonMethod.hideKeyboard(etNickname)
                         setResult(Activity.RESULT_OK)
                         myFinish()
                     }

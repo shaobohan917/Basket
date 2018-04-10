@@ -37,7 +37,7 @@ public class ClipPictureActivity extends Activity implements
 
     private Matrix matrix = new Matrix();
 
-    private static final String FILE_PATH = CommonMethod.getBasketDir() + "ocr/" + "temp_cropped.jpg";
+    private static final String FILE_PATH = CommonMethod.getBasketDir() + "temp_cropped.jpg";
 
     private Bitmap bitmap;
     private String path;
@@ -93,8 +93,8 @@ public class ClipPictureActivity extends Activity implements
 
             public void onDrawCompelete() {
                 clipview.removeOnDrawCompleteListener();
-                int clipHeight = clipview.getClipHeight();
                 int clipWidth = clipview.getClipWidth();
+                int clipHeight = clipview.getClipHeight();
                 int midX = clipview.getClipLeftMargin() + (clipWidth / 2);
                 int midY = clipview.getClipTopMargin() + (clipHeight / 2);
 

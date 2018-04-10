@@ -63,4 +63,14 @@ public class ImageUtils {
                 .error(R.mipmap.ic_placeholder)
                 .into(ivImg);
     }
+
+
+    public static void showImgFile(Context context, String url, ImageView ivImg) {
+        GlideApp.with(context)
+                .load(url)
+                .apply(GlideOptions.centerInsideTransform())
+                .placeholder(R.mipmap.ic_placeholder)
+                .error(R.mipmap.ic_placeholder)
+                .into(ivImg);
+    }
 }

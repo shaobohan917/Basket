@@ -46,18 +46,13 @@ class MineFragment : BaseFragment() {
             }
         }
 
-        ivAva.onClick {
-            if(CommonMethod.isLogin()){
-                startActivity(Intent(activity, ModifyAvatarActivity::class.java))
-            }
-        }
-
         tvLoginStatus.onClick {
             if (!SPUtil.getBoolean(StaticValue.SP_LOGIN_STATUS, false)) {
                 var intent = Intent(activity, LoginActivity::class.java)
                 startActivityForResult(intent, 102)
             } else {
-                startActivityForResult(Intent(activity,ModifyNicknameActivity::class.java),104)
+//                startActivityForResult(Intent(activity,ModifyNicknameActivity::class.java),104)
+                startActivityForResult(Intent(activity,PersonalInfoActivity::class.java),104)
             }
         }
 
@@ -114,15 +109,15 @@ class MineFragment : BaseFragment() {
                 tvLoginStatus.text = username
             }
 
-            tvYBBL.text = "¥ "+SPUtil.getString(StaticValue.SP_INTEGRAL_YBBL, "")
-            tvAXJJ.text = "¥ "+SPUtil.getString(StaticValue.SP_INTEGRAL_AXJJ, "")
+            tvYBBL.text = SPUtil.getString(StaticValue.SP_INTEGRAL_YBBL, "")
+            tvAXJJ.text = SPUtil.getString(StaticValue.SP_INTEGRAL_AXJJ, "")
             if(SPUtil.getInt(StaticValue.SP_ISREAL,0)==1){
                 tvRealName.text = SPUtil.getString(StaticValue.SP_REALNAME, "")
             }else{
                 tvRealName.text = "未实名"
             }
 
-            tvRegion.visibility = View.VISIBLE
+            tvRegion.visibility = View.GONE
             tvRealName.visibility = View.VISIBLE
             llYBBL.visibility = View.VISIBLE
             ivAva.visibility = View.VISIBLE

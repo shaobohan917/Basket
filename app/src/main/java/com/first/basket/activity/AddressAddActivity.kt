@@ -44,6 +44,7 @@ class AddressAddActivity : BaseActivity() {
 
     private var poiItem: PoiItem? = null
     private var subdistrict: String? = ""
+    private var area: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,8 +145,9 @@ class AddressAddActivity : BaseActivity() {
                     if (data != null) {
                         poiItem = data.getParcelableExtra("poiItem")
                         if (poiItem != null) {
-                            geoGetStreet(poiItem!!)
+                            area = poiItem!!.provinceName+"|"+ poiItem!!.cityName+"|"+ poiItem!!.adName
                             etAddress.setText(poiItem!!.snippet + " " + poiItem!!.title)
+                            geoGetStreet(poiItem!!)
                         }
                     }
                 }
@@ -315,6 +317,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
         hashmap.put("subdistrict", subdistrict)
+        hashmap.put("area", area)
 
         HttpMethods.createService().addAddress("do_addaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())
@@ -342,6 +345,7 @@ class AddressAddActivity : BaseActivity() {
         hashmap.put("street", etNumber.text.toString())
         hashmap.put("village", "")
         hashmap.put("subdistrict", subdistrict)
+        hashmap.put("area", area)
 
         HttpMethods.createService().addAddress("do_modifyaddress", hashmap)
                 .compose(TransformUtils.defaultSchedulers())

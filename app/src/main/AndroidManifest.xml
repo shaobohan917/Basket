@@ -99,6 +99,9 @@
         <activity android:name=".activity.DecoderActivity" />
         <activity android:name=".activity.PayChooseActivity" />
         <activity android:name=".activity.ModifyAvatarActivity" />
+        <activity android:name=".activity.PersonalInfoActivity" />
+        <activity android:name=".activity.ShenfenActivity" />
+        <activity android:name=".activity.CardPhotoActivity" />
         <activity android:name=".view.clicppictrue.ClipPictureActivity" />
         <activity
             android:name=".activity.SearchListActivity"
