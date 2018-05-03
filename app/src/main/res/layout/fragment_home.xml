@@ -115,30 +115,6 @@
                         android:text="社区菜市" />
                 </LinearLayout>
 
-
-                <LinearLayout
-                    android:id="@+id/llTab_axwx"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_axwx" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="爱心无限" />
-                </LinearLayout>
-
-
                 <LinearLayout
                     android:id="@+id/llTab_ybbl"
                     android:layout_width="0dp"
@@ -184,6 +160,29 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llTab_axwx"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_home_qyfl" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="企业福利" />
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:id="@+id/llTab_yhcs"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -202,7 +201,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp"
-                        android:text="1号菜市" />
+                        android:text="全国菜市" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -405,7 +404,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivAXWX"
@@ -532,7 +532,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="1号菜市"
+                    android:text="全国菜市"
                     android:textColor="@color/gray33"
                     android:textSize="14sp"
                     android:textStyle="bold" />

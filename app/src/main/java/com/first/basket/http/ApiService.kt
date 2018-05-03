@@ -48,7 +48,7 @@ interface ApiService {
     //计算商品价格
     @FormUrlEncoded
     @POST("ClientAPI.php")
-    fun getPrice(@Field("action") action: String, @Field("productids") productids: String, @Field("productnum") productnum: String): Observable<HttpResult<PriceBean>>
+    fun getPrice(@Field("action") action: String, @Field("productids") productids: String, @Field("productnum") productnum: String, @Field("addressid") addressid: String): Observable<HttpResult<PriceBean>>
 
 
 //    //立即下单
@@ -150,4 +150,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("ClientAPI.php")
     fun getUserInfo(@Field("action") action: String,@Field("userid") userid: String): Observable<HttpResult<LoginBean>>
+
+    //配送范围
+    @FormUrlEncoded
+    @POST("ClientAPI.php")
+    fun getDeliverare(@Field("action") action: String): Observable<HttpResult<DeliverBean>>
 }

@@ -141,7 +141,7 @@ class ShopFragment : BaseFragment() {
                         getPrice(mGoodsList)
                     } else {
                         (activity as MainActivity).showDialog("确定删除该商品吗？", "", "确定", DialogInterface.OnClickListener { p0, p1 ->
-                            if(CommonMethod.isTrue(mGoodsList[position].promboolean)){
+                            if (CommonMethod.isTrue(mGoodsList[position].promboolean)) {
 
                             }
                             mGoodsList.removeAt(position)
@@ -333,7 +333,7 @@ class ShopFragment : BaseFragment() {
         selectProductsList = filterCaishi(selectProductsList)
 
         if (selectProductsList.size == 0) {
-            setPrice(0.0,0.0)
+            setPrice(0.0, 0.0)
         } else {
             var productidString = StringBuilder()
             var numString = StringBuilder()
@@ -345,7 +345,7 @@ class ShopFragment : BaseFragment() {
             if (!TextUtils.isEmpty(productidString) && !TextUtils.isEmpty(numString)) {
                 val ps: String = productidString.toString().substring(0, productidString.length - 1)
                 val ns: String = numString.toString().substring(0, numString.length - 1)
-                HttpMethods.createService().getPrice("get_price", ps, ns)
+                HttpMethods.createService().getPrice("get_price", ps, ns, addressInfo.addressid)
                         .compose(TransformUtils.defaultSchedulers())
                         .subscribe(object : HttpResultSubscriber<HttpResult<PriceBean>>() {
                             override fun onNext(t: HttpResult<PriceBean>) {
@@ -353,7 +353,7 @@ class ShopFragment : BaseFragment() {
                                 if (t.status == 0) {
                                     mTotalcost = t.result.data.allprice
                                     mPriceBean = t.result.data
-                                    setPrice(t.result.data.allprice,t.result.data.fare)
+                                    setPrice(t.result.data.allprice, t.result.data.fare)
                                 } else {
                                     ToastUtil.showToast(t.info)
                                 }
@@ -393,7 +393,11 @@ class ShopFragment : BaseFragment() {
         } else {
             tvTotalPrice.text = activity.getString(R.string.total_price, totalcost.toString())
 
-            tvPostage.text = if(0.00== fare){"免运费"}else{"含运费:"+fare}
+            tvPostage.text = if (0.00 == fare) {
+                "免运费"
+            } else {
+                "含运费:" + fare
+            }
             llTotalPrice.visibility = View.VISIBLE
         }
     }

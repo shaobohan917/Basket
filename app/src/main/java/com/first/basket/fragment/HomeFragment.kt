@@ -31,6 +31,7 @@ import com.first.basket.utils.ToastUtil
 import com.tbruyelle.rxpermissions.RxPermissions
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
+import com.youth.banner.listener.OnBannerListener
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -219,10 +220,11 @@ class HomeFragment : BaseFragment() {
                 .setDelayTime(5000)
                 .setIndicatorGravity(BannerConfig.RIGHT)
                 .start()
-        banner.setOnBannerListener {
-            if (!TextUtils.isEmpty(data.carouselfigure[0].url)) {
-                var intent = Intent(activity, WebViewActivity::class.java)
-                intent.putExtra("url", data.carouselfigure[0].url)
+
+        banner.setOnBannerListener { position ->
+            if (!TextUtils.isEmpty(data.carouselfigure[position].url)) {
+                var intent = Intent(activity, GoodsDetailActivity::class.java)
+                intent.putExtra("id", data.carouselfigure[position].url)
                 startActivity(intent)
             }
         }
