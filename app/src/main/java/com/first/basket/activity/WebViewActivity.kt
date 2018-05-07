@@ -67,7 +67,7 @@ class WebViewActivity : BaseActivity() {
     }
 
     private fun showBtGo() {
-        if ("医保伴侣" == mTitle) {
+        if ("大病保障" == mTitle) {
             bt_go.visibility = View.VISIBLE
             bt_go.text = getString(R.string.agreenYibao)
             bt_go.background = resources.getDrawable(R.drawable.corner_green)

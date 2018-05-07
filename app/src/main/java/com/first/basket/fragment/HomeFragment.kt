@@ -173,7 +173,7 @@ class HomeFragment : BaseFragment() {
                 R.id.llTab_ybbl,R.id.ivYBBL -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
                     intent.putExtra("url", recommendData?.ybbl?.url)
-                    intent.putExtra("title", "医保伴侣")
+                    intent.putExtra("title", "大病保障")
                     startActivity(intent)
                 }
                 R.id.llTab_hltg,R.id.ivJKSS -> {
