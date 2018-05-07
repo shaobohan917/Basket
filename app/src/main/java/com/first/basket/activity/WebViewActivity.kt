@@ -71,7 +71,7 @@ class WebViewActivity : BaseActivity() {
             bt_go.visibility = View.VISIBLE
             bt_go.text = getString(R.string.agreenYibao)
             bt_go.background = resources.getDrawable(R.drawable.corner_green)
-        } else if ("爱心无限" == mTitle) {
+        } else if ("企业福利" == mTitle) {
             bt_go.visibility = View.VISIBLE
             bt_go.text = getString(R.string.aggeenLove)
             bt_go.background = resources.getDrawable(R.drawable.corner_pink)

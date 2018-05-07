@@ -2,6 +2,7 @@ package com.first.basket.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -61,6 +62,18 @@ class RangeActivity : BaseActivity() {
             tv.setTextColor(resources.getColor(R.color.gray33))
             tv.layoutParams = params
             llQgContainer.addView(tv)
+        }
+        if(result.shcs==null){
+            tvSHCS.visibility = View.GONE
+        }else{
+            tvSHCS.visibility = View.VISIBLE
+            for (i in 0 until result.shcs.size) {
+                var tv = TextView(this)
+                tv.text = result.shcs[i].subdistrict
+                tv.setTextColor(resources.getColor(R.color.gray33))
+                tv.layoutParams = params
+                llShContainer.addView(tv)
+            }
         }
     }
 

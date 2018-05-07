@@ -166,8 +166,8 @@ class HomeFragment : BaseFragment() {
                 }
                 R.id.llTab_axwx,R.id.ivAXWX -> {
                     val intent = Intent(activity, WebViewActivity::class.java)
-                    intent.putExtra("url", recommendData?.axwx?.url)
-                    intent.putExtra("title", "爱心无限")
+                    intent.putExtra("url", recommendData?.qyfl?.url)
+                    intent.putExtra("title", "企业福利")
                     startActivity(intent)
                 }
                 R.id.llTab_ybbl,R.id.ivYBBL -> {
@@ -262,7 +262,7 @@ class HomeFragment : BaseFragment() {
         ImageUtils.showImg(activity, data?.jkss?.image, ivJKSS)
 
         ImageUtils.showImg(activity, data?.ybbl?.image, ivYBBL)
-        ImageUtils.showImg(activity, data?.axwx?.image, ivAXWX)
+        ImageUtils.showImg(activity, data?.qyfl?.image, ivAXWX)
 
         ivSHCS.setOnClickListener(myClickListener)
         ivSQCS.setOnClickListener(myClickListener)

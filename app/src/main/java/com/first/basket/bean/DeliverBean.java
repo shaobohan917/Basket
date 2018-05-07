@@ -24,6 +24,15 @@ public class DeliverBean {
     public static class DataBean {
         private List<SqcsBean> sqcs;
         private List<YhcsBean> yhcs;
+        private List<YhcsBean> shcs;
+
+        public List<YhcsBean> getShcs() {
+            return shcs;
+        }
+
+        public void setShcs(List<YhcsBean> shcs) {
+            this.shcs = shcs;
+        }
 
         public List<SqcsBean> getSqcs() {
             return sqcs;
