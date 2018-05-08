@@ -21,8 +21,8 @@ android {
         applicationId "com.first.basket"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 27
-        versionName "1.4.0"
+        versionCode 28
+        versionName "1.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -33,9 +33,9 @@ android {
     }
     buildTypes {
         release {
-//            shrinkResources true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myconfig
         }
 
         debug {
