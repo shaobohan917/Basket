@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.adapter.PlaceOrderAdapter
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.PriceBean
@@ -22,7 +22,6 @@ import com.first.basket.view.AccountItemManagerView
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_pay_order.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import java.io.Serializable
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -58,7 +57,7 @@ class PayOrderActivity : BaseActivity() {
 
     private fun initData() {
         setHeader()
-        var mAllCheckProducts = BaseApplication.getInstance().isCheckProducts
+        var mAllCheckProducts = SampleApplicationLike.getInstance().isCheckProducts
         if (!CommonMethod.isTrue(addressInfo.issqcs)) {
             mAllCheckProducts.filter { (it.channelid == "1") }.forEach {
                 mAllCheckProducts.remove(it)
@@ -138,7 +137,7 @@ class PayOrderActivity : BaseActivity() {
 
     private fun deleteProducts() {
         for (i in 0 until mGoodsList.size) {
-            var product = BaseApplication.getInstance().productsList.remove(mGoodsList[i])
+            var product = SampleApplicationLike.getInstance().productsList.remove(mGoodsList[i])
             LogUtils.d("删除：" + product)
         }
     }

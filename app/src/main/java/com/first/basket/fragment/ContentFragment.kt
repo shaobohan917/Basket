@@ -13,7 +13,7 @@ import com.first.basket.activity.GoodsDetailActivity
 import com.first.basket.activity.MainActivity
 import com.first.basket.adapter.ContentAdapter
 import com.first.basket.adapter.SecondAdapter
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.ClassifyBean
 import com.first.basket.bean.ClassifyContentBean
@@ -126,7 +126,7 @@ class ContentFragment(activity: MainActivity, data: ClassifyBean.DataBean) : Bas
     }
 
     private fun addData(data: ProductBean) {
-        BaseApplication.getInstance().addProduct(data)
+        SampleApplicationLike.getInstance().addProduct(data)
         activity.setCountAdd()
     }
 

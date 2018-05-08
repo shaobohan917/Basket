@@ -3,7 +3,7 @@
     <string name="bugly">b0437cb805</string>
 
     <string name="price">¥ %s</string>
-    <string name="order_price">共%1s件商品 总计：¥ %2s</string>
+    <string name="order_price">共%1$s件商品 总计：¥ %2$s</string>
     <string name="order_limit_time">请在 %s 内完成交易</string>
     <string name="total_price">总计 ¥ %s</string>
     <string name="product_count">共%s件商品</string>
@@ -24,7 +24,7 @@
     <string name="aggeenLove">开始购物</string>
     <string name="one_oneday">特惠商品荤素每天各只可添加一件</string>
 
-    <string name="pop_thanks">感谢%1s爱心捐赠%2s元</string>
+    <string name="pop_thanks">感谢%1$s爱心捐赠%2$s元</string>
     <string name="pop_thanks_to">到上海有人公益基金会</string>
     <string name="pop_thanks_love">本基金爱心捐款</string>
     <string name="pop_thanks_description">有人基金会帮助残障社群和困难群体\n平等、有尊严地生活</string>

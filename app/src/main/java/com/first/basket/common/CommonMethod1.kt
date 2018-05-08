@@ -9,7 +9,7 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.first.basket.R
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.bean.ProductBean
 import com.first.basket.utils.SPUtil
 import com.first.basket.utils.UIUtils
@@ -99,7 +99,7 @@ class CommonMethod1 {
         }
 
         fun saveProduct() {
-            val products = BaseApplication.getInstance().productsList
+            val products = SampleApplicationLike.getInstance().productsList
             val gson = Gson()
             val str = gson.toJson(products)
             SPUtil.setString(StaticValue.GOODS_LIST, str)

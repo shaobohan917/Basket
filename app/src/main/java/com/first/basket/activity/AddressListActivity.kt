@@ -77,7 +77,7 @@ class AddressListActivity : BaseActivity() {
     }
 
     fun showChoose(str: String, position: Int) {
-        showDialog("提示", "本次配送地址为：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
+        showDialog("提示", "本次配送地址为：$str", "确定", DialogInterface.OnClickListener { p0, p1 ->
             var addressInfo = mDatas[position]
             addressInfo.street = addressInfo.street.replace("&", " ")
             SPUtil.setString(StaticValue.DEFAULT_ADDRESS, Gson().toJson(addressInfo))
@@ -88,7 +88,7 @@ class AddressListActivity : BaseActivity() {
     }
 
     fun showDelete(str: String, position: Int) {
-        showDialog("提示", "确定删除：" + str, "确定", DialogInterface.OnClickListener { p0, p1 ->
+        showDialog("提示", "确定删除：$str", "确定", DialogInterface.OnClickListener { p0, p1 ->
             deleteAddress(position)
         })
     }

@@ -11,7 +11,7 @@ import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.first.basket.R
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.base.BaseActivity
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod1
@@ -66,7 +66,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
     }
 
     fun setCount() {
-        var productListBean = BaseApplication.getInstance().productsList
+        var productListBean = SampleApplicationLike.getInstance().productsList
         val count = (0 until productListBean.size).sumBy { productListBean[it].amount }
         nearby.setBadgeCount(count)
         mCount = count
@@ -130,7 +130,7 @@ class MainActivity : BaseActivity(), AMapLocationListener {
             for (i in 0 until productListBean.size) {
                 mCount += productListBean[i].amount
             }
-            BaseApplication.getInstance().setProductsList(productListBean)
+            SampleApplicationLike.getInstance().setProductsList(productListBean)
 
             nearby.setBadgeCount(mCount)
         }

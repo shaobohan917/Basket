@@ -13,7 +13,7 @@ import android.widget.LinearLayout
 import com.first.basket.R
 import com.first.basket.activity.*
 import com.first.basket.adapter.ShopAdapter
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.base.BaseRecyclerAdapter
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.AddressBean
@@ -35,8 +35,6 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
 import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlinx.android.synthetic.main.layout_view_goods.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -418,7 +416,7 @@ class ShopFragment : BaseFragment() {
                 isFirst = false
             } else {
                 var list = ArrayList<ProductBean>()
-                BaseApplication.getInstance().productsList = mGoodsList
+                SampleApplicationLike.getInstance().productsList = mGoodsList
                 mGoodsList.filter { it.channelid == "1" }.forEach {
                     list.add(it)
                 }
@@ -439,7 +437,7 @@ class ShopFragment : BaseFragment() {
             titleView.setMoreText("编辑")
             setStatus(isModifyMode)
 
-            BaseApplication.getInstance().productsList = mGoodsList
+            SampleApplicationLike.getInstance().productsList = mGoodsList
             (activity as MainActivity).setCount()
             isModifyMode = false
             mAdapter.notifyDataSetChanged()
@@ -452,9 +450,9 @@ class ShopFragment : BaseFragment() {
     }
 
     private fun setShopData() {
-        var oldList = BaseApplication.getInstance().productsList
+        var oldList = SampleApplicationLike.getInstance().productsList
         if (oldList != null && oldList.size > 0) {
-            Collections.reverse(oldList)
+            oldList.reverse()
             var list = ArrayList<ProductBean>()
 
             (0 until oldList.size)

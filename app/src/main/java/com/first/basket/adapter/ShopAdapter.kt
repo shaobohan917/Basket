@@ -5,10 +5,13 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.first.basket.R
 import com.first.basket.activity.MainActivity
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.bean.AddressBean
 import com.first.basket.bean.ProductBean
 import com.first.basket.common.CommonMethod
@@ -74,7 +77,7 @@ class ShopAdapter(context: MainActivity, list: ArrayList<ProductBean>, listener:
         holder.tvUnit1.text = product.weight + "/" + product.unit
         holder.tvPrice1.text = CommonMethod1.showPrice(product)
         holder.amoutView.amount = product.amount
-        ImageUtils.showImg(BaseApplication.getInstance(), product.img, holder.ivGoods)
+        ImageUtils.showImg(SampleApplicationLike.getInstance().application, product.img, holder.ivGoods)
         holder.cbSelect.isChecked = product.isCheck
         holder.cbSelect.setOnCheckedChangeListener { compoundButton, b ->
             product.isCheck = b

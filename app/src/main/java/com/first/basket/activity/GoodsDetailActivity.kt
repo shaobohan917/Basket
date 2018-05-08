@@ -5,7 +5,7 @@ import android.text.TextUtils
 import android.view.View
 import butterknife.ButterKnife
 import com.first.basket.R
-import com.first.basket.app.BaseApplication
+import com.first.basket.app.SampleApplicationLike
 import com.first.basket.base.BaseActivity
 import com.first.basket.base.HttpResult
 import com.first.basket.bean.GoodsDetailBean
@@ -50,7 +50,7 @@ class GoodsDetailActivity : BaseActivity() {
 
 
     private fun initData() {
-        mCount = BaseApplication.getInstance().productsCount
+        mCount = SampleApplicationLike.getInstance().productsCount
         badgeView.bindTarget(tvCount).badgeNumber = mCount
         var id = intent.extras.getString("id")
         if (TextUtils.isEmpty(id)) {
@@ -72,7 +72,7 @@ class GoodsDetailActivity : BaseActivity() {
                                 tvCount.text = mCount.toString()
                                 badgeView.bindTarget(tvCount).badgeNumber = mCount
 
-                                BaseApplication.getInstance().addProduct(product)
+                                SampleApplicationLike.getInstance().addProduct(product)
                                 MainActivity.getInstance1().setCountAdd()
                                 SPUtil.setBoolean(StaticValue.PROM_HUN, true)
                                 SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
@@ -85,7 +85,7 @@ class GoodsDetailActivity : BaseActivity() {
                                 tvCount.text = mCount.toString()
                                 badgeView.bindTarget(tvCount).badgeNumber = mCount
 
-                                BaseApplication.getInstance().addProduct(product)
+                                SampleApplicationLike.getInstance().addProduct(product)
                                 MainActivity.getInstance1().setCountAdd()
                                 SPUtil.setBoolean(StaticValue.PROM_SU, true)
                                 SPUtil.setString(StaticValue.GET_TIME, CommonMethod.getTime(false))
@@ -100,7 +100,7 @@ class GoodsDetailActivity : BaseActivity() {
                             mCount++
                             tvCount.text = mCount.toString()
                             badgeView.bindTarget(tvCount).badgeNumber = mCount
-                            BaseApplication.getInstance().addProduct(data!!.product)
+                            SampleApplicationLike.getInstance().addProduct(data!!.product)
                             MainActivity.getInstance1().setCountAdd()
                         }
                     })
