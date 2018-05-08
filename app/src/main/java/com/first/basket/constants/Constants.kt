@@ -2,17 +2,23 @@ package com.first.basket.constants
 
 /**
  * Created by hanshaobo on 02/09/2017.
+ *
+ * git push https://github.com/LukaHan/Basket.git
+ *
+ * 加header:http://www.jianshu.com/p/991062d964cf
+ *
+ * 1.4.1基准包：app-0508-17-45-24
+ *
  */
+
+
 class Constants {
-    var git = "git push https://github.com/LukaHan/Basket.git"
 
     companion object {
-        val PIC_URL: String = "https://img1.tking.cn/assets/img/2jrRKbfyDn.jpg"
 
-        val BASE_API: String = "http://api.yhclzgc.com/API/"
-        val BASE_WECHAT_API: String = "http://api.yhclzgc.com/API/"
+        const val BASE_API: String = "http://api.yhclzgc.com/API/"
 
-        val BASE_IMG_URL: String = "http://api.yhclzgc.com/yhclzgc/img"
+        const val BASE_IMG_URL: String = "http://api.yhclzgc.com/yhclzgc/img"
 
 
         var WECHAT_APP_ID = "wx7b4dcaf398daa066"
@@ -26,9 +32,4 @@ class Constants {
         var ALI_RSA_PRIVATE = "1428507002"
 
     }
-
-    /**
-     * 加header
-     * http://www.jianshu.com/p/991062d964cf
-     */
 }

@@ -18,8 +18,8 @@ import com.first.basket.constants.Constants;
  */
 public class ImageUtils {
     public static void showImg(Context context, String url, ImageView ivImg) {
-        if (!url.startsWith(Constants.Companion.getBASE_IMG_URL())) {
-            url = Constants.Companion.getBASE_IMG_URL() + url;
+        if (!url.startsWith(Constants.BASE_IMG_URL)) {
+            url = Constants.BASE_IMG_URL + url;
         }
         GlideApp.with(context)
                 .load(url)
